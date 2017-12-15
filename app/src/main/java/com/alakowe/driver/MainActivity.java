@@ -78,7 +78,7 @@ import java.util.List;
 import java.util.Locale;
 
 import customviews.typefacesviews.TypefaceDosisRegular;
-// comment for first commit  
+// comment for first commit
 public class MainActivity extends BaseActivity implements Apis,
         OnMapReadyCallback , ApiManager.APIFETCHER{
 
