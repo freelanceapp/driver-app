@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#e6333333"
-    tools:context="com.alakowe.demotaxiapp.SosActivity">
+    tools:context="com.apporio.demotaxiapp.SosActivity">
 
 <LinearLayout
     android:layout_width="match_parent"
