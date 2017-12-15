@@ -86,7 +86,7 @@
                     android:background="@color/colorPrimary"
                     android:gravity="center">
 
-                    <com.alakowe.driver.typeface.TypefaceTextView
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
@@ -109,7 +109,7 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-                    <com.alakowe.driver.typeface.TypefaceTextView
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Login"

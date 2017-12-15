@@ -12,7 +12,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.alakowe.driver.R;
+import com.apporio.demotaxiappdriver.R;
 
 public class ProgressWheel extends View {
 

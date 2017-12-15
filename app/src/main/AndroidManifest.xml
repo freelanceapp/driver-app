@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.alakowe.driver">
+    package="com.apporio.demotaxiappdriver">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -36,10 +36,10 @@
         android:xlargeScreens="true" />
 
     <permission
-        android:name="com.alakowe.driver.permission.MAPS_RECEIVE"
+        android:name="com.apporio.demotaxiappdriver.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
     <permission
-        android:name="com.alakowe.driver.permission.C2D_MESSAGE"
+        android:name="com.apporio.demotaxiappdriver.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-feature
@@ -47,7 +47,7 @@
         android:required="true" />
 
     <application
-        android:name="com.alakowe.driver.MainApplication"
+        android:name="com.apporio.demotaxiappdriver.MainApplication"
         android:allowBackup="true"
         android:icon="@drawable/app_logo_100"
         android:label="@string/app_name"
@@ -66,7 +66,7 @@
         </provider>
 
         <activity
-            android:name="com.alakowe.driver.SplashActivity"
+            android:name="com.apporio.demotaxiappdriver.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -76,64 +76,64 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.alakowe.driver.MainActivity"
+            android:name="com.apporio.demotaxiappdriver.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.alakowe.driver.LoginActivity"
+            android:name="com.apporio.demotaxiappdriver.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.RegisterActivity"
+            android:name="com.apporio.demotaxiappdriver.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.PriceFareActivity"
+            android:name="com.apporio.demotaxiappdriver.PriceFareActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.alakowe.driver.ProfileActivity"
+            android:name="com.apporio.demotaxiappdriver.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.AboutActivity"
+            android:name="com.apporio.demotaxiappdriver.AboutActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
 
-        <activity android:name="com.alakowe.driver.ForgotPass_VerifyOTP"
+        <activity android:name="com.apporio.demotaxiappdriver.ForgotPass_VerifyOTP"
             android:screenOrientation="portrait"></activity>
 
-        <activity android:name="com.alakowe.driver.ForgotPass_ConfirmPass"
+        <activity android:name="com.apporio.demotaxiappdriver.ForgotPass_ConfirmPass"
             android:screenOrientation="portrait"></activity>
 
         <activity
-            android:name="com.alakowe.driver.TermsAndCondition"
+            android:name="com.apporio.demotaxiappdriver.TermsAndCondition"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.alakowe.driver.ChangePasswordActivity"
+            android:name="com.apporio.demotaxiappdriver.ChangePasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.DocumentActivity"
+            android:name="com.apporio.demotaxiappdriver.DocumentActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
-        <receiver android:name="com.alakowe.driver.others.MyBroadcastReceiver">
+        <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.alakowe.driver" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.alakowe.driver.others.MyBroadcastReceiverCancel">
+        <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiverCancel">
             <intent-filter>
                 <action android:name="GCM_RECEIVED_ACTION_CANCEL_TAXI_DRIVER" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.alakowe.driver.fcmclasses.MyFirebaseInstanceIDService">
+        <service android:name="com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.alakowe.driver.fcmclasses.MyFirebaseMessagingService">
+        <service android:name="com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -169,79 +169,79 @@
 
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
 
-        <activity android:name="com.alakowe.driver.RidesActivity" />
-        <activity android:name="com.alakowe.driver.SelectedRidesActivity" />
+        <activity android:name="com.apporio.demotaxiappdriver.RidesActivity" />
+        <activity android:name="com.apporio.demotaxiappdriver.SelectedRidesActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="54a77e298a52fd6775e6faf0b621fde0a76d5b04" />
 
         <activity
-            android:name="com.alakowe.driver.CustomerSupportActivity"
+            android:name="com.apporio.demotaxiappdriver.CustomerSupportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.trackride.TrackRideActivity"
+            android:name="com.apporio.demotaxiappdriver.trackride.TrackRideActivity"
             android:screenOrientation="portrait" />
 
-        <service android:name="com.alakowe.driver.TimeService" />
-        <service android:name="com.alakowe.driver.TimelySessionService" />
+        <service android:name="com.apporio.demotaxiappdriver.TimeService" />
+        <service android:name="com.apporio.demotaxiappdriver.TimelySessionService" />
 
         <activity
-            android:name="com.alakowe.driver.earnings.EarningActivity"
+            android:name="com.apporio.demotaxiappdriver.earnings.EarningActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.earnings.WeeklyStatementActivity"
+            android:name="com.apporio.demotaxiappdriver.earnings.WeeklyStatementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.earnings.DailyStatementActivity"
+            android:name="com.apporio.demotaxiappdriver.earnings.DailyStatementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.TrialReceivePassengerActivity"
+            android:name="com.apporio.demotaxiappdriver.TrialReceivePassengerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.OnlineOfflineActivity"
+            android:name="com.apporio.demotaxiappdriver.OnlineOfflineActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name="com.alakowe.driver.ReceiveRentalPassengerActivity"
+            android:name="com.apporio.demotaxiappdriver.ReceiveRentalPassengerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.RentalTrackRideActivity"
+            android:name="com.apporio.demotaxiappdriver.RentalTrackRideActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.MeterImageActivity"
+            android:name="com.apporio.demotaxiappdriver.MeterImageActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name="com.alakowe.driver.RentalPriceFareActiviy"
+            android:name="com.apporio.demotaxiappdriver.RentalPriceFareActiviy"
             android:screenOrientation="portrait" />
-        <activity android:name="com.alakowe.driver.TrialSplashActivity" />
+        <activity android:name="com.apporio.demotaxiappdriver.TrialSplashActivity" />
         <activity
-            android:name="com.alakowe.driver.BaseActivity"
+            android:name="com.apporio.demotaxiappdriver.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.SelectedRentalRideActivity"
+            android:name="com.apporio.demotaxiappdriver.SelectedRentalRideActivity"
             android:label="@string/title_activity_selected_rental_ride"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.alakowe.driver.NotificationActivity"
+            android:name="com.apporio.demotaxiappdriver.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.NotificationWebViewActivity"
+            android:name="com.apporio.demotaxiappdriver.NotificationWebViewActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.alakowe.driver.Verify_OTP"
+            android:name="com.apporio.demotaxiappdriver.Verify_OTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alakowe.driver.SosActivity"
+            android:name="com.apporio.demotaxiappdriver.SosActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
-        <activity android:name="com.alakowe.driver.PhotoUploaderActivity"
+        <activity android:name="com.apporio.demotaxiappdriver.PhotoUploaderActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"></activity>
 
-        <activity android:name="com.alakowe.driver.StatusActiity"
+        <activity android:name="com.apporio.demotaxiappdriver.StatusActiity"
             android:screenOrientation="portrait"></activity>
 
     </application>

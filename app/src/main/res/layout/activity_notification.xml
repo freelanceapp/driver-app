@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|top"
-    tools:context="com.alakowe.demotaxiapp.NotificationActivity">
+    tools:context="com.apporio.demotaxiapp.NotificationActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

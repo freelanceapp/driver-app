@@ -163,7 +163,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/colorView" />
 
-                <com.alakowe.driver.typeface.TypefaceTextView
+                <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                     android:id="@+id/tv_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/colorView" />
 
-                <com.alakowe.driver.typeface.TypefaceTextView
+                <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                     android:id="@+id/tv_car_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/colorView" />
 
-                <com.alakowe.driver.typeface.TypefaceTextView
+                <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                     android:id="@+id/tv_car_model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -229,7 +229,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/colorView" />
 
-                <com.alakowe.driver.typeface.TypefaceTextView
+                <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                     android:id="@+id/tv_ride_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -368,7 +368,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center">
 
-        <com.alakowe.driver.typeface.TypefaceTextView
+        <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/REGISTER_ACTIVITY__continuee"
