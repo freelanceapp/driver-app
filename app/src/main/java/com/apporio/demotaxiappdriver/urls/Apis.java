@@ -2,15 +2,10 @@ package com.apporio.demotaxiappdriver.urls;
 
 public interface Apis {
 
-    /////////////////////////////////////////////////////////////////
-    /*String baseDomain = "http://alakowetaxi.com/api/";
-    String imageDomain = "http://alakowetaxi.com/";
-    String restdomain = "http://alakowetaxi.com/alakowe/";*/
-    /////////////////////////////////////////////////////////////////
-
-    String baseDomain = "http://alakowetaxi.com/api/";
-    String imageDomain = "http://alakowetaxi.com/";
-    String restdomain = "http://alakowetaxi.com/Alakowe/";
+    String BASE = "http://apporio.info/Apporiotaxi/";
+    String baseDomain = BASE+"api/";
+    String imageDomain = BASE + "";
+    String restdomain = BASE + "Apporiotaxi/";
 
     String register = baseDomain + "register_driver.php";
     String registerDocs = baseDomain + "register_driver_docs.php";

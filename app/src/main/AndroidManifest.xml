@@ -114,12 +114,11 @@
         <activity
             android:name="com.apporio.demotaxiappdriver.DocumentActivity"
             android:screenOrientation="portrait">
-
         </activity>
 
         <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.alakowe.driver" />
+                <action android:name="com.apporio.demotaxiappdrive" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiverCancel">

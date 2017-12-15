@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.List;
 
 /**
- * Created by lenovo-pc on 4/25/2017.
+ * Created by samirgoel3@gmail.com on 4/25/2017.
  */
 
 public class Reservior {

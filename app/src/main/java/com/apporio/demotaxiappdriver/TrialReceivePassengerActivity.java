@@ -190,7 +190,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
                 mainLayoutPickupTxt.setText("" + viewRideInfoDriver.getDetails().getPickup_location());
                 rideExpirePickAddressTxt.setText("" + viewRideInfoDriver.getDetails().getPickup_location());
                 rideExpireDropAddressTxt.setText("" + viewRideInfoDriver.getDetails().getDrop_location());
-                Glide.with(this).load("" + Apis.googleImage + "" + viewRideInfoDriver.getDetails().getPickup_lat() + "," + viewRideInfoDriver.getDetails().getPickup_long() + "&zoom=15&size=400x400&key=" + TrialReceivePassengerActivity.this.getResources().getString(R.string.google_web_services_key)).into(mapImage);
+                Glide.with(this).load("" + Apis.googleImage + "" + viewRideInfoDriver.getDetails().getPickup_lat() + "," + viewRideInfoDriver.getDetails().getPickup_long() + "&zoom=15&size=400x400&key=" + TrialReceivePassengerActivity.this.getResources().getString(R.string.google_map_key)).into(mapImage);
                 String value = viewRideInfoDriver.getDetails().getPayment_option_name();
                 Log.d("**value==", viewRideInfoDriver.getDetails().getPayment_option_name());
 

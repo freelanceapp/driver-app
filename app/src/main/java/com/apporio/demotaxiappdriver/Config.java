@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 
 
 /**
- * Created by lenovo-pc on 4/1/2017.
+ * Created by samirgoel3@gmail.com on 4/1/2017.
  */
 
 public class Config {
@@ -27,7 +27,6 @@ public class Config {
 
     public static float bearingfactor = 0 ;
     public static String Null_Address_Message = "Out Of Network";
-    public static String Accept_Receiver = "com.apporio.demotaxiappdriver";
 
     public static int MainScrenZoon = 15 ;
     public static long LocationUpdateTimeinterval = 2000 ;

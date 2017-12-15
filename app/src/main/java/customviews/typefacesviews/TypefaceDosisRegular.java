@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
- * Created by lenovo-pc on 6/3/2017.
+ * Created by samirgoel3@gmail.com on 6/3/2017.
  */
 
 public class TypefaceDosisRegular extends TextView {

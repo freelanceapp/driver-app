@@ -1,15 +1,11 @@
 <resources>
 
-    <string name="google_map_key">AIzaSyBQp-tSDnSrh7SQApAnfn_NmSXTd7ZtdSY</string>
-    <string name="google_web_services_key">AIzaSyAoF4pTgK03TaxmOpbf9VSCGqOX9QRdFZI</string>
-    <string name="accept_receiver">com.apporio.demotaxiappdriver</string>
-    <string name="cancel_receiver">com.apporio.demotaxiappdriver.cancel</string>
+    <string name="google_map_key">AIzaSyCTAg2TXt8AiswL_Ro6k76c_p1bisIWxEU</string>
 
 
-    <string name="app_name">Alakowe Driver</string>
+    <string name="app_name">Apporio Driver</string>
     <string name="closeDrawer">Close</string>
     <string name="openDrawer">open</string>
-
 
     <string name="client_detail">CLIENT DETAIL</string>
     <string name="info">INFO</string>

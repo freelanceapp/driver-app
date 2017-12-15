@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.models.newdriveraccount;
 
 /**
- * Created by lenovo-pc on 6/15/2017.
+ * Created by samirgoel3@gmail.com on 6/15/2017.
  */
 
 public class RegistrationModel {

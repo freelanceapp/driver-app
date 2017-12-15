@@ -3,7 +3,7 @@ package com.apporio.demotaxiappdriver.models;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
- * Created by lenovo-pc on 9/6/2017.
+ * Created by samirgoel3@gmail.com on 9/6/2017.
  */
 
 @IgnoreExtraProperties

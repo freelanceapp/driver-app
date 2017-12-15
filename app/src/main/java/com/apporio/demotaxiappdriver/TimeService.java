@@ -24,7 +24,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.Timer;
 import java.util.TimerTask;
 /**
- * Created by lenovo-pc on 4/28/2017.
+ * Created by samirgoel3@gmail.com on 4/28/2017.
  */
 
 public class TimeService extends Service {

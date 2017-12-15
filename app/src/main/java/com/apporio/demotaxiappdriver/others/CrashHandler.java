@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * Created by lenovo-pc on 8/31/2017.
+ * Created by samirgoel3@gmail.com on 8/31/2017.
  */
 
 public class CrashHandler {

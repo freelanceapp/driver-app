@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.models;
 
 /**
- * Created by lenovo-pc on 9/2/2017.
+ * Created by samirgoel3@gmail.com on 9/2/2017.
  */
 
 public class TremsAndConditionResponse {

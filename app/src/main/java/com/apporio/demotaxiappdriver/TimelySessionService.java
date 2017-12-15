@@ -20,7 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by lenovo-pc on 9/6/2017.
+ * Created by samirgoel3@gmail.com on 9/6/2017.
  */
 
 public class TimelySessionService extends  Service {

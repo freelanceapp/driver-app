@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import customviews.typefacesviews.TypefaceDosisRegular;
 
 /**
- * Created by lenovo-pc on 9/11/2017.
+ * Created by samirgoel3@gmail.com on 9/11/2017.
  */
 
 public class StatusActiity extends Activity {

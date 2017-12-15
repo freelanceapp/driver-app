@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.others;
 
 /**
- * Created by lenovo-pc on 7/11/2017.
+ * Created by samirgoel3@gmail.com on 7/11/2017.
  */
 
 public class Configurations {

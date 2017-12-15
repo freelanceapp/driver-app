@@ -185,7 +185,7 @@ public class SessionManager {
         user.put(KEY_service_switcher , pref.getString(KEY_service_switcher , "1"));  // 1 means on normal duty and other means can change manually
         user.put(KEY_TAIL , pref.getString(KEY_TAIL , "100.0"));
         user.put(KEY_CITY_NAME , pref.getString(KEY_CITY_NAME , ""));
-        user.put(KEY_accuracy , pref.getString(KEY_accuracy , "25.0"));
+        user.put(KEY_accuracy , pref.getString(KEY_accuracy , "100.0"));
         user.put(KEY_DRIVER_BANK_NAME , pref.getString(KEY_DRIVER_BANK_NAME , ""));
         user.put(KEY_DRIVER_ACCOUNT_NUMBER , pref.getString(KEY_DRIVER_ACCOUNT_NUMBER , ""));
         user.put(KEY_DRIVER_ACCOUNT_NAME , pref.getString(KEY_DRIVER_ACCOUNT_NAME , ""));

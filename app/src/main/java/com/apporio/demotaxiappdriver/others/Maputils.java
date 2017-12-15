@@ -28,7 +28,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
- * Created by lenovo-pc on 4/8/2017.
+ * Created by samirgoel3@gmail.com on 4/8/2017.
  */
 
 public class Maputils {

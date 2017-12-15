@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.earnings;
 
 /**
- * Created by lenovo-pc on 5/20/2017.
+ * Created by samirgoel3@gmail.com on 5/20/2017.
  */
 
 import com.github.mikephil.charting.charts.BarLineChartBase;

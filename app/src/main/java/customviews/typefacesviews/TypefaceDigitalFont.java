@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
- * Created by lenovo-pc on 5/1/2017.
+ * Created by samirgoel3@gmail.com on 5/1/2017.
  */
 
 public class TypefaceDigitalFont extends TextView {

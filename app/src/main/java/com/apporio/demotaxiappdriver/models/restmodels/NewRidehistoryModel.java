@@ -3,7 +3,7 @@ package com.apporio.demotaxiappdriver.models.restmodels;
 import java.util.List;
 
 /**
- * Created by lenovo-pc on 7/3/2017.
+ * Created by samirgoel3@gmail.com on 7/3/2017.
  */
 
 public class NewRidehistoryModel {

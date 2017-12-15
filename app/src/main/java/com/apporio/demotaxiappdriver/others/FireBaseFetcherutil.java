@@ -3,7 +3,7 @@ package com.apporio.demotaxiappdriver.others;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 /**
- * Created by lenovo-pc on 5/26/2017.
+ * Created by samirgoel3@gmail.com on 5/26/2017.
  */
 
 public class FireBaseFetcherutil {

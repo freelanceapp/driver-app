@@ -11,7 +11,7 @@ import com.apporio.demotaxiappdriver.R;
 import com.apporio.demotaxiappdriver.models.NewSosModel;
 
 /**
- * Created by lenovo-pc on 8/24/2017.
+ * Created by samirgoel3@gmail.com on 8/24/2017.
  */
 
 public class SosAdapter extends BaseAdapter {

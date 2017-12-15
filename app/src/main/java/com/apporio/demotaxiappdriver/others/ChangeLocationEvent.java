@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.others;
 
 /**
- * Created by lenovo-pc on 8/23/2017.
+ * Created by samirgoel3@gmail.com on 8/23/2017.
  */
 
 public class ChangeLocationEvent {

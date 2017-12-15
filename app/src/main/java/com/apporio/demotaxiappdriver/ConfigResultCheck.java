@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver;
 
 /**
- * Created by lenovo-pc on 5/3/2017.
+ * Created by samirgoel3@gmail.com on 5/3/2017.
  */
 
 public class ConfigResultCheck {

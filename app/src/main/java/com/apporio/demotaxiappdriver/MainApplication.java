@@ -4,7 +4,7 @@ import com.apporio.demotaxiappdriver.analytics.MyApplication;
 import com.bugfender.sdk.Bugfender;
 
 /**
- * Created by lenovo-pc on 6/5/2017.
+ * Created by samirgoel3@gmail.com on 6/5/2017.
  */
 
 public class MainApplication extends MyApplication {

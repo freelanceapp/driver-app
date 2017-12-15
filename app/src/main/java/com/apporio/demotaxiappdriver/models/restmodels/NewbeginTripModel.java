@@ -1,7 +1,7 @@
 package com.apporio.demotaxiappdriver.models.restmodels;
 
 /**
- * Created by lenovo-pc on 6/29/2017.
+ * Created by samirgoel3@gmail.com on 6/29/2017.
  */
 
 public class NewbeginTripModel {

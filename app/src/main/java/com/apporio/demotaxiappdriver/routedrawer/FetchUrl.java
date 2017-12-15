@@ -18,7 +18,7 @@ public class FetchUrl {
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
         String sensor = "sensor=false";
-        String key = "key="+context.getResources().getString(R.string.google_web_services_key);
+        String key = "key="+context.getResources().getString(R.string.google_map_key);
         String parameters = str_origin+"&"+str_dest+"&"+sensor+"&"+key;
         String output = "json";
         return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
