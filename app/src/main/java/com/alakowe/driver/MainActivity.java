@@ -78,6 +78,8 @@ import java.util.List;
 import java.util.Locale;
 
 import customviews.typefacesviews.TypefaceDosisRegular;
+
+// started with the apporio taxi branch that id initiated with main alakowe code
 public class MainActivity extends BaseActivity implements Apis,
         OnMapReadyCallback , ApiManager.APIFETCHER{
 
