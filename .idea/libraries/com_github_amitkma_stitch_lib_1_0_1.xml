@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.github.amitkma:stitch-lib-1.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/867114fbc9229c838bf6d7e0dce299d6a32cc820/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/867114fbc9229c838bf6d7e0dce299d6a32cc820/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.amitkma/stitch-lib/1.0.1/e89da17d53c5ece45e497ccfb3014d9721016cb9/stitch-lib-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

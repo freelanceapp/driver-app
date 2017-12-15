@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "478818847468",
+    "firebase_url": "https://alakowe-taxi.firebaseio.com",
+    "project_id": "alakowe-taxi",
+    "storage_bucket": "alakowe-taxi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478818847468:android:ecd06ade8c6083b7",
+        "android_client_info": {
+          "package_name": "com.alakowe.rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478818847468-6cb25fh37trms8rakjkcmruq60mh7286.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZGQjHOJmB3jWo7303Y20DuiYp8ABX9Eg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478818847468:android:699d09bc0eefd867",
+        "android_client_info": {
+          "package_name": "com.alakowe.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478818847468-6cb25fh37trms8rakjkcmruq60mh7286.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZGQjHOJmB3jWo7303Y20DuiYp8ABX9Eg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
