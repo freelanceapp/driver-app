@@ -18,13 +18,479 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="813fb8f7-a9de-443b-aef0-32d12a6e23aa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/apporio/demotaxiappdriver/ApplicationTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/AboutActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/AccuracyEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/BaseActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ChangePasswordActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/Config.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ConfigResultCheck.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/CustomerSupportActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/DocumentActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/Driver_Category_Adapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ForgotPass_ConfirmPass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ForgotPass_VerifyOTP.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ForgotPasswordActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/LocationEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/LocationSession.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/LoginActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MainApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MapAnimator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MeterEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MeterImageActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/NotificationActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/NotificationWebViewActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/OnlineOfflineActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/PhotoUploaderActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/PriceFareActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ProfileActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ReceiveRentalPassengerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RegisterActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalPriceFareActiviy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalRideInfoModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalTrackRideActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RideDetailsModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RidesActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SelectedRentalRideActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SelectedRidesActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SosActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SplashActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/StatusActiity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TermsAndCondition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TimeService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TimelySessionService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TrialReceivePassengerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TrialSplashActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/Verify_OTP.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/CarAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/CarModelAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/CityAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/ReasonAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/RidesAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/adapter/SosAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/analytics/AnalyticsTrackers.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/analytics/MyApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/database/DBHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/CustomViewPager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/DailyStatementActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/DayAxisValueFormatter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/EarningActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/FragmentGraph.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/GraphFragmentAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/MyAxisValueFormatter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/MyCustomXAxisValueFormatter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/MyYAxisValueFormatter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/WeeklyStatementActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/XYMarkerView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/fcmclasses/MyFirebaseInstanceIDService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/fcmclasses/MyFirebaseMessagingService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/location/LocationAddress.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/location/SamLocationRequestService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/LocationBaseActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/LocationConfiguration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/LocationManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/LocationReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/constants/Default.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/constants/FailType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/constants/LogType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/constants/ProviderType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/constants/RequestCode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/helper/ContinuousTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/helper/LocationUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/helper/LogUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/helper/PermissionManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/provider/DefaultLocationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/provider/GPServicesLocationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationaltrackerclasses/provider/LocationProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationwork/GData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/locationwork/GPSTracker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/logger/LogLevel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/logger/Logger.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/logger/LoggerPrinter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/logger/Printer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/logger/Settings.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/manager/DeviceManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/manager/LanguageManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/manager/RideSession.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/manager/SessionManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/AboutResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ActiveRidesPool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ActiveRidesResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/CallSupportResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/CustomerSupportModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/DailyStatementRentalModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/DocumentListModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/DoneRideInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/DriverLocation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/DriverOnlineOffline.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/NewSosModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/NotificationResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ResultCheck.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/TrackRideMeter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/TremsAndConditionResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/cancelreasoncustomer/CancelReasonCustomer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/cancelreasoncustomer/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/carmodels/CarModels.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/carmodels/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/deviceid/DeviceId.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/document_type/DocumentType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/document_type/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/earnings/Earnings.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/earnings/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/loginResponse/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/loginResponse/LoginResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/newdriveraccount/GetAllModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/newdriveraccount/RegistrationModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/newdriveraccount/ResultStatusChecker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/newridesync/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/newridesync/NewRideSync.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/register/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/register/Register.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewChangeDropLocationModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewDemoResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewDoneRidemodel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewDriverReportModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewDriverSyncModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewEndRideModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewHeatmapModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRentalRideDeatilsModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideAcceptmodel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideArrivedModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideInfoModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideRejectModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideSyncModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRidehistoryModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewUpdateLatLongModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewbeginTripModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/ResultStatusChecker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/rideaccept/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/rideaccept/RideAccept.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ridearrived/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ridearrived/RideArrived.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/updatelatlongbeforearrived/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/updatelatlongbeforearrived/UpdateLatLongBeforeArrived.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/updatelatlongdriver/Record.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/updatelatlongdriver/UpdateLatLongDriver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewcartype/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewcartype/ViewCarType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewcity/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewcity/ViewCity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewrideinfodriver/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewrideinfodriver/ViewRideInfoDriver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewrides/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewrides/ViewRides.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewridesdriver/Msg.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewridesdriver/ViewRidesDriver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewuserinfo/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewuserinfo/ViewUserInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/newmodels/DailyEarningModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/newmodels/WeeklyEarningModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/AerialDistance.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/AlbumStorageDirFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/BaseAlbumDirFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/ChangeLocationEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/Configurations.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/ConnectionDetector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/Constants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/CrashHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/CustomAutoCompleteTextView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/DirectionsJSONParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/DownloadTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/FireBaseFetcherutil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/FirebaseUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/ForImage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/ForceUpdateAsync.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/FroyoAlbumDirFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/Helper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/HttpConnection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/ImageCompressMode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/Maputils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/MyBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/MyBroadcastReceiverCancel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/NoInterNetDialogFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/RideSessionEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/RotateMarker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/parsing/AccountModule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/pathExecutor/MapAnimator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/pathExecutor/PathExecutor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/pathExecutor/Reservior.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/pathExecutor/RouteEvaluator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/DataRouteParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/DrawMarker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/DrawRoute.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/DrawRouteMaps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/FetchUrl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/routedrawer/RouteDrawerTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/samwork/ApiManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/trackride/EventytrackAccuracy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/trackride/TrackRideActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/FontCache.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TextTypeBold.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TextTypeItalics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TextTypeRegular.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TextTypeSemiBold.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TextTypeSemiBoldItalics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/typeface/TypefaceTextView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/urls/Apis.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/alakowe/driver/ApplicationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/AboutActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/AccuracyEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/BaseActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ChangePasswordActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/Config.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ConfigResultCheck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/CustomerSupportActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/DocumentActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/Driver_Category_Adapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ForgotPass_ConfirmPass.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ForgotPass_VerifyOTP.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ForgotPasswordActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/LocationEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/LocationSession.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/LoginActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainApplication.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MapAnimator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MeterEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MeterImageActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/NotificationActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/NotificationWebViewActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/OnlineOfflineActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/PhotoUploaderActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/PriceFareActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ProfileActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ReceiveRentalPassengerActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RegisterActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalRideInfoModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalTrackRideActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RideDetailsModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RidesActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SelectedRidesActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SosActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SplashActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/StatusActiity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TermsAndCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TimeService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TimelySessionService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TrialSplashActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/Verify_OTP.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/CarAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/CarModelAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/CityAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/ReasonAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/RidesAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/adapter/SosAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/analytics/AnalyticsTrackers.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/analytics/MyApplication.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/database/DBHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/CustomViewPager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/DayAxisValueFormatter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/EarningActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/FragmentGraph.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/GraphFragmentAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/MyAxisValueFormatter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/MyCustomXAxisValueFormatter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/MyYAxisValueFormatter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/WeeklyStatementActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/XYMarkerView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/fcmclasses/MyFirebaseInstanceIDService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/fcmclasses/MyFirebaseMessagingService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/location/LocationAddress.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/location/SamLocationRequestService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/LocationBaseActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/LocationConfiguration.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/LocationManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/LocationReceiver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/constants/Default.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/constants/FailType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/constants/LogType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/constants/ProviderType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/constants/RequestCode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/helper/ContinuousTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/helper/LocationUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/helper/LogUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/helper/PermissionManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/provider/DefaultLocationProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/provider/GPServicesLocationProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationaltrackerclasses/provider/LocationProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationwork/GData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/locationwork/GPSTracker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/logger/LogLevel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/logger/Logger.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/logger/LoggerPrinter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/logger/Printer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/logger/Settings.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/manager/DeviceManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/manager/LanguageManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/manager/RideSession.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/manager/SessionManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/AboutResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ActiveRidesPool.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ActiveRidesResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/CallSupportResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/CustomerSupportModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/DailyStatementRentalModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/DocumentListModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/DoneRideInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/DriverLocation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/DriverOnlineOffline.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/NewSosModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/NotificationResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ResultCheck.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/TrackRideMeter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/TremsAndConditionResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/cancelreasoncustomer/CancelReasonCustomer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/cancelreasoncustomer/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/carmodels/CarModels.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/carmodels/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/deviceid/DeviceId.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/document_type/DocumentType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/document_type/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/earnings/Earnings.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/earnings/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/loginResponse/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/loginResponse/LoginResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/newdriveraccount/GetAllModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/newdriveraccount/RegistrationModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/newdriveraccount/ResultStatusChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/newridesync/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/newridesync/NewRideSync.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/register/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/register/Register.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewChangeDropLocationModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewDemoResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewDoneRidemodel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewDriverReportModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewDriverSyncModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewEndRideModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewHeatmapModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRentalRideDeatilsModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideAcceptmodel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideArrivedModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideInfoModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideRejectModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideSyncModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRidehistoryModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewUpdateLatLongModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewbeginTripModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/ResultStatusChecker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/rideaccept/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/rideaccept/RideAccept.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ridearrived/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ridearrived/RideArrived.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/updatelatlongbeforearrived/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/updatelatlongbeforearrived/UpdateLatLongBeforeArrived.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/updatelatlongdriver/Record.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/updatelatlongdriver/UpdateLatLongDriver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewcartype/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewcartype/ViewCarType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewcity/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewcity/ViewCity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewrideinfodriver/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewrideinfodriver/ViewRideInfoDriver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewrides/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewrides/ViewRides.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewridesdriver/Msg.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewridesdriver/ViewRidesDriver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewuserinfo/Details.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewuserinfo/ViewUserInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/newmodels/DailyEarningModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/newmodels/WeeklyEarningModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/AerialDistance.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/AlbumStorageDirFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/BaseAlbumDirFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/ChangeLocationEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/Configurations.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/ConnectionDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/Constants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/CrashHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/CustomAutoCompleteTextView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/DirectionsJSONParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/DownloadTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/FireBaseFetcherutil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/FirebaseUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/ForImage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/ForceUpdateAsync.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/FroyoAlbumDirFactory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/Helper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/HttpConnection.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/ImageCompressMode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/Maputils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/MyBroadcastReceiver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/MyBroadcastReceiverCancel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/NoInterNetDialogFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/RideSessionEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/RotateMarker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/parsing/AccountModule.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/pathExecutor/MapAnimator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/pathExecutor/PathExecutor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/pathExecutor/Reservior.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/pathExecutor/RouteEvaluator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/DataRouteParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/DrawMarker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/DrawRoute.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/DrawRouteMaps.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/FetchUrl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/routedrawer/RouteDrawerTask.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/samwork/ApiManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/trackride/EventytrackAccuracy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/FontCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TextTypeBold.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TextTypeItalics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TextTypeRegular.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TextTypeSemiBold.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TextTypeSemiBoldItalics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/typeface/TypefaceTextView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/urls/Apis.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/google-services.json" afterPath="$PROJECT_DIR$/app/google-services.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sampermissionutils/AppSettingsDialog.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sampermissionutils/AppSettingsDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/customviews/blinktextview/BlinkTextView.java" afterPath="$PROJECT_DIR$/app/src/main/java/customviews/blinktextview/BlinkTextView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/customviews/progresswheel/ProgressWheel.java" afterPath="$PROJECT_DIR$/app/src/main/java/customviews/progresswheel/ProgressWheel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/customviews/topsnackbar/TSnackbar.java" afterPath="$PROJECT_DIR$/app/src/main/java/customviews/topsnackbar/TSnackbar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_daily_statement.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_daily_statement.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_document.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_document.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_earning.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_earning.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_changepass.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_changepass.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_verify_otp.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_verify_otp.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_meter_image.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_meter_image.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification_web_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification_web_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_photo_uploader.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_photo_uploader.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_receive_rental_passenger.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_receive_rental_passenger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rides.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rides.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_selected_rental_ride.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_selected_rental_ride.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_selected_rides.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_selected_rides.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sos.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sos.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tc.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_trial_receive_passenger.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_trial_receive_passenger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_trial_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_trial_splash.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verify__otp.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verify__otp.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_weekly_statement.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_weekly_statement.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_for_logout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_for_logout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_for_query_complete.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_for_query_complete.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcarmodels.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcarmodels.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcars.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcars.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcities.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforcities.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutfordocs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutfordocs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforreasons.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/itemlayoutforreasons.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/price_fare_new.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/price_fare_new.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/ride_history_rental_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ride_history_rental_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml" />
     </list>
     <ignored path="TaxiAppDriver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,11 +524,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7633">
-              <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+            <state relative-caret-position="-306">
+              <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+              <folding>
+                <marker date="1513330269385" expanded="false" signature="9444:9539" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="9675:9690" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="10088:10180" ph="(v) → {" />
+                <marker date="1513330269385" expanded="false" signature="10286:10447" ph="(location) → {" />
+                <marker date="1513330269385" expanded="false" signature="10687:10702" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="10767:10859" ph="(v) → {" />
+                <marker date="1513330269385" expanded="false" signature="12318:12418" ph="(v) → {" />
+                <marker date="1513330269385" expanded="false" signature="12469:12488" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="18613:18708" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="18802:18817" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="18885:18980" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="19072:19087" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="19158:19253" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="19769:19864" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="19960:19975" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="20040:20135" ph="(view) → {" />
+                <marker date="1513330269385" expanded="false" signature="20227:20242" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="20314:20406" ph="(v) → {" />
+                <marker date="1513330269385" expanded="false" signature="20505:20520" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="21217:21362" ph="(location) → {" />
+                <marker date="1513330269385" expanded="false" signature="22032:22133" ph="() → {" />
+                <marker date="1513330269385" expanded="false" signature="22632:22647" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="22696:22797" ph="() → {" />
+                <marker date="1513330269385" expanded="false" signature="23095:23110" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="24540:24685" ph="(location) → {" />
+                <marker date="1513330269385" expanded="false" signature="27504:27596" ph="(v) → {" />
+                <marker date="1513330269385" expanded="false" signature="27723:27738" ph="}" />
+                <marker date="1513330269385" expanded="false" signature="28070:28131" ph="&quot;Online&quot;" />
+                <marker date="1513330269385" expanded="false" signature="28385:28447" ph="&quot;Offline&quot;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google-services.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/google-services.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="75" column="9" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Apis.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/urls/Apis.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -3679,7 +4195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ForgotPass_VerifyOTP.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_notification_web_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_photo_uploader.xml" />
@@ -3730,6 +4245,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/NotificationActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/google-services.json" />
       </list>
     </option>
   </component>
@@ -3760,7 +4276,7 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
+      <flattenPackages ProjectPane="false" />
       <showMembers />
       <showModules />
       <showLibraryContents />
@@ -3815,6 +4331,102 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DRIVER" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -3828,7 +4440,7 @@
     <property name="ExportApk.ApkPath" value="C:\Users\Lenovo\Desktop\SIGNED APK Alakowe\driver" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
-    <property name="SearchEverywhereHistoryKey" value="Main&#9;FILE&#9;file://E:/MAIN/VERSION ONE TAXI FROM ALAKOWE/DRIVER/app/src/main/java/com/alakowe/driver/MainActivity.java&#10;nOT&#9;PSI&#9;JAVA://com.alakowe.driver.NotificationActivity&#10;Se&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/selected_rental_ride_layout_element.xml&#10;trac&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java&#10;pri&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;Trial&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Renta&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;Rides&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_selected_rides.xml&#10;Pri&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;Price&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/price_fare_new.xml&#10;Daily&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_daily_statement.xml&#10;Wee&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/earnings/WeeklyStatementActivity.java&#10;Register&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/RegisterActivity.java&#10;Sele&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/SelectedRidesActivity.java&#10;Trac&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java&#10;str&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/values/strings.xml&#10;rent&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java&#10;main&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/MainActivity.java&#10;RideSe&#9;PSI&#9;JAVA://com.alakowe.driver.manager.RideSession&#10;do&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;Confi&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/Config.java&#10;trial&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_trial_receive_passenger.xml&#10;renta&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/ReceiveRentalPassengerActivity.java&#10;Pro&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/ProfileActivity.java&#10;Appl&#9;PSI&#9;JAVA://com.alakowe.driver.analytics.MyApplication&#10;MyF&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/fcmclasses/MyFirebaseMessagingService.java&#10;Docum&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;daily&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java&#10;Earnin&#9;PSI&#9;JAVA://com.alakowe.driver.earnings.EarningActivity&#10;Rent&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;nav&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/nav_header_main.xml&#10;RideSessio&#9;PSI&#9;JAVA://com.alakowe.driver.manager.RideSession&#10;SelectedR&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;Rental&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java&#10;Dai&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java&#10;Login&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/LoginActivity.java&#10;documen&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;Receive&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Sessi&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/manager/SessionManager.java&#10;prof&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/activity_profile.xml&#10;mani&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/AndroidManifest.xml&#10;verify&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/Verify_OTP.java&#10;profile&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/ProfileActivity.java&#10;Selected&#9;PSI&#9;JAVA://com.alakowe.driver.SelectedRentalRideActivity&#10;Apis&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/urls/Apis.java&#10;pro&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/activity_profile.xml&#10;PriceFare&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;weekly&#9;PSI&#9;JAVA://com.alakowe.driver.earnings.WeeklyStatementActivity&#10;Recei&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Track&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="Apis&#9;FILE&#9;file://E:/MAIN/VERSION ONE TAXI FROM ALAKOWE/DRIVER/app/src/main/java/com/apporio/demotaxiappdriver/urls/Apis.java&#10;Main&#9;FILE&#9;file://E:/MAIN/VERSION ONE TAXI FROM ALAKOWE/DRIVER/app/src/main/java/com/alakowe/driver/MainActivity.java&#10;nOT&#9;PSI&#9;JAVA://com.alakowe.driver.NotificationActivity&#10;Se&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/selected_rental_ride_layout_element.xml&#10;trac&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java&#10;pri&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;Trial&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Renta&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;Rides&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_selected_rides.xml&#10;Pri&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;Price&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/price_fare_new.xml&#10;Daily&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_daily_statement.xml&#10;Wee&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/earnings/WeeklyStatementActivity.java&#10;Register&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/RegisterActivity.java&#10;Sele&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/SelectedRidesActivity.java&#10;Trac&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java&#10;str&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/values/strings.xml&#10;rent&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java&#10;main&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/MainActivity.java&#10;RideSe&#9;PSI&#9;JAVA://com.alakowe.driver.manager.RideSession&#10;do&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;Confi&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/Config.java&#10;trial&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/res/layout/activity_trial_receive_passenger.xml&#10;renta&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/ReceiveRentalPassengerActivity.java&#10;Pro&#9;FILE&#9;file://E:/Current Projects/Alakowe Taxi/alakowe_driver/app/src/main/java/com/alakowe/driver/ProfileActivity.java&#10;Appl&#9;PSI&#9;JAVA://com.alakowe.driver.analytics.MyApplication&#10;MyF&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/fcmclasses/MyFirebaseMessagingService.java&#10;Docum&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;daily&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java&#10;Earnin&#9;PSI&#9;JAVA://com.alakowe.driver.earnings.EarningActivity&#10;Rent&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;nav&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/nav_header_main.xml&#10;RideSessio&#9;PSI&#9;JAVA://com.alakowe.driver.manager.RideSession&#10;SelectedR&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java&#10;Rental&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java&#10;Dai&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java&#10;Login&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/LoginActivity.java&#10;documen&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/DocumentActivity.java&#10;Receive&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Sessi&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/manager/SessionManager.java&#10;prof&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/activity_profile.xml&#10;mani&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/AndroidManifest.xml&#10;verify&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/Verify_OTP.java&#10;profile&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/ProfileActivity.java&#10;Selected&#9;PSI&#9;JAVA://com.alakowe.driver.SelectedRentalRideActivity&#10;pro&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/res/layout/activity_profile.xml&#10;PriceFare&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/PriceFareActivity.java&#10;weekly&#9;PSI&#9;JAVA://com.alakowe.driver.earnings.WeeklyStatementActivity&#10;Recei&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java&#10;Track&#9;FILE&#9;file://E:/Current Projects/DRIVER APP/driver/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java" />
     <property name="device.picker.selection" value="62535930" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="android.project.structure.last.selected" value="app" />
@@ -3958,7 +4570,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513319711774" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513330648078" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -4006,7 +4618,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513319711774" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513330648078" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4038,6 +4650,27 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -4168,7 +4801,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513319711777" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513330648079" />
       </method>
     </configuration>
     <configuration default="false" name="MPChartExample" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -4217,7 +4850,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513319711777" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513330648079" />
       </method>
     </configuration>
     <list size="2">
@@ -4311,28 +4944,29 @@
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.52284265" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.68662953" sideWeight="0.52699226" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69916433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="WIFI ADB ULTIMATE" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39972144" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3091922" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.52284265" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.68662953" sideWeight="0.52699226" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3231198" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32451254" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69916433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.718663" sideWeight="0.5051414" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2062982" sideWeight="0.47715735" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="WIFI ADB ULTIMATE" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43010753" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39972144" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.52284265" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4348,7 +4982,6 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="491" y="844" width="444" height="168" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26030928" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4303621" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23582475" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -4410,38 +5043,28 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="124" column="58" lean-forward="false" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="58" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RidesActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RidesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="166" column="74" lean-forward="false" selection-start-line="166" selection-start-column="74" selection-end-line="166" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/viewrideinfodriver/ViewRideInfoDriver.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/viewrideinfodriver/ViewRideInfoDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RideDetailsModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RideDetailsModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="490" column="9" lean-forward="false" selection-start-line="490" selection-start-column="9" selection-end-line="490" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/DailyStatementActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/DailyStatementActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
@@ -4458,7 +5081,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/PhotoUploaderActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/PhotoUploaderActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="273" column="38" lean-forward="false" selection-start-line="273" selection-start-column="38" selection-end-line="273" selection-end-column="38" />
@@ -4475,21 +5098,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/EarningActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/EarningActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="63" column="11" lean-forward="false" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainApplication.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MainApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/analytics/MyApplication.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/analytics/MyApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
@@ -4517,7 +5140,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ProfileActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="81" column="43" lean-forward="false" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
@@ -4534,21 +5157,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalRideInfoModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalRideInfoModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRideInfoModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRideInfoModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/ReceiveRentalPassengerActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/ReceiveRentalPassengerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="192" column="21" lean-forward="false" selection-start-line="192" selection-start-column="21" selection-end-line="192" selection-end-column="21" />
@@ -4565,7 +5188,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewDoneRidemodel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewDoneRidemodel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
@@ -4582,56 +5205,56 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/Config.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="153" column="19" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/DocumentActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/DocumentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/others/Constants.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/others/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="62" lean-forward="false" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/ActiveRidesResponse.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/ActiveRidesResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632">
           <caret line="136" column="27" lean-forward="false" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/manager/RideSession.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/manager/RideSession.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2312">
           <caret line="141" column="16" lean-forward="false" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalTrackRideActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalTrackRideActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4658">
           <caret line="328" column="0" lean-forward="false" selection-start-line="328" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RentalPriceFareActiviy.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RentalPriceFareActiviy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="109" column="35" lean-forward="false" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SelectedRidesActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SelectedRidesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="204" column="38" lean-forward="false" selection-start-line="204" selection-start-column="38" selection-end-line="204" selection-end-column="38" />
@@ -4648,14 +5271,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/RegisterActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="453" column="33" lean-forward="false" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/earnings/WeeklyStatementActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/earnings/WeeklyStatementActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="48" column="54" lean-forward="false" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
@@ -4717,21 +5340,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/TrialReceivePassengerActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/TrialReceivePassengerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/models/restmodels/NewRentalRideDeatilsModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/models/restmodels/NewRentalRideDeatilsModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12631">
           <caret line="876" column="32" lean-forward="false" selection-start-line="876" selection-start-column="32" selection-end-line="876" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/SelectedRentalRideActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/SelectedRentalRideActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
@@ -4748,7 +5371,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/PriceFareActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/PriceFareActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="52" />
@@ -4758,7 +5381,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/trackride/TrackRideActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/trackride/TrackRideActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -4778,14 +5401,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/urls/Apis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MPChartLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -4793,7 +5408,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/fcmclasses/MyFirebaseMessagingService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/fcmclasses/MyFirebaseMessagingService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
@@ -4809,17 +5424,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/NotificationActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/NotificationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alakowe/driver/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7633">
-          <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+        <state relative-caret-position="-306">
+          <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+          <folding>
+            <marker date="1513330269385" expanded="false" signature="9444:9539" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="9675:9690" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="10088:10180" ph="(v) → {" />
+            <marker date="1513330269385" expanded="false" signature="10286:10447" ph="(location) → {" />
+            <marker date="1513330269385" expanded="false" signature="10687:10702" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="10767:10859" ph="(v) → {" />
+            <marker date="1513330269385" expanded="false" signature="12318:12418" ph="(v) → {" />
+            <marker date="1513330269385" expanded="false" signature="12469:12488" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="18613:18708" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="18802:18817" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="18885:18980" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="19072:19087" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="19158:19253" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="19769:19864" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="19960:19975" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="20040:20135" ph="(view) → {" />
+            <marker date="1513330269385" expanded="false" signature="20227:20242" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="20314:20406" ph="(v) → {" />
+            <marker date="1513330269385" expanded="false" signature="20505:20520" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="21217:21362" ph="(location) → {" />
+            <marker date="1513330269385" expanded="false" signature="22032:22133" ph="() → {" />
+            <marker date="1513330269385" expanded="false" signature="22632:22647" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="22696:22797" ph="() → {" />
+            <marker date="1513330269385" expanded="false" signature="23095:23110" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="24540:24685" ph="(location) → {" />
+            <marker date="1513330269385" expanded="false" signature="27504:27596" ph="(v) → {" />
+            <marker date="1513330269385" expanded="false" signature="27723:27738" ph="}" />
+            <marker date="1513330269385" expanded="false" signature="28070:28131" ph="&quot;Online&quot;" />
+            <marker date="1513330269385" expanded="false" signature="28385:28447" ph="&quot;Offline&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="75" column="9" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/apporio/demotaxiappdriver/urls/Apis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
       </provider>
