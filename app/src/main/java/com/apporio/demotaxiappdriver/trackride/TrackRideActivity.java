@@ -17,18 +17,21 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.demotaxiappdriver.ChatActivity;
 import com.apporio.demotaxiappdriver.Config;
 import com.apporio.demotaxiappdriver.LocationEvent;
 import com.apporio.demotaxiappdriver.LocationSession;
@@ -52,7 +55,10 @@ import com.apporio.demotaxiappdriver.models.restmodels.NewUpdateLatLongModel;
 import com.apporio.demotaxiappdriver.models.ridearrived.RideArrived;
 import com.apporio.demotaxiappdriver.models.viewrideinfodriver.ViewRideInfoDriver;
 import com.apporio.demotaxiappdriver.others.ChangeLocationEvent;
+import com.apporio.demotaxiappdriver.others.ChatModel;
 import com.apporio.demotaxiappdriver.others.Constants;
+import com.apporio.demotaxiappdriver.others.FirebaseChatEvent;
+import com.apporio.demotaxiappdriver.others.FirebaseChatUtillistener;
 import com.apporio.demotaxiappdriver.others.Maputils;
 import com.apporio.demotaxiappdriver.others.RideSessionEvent;
 import com.apporio.demotaxiappdriver.routedrawer.DrawMarker;
@@ -71,13 +77,20 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import java.util.Calendar;
+import java.util.List;
+
+import morxander.zaman.ZamanUtil;
 
 public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCallback , ApiManager.APIFETCHER{
 
@@ -87,8 +100,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     LanguageManager languageManager ;
     RideSession rideSession;
     SessionManager sessionManager ;
-    TextView customer_info_txt ,location_txt, trip_status_txt, your_location_txt, meter_txt , cancel_btn ,customer_phone_txt , connectivity_status  , acc_txt;
-    LinearLayout root , sos;
+    TextView customer_info_txt ,location_txt, trip_status_txt, your_location_txt, meter_txt , cancel_btn ,customer_phone_txt , connectivity_status  , acc_txt , chat_message;
+    LinearLayout root , sos , message_layout ;
     ImageView dot ;
     ApiManager apiManager ;
     ProgressDialog progressDialog;
@@ -101,6 +114,12 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     Runnable mRunnable ;
     private boolean is_map_loaded = false ;
     SamLocationRequestService samLocationRequestService ;
+
+    FirebaseChatUtillistener firebaseChatUtillistener ;
+
+
+
+
 
 
 
@@ -124,19 +143,25 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         your_location_txt = (TextView) findViewById(R.id.your_location_txt);
         cancel_btn = (TextView) findViewById(R.id.cancel_btn);
         meter_txt = (TextView) findViewById(R.id.meter_txt);
+        message_layout = (LinearLayout) findViewById(R.id.message_layout);
         customer_phone_txt = (TextView) findViewById(R.id.customer_phone_txt);
         connectivity_status = (TextView) findViewById(R.id.connectivity_status);
         root = (LinearLayout) findViewById(R.id.root);
         location_txt = (TextView) findViewById(R.id.location_txt);
-      //  acc_txt = (TextView) findViewById(R.id.acc_txt);
+        acc_txt = (TextView) findViewById(R.id.acc_txt);
         sos = (LinearLayout)findViewById(R.id.sos);
         dot = (ImageView) findViewById(R.id.dot);
+        chat_message = (TextView) findViewById(R.id.chat_message);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getSupportActionBar().hide();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        firebaseChatUtillistener = new FirebaseChatUtillistener(rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+
         apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id=1");
+
+
 
 
 
@@ -179,33 +204,23 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         trip_status_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")) {
+                if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
                     // run arrived api
-                    apiManager.execution_method_get(Config.ApiKeys.KEY_ARRIVED, Apis.arrivedTrip + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-                } else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("5")) {
+                    apiManager.execution_method_get(Config.ApiKeys.KEY_ARRIVED , Apis.arrivedTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("5")){
                     // run begin trip api
-                    if (location_txt.getText().toString().equals("Set your drop point") || location_txt.getText().toString() == null || location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point)) ||  rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("0.0")) {
+                    if(location_txt.getText().toString().equals("") || location_txt.getText().toString() == null ||  location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point))){
                         Toast.makeText(TrackRideActivity.this, "Please Ask Drop Location From the Passenger.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        try {
-                            samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {
-                                @Override
-                                public void onLocationUpdate(Location location) {
-                                    if (location.getAccuracy() > 100.0) {
-                                       // Toast.makeText(TrackRideActivity.this, "Ride Started but with Accuracy = " + location.getAccuracy(), Toast.LENGTH_SHORT).show();
-                                    } else {
-                                    }
-                                    try {
-                                        apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP, Apis.beginTrip + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&begin_lat=" + location.getLatitude() + "&begin_long=" + location.getLongitude() + "&begin_location=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-                                    } catch (Exception E) {
-                                    }
-                                }
-                            });
-                        } catch (Exception e) {
-                        }
+                    }else{
+                        try{samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {
+                            @Override
+                            public void onLocationUpdate(Location location) {
+                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, "Ride Started but with Accuracy = "+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
+                                try{apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP , Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+location.getLatitude()+"&begin_long="+location.getLongitude()+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));}catch (Exception E){}
+                            }
+                        });}catch (Exception e){}
                     }
-                }
-                else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
+                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
                     // run ride end api
 //                    if(meter_txt.getText().equals("0.0")){
 //                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&end_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&end_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+locationSession.getLocationDetails().get(LocationSession.KEY_METER_VALUE)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
@@ -216,15 +231,13 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {@Override public void onLocationUpdate(Location location) {
                             try{Double distance_travel = Double.parseDouble(""+meter_txt.getText().toString().replace(" km" , ""));
                                 distance_travel = distance_travel * 1000 ;
-                                if(location.getAccuracy()>100.0){
-                                  //  Toast.makeText(TrackRideActivity.this, "Ride End but with Accuracy = "+location.getAccuracy(), Toast.LENGTH_SHORT).show();
-                                    }else{}
+                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, "Ride End but with Accuracy = "+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
                                 apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+"&end_lat="+location.getLatitude()+"&end_long="+location.getLongitude()+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+distance_travel+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID)+"&lat_long="+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
                             }catch (Exception e){}
                         }
                         });
                     }catch (Exception e){
-                     //   Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -235,10 +248,10 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             public void onClick(View view) {
 
                 if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+","+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&daddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+","+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&daddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
                     startActivity(intent);
                 }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&daddr=" +rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION)));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&daddr=" +rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION)));
                     startActivity(intent);
                 }else {
                     Snackbar.make(root , ""+TrackRideActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__please_start_your_ridr_first) , Snackbar.LENGTH_SHORT).show();
@@ -247,6 +260,12 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
 
+        meter_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDemodialog();
+            }
+        });
 
 
 
@@ -264,8 +283,32 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+
+
+        findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TrackRideActivity.this , ChatActivity.class)
+                        .putExtra("ride_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID))
+                        .putExtra("ride_status" , ""+trip_status_txt.getText().toString())
+                        .putExtra("user_name" , ""+rideSession.getCurrentRideDetails().get(RideSession.USER_NAME))
+                        .putExtra("user_image" , "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"));
+            }
+        });
+
+
+        message_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TrackRideActivity.this , ChatActivity.class)
+                        .putExtra("ride_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID))
+                        .putExtra("ride_status" , ""+trip_status_txt.getText().toString())
+                        .putExtra("user_name" , ""+rideSession.getCurrentRideDetails().get(RideSession.USER_NAME))
+                        .putExtra("user_image" , "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"));
+            }
+        });
+
     }
-/*
 
     private void showDemodialog() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -286,7 +329,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     km_value  = Double.parseDouble(""+demo_meter_edt.getText().toString());
                     meter_txt.setText(""+(km_value/1000)+" km");
                 }catch (Exception e){
-                  //  Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 dialog.dismiss();
@@ -294,7 +337,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
         dialog.show();
     }
-*/
 
     private void setView() {
         customer_info_txt.setText("" +rideSession.getCurrentRideDetails().get(RideSession.USER_NAME));
@@ -316,6 +358,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onResume() {
         super.onResume();
+        firebaseChatUtillistener.startChatListening();
         EventBus.getDefault().register(this);
         Constants.is_track_ride_activity_is_open = true;
         try{if(is_map_loaded){setView();}}catch (Exception e){}
@@ -330,10 +373,32 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(EventytrackAccuracy eventtt){
+    public void onMessageEvent(FirebaseChatEvent event){
         try{
-           // acc_txt.setText("Acc = "+eventtt.Accuracy);
+            String text = new ZamanUtil(Long.parseLong(""+event.timestamp)).getTime() ;
+            if(text.equals("Just Now")|| text.equals("In a few seconds")){
+                showUserMesageWithTimer(event.message);
+            }
         }catch (Exception e){}
+    }
+
+    private void showUserMesageWithTimer(String message) {
+        message_layout.setVisibility(View.VISIBLE);
+        chat_message.setText(""+message);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                message_layout.setVisibility(View.GONE);
+            }
+        }, 5000);
+
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(EventytrackAccuracy eventtt){
+
+        try{acc_txt.setText("Acc = "+eventtt.Accuracy);}catch (Exception e){}
     }
 
 
@@ -342,6 +407,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         super.onPause();
         EventBus.getDefault().unregister(this);
         mHandeler.removeCallbacks(mRunnable);
+        firebaseChatUtillistener.stopChatListener();
         Constants.is_track_ride_activity_is_open = false ;
     }
 
@@ -371,7 +437,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 
-      /*  googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
                 Toast.makeText(TrackRideActivity.this, "Present Value of Tail "+sessionManager.getUserDetails().get(SessionManager.KEY_TAIL), Toast.LENGTH_SHORT).show();
@@ -382,7 +448,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
     }
 
 
@@ -409,7 +475,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             double value_in_km  = (Double.parseDouble(""+event.getMeter_value())/1000);
             value_in_km = Math.round(value_in_km * 100D) / 100D;
             meter_txt.setText(""+value_in_km+" km");
-            meter_txt.setVisibility(View.GONE);
         }catch (Exception e){
             Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -434,6 +499,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event){
         if(event.getRideStatus().equals("2")){
             showDialogForCancelation();
+        }if(event.getRideStatus().equals("17")){
+            showDialogForCancelationViaAdmin();
         }
 
     }
@@ -460,6 +527,28 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 
+    private void showDialogForCancelationViaAdmin() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        dialog.setCancelable(true);
+        window.setGravity(Gravity.CENTER);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_for_cancel_via_customer);
+        dialog.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rideSession.clearRideSession();
+                finaliseAftercancelation();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
+
     public void setviewAccordingToStatus (){
 
         try{
@@ -467,7 +556,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 showDialogForCancelation();
             }
             if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
-                ////  set view when demotaxiappdriver needs to reach over pick up point
+                ////  set view when driver needs to reach over pick up point
                 trip_status_txt.setText(""+this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__located));
                 drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) ,  new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)) , Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))) ,mGooglemap ,R.drawable.ic_contact_green , R.drawable.ic_very_small );
                 cancel_btn.setVisibility(View.VISIBLE);
@@ -479,7 +568,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 cancel_btn.setVisibility(View.VISIBLE);
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
-                if(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("")   ||  rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE)  == null || rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("0.0")){  // no drop off location
+                if(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("")   ||  rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE)  == null  ){  // no drop off location
                     mGooglemap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)) , Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)))).zoom(17).build()));
 
                 }else{
@@ -491,7 +580,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 //            drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
                 trip_status_txt.setText(""+this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__end));
                 cancel_btn.setVisibility(View.GONE);
-                meter_txt.setVisibility(View.GONE);
+                meter_txt.setVisibility(View.VISIBLE);
                 sos.setVisibility(View.VISIBLE);
 //            startBeginToEndTracking();
             }
@@ -546,7 +635,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 
-        if (a == com.apporio.demotaxiappdriver.samwork.ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
+        if (a == ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
             is_location_updation_running = true ;
         }else{
             is_location_updation_running  = false ;
@@ -564,20 +653,19 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             if(result_check.result.equals("1")){
                 if(APINAME.equals(Config.ApiKeys.KEY_ARRIVED)){
                     rideSession.setRideStatus("5");
-                    FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.VAL_5 , "Not yet generated" , "0"));
+                    updateFirebaseEvent(Config.Status.VAL_5 , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_BEGIN_TRIP)){
                     rideSession.setRideStatus("6");
                     locationSession.clearMeterValue();
                     apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id=1");
-                    FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.VAL_6 , "Not yet generated" , "0"));
+                    updateFirebaseEvent(Config.Status.VAL_6 , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_END_TRIP)){
                     rideSession.setRideStatus("7");
                     RideArrived rideArrived = new RideArrived();
                     rideArrived = gson.fromJson(""+script, RideArrived.class);
-                    FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.VAL_7 , ""+rideArrived.getDetails().getDoneRideId() , "0"));
-
+                    updateFirebaseEventWithDoneRide(Config.Status.VAL_7  , rideArrived.getDetails().getDoneRideId() , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                     startActivity(new Intent(this, PriceFareActivity.class)
                             .putExtra("amount", rideArrived.getDetails().getAmount())
                             .putExtra("distance", rideArrived.getDetails().getDistance())
@@ -594,7 +682,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_CANCEL_TRIP)){
                     rideSession.setRideStatus("4");
-                    FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.VAL_9 ,"Not yet generated"  , "0"));
+                    updateFirebaseEvent(Config.Status.VAL_9,""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) );
                     rideSession.clearRideSession();
                     finish();
                     startActivity(new Intent(this, RidesActivity.class));
@@ -604,11 +692,10 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     your_location_txt.setText(""+response.getDetails());
                 }
                 if(APINAME.equals(""+Config.ApiKeys.KEY_CHANGE_DESTINATION)){
-                    FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS) ,"Not yet generated"  , "1"));
+                    updateFirebaseEventWithDestinationChange();
                     NewChangeDropLocationModel drop_change_response = gson.fromJson("" +script, NewChangeDropLocationModel.class);
                     rideSession.setDropLocation(""+drop_change_response.getDetails().getDrop_location(), ""+drop_change_response.getDetails().getDrop_lat() , ""+drop_change_response.getDetails().getDrop_long());
                 }
-
                 if (APINAME.equals("" + Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER)) {
                     ViewRideInfoDriver viewRideInfoDriver = gson.fromJson("" + script, ViewRideInfoDriver.class);
                     rideSession.setDropLocation(viewRideInfoDriver.getDetails().getDrop_location() , ""+viewRideInfoDriver.getDetails().getDrop_lat(), ""+viewRideInfoDriver.getDetails().getDrop_long());
@@ -625,6 +712,54 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 
+    }
+
+    private void updateFirebaseEvent(final String status_value  , final String Ride_Id) throws  Exception{
+
+        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+Ride_Id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {};
+                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+                try{FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+Ride_Id).setValue(new RideSessionEvent(""+ Ride_Id , ""+status_value , "Not yet generated" , "0"));}catch (Exception e){}
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+            }
+        });
+    }
+
+    private void updateFirebaseEventWithDestinationChange( ) throws  Exception{
+
+        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {};
+                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+                try{FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS) ,"Not yet generated"  , "1"));}catch (Exception e){}
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+            }
+        });
+    }
+
+    private void updateFirebaseEventWithDoneRide(final String status_value , final String done_ride_id , final String ride_id) throws  Exception{
+
+        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {};
+                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+                try{FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+ride_id).setValue(new RideSessionEvent(""+ride_id , ""+status_value , ""+done_ride_id , "0"));}catch (Exception e){}
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+            }
+        });
     }
 
 
@@ -723,7 +858,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
         try{
-            mGooglemap.clear();
+//            mGooglemap.clear();
+
             final LatLng POINT_A = new LatLng(Double.parseDouble(""+rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(""+rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE)));
             Maputils.setDestinationmarker(TrackRideActivity.this ,mGooglemap,POINT_A , ""+rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
 
@@ -758,7 +894,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             };
             runOnUiThread(mRunnable);
         }catch (Exception e){
-           // Toast.makeText(this, "TrackRideActivity startRunnableProcess  "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "TrackRideActivity startRunnableProcess  "+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

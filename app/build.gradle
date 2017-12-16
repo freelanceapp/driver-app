@@ -37,6 +37,7 @@ android {
         versionName "2.19.20171214"
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -102,6 +103,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.github.amitkma:compiler:1.0.1'
     compile 'com.google.maps.android:android-maps-utils:0.5+'
+    compile 'morxander.zaman:Zaman:1.0.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

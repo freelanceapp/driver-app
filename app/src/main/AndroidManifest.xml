@@ -118,7 +118,7 @@
 
         <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.apporio.demotaxiappdrive" />
+                <action android:name="com.apporio.demotaxiappdriver" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiverCancel">
@@ -242,6 +242,9 @@
 
         <activity android:name="com.apporio.demotaxiappdriver.StatusActiity"
             android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".ChatActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

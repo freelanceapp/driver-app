@@ -173,6 +173,7 @@
     <orderEntry type="library" exported="" name="com.android.support:appcompat-v7-25.2.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-places-10.2.6" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-10.2.6" level="project" />
+    <orderEntry type="library" exported="" name="morxander.zaman:Zaman-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="org.greenrobot:eventbus:3.0.0@jar" level="project" />
     <orderEntry type="library" exported="" name="com.firebase:geofire-android-2.1.1" level="project" />
     <orderEntry type="library" exported="" name="com.google.android.gms:play-services-tasks-10.2.6" level="project" />

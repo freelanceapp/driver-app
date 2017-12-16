@@ -6,6 +6,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;
 
+import com.apporio.demotaxiappdriver.others.ChatModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by samirgoel3@gmail.com on 4/1/2017.
@@ -22,8 +27,13 @@ public class Config {
     public static String GeoFireReference = "geofire";
     public static String ActiveRidesRefrence = "Activeride";
     public static String RideTableReference = "RideTable";
+    public static String ChatReferencetable = "Chat";
     public static boolean ReceiverPassengerActivity = false;
     public static boolean RentalReceivepassengerActivity = false ;
+
+    public static List<ChatModel> cities = new ArrayList<ChatModel>(){{
+        add(new ChatModel("NOCHAT" , "NO CHAT" , ""+System.currentTimeMillis()));
+    }};
 
     public static float bearingfactor = 0 ;
     public static String Null_Address_Message = "Out Of Network";

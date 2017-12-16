@@ -53,25 +53,42 @@
                         android:padding="5dp">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@drawable/ic_profile_small" />
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_profile_small" />
 
+                                <TextView
+                                    android:id="@+id/customer_info_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center|left"
+                                    android:text="---------------"
+                                    android:textColor="@color/icons_8_muted_blueblack"></TextView>
+                            </LinearLayout>
                             <TextView
-                                android:id="@+id/customer_info_txt"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center|left"
-                                android:text="---------------"
-                                android:textColor="@color/icons_8_muted_blueblack"></TextView>
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/chat"
+                                android:text="Send Message"
+                                android:gravity="center|right"
+                                android:paddingRight="5dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/icons_8_muted_blue"
+                                android:textSize="17dp"/>
                         </LinearLayout>
+
+
 
 
                         <LinearLayout
@@ -216,12 +233,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:layout_marginLeft="10dp">
-                   <!-- <TextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ac = 9909899"
                         android:id="@+id/acc_txt"
-                        android:padding="5dp"/>-->
+                        android:padding="5dp"/>
                 </android.support.v7.widget.CardView>
                 <fragment
                     android:id="@+id/map"
@@ -243,6 +260,45 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:src="@drawable/ic_sos"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center|left"
+                    android:visibility="gone"
+                    android:layout_gravity="center|bottom"
+                    android:padding="5dp"
+                    android:id="@+id/message_layout"
+                    android:background="@color/icon_8_muted_black">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/icons_8_muted_green_1"
+                        android:textSize="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="New Message"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true"
+                        android:id="@+id/chat_message"
+                        android:textColor="@color/pure_white"
+                        android:text="In coning message Frpom user user user user user user user user user user user user user app app app app app app app app app"
+                        android:gravity="center|left"
+                        android:maxLines="2"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Click To View "
+                        android:textColor="@color/icons_8_muted_blue"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center|right"/>
+
                 </LinearLayout>
 
 
@@ -273,90 +329,90 @@
 
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:background="@color/icons_8_muted_blueblack">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_steering_wheel"
+                android:tint="@color/pure_white"/>
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="------------------------------- "
+                android:gravity="center|left"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:textSize="10dp"
+                android:textColor="@color/pure_white"
+                android:textStyle=""
+                android:id="@+id/your_location_txt"/>
+
+            <customviews.typefacesviews.TypefaceDigitalFont
+                android:layout_width="190dp"
+                android:layout_height="fill_parent"
+                android:text="0.0"
                 android:gravity="center"
-                android:paddingLeft="5dp"
-                android:background="@color/icons_8_muted_blueblack">
-
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_steering_wheel"
-                    android:tint="@color/pure_white"/>
-
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="------------------------------- "
-                    android:gravity="center|left"
-                    android:layout_weight="1"
-                    android:maxLines="2"
-                    android:padding="5dp"
-                    android:textSize="10dp"
-                    android:textColor="@color/pure_white"
-                    android:textStyle=""
-                    android:id="@+id/your_location_txt"/>
-
-                <customviews.typefacesviews.TypefaceDigitalFont
-                    android:layout_width="190dp"
-                    android:layout_height="fill_parent"
-                    android:text="0.0"
-                    android:gravity="center"
-                    android:paddingRight="5dp"
-                    android:textSize="17dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/green_filled_corner"
-                    android:textColor="@color/pure_white"
-                    android:id="@+id/meter_txt"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center|bottom"
-                android:background="@color/icons_8_muted_blueblack">
-
-
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:text="@string/TRACK_RIDE_ACTIVITY__cancel"
-                    android:textStyle="bold"
-                    android:textColor="@color/pure_white"
-                    android:layout_margin="5dp"
-                    android:id="@+id/cancel_btn"
-                    android:background="@color/icons_8_muted_red"/>
-
-                <customviews.typefacesviews.TypeFaceTextMonixBold
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/TRACK_RIDE_ACTIVITY__trip_status"
-                    android:id="@+id/trip_status_txt"
-                    android:textSize="15dp"
-                    android:layout_margin="5dp"
-                    android:textColor="@color/pure_white"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
+                android:paddingRight="5dp"
+                android:textSize="17dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/green_filled_corner"
+                android:textColor="@color/pure_white"
+                android:id="@+id/meter_txt"
+                android:layout_weight="1"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center|bottom"
+            android:background="@color/icons_8_muted_blueblack">
+
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="@string/TRACK_RIDE_ACTIVITY__cancel"
+                android:textStyle="bold"
+                android:textColor="@color/pure_white"
+                android:layout_margin="5dp"
+                android:id="@+id/cancel_btn"
+                android:background="@color/icons_8_muted_red"/>
+
+            <customviews.typefacesviews.TypeFaceTextMonixBold
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/colorPrimary"
+                android:text="@string/TRACK_RIDE_ACTIVITY__trip_status"
+                android:id="@+id/trip_status_txt"
+                android:textSize="15dp"
+                android:layout_margin="5dp"
+                android:textColor="@color/pure_white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 
