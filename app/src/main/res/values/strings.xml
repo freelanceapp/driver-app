@@ -527,5 +527,8 @@
     <string name="changed_password">Password Successfully Changed!</string>
 
     <string name="photo_upload">Please upload only good quality documents to avoid delays to your registration!</string>
+    <string name="attach_expirey_date_of_your_document">Please attach expiry date of your document</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select language</string>
 </resources>
 

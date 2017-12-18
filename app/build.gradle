@@ -102,6 +102,7 @@ dependencies {
     compile 'com.github.jrvansuita:CheckNewAppVersionAvailable:v1.0.0'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.github.amitkma:compiler:1.0.1'
+    compile 'com.crowdfire.cfalertdialog:cfalertdialog:1.0.1'
     compile 'com.google.maps.android:android-maps-utils:0.5+'
     compile 'morxander.zaman:Zaman:1.0.0'
 

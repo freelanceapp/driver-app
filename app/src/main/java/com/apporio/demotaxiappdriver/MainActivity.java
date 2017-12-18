@@ -2,6 +2,7 @@ package com.apporio.demotaxiappdriver;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -46,6 +47,7 @@ import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.trackride.TrackRideActivity;
 import com.apporio.demotaxiappdriver.urls.Apis;
 import com.bumptech.glide.Glide;
+import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -489,6 +491,37 @@ public class MainActivity extends BaseActivity implements Apis,
                 startActivity(new Intent(MainActivity.this, NotificationActivity.class));
             }
         });
+
+
+
+        findViewById(R.id.language_menu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String [] languages = new String[]{"English", "Arabic"} ;
+                CFAlertDialog.Builder builder = new CFAlertDialog.Builder(MainActivity.this);
+                builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
+                builder.setTitle(getString(R.string.select_language));
+                builder.setItems(languages , new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int index) {
+                        switch (languages[index]){
+                            case "English":
+                                sessionManager.setLanguage("en");
+                                break ;
+                            case "Arabic":
+                                sessionManager.setLanguage("ar");
+                                break ;
+                        }
+                        dialogInterface.dismiss();
+
+                        startActivity(new Intent(MainActivity.this , TrialSplashActivity.class));
+                        finish();
+                    }
+                });
+                builder.show();
+            }
+        });
+
     }
 
 

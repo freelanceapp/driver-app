@@ -169,7 +169,7 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                                 image.setImageBitmap(photo);
                                 Uri tempUri = getImageUri(getApplicationContext(), photo);
                                 imagePathCompressed = new ImageCompressMode(this).compressImage(getPath(tempUri));
-                                Toast.makeText(this, "Please attach expiry date of your document", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                                 openDateFDialog();
                             }
 

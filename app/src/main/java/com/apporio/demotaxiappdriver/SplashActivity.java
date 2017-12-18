@@ -50,6 +50,7 @@ import com.sampermissionutils.EasyPermissions;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class SplashActivity extends AppCompatActivity  implements ApiManager.APIFETCHER , EasyPermissions.PermissionCallbacks{
     LinearLayout LoginBox, ll_login_splash , root;
@@ -84,14 +85,19 @@ public class SplashActivity extends AppCompatActivity  implements ApiManager.API
         super.onCreate(savedInstanceState);
         languageManager = new LanguageManager(this);
         deviceManager = new DeviceManager(this);
-        firebaseUtils = new FirebaseUtils(this);     sessionManager = new SessionManager(this);
+        firebaseUtils = new FirebaseUtils(this);
+        sessionManager = new SessionManager(this);
         languageManager = new LanguageManager(this);
         apiManager = new ApiManager(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(this.getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
         gson = new GsonBuilder().create();
-
+        if(sessionManager.getLanguage().equals("")){
+            sessionManager.setLanguage(""+ Locale.getDefault().getLanguage());
+        }else{
+            sessionManager.setLanguage(sessionManager.getLanguage());
+        }
         setContentView(R.layout.activity_splash);
         LoginBox = (LinearLayout) findViewById(R.id.LoginBox);
 

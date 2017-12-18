@@ -217,6 +217,45 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingLeft="25dp"
+                    android:id="@+id/language_menu_btn"
+                    android:background="@color/pure_white">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:tint="@color/color_menu_icon"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_language"/>
+                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/menu_text_size"
+                        android:text="@string/language"
+                        android:textColor="@color/color_menu_text"
+                        android:gravity="center|left"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/icons_8_muted_grey"
+                    android:layout_margin="20dp"/>
+
+
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingLeft="25dp"
                     android:id="@+id/customer_support_menu_btn"
                     android:background="@color/pure_white">
 

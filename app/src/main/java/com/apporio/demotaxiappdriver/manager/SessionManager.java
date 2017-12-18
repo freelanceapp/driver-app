@@ -2,11 +2,13 @@ package com.apporio.demotaxiappdriver.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 public class SessionManager {
-
+    private String TAG  = "SessionManager";
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
@@ -55,12 +57,35 @@ public class SessionManager {
     public static final String KEY_meter_range = "meter_range";
     public static final String KEY_service_switcher = "service_switcher";
     public static final String KEY_accuracy = "KEY_accuracy";
-
+    public static final String LANGUAGE = "Languagae";
 
     public SessionManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+    }
+
+
+
+
+    public String getLanguage(){
+        HashMap<String, String> data = new HashMap<>();
+        Log.d("" +TAG, "Getting language = "+pref.getString(LANGUAGE, ""));
+        return pref.getString(LANGUAGE, "");
+    }
+
+
+    public void setLanguage (String locale ){
+        Log.d("" +TAG, "Setting languge = "+locale);
+        editor.putString(LANGUAGE,""+ locale);
+        editor.commit();
+
+        Locale myLocale = new Locale(""+locale);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.locale = myLocale;
+        _context.getResources().updateConfiguration(config, _context.getResources().getDisplayMetrics());
+
     }
 
     public void createNewPassword(String password){
