@@ -3,74 +3,70 @@ package com.apporio.demotaxiappdriver;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.apporio.demotaxiappdriver.manager.RideSession;
+import com.apporio.demotaxiappdriver.logger.Logger;
+import com.apporio.demotaxiappdriver.others.ImageCompressMode;
+import com.sampermissionutils.AfterPermissionGranted;
+import com.sampermissionutils.EasyPermissions;
 
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+import android.Manifest;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MeterImageActivity extends Activity{
+public class MeterImageActivity extends Activity implements EasyPermissions.PermissionCallbacks{
 
 
     private static final int RC_CAMERA_PERM = 123;
     private static final String TAG = "MeterImageActivity";
     public static int CAMERS_PICKER = 102;
     private static String imagePathCompressed = "";
-    RideSession rideSession;
 
- //   ImageView image ;
- //   EditText meter_val_edt ;
-
-    TextView end_trip_text, begin_trip_text;
+    ImageView image ;
+    EditText meter_val_edt ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rideSession = new RideSession(this);
         setContentView(R.layout.activity_meter_image);
-        begin_trip_text = (TextView)findViewById(R.id.begin_text);
-        end_trip_text = (TextView)findViewById(R.id.end_text);
+        image = (ImageView) findViewById(R.id.image);
+        meter_val_edt = (EditText) findViewById(R.id.meter_val_edt);
 
-        if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("12")) {  // run begin trip API
-            begin_trip_text.setVisibility(View.VISIBLE);
-            end_trip_text.setVisibility(View.GONE);
-        }else {
-            begin_trip_text.setVisibility(View.GONE);
-            end_trip_text.setVisibility(View.VISIBLE);
-        }
+        imagePathCompressed = "";
 
-        //   image = (ImageView) findViewById(R.id.image);
-  //      meter_val_edt = (EditText) findViewById(R.id.meter_val_edt);
-
-       // imagePathCompressed = "";
-
-  /*      findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cameraTask();
             }
         });
-*/
+
         findViewById(R.id.ok_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* if (imagePathCompressed.equals("") || meter_val_edt.getText().toString().equals("")){
+                if (imagePathCompressed.equals("") || meter_val_edt.getText().toString().equals("")){
                     Toast.makeText(MeterImageActivity.this, R.string.METER_IMAGE_ACTIVITY__current_meter_reading_txt, Toast.LENGTH_SHORT).show();
-                }else {*/
+                }else {
                     finalizeActivity();
-           //     }
-            }
-        });
-
-        findViewById(R.id.no_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restartActivity();
+                }
             }
         });
 
@@ -79,7 +75,7 @@ public class MeterImageActivity extends Activity{
 
 
 
-  /*  @AfterPermissionGranted(RC_CAMERA_PERM)
+    @AfterPermissionGranted(RC_CAMERA_PERM)
     public void cameraTask() {
         if (EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)) {
             // Have permission, do the thing!
@@ -120,7 +116,7 @@ public class MeterImageActivity extends Activity{
                 if (requestCode == CAMERS_PICKER) {
                     if (resultCode == RESULT_OK) {
                         Bitmap photo = (Bitmap) data.getExtras().get("data");
-                      //  image.setImageBitmap(photo);
+                        image.setImageBitmap(photo);
                         Uri tempUri = getImageUri(getApplicationContext(), photo);
                         imagePathCompressed = new ImageCompressMode(this).compressImage(getPath(tempUri));
                     }
@@ -131,8 +127,7 @@ public class MeterImageActivity extends Activity{
         }
     }
 
-*/
-/*
+
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -149,7 +144,7 @@ public class MeterImageActivity extends Activity{
         return cursor.getString(column_index);
     }
 
-*/
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -161,9 +156,9 @@ public class MeterImageActivity extends Activity{
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent();/*
+        Intent intent=new Intent();
         intent.putExtra("image","");
-        intent.putExtra("meter" , "");*/
+        intent.putExtra("meter" , "");
         setResult(Activity.RESULT_CANCELED,intent);
         finish();
     }
@@ -175,23 +170,19 @@ public class MeterImageActivity extends Activity{
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         JSONObject no_data = new JSONObject();
-      /*  if(imagePathCompressed.equals("") || meter_val_edt.getText().toString().equals("")){
+        if(imagePathCompressed.equals("") || meter_val_edt.getText().toString().equals("")){
             Intent intent=new Intent();
             intent.putExtra("image","");
             intent.putExtra("meter" , "");
             setResult(Activity.RESULT_CANCELED,intent);
-        }else{*/
+        }else{
             Intent intent=new Intent();
-      //      intent.putExtra("image",""+imagePathCompressed);
-        //    intent.putExtra("meter" , ""+meter_val_edt.getText().toString());
+            intent.putExtra("image",""+imagePathCompressed);
+            intent.putExtra("meter" , ""+meter_val_edt.getText().toString());
             setResult(Activity.RESULT_OK,intent);
-     //   }
+        }
         finish();
     }
 
-    private void restartActivity() {
 
-        Intent intent = new Intent(MeterImageActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
 }

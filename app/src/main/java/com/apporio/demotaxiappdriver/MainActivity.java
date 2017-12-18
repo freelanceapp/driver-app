@@ -195,7 +195,7 @@ public class MainActivity extends BaseActivity implements Apis,
 
         HashMap<String , String > data = new HashMap<>();
         data.put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
-        apiManager_new.execution_method_post("driver_sync" , ""+Apis.Driver_Active_Rides , data);
+        apiManager_new.execution_method_post(Config.ApiKeys.DRIVER_ACTIVE_RIDES , ""+Apis.Driver_Active_Rides , data);
 
         startService(new Intent(this, TimeService.class));
         startService(new Intent(this, TimelySessionService.class));
@@ -796,7 +796,7 @@ public class MainActivity extends BaseActivity implements Apis,
                         NewHeatmapModel heat_map_response = gson.fromJson(""+script ,NewHeatmapModel.class);
                         setheatmap(heat_map_response);
                         break ;
-                    case "driver_sync":
+                    case Config.ApiKeys.DRIVER_ACTIVE_RIDES:
                         activeRidesResponse = gson.fromJson(""+script , ActiveRidesResponse.class);
                         if(activeRidesResponse.getDetails().get(0).getRide_mode().equals("1")){ // normal type ride
                             rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_id(),
@@ -843,7 +843,7 @@ public class MainActivity extends BaseActivity implements Apis,
                 finish();
             }
             else if(resultCheck.result.equals("0")){
-                if(APINAME.equals("driver_sync")){
+                if(APINAME.equals(Config.ApiKeys.DRIVER_ACTIVE_RIDES)){
                     rideSession.clearRideSession();
                 }
 

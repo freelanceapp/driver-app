@@ -98,8 +98,6 @@ public class NotificationActivity extends Activity implements ApiManager.APIFETC
         private void OnClick(){
             if(!mDetailBean.getPush_web_url().equals("")){
                 startActivity(new Intent(NotificationActivity.this , NotificationWebViewActivity.class).putExtra("web_url" , ""+mDetailBean.getPush_web_url()));
-            }else{
-                Toast.makeText(NotificationActivity.this, "Found No Web url", Toast.LENGTH_SHORT).show();
             }
         }
 

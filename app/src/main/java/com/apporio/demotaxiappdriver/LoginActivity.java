@@ -137,7 +137,7 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
 
                     if (detail_status.equals("1")) {
                         startActivity(new Intent(LoginActivity.this, DocumentActivity.class)
-                                .putExtra("driverh_id" , ""+register.getDetails().getDriver_id())
+                                .putExtra("driver_id" , ""+register.getDetails().getDriver_id())
                                 .putExtra("city_id" , ""+register.getDetails().getCity_id())
                                 .putExtra("phone" , ""+ edt_phone_login.getText().toString().trim())
                                 .putExtra("password" , ""+edt_pass_login.getText().toString().trim()));

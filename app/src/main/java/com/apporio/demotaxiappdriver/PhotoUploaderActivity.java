@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.logger.Logger;
 import com.apporio.demotaxiappdriver.models.ResultCheck;
 import com.apporio.demotaxiappdriver.others.ImageCompressMode;
@@ -25,6 +27,8 @@ import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.urls.Apis;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mlsdev.rximagepicker.RxImagePicker;
+import com.mlsdev.rximagepicker.Sources;
 import com.sampermissionutils.AfterPermissionGranted;
 import com.sampermissionutils.EasyPermissions;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -38,6 +42,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import customviews.typefacesviews.TypefaceDosisRegular;
+import io.reactivex.functions.Consumer;
 
 public class PhotoUploaderActivity extends Activity implements EasyPermissions.PermissionCallbacks , DatePickerDialog.OnDateSetListener , ApiManager.APIFETCHER {
 
@@ -45,8 +50,9 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     private static final int RC_CAMERA_PERM = 123;
     private static final int PICK_IMAGE = 124;
     private static final int CAMERS_PICKER = 122;
+    private static final String TAG = "";
     Uri selectedImage;
-    String imagePath = "", imagePathCompressed = ""  ;
+    String imagePath = "" ;
     Bitmap bitmap1;
     @Bind(R.id.image) ImageView image;
     @Bind(R.id.camera) TypefaceDosisRegular camera;
@@ -85,7 +91,7 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
             @Override
             public void onClick(View view) {
                 try{openDateFDialog();}catch (Exception e){
-                    Toast.makeText(PhotoUploaderActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    ApporioLog.logE("" +TAG, "Exception caught while date click --> "+e.getMessage());
                 }
             }
         });
@@ -95,10 +101,10 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
             public void onClick(View view) {
                 try{
                     if(date.getText().toString().equals("DD MM YYYY")){
-                        Toast.makeText(PhotoUploaderActivity.this, "Please attach expiry date of your document", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                     }else{
                         HashMap<String , File>  images  = new HashMap<>();
-                        images.put("document_image" , new File(imagePathCompressed) );
+                        images.put("document_image" , new File(imagePath) );
                         HashMap<String  , String > data  = new HashMap<>();
                         data.put("document_expiry_date" , ""+date.getText().toString());
                         data.put("driver_id" , ""+getIntent().getExtras().getString("driver_id"));
@@ -121,8 +127,17 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     public void cameraTask()throws Exception {
         if (EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)) {
             try{ // Have permission, do the thing!
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                startActivityForResult(intent, CAMERS_PICKER);}catch (Exception e){}
+//                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(intent, CAMERS_PICKER);
+                RxImagePicker.with(PhotoUploaderActivity.this).requestImage(Sources.CAMERA).subscribe(new Consumer<Uri>() {
+                    @Override
+                    public void accept(@NonNull Uri uri) throws Exception {
+                        image.setImageURI(uri);
+                        imagePath = getRealPathFromURI(uri);
+                    }
+                });
+            }catch (Exception e){}
+
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.rationale_camera), RC_CAMERA_PERM, android.Manifest.permission.CAMERA);
         }
@@ -140,12 +155,12 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
-        Toast.makeText(this, "permission granted", Toast.LENGTH_SHORT).show();
+        ApporioLog.logI(""+TAG , "Permission Granted");
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        Toast.makeText(this, "permission denied", Toast.LENGTH_SHORT).show();
+        ApporioLog.logI(""+TAG , "Permission Denied");
 
     }
 
@@ -168,13 +183,15 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                                 Bitmap photo = (Bitmap) data.getExtras().get("data");
                                 image.setImageBitmap(photo);
                                 Uri tempUri = getImageUri(getApplicationContext(), photo);
-                                imagePathCompressed = new ImageCompressMode(this).compressImage(getPath(tempUri));
+                                Log.d("** temp URI " , ""+tempUri);
+                                imagePath = getRealPathFromURI(tempUri);
+                                Log.d("** Actuall URI " , ""+imagePath);
                                 Toast.makeText(this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                                 openDateFDialog();
                             }
 
                     } catch (Exception e) {
-                        Logger.e("res         " + e.toString());
+                        Logger.e("res" + e.toString());
                     }
                 }
                 break;
@@ -182,33 +199,11 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                 try {
                     selectedImage = data.getData();
                     imagePath = getPath(selectedImage);
-
-                    ImageCompressMode imageCompressMode = new ImageCompressMode(this);
-                    imagePathCompressed = imageCompressMode.compressImage(imagePath);
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String filePath = cursor.getString(columnIndex);
-                    cursor.close();
-
-
-                    // Set the Image in ImageView after decoding the String
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inJustDecodeBounds = true;
-                    BitmapFactory.decodeFile(filePath, options);
-                    final int REQUIRED_SIZE = 300;
-                    int scale = 1;
-                    while (options.outWidth / scale / 2 >= REQUIRED_SIZE && options.outHeight / scale / 2 >= REQUIRED_SIZE)
-                        scale *= 2;
-                    options.inSampleSize = scale;
-                    options.inJustDecodeBounds = false;
-                    bitmap1 = BitmapFactory.decodeFile(filePath, options);
-                    image.setImageBitmap(bitmap1);
-                    Toast.makeText(this, "Please attach expiry date of your document", Toast.LENGTH_SHORT).show();
+                    image.setImageURI(data.getData());
+                    Toast.makeText(this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                     openDateFDialog();
                 } catch (Exception e) {
-                    Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                    ApporioLog.logE(""+TAG, "Exception Caught while Pick image from gallery -->"+e.getMessage());
                 }
                 break;
         }
@@ -230,6 +225,13 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
     }
 
 

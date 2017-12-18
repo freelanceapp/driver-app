@@ -15,43 +15,15 @@
     <customviews.typefacesviews.TypefaceDosisRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/METER_IMAGE_ACTIVITY__rentalCabText"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="@color/pure_white"
-        android:id="@+id/ride_header"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
-
-    <customviews.typefacesviews.TypefaceDosisRegular
-        android:id="@+id/begin_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/METER_IMAGE_ACTIVITY__rentalTripBegin"
-        android:textSize="17dp"
+        android:text="@string/METER_IMAGE_ACTIVITY__please_upload_a_photo_of_your_meter_of_your_car_or_motorcycle"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:textColor="@color/pure_white"/>
 
-        <customviews.typefacesviews.TypefaceDosisRegular
-            android:id="@+id/end_text"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/METER_IMAGE_ACTIVITY__rentalTripEnd"
-            android:textSize="17dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:textColor="@color/pure_white"/>
-    </RelativeLayout>
-<!--
+
+
+
 
 
     <ImageView
@@ -74,42 +46,13 @@
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         android:id="@+id/meter_val_edt"
-        android:paddingLeft="10dp"/>-->
+        android:paddingLeft="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp">
-
-        <LinearLayout
-            android:id="@+id/no_btn"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_marginRight="5dp"
-            android:orientation="vertical">
-
-            <customviews.typefacesviews.TypefaceDosisRegular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/METER_IMAGE_ACTIVITY__no"
-                android:textColor="@color/pure_white"
-                android:id="@+id/button_txt_no"
-                android:textSize="20dp" />
-
-
-        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ok_btn"
         android:layout_width="match_parent"
-        android:layout_height="39dp"
-        android:layout_weight="1"
-       android:layout_marginLeft="5dp"
+        android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
@@ -122,10 +65,8 @@
             android:textColor="@color/pure_white"
             android:id="@+id/button_txt"
             android:textSize="20dp" />
-
-
     </LinearLayout>
 
-    </LinearLayout>
+
 
 </LinearLayout>

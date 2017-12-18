@@ -9,6 +9,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.AnalyticsListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.apporio.apporiologs.ApporioLog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -53,8 +54,8 @@ public class ApiManager {
     @SuppressLint("LongLogTag")
     public void execution_method_post(final String tag, String url, HashMap<String, String> bodyparameter) {
         bodyparameter.put("language_code" , ""+ Locale.getDefault().getLanguage());
-        Log.d("** Executing API (POST) ", "Hashparameters => " + bodyparameter);
-        Log.d("** Executing API (POST) ", "Name => " + tag + "  " + "URL => " + url);
+        ApporioLog.logD(tag +" **Body API Posting parameter ==> ",  ""+ bodyparameter);
+        ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url);
         apifetcher.onAPIRunningState(KEY_API_IS_STARTED , tag);
         AndroidNetworking.post("" + url)
                 .addBodyParameter(bodyparameter)
@@ -64,16 +65,16 @@ public class ApiManager {
                 .setAnalyticsListener(new AnalyticsListener() {
                     @Override
                     public void onReceived(long timeTakenInMillis, long bytesSent, long bytesReceived, boolean isFromCache) {
-                        Log.d(TAG, " timeTakenInMillis : " + timeTakenInMillis);
-                        Log.d(TAG, " bytesSent : " + bytesSent);
-                        Log.d(TAG, " bytesReceived : " + bytesReceived);
-                        Log.d(TAG, " isFromCache : " + isFromCache);
+                        ApporioLog.logI(TAG, " timeTakenInMillis : " + timeTakenInMillis);
+                        ApporioLog.logI(TAG, " bytesSent : " + bytesSent);
+                        ApporioLog.logI(TAG, " bytesReceived : " + bytesReceived);
+                        ApporioLog.logI(TAG, " isFromCache : " + isFromCache);
                     }
                 })
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(final JSONObject jsonObject) {
-                        Log.d("*** RESPONSE ", "" + jsonObject);
+                        ApporioLog.logD(tag+" **Response Response==> ", "" + jsonObject);
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
                         apifetcher.onFetchComplete(jsonObject, tag);
                     }
@@ -81,20 +82,17 @@ public class ApiManager {
                     @Override
                     public void onError(ANError anError) {
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
-                        Log.e("errror", "" + anError.getErrorBody());
-                        Log.e("errror", "" + anError.getErrorDetail());
-                        Log.e("errror", "" + anError.getMessage());
-                        Log.e("error", "" + anError.getStackTrace());
-                        Log.e("error", "" + anError.getCause());
+                        ApporioLog.logE("errror", "" + anError.getErrorBody());
+                        ApporioLog.logE("errror", "" + anError.getErrorDetail());
+                        ApporioLog.logE("errror", "" + anError.getMessage());
+                        ApporioLog.logE("error", "" + anError.getStackTrace());
+                        ApporioLog.logE("error", "" + anError.getCause());
                     }
                 });
     }
 
     public void execution_method_get(final String tag, String url) {
-
-
-        Log.d("** Executing API ", "Name => " + tag + "  " + "URL => " + url+"&language_code="+Locale.getDefault().getLanguage());
-
+        ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url+"&language_code="+Locale.getDefault().getLanguage());
 
         apifetcher.onAPIRunningState(KEY_API_IS_STARTED , tag);
         AndroidNetworking.get(url+"&language_code="+Locale.getDefault().getLanguage())
@@ -103,15 +101,15 @@ public class ApiManager {
                 .setAnalyticsListener(new AnalyticsListener() {
                     @Override
                     public void onReceived(long timeTakenInMillis, long bytesSent, long bytesReceived, boolean isFromCache) {
-                        Log.d(TAG, " timeTakenInMillis : " + timeTakenInMillis);
-                        Log.d(TAG, " bytesSent : " + bytesSent);
-                        Log.d(TAG, " bytesReceived : " + bytesReceived);
-                        Log.d(TAG, " isFromCache : " + isFromCache);
+                        ApporioLog.logD(TAG, " timeTakenInMillis : " + timeTakenInMillis);
+                        ApporioLog.logD(TAG, " bytesSent : " + bytesSent);
+                        ApporioLog.logD(TAG, " bytesReceived : " + bytesReceived);
+                        ApporioLog.logD(TAG, " isFromCache : " + isFromCache);
                     }
                 }).getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(final JSONObject jsonObject) {
-                Log.d("*** RESPONSE ", "" + jsonObject);
+                ApporioLog.logD(tag+" **Response Response==> ", "" + jsonObject);
                 apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
                 apifetcher.onFetchComplete(jsonObject, tag);
             }
@@ -119,8 +117,8 @@ public class ApiManager {
             @Override
             public void onError(ANError anError) {
                 apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
-                Log.e(""+TAG, "" + anError.getErrorBody());
-                Log.e(""+TAG, "" + anError.getErrorDetail());
+                ApporioLog.logE(""+TAG, "" + anError.getErrorBody());
+                ApporioLog.logE(""+TAG, "" + anError.getErrorDetail());
                 apifetcher.onAPIRunningState(KEY_API_IS_ERRORED , tag);
             }
         });
@@ -128,9 +126,11 @@ public class ApiManager {
 
     public void execution_method_image_post(final String tag ,   String url ,HashMap<String ,File> images  , HashMap<String  , String > data ){
         data.put("language_code" , ""+ Locale.getDefault().getLanguage());
-        Log.d("** Executing API (POST) ", "Hashparameters => " + data);
-        Log.d("** Executing API (POST) ", "Image Hashparameters => " + images);
-        Log.d("** Executing API (POST) ", "Name => " + tag + "  " + "URL => " + url);
+
+
+        ApporioLog.logD(tag +" **Body API Posting parameter ==> ",  ""+ data);
+        ApporioLog.logD(tag +" **Body(Images) API Posting parameter ==> ",  ""+ images);
+        ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url);
 
         apifetcher.onAPIRunningState(KEY_API_IS_STARTED , tag);
         AndroidNetworking.upload("" + url)
@@ -142,16 +142,16 @@ public class ApiManager {
                 .setAnalyticsListener(new AnalyticsListener() {
                     @Override
                     public void onReceived(long timeTakenInMillis, long bytesSent, long bytesReceived, boolean isFromCache) {
-                        Log.d(TAG, " timeTakenInMillis : " + timeTakenInMillis);
-                        Log.d(TAG, " bytesSent : " + bytesSent);
-                        Log.d(TAG, " bytesReceived : " + bytesReceived);
-                        Log.d(TAG, " isFromCache : " + isFromCache);
+                        ApporioLog.logD(TAG, " timeTakenInMillis : " + timeTakenInMillis);
+                        ApporioLog.logD(TAG, " bytesSent : " + bytesSent);
+                        ApporioLog.logD(TAG, " bytesReceived : " + bytesReceived);
+                        ApporioLog.logD(TAG, " isFromCache : " + isFromCache);
                     }
                 })
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(final JSONObject jsonObject) {
-                        Log.d("*** RESPONSE ", "" + jsonObject);
+                        ApporioLog.logD(tag+" **Response Response==> ", "" + jsonObject);
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
                         apifetcher.onFetchComplete(jsonObject, tag);
                     }
@@ -159,11 +159,11 @@ public class ApiManager {
                     @Override
                     public void onError(ANError anError) {
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
-                        Log.e("errror", "" + anError.getErrorBody());
-                        Log.e("errror", "" + anError.getErrorDetail());
-                        Log.e("errror", "" + anError.getMessage());
-                        Log.e("error", "" + anError.getStackTrace());
-                        Log.e("error", "" + anError.getCause());
+                        ApporioLog.logE("errror", "" + anError.getErrorBody());
+                        ApporioLog.logE("errror", "" + anError.getErrorDetail());
+                        ApporioLog.logE("errror", "" + anError.getMessage());
+                        ApporioLog.logE("error", "" + anError.getStackTrace());
+                        ApporioLog.logE("error", "" + anError.getCause());
                     }
                 });
     }
@@ -173,9 +173,11 @@ public class ApiManager {
 
     public void execution_method_multipart(final String tag , String url , HashMap<String , String> hashmapdetails ,String image_key,  String image){
         hashmapdetails.put("language_code" , ""+ Locale.getDefault().getLanguage());
-        Log.d("** Executing API (POST) ", "Hash Parameter => " + hashmapdetails);
-        Log.d("** Executing API (POST) ", image_key+"=> " + image);
-        Log.d("** Executing API (POST) ", "Name => " + tag + "  " + "URL => " + url);
+
+        ApporioLog.logD(tag +" **Body API Posting parameter ==> ",  ""+ hashmapdetails);
+        ApporioLog.logD(tag +" **Body(Images) API Posting parameter ==> ",  image_key+ "  "+ image);
+        ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url);
+
         AndroidNetworking.upload(url)
                 .addMultipartParameter(hashmapdetails)
                 .addMultipartFile(""+image_key, new File(image))
@@ -184,18 +186,18 @@ public class ApiManager {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
-                        Log.d("*** RESPONSE ", "" + jsonObject);
+                        ApporioLog.logD(tag+" **Response Response==> ", "" + jsonObject);
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
                         apifetcher.onFetchComplete(jsonObject, tag);
                     }
                     @Override
                     public void onError(ANError anError) {
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
-                        Log.e("errror", "" + anError.getErrorBody());
-                        Log.e("errror", "" + anError.getErrorDetail());
-                        Log.e("errror", "" + anError.getMessage());
-                        Log.e("error", "" + anError.getStackTrace());
-                        Log.e("error", "" + anError.getCause());
+                        ApporioLog.logE("errror", "" + anError.getErrorBody());
+                        ApporioLog.logE("errror", "" + anError.getErrorDetail());
+                        ApporioLog.logE("errror", "" + anError.getMessage());
+                        ApporioLog.logE("error", "" + anError.getStackTrace());
+                        ApporioLog.logE("error", "" + anError.getCause());
                     }
                 });
     }
@@ -203,10 +205,14 @@ public class ApiManager {
 
 
     public void execution_method_multipart_double_image(final String tag , String url , HashMap<String , String> hashmapdetails , String key_image_one , String image1 ,String key_image_two, String image2){
-        Log.d("** Executing API (POST) ", "Hashparameters => " + hashmapdetails);
-        Log.d("** Executing API (POST) ", ""+key_image_one+"=> " + image1);
-        Log.d("** Executing API (POST) ", ""+key_image_two+" => " + image2);
-        Log.d("** Executing API (POST) ", "Name => " + tag + "  " + "URL =>" + url);
+
+
+        ApporioLog.logD(tag +" **Body API Posting parameter ==> ",  ""+ hashmapdetails);
+        ApporioLog.logD(tag +" **Body(Images) API Posting parameter ==> ",  key_image_one+ "  "+ image1);
+        ApporioLog.logD(tag +" **Body(Images) API Posting parameter ==> ",  key_image_two+ "  "+ image2);
+        ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url);
+
+
         AndroidNetworking.upload(url)
                 .addMultipartParameter(hashmapdetails)
                 .addMultipartFile(""+key_image_one, new File(image1))
@@ -216,18 +222,18 @@ public class ApiManager {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
-                        Log.d("*** RESPONSE ", "" + jsonObject);
+                        ApporioLog.logD(tag+" **Response Response==> ", "" + jsonObject);
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
                         apifetcher.onFetchComplete(jsonObject, tag);
                     }
                     @Override
                     public void onError(ANError anError) {
                         apifetcher.onAPIRunningState(KEY_API_IS_STOPPED , tag);
-                        Log.e("errror", "" + anError.getErrorBody());
-                        Log.e("errror", "" + anError.getErrorDetail());
-                        Log.e("errror", "" + anError.getMessage());
-                        Log.e("error", "" + anError.getStackTrace());
-                        Log.e("error", "" + anError.getCause());
+                        ApporioLog.logE("errror", "" + anError.getErrorBody());
+                        ApporioLog.logE("errror", "" + anError.getErrorDetail());
+                        ApporioLog.logE("errror", "" + anError.getMessage());
+                        ApporioLog.logE("error", "" + anError.getStackTrace());
+                        ApporioLog.logE("error", "" + anError.getCause());
                     }
                 });
     }

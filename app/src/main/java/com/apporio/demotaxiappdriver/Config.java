@@ -43,72 +43,74 @@ public class Config {
 
 
     public interface ApiKeys{
-        String KEY_ARRIVED = "ride_arrived";
-        String KEY_BEGIN_TRIP = "begin_trip";
-        String KEY_END_TRIP = "end_trip";
-        String KEY_CANCEL_TRIP = "cancel_trip";
-        String KEY_CANCEL_REASONS = "cancel_reasons";
-        String KEY_View_cities = "view_cities";
-        String KEY_View_car_by_city = "view_car_by_cities";
-        String KEY_View_car_Model = "view_car_model";
-        String KEY_Driver_register = "driver_register";
-        String KEY_View_done_ride_info = "view_done_ride_info";
-        String KEY_Documents_Submit = "submit_documents";
+        String KEY_ARRIVED = "KEY_ARRIVED";
+        String KEY_BEGIN_TRIP = "KEY_BEGIN_TRIP";
+        String KEY_END_TRIP = "KEY_END_TRIP";
+        String KEY_CANCEL_TRIP = "KEY_CANCEL_TRIP";
+        String KEY_CANCEL_REASONS = "KEY_CANCEL_REASONS";
+        String KEY_View_cities = "KEY_View_cities";
+        String KEY_View_car_by_city = "KEY_View_car_by_city";
+        String KEY_View_car_Model = "KEY_View_car_Model";
+        String KEY_Driver_register = "KEY_Driver_register";
+        String KEY_View_done_ride_info = "KEY_View_done_ride_info";
+        String KEY_Documents_Submit = "KEY_Documents_Submit";
+        String DRIVER_ACTIVE_RIDES = "DRIVER_ACTIVE_RIDES";
 
 
-        String KEY_ONLINE_OFFLINE = "online_offline";
-        String KEY_UPDATE_DRIVER_LAT_LONG = "driver_latlong";
-        String KEY_UPDATE_DEVICE_ID = "deviceid_driver";
-        String KEY_CALL_SUPPORT = "call_support";
-        String KEY_RATING_DRIVER = "rating_driver";
-        String KEY_APP_CONFIG = "app_config_from_mockable";
-        String KEY_NEW_RIDE_SYNC = "new_ride_sync";
-        String KEY_VIEW_RIDE_INFO_DRIVER = "view_ride_info_driver";
 
-        String KEY_ACEPT_RIDE = "ride_accept";
-        String KEY_REJECT_RIDE = "ride_reject";
-        String KEY_RIDES_HISTORY = "view_rides_driver";
-        String KEY_ABOUT_US = "about";
-        String KEY_TERMS_AND_CONDITION = "tc";
-        String KEY_CUSTOMER_SUPPORT = "customer_support";
+        String KEY_ONLINE_OFFLINE = "KEY_ONLINE_OFFLINE";
+        String KEY_UPDATE_DRIVER_LAT_LONG = "KEY_UPDATE_DRIVER_LAT_LONG";
+        String KEY_UPDATE_DEVICE_ID = "KEY_UPDATE_DEVICE_ID";
+        String KEY_CALL_SUPPORT = "KEY_CALL_SUPPORT";
+        String KEY_RATING_DRIVER = "KEY_RATING_DRIVER";
+        String KEY_APP_CONFIG = "KEY_APP_CONFIG";
+        String KEY_NEW_RIDE_SYNC = "KEY_NEW_RIDE_SYNC";
+        String KEY_VIEW_RIDE_INFO_DRIVER = "KEY_VIEW_RIDE_INFO_DRIVER";
+
+        String KEY_ACEPT_RIDE = "KEY_ACEPT_RIDE";
+        String KEY_REJECT_RIDE = "KEY_REJECT_RIDE";
+        String KEY_RIDES_HISTORY = "KEY_RIDES_HISTORY";
+        String KEY_ABOUT_US = "KEY_ABOUT_US";
+        String KEY_TERMS_AND_CONDITION = "KEY_TERMS_AND_CONDITION";
+        String KEY_CUSTOMER_SUPPORT = "KEY_CUSTOMER_SUPPORT";
         String KEY_SOS = "KEY_SOS";
-        String KEY_VERIFY_OTP = "verify_otp";
+        String KEY_VERIFY_OTP = "KEY_VERIFY_OTP";
 
         /////// account module keys
-        String KEY_NEW_LOGIN = "Login";
-        String KEY_SIGN_UP_STEP_ONE = "Signup_Stap_One";
-        String KEY_SIGNUP_TWO = "Signup_Stap_Two";
-        String KEY_SIGNUP_THREE = "Signup_Stap_Three";
-        String KEY_GET_ALL = "getAll";
+        String KEY_NEW_LOGIN = "KEY_NEW_LOGIN";
+        String KEY_SIGN_UP_STEP_ONE = "KEY_SIGN_UP_STEP_ONE";
+        String KEY_SIGNUP_TWO = "KEY_SIGNUP_TWO";
+        String KEY_SIGNUP_THREE = "KEY_SIGNUP_THREE";
+        String KEY_GET_ALL = "KEY_GET_ALL";
 
-        String KEY_DOCUMENT_LIST = "Document_List";
-        String KEY_DOCUMENT_UPLOAD = "Document_Upload";
-        String KEY_GET_SIGNUP_STAP_FOUR = "Signup_Stap_Four";
-        String KEY_DOCUMENTS_UPLOAD_LIST = "Document_Upload";
+        String KEY_DOCUMENT_LIST = "KEY_DOCUMENT_LIST";
+        String KEY_DOCUMENT_UPLOAD = "KEY_DOCUMENT_UPLOAD";
+        String KEY_GET_SIGNUP_STAP_FOUR = "KEY_GET_SIGNUP_STAP_FOUR";
+        String KEY_DOCUMENTS_UPLOAD_LIST = "KEY_DOCUMENTS_UPLOAD_LIST";
 
 
         //////////////////   rest apis
-        String KEY_REST_RIDE_SYNC = "Ride_Sync";
-        String KEY_REST_RIDE_INFO = "Ride_Info";
-        String KEY_RESt_ACCEPT_API = "Rental_Ride_Accept";
-        String KEY_REST_REJECT_RIDE = "Rental_Driver_Reject_Ride";
-        String KEY_REST_RIDE_ARRIVED = "Rental_Driver_Arrive";
-        String KEY_REST_START_RIDE = "Rental_Driver_Start_Ride";
-        String KEY_REST_END_RIDE = "Rental_Driver_End_Ride";
-        String KEY_REST_DONE_RIDE_INFO = "Done_Ride_Info";
-        String KEY_REST_RATING = "Rating";
-        String KEY_REST_RIDE_HISTORY = "Driver_Ride_History";
-        String KEY_REST_RIDE_DETAILS = "Ride_Details";
-        String KEY_REST_CANCEl_RIDE = "Cancel_Ride";
+        String KEY_REST_RIDE_SYNC = "KEY_REST_RIDE_SYNC";
+        String KEY_REST_RIDE_INFO = "KEY_REST_RIDE_INFO";
+        String KEY_RESt_ACCEPT_API = "KEY_RESt_ACCEPT_API";
+        String KEY_REST_REJECT_RIDE = "KEY_REST_REJECT_RIDE";
+        String KEY_REST_RIDE_ARRIVED = "KEY_REST_RIDE_ARRIVED";
+        String KEY_REST_START_RIDE = "KEY_REST_START_RIDE";
+        String KEY_REST_END_RIDE = "KEY_REST_END_RIDE";
+        String KEY_REST_DONE_RIDE_INFO = "KEY_REST_DONE_RIDE_INFO";
+        String KEY_REST_RATING = "KEY_REST_RATING";
+        String KEY_REST_RIDE_HISTORY = "KEY_REST_RIDE_HISTORY";
+        String KEY_REST_RIDE_DETAILS = "KEY_REST_RIDE_DETAILS";
+        String KEY_REST_CANCEl_RIDE = "KEY_REST_CANCEl_RIDE";
 
-        String KEY_WEEKLY_EARNING = "Weekly_Earning";
-        String KEY_DAILY_EARNING = "Daily_Earning";
+        String KEY_WEEKLY_EARNING = "KEY_WEEKLY_EARNING";
+        String KEY_DAILY_EARNING = "KEY_DAILY_EARNING";
         String KEY_DAILY_EARNING_RENTAL = "KEY_DAILY_EARNING_RENTAL";
-        String KEY_CHANGE_DESTINATION  = "change_destination";
-        String KEY_REST_NOTIFICATIONS = "KEY_NOTIFICATIONS";
+        String KEY_CHANGE_DESTINATION  = "KEY_CHANGE_DESTINATION";
+        String KEY_REST_NOTIFICATIONS = "KEY_REST_NOTIFICATIONS";
 
-        String KEY_FORGOTPASS_OTP = "forgot_pass_otp";
-        String KEY_FORGOTPASS_CONFIRMPASS = "forgot_pass_confirm_pass";
+        String KEY_FORGOTPASS_OTP = "KEY_FORGOTPASS_OTP";
+        String KEY_FORGOTPASS_CONFIRMPASS = "KEY_FORGOTPASS_CONFIRMPASS";
     }
 
 

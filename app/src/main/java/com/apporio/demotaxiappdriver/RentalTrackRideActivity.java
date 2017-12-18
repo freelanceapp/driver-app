@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.adapter.ReasonAdapter;
 import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
@@ -34,6 +36,7 @@ import com.apporio.demotaxiappdriver.models.newdriveraccount.ResultStatusChecker
 import com.apporio.demotaxiappdriver.models.restmodels.NewEndRideModel;
 import com.apporio.demotaxiappdriver.models.restmodels.NewRideArrivedModel;
 import com.apporio.demotaxiappdriver.models.restmodels.NewbeginTripModel;
+import com.apporio.demotaxiappdriver.others.ChatModel;
 import com.apporio.demotaxiappdriver.others.Constants;
 import com.apporio.demotaxiappdriver.others.RideSessionEvent;
 import com.apporio.demotaxiappdriver.routedrawer.DrawRouteMaps;
@@ -46,7 +49,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -54,18 +61,21 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+
 import java.util.HashMap;
+import java.util.List;
 
-public class RentalTrackRideActivity extends AppCompatActivity implements OnMapReadyCallback, com.apporio.demotaxiappdriver.samwork.ApiManager.APIFETCHER {
+public class RentalTrackRideActivity extends AppCompatActivity implements OnMapReadyCallback, ApiManager.APIFETCHER {
 
 
+    private static final String TAG = "RentalTrackRideActivity";
     GoogleMap mGooglemap;
     LocationSession locationSession;
     LanguageManager languageManager ;
     SessionManager sessionManager ;
     TextView customer_info_txt, pick_location_txt, trip_status_txt, your_location_txt  ,customer_phone_txt  , cancel_btn ;
     LinearLayout root  ;
-    com.apporio.demotaxiappdriver.samwork.ApiManager apiManager ;
+    ApiManager apiManager ;
     ProgressDialog progressDialog;
     public static Activity activity ;
     RideSession rideSession ;
@@ -77,7 +87,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        apiManager = new com.apporio.demotaxiappdriver.samwork.ApiManager(this);
+        apiManager = new ApiManager(this);
         super.onCreate(savedInstanceState);
         locationSession = new LocationSession(this);
         sessionManager = new SessionManager(this);
@@ -119,7 +129,10 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiManager.execution_method_get(Config.ApiKeys.KEY_CANCEL_REASONS , Apis.cancelReason+"?language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                HashMap<String , String > data = new HashMap<String, String>();
+                data .put("rental_booking_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                data .put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
+                apiManager.execution_method_post(""+Config.ApiKeys.KEY_REST_CANCEl_RIDE , ""+ Apis.RideCancel , data );
             }
         });
         findViewById(R.id.call_btn).setOnClickListener(new View.OnClickListener() {
@@ -234,7 +247,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
 
     public void setviewAccordingToStatus (){
-            ////  set view when demotaxiappdriver needs to reach over pick up point
+        ////  set view when driver needs to reach over pick up point
         if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("11")){
             cancel_btn.setVisibility(View.VISIBLE);
             trip_status_txt.setText(""+this.getResources().getString(R.string.TRACK_RIDE_RENTAL_ACTIVITY__located));
@@ -290,60 +303,50 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     @Override
     public void onFetchComplete(Object script, String APINAME) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        try{ GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            ResultStatusChecker rs = gson.fromJson(""+script , ResultStatusChecker.class);
+            if(rs.getStatus() == 1){
+                switch (APINAME){
+                    case Config.ApiKeys.KEY_REST_RIDE_ARRIVED :
+                        rideSession.setRideStatus("12");
+                        NewRideArrivedModel arrived_response = gson.fromJson(""+script , NewRideArrivedModel.class);
+                        updateFirebaseEvent(Config.Status.RENTAL_ARRIVED, rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                        setviewAccordingToStatus();
+                        break;
+                    case Config.ApiKeys.KEY_REST_START_RIDE :
 
-        if(APINAME.equals(""+Config.ApiKeys.KEY_CANCEL_REASONS)){
-            CancelReasonCustomer cancelReasonCustomer = gson.fromJson(""+script, CancelReasonCustomer.class);
-            showReasonDialog(cancelReasonCustomer);
-        }else{
-            try{
-                ResultStatusChecker rs = gson.fromJson(""+script , ResultStatusChecker.class);
-                if(rs.getStatus() == 1){
-                    switch (APINAME){
-                        case Config.ApiKeys.KEY_REST_RIDE_ARRIVED :
-                            rideSession.setRideStatus("12");
-                            NewRideArrivedModel arrived_response = gson.fromJson(""+script , NewRideArrivedModel.class);
-                            FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.RENTAL_ARRIVED , "Not yet generated" , "0"));
-
+                        NewbeginTripModel begin_response = gson.fromJson(""+script , NewbeginTripModel.class);
+                        if(begin_response.getStatus() == 1 ){
+                            rideSession.setRideStatus("13");
+                            updateFirebaseEvent(Config.Status.RENTAl_RIDE_STARTED , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                             setviewAccordingToStatus();
-                            break;
-                        case Config.ApiKeys.KEY_REST_START_RIDE :
-
-                            NewbeginTripModel begin_response = gson.fromJson(""+script , NewbeginTripModel.class);
-                            if(begin_response.getStatus() == 1 ){
-                                rideSession.setRideStatus("13");
-                                FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.RENTAl_RIDE_STARTED , "Not yet generated" , "0"));
-                                setviewAccordingToStatus();
-                            }else {
-                                Toast.makeText(this, ""+begin_response.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                            break;
-                        case Config.ApiKeys.KEY_REST_END_RIDE:
-                            NewEndRideModel end_ride_response = gson.fromJson(""+script , NewEndRideModel.class);
-                            if(end_ride_response.getStatus() == 1){
-                                FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.RENTAL_RIDE_END , ""+end_ride_response.getDetails().getRental_booking_id() , "0"));
-                                rideSession.setRideStatus("16");
-                                finish();
-                                rideSession.clearRideSession();
-                                startActivity(new Intent(RentalTrackRideActivity.this , RentalPriceFareActiviy.class).putExtra("ride_id" , ""+end_ride_response.getDetails().getRental_booking_id()));
-                            }else {
-                                Toast.makeText(this, ""+end_ride_response.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                            break;
-                        case Config.ApiKeys.KEY_REST_CANCEl_RIDE :
-                            FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) , ""+Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER , "Not yet generated" , "0"));
-                            finaliseAftercancelation();
-                            break ;
-                    }
-                }else if (rs.getStatus() == 0 ) {
-                    Toast.makeText(this, "**"+rs.getMessage(), Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(this, R.string.TRACK_RIDE_RENTAL_ACTIVITY__something_bad_happen_with_api, Toast.LENGTH_SHORT).show();
-                }}catch (Exception e){}
-        }
-
-
+                        }else {
+                            Toast.makeText(this, ""+begin_response.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case Config.ApiKeys.KEY_REST_END_RIDE:
+                        NewEndRideModel end_ride_response = gson.fromJson(""+script , NewEndRideModel.class);
+                        if(end_ride_response.getStatus() == 1){
+                            updateFirebaseEventAtRideEnd(Config.Status.RENTAL_RIDE_END , end_ride_response.getDetails().getRental_booking_id() , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                            rideSession.setRideStatus("16");
+                            rideSession.clearRideSession();
+                            finish();
+                            startActivity(new Intent(RentalTrackRideActivity.this , RentalPriceFareActiviy.class).putExtra("ride_id" , ""+end_ride_response.getDetails().getRental_booking_id()));
+                        }else {
+                            Toast.makeText(this, ""+end_ride_response.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case Config.ApiKeys.KEY_REST_CANCEl_RIDE :
+                        updateFirebaseEvent(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER  , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                        finaliseAftercancelation();
+                        break ;
+                }
+            }else if (rs.getStatus() == 0 ) {
+                Toast.makeText(this, ""+rs.getMessage(), Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, R.string.TRACK_RIDE_RENTAL_ACTIVITY__something_bad_happen_with_api, Toast.LENGTH_SHORT).show();
+            }}catch (Exception e){}
 
     }
 
@@ -379,17 +382,13 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         ListView lv_reasons = (ListView) dialog.findViewById(R.id.lv_reasons);
         lv_reasons.setAdapter(new ReasonAdapter(this, cancelReasonCustomer));
 
-        lv_reasons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                HashMap<String , String > data = new HashMap<String, String>();
-                data .put("rental_booking_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
-                data .put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
-                data.put("reason_id" , ""+cancelReasonCustomer.getMsg().get(position).getReasonId());
-                apiManager.execution_method_post(""+Config.ApiKeys.KEY_REST_CANCEl_RIDE , ""+ Apis.RideCancel , data );
-                dialog.dismiss();
-            }
-        });
+//        lv_reasons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                apiManager.execution_method_get(Config.ApiKeys.KEY_CANCEL_TRIP , Apis.cancelRide+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&reason_id="+cancelReasonCustomer.getMsg().get(position).getReasonId());
+//                dialog.dismiss();
+//            }
+//        });
         dialog.show();
     }
 
@@ -414,25 +413,64 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
                     data_hash.put("rental_booking_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                     data_hash.put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
                     data_hash.put("driver_token" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
-                  //  data_hash.put("meter_reading" , ""+data.getExtras().getString("meter"));
+                    data_hash.put("meter_reading" , ""+data.getExtras().getString("meter"));
                     data_hash.put("begin_lat" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT));
                     data_hash.put("begin_long" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG));
                     data_hash.put("begin_location" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT));
-                    apiManager.execution_method_post(""+Config.ApiKeys.KEY_REST_START_RIDE , ""+Apis.StartRide , data_hash);
+                    apiManager.execution_method_multipart(""+Config.ApiKeys.KEY_REST_START_RIDE , ""+Apis.StartRide , data_hash , "meter_reading_image" , ""+data.getExtras().getString("image"));
                 }if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("13")){
                     HashMap<String , String >data_hash = new HashMap<String, String>();
                     data_hash.put("rental_booking_id" , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                     data_hash.put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
                     data_hash.put("driver_token" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
-                   // data_hash.put("meter_reading" , ""+data.getExtras().getString("meter"));
+                    data_hash.put("meter_reading" , ""+data.getExtras().getString("meter"));
                     data_hash.put("end_lat" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT));
                     data_hash.put("end_long" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG));
                     data_hash.put("end_location" , ""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT));
-                    apiManager.execution_method_post(""+Config.ApiKeys.KEY_REST_END_RIDE , ""+Apis.EndRide , data_hash);
+                    apiManager.execution_method_multipart(""+Config.ApiKeys.KEY_REST_END_RIDE , ""+Apis.EndRide , data_hash , "meter_reading_image" , ""+data.getExtras().getString("image"));
 
                 }
             }
         }
     }
-}
 
+
+
+
+
+    private void updateFirebaseEvent(final String status_value , final String Ride_id ) throws  Exception{
+
+        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+Ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {};
+                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+                try{FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+Ride_id).setValue(new RideSessionEvent(""+Ride_id , ""+status_value , "Not yet generated" , "0"));}catch (Exception e){}
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                ApporioLog.logI(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+            }
+        });
+    }
+
+
+    private void updateFirebaseEventAtRideEnd(final String status_value , final String RideEnd_val  , final String ride_id) throws  Exception{
+
+        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {};
+                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+                try{FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+ride_id).setValue(new RideSessionEvent(""+ride_id , ""+status_value , ""+RideEnd_val , "0"));}catch (Exception e){}
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                ApporioLog.logI(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+            }
+        });
+    }
+
+
+
+}

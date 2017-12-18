@@ -530,5 +530,11 @@
     <string name="attach_expirey_date_of_your_document">Please attach expiry date of your document</string>
     <string name="language">Language</string>
     <string name="select_language">Select language</string>
+
+
+    <string name="METER_IMAGE_ACTIVITY__current_meter_reading_txt">Please upload a pic of your current meter reading.</string>
+    <string name="METER_IMAGE_ACTIVITY__please_upload_a_photo_of_your_meter_of_your_car_or_motorcycle">Please Upload a photo of your meter of your car or motorcycle</string>
+    <string name="METER_IMAGE_ACTIVITY__enter_meter_value">Enter meter value</string>
+
 </resources>
 

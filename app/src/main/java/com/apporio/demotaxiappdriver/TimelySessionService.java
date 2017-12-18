@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.manager.RideSession;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.others.FirebaseUtils;
@@ -80,7 +81,7 @@ public class TimelySessionService extends  Service {
         }
 
         private void fetchRideFromPool(){
-            Log.d("**"+TAG , "fetching data from pool ");
+            ApporioLog.logD("**"+TAG , "fetching data from pool ");
             try{
                 try{
                 myRef.child(""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,7 +89,7 @@ public class TimelySessionService extends  Service {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                     try{
                         if(dataSnapshot.child("ride_status").getValue().equals("1") && !Config.ReceiverPassengerActivity  && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
-                            Log.d("***"+TAG , "getting ride successfuly ");
+                            ApporioLog.logD("***"+TAG , "getting ride successfuly ");
                                 Config.ReceiverPassengerActivity = true ;
                                 Intent broadcastIntent = new Intent();
                                 broadcastIntent.putExtra("ride_id", ""+dataSnapshot.child("ride_id").getValue());
@@ -107,14 +108,12 @@ public class TimelySessionService extends  Service {
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.i(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+                        ApporioLog.logI(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
                     }
                 });
             }catch (Exception e){
-                Log.e(""+TAG , "TAXI EXCEPTION "+e.getMessage());
+                ApporioLog.logE(""+TAG , "TAXI EXCEPTION "+e.getMessage());
             }}catch (Exception e){}
         }
-
-
     }
 }

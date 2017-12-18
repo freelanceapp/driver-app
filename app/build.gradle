@@ -105,7 +105,8 @@ dependencies {
     compile 'com.crowdfire.cfalertdialog:cfalertdialog:1.0.1'
     compile 'com.google.maps.android:android-maps-utils:0.5+'
     compile 'morxander.zaman:Zaman:1.0.0'
-
+    compile 'com.mlsdev.rximagepicker:library:2.0.2'
+    compile 'com.github.ApporioInfolabs:apporiolibraries:0.1.5'
 }
 
 apply plugin: 'com.google.gms.google-services'
