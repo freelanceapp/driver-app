@@ -127,13 +127,14 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     public void cameraTask()throws Exception {
         if (EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)) {
             try{ // Have permission, do the thing!
-//                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(intent, CAMERS_PICKER);
+
                 RxImagePicker.with(PhotoUploaderActivity.this).requestImage(Sources.CAMERA).subscribe(new Consumer<Uri>() {
                     @Override
                     public void accept(@NonNull Uri uri) throws Exception {
                         image.setImageURI(uri);
                         imagePath = getRealPathFromURI(uri);
+                        Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
+                        openDateFDialog();
                     }
                 });
             }catch (Exception e){}
@@ -176,25 +177,6 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case CAMERS_PICKER:
-                if (resultCode == Activity.RESULT_OK) {
-                    try {
-                            if (resultCode == RESULT_OK) {
-                                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                                image.setImageBitmap(photo);
-                                Uri tempUri = getImageUri(getApplicationContext(), photo);
-                                Log.d("** temp URI " , ""+tempUri);
-                                imagePath = getRealPathFromURI(tempUri);
-                                Log.d("** Actuall URI " , ""+imagePath);
-                                Toast.makeText(this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
-                                openDateFDialog();
-                            }
-
-                    } catch (Exception e) {
-                        Logger.e("res" + e.toString());
-                    }
-                }
-                break;
             case PICK_IMAGE:
                 try {
                     selectedImage = data.getData();
