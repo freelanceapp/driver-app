@@ -29,7 +29,7 @@
         android:maxLines="@integer/design_snackbar_text_max_lines"
         android:gravity="center_vertical"
         android:layout_gravity="center_vertical|start"
-        tools:text="Text Goes Here"
+        tools:text=""
         android:ellipsize="end"/>
     <Button
         android:id="@+id/snackbar_action"

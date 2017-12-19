@@ -3,7 +3,7 @@ package com.apporio.demotaxiappdriver;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.others.ChatModel;
 import com.apporio.demotaxiappdriver.others.FirebaseChatEvent;
 import com.apporio.demotaxiappdriver.others.FirebaseChatUtillistener;
@@ -167,7 +168,7 @@ public class ChatActivity extends Activity {
                 holder.right_text.setText("" + localMesagees.get(i).message);
                 holder.left_date.setTimeStamp(Long.parseLong("" + localMesagees.get(i).timestamp));
                 holder.right_date.setTimeStamp(Long.parseLong("" + localMesagees.get(i).timestamp));}catch (Exception e){
-                Log.d(""+TAG , ""+e.getMessage());
+                ApporioLog.logD(""+TAG , ""+e.getMessage());
             }
 
 

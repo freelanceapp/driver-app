@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.newdriveraccount.RegistrationModel;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
@@ -158,7 +159,6 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
     }
 
 
-    /////////////// samir work
     @Override
     public void onAPIRunningState(int a, String APINAME) {
         if (a == ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
@@ -179,7 +179,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
                 register = gson.fromJson(""+script + "", RegistrationModel.OTP_Details.class);*/
             RegistrationModel.OTP_Details otp_response = gson.fromJson("" + script, RegistrationModel.OTP_Details.class);
 
-            Log.e("register---model", String.valueOf(otp_response.getStatus()));
+            ApporioLog.logE("register---model", String.valueOf(otp_response.getStatus()));
             if (otp_response.getStatus()== 1) {
                 //            Toast.makeText(this, "" + otp_response.getStatus(), Toast.LENGTH_SHORT).show();
                 otp = otp_response.getOtp();

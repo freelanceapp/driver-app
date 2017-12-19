@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.apporio.demotaxiappdriver.Config;
 import com.apporio.demotaxiappdriver.R;
+import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.newmodels.WeeklyEarningModel;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -42,6 +43,7 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
     String current_date, next_date;
     ArrayList[] price_data;
 
+    SessionManager sessionManager ;
 
 
 
@@ -50,6 +52,7 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
         View v = inflater.inflate(R.layout.fragment_graph, container, false);
         mChart = (BarChart) v.findViewById(R.id.chart1);
 
+        sessionManager = new SessionManager(getContext());
         String strtext = getArguments().getString("name");
         total_week_earn_txt = (TextView) v.findViewById(R.id.total_week_earn_txt);
 
@@ -85,7 +88,7 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
         mChart.getAxisLeft().setTextSize(12f);
 //        mChart.getAxisLeft().setTypeface(Typeface.createFromAsset(this.getAssets(), "Monix-Regular.otf"));
         mChart.getAxisLeft().setGridColor(getActivity().getResources().getColor(R.color.icon_8_muted_black));
-        mChart.getAxisLeft().setValueFormatter(new MyAxisValueFormatter());
+        mChart.getAxisLeft().setValueFormatter(new MyAxisValueFormatter(sessionManager));
 
         mChart.setDrawGridBackground(false);
         mChart.getLegend().setEnabled(false);
@@ -105,7 +108,7 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
         xAxis.setLabelCount(7);
         xAxis.setValueFormatter(xAxisFormatter);
 
-        XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter);
+        XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter , sessionManager);
         mv.setChartView(mChart); // For bounds control
         mChart.setMarker(mv); // Set the marker to the chart
 
@@ -114,7 +117,7 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
         WeeklyEarningModel weeklyEarningModel;
         weeklyEarningModel = gson.fromJson(getArguments().getString("response"), WeeklyEarningModel.class);
 
-        total_week_earn_txt.setText(""+ Config.currency_symbol + String.valueOf(weeklyEarningModel.getWeekly_amount()));
+        total_week_earn_txt.setText(""+ sessionManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getWeekly_amount()));
 //        Log.e("Amount", "" + weeklyEarningModel.getWeekly_amount());
 
         for (int i = 0; i < weeklyEarningModel.getDetails().size(); i++) {

@@ -148,12 +148,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp" />
+
 
 
                     <TextView
@@ -194,11 +189,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
+
                         android:textSize="13dp" />
 
 
@@ -241,12 +232,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp" />
+
 
 
                     <TextView
@@ -289,12 +275,6 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp" />
 
 
                     <TextView
@@ -336,12 +316,6 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp" />
 
 
                     <TextView
@@ -394,13 +368,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+
 
 
                     <TextView
@@ -446,12 +414,6 @@
                     android:layout_marginTop="5dp">
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="13dp" />
 
 
                     <TextView
@@ -520,13 +482,7 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/currency_symbol"
-                        android:textColor="@color/icon_8_muted_black"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+
 
 
                     <TextView

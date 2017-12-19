@@ -23,7 +23,7 @@ android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:id="@+id/left_txt"
                     android:layout_gravity="center|left"
-                    android:text="tyutyutewtwtyut iuwhiue hcui hciuhcdiuhdciuhciuhchucwrtwturwturewtrwettywteyrwtrweewyutwettwtrwtrywtrwtrywtrywtrtrwutruyrewtrewtwtytrw"
+                    android:text=""
                     android:textColor="@color/pure_white"/>
                 <morxander.zaman.ZamanTextView
                     android:layout_width="wrap_content"

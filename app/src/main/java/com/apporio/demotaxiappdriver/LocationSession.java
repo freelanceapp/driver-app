@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.util.Log;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.database.DBHelper;
 import com.apporio.demotaxiappdriver.manager.RideSession;
 import com.apporio.demotaxiappdriver.others.AerialDistance;
@@ -43,17 +44,17 @@ public class LocationSession {
     public void setKeyMeterValuelue (String meter_value){
         if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3") && (Double.parseDouble(pref.getString(KEY_METER_VALUE,"0.0")) > Config.DistanceGap_tail) ){
             // empty the meter value else update meter value
-            Log.d(""+TAG , "RIDE STATUS = 3 and meter exceeds From"+Config.DistanceGap_tail+" meter");
+            ApporioLog.logD(""+TAG , "RIDE STATUS = 3 and meter exceeds From"+Config.DistanceGap_tail+" meter");
             clearMeterValue();
         }else if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
-            Log.d(""+TAG , "RIDE STATUS = 6 and meter value = "+meter_value);
+            ApporioLog.logD(""+TAG , "RIDE STATUS = 6 and meter value = "+meter_value);
             editor.putString(KEY_METER_VALUE , meter_value);
             editor.commit();
             mLocationEvent.setIs_meter_value_cleared(false);
             mLocationEvent.setMeter_value(Double.parseDouble(meter_value));
             EventBus.getDefault().post(mLocationEvent);
         }else {
-//            Log.d(""+TAG , "Ride status = 3 and meter value =>"+meter_value);
+//            ApporioLog.logd(""+TAG , "Ride status = 3 and meter value =>"+meter_value);
 //            editor.putString(KEY_METER_VALUE , meter_value);
 //            editor.commit();
 //            mLocationEvent.setIs_meter_value_cleared(false);
@@ -63,7 +64,7 @@ public class LocationSession {
     }
 
     public void clearMeterValue (){
-        Log.d(""+TAG , "Clearing meter value ");
+        ApporioLog.logD(""+TAG , "Clearing meter value ");
         editor.putString(KEY_METER_VALUE , "0.0");
         editor.commit();
         mLocationEvent.setMeter_value(0.0);

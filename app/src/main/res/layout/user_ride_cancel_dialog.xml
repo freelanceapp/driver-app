@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textColor="#333333"
-                android:text="User has Cancel the ride"
+                android:text="@string/user_has_cancel_the_ride"
                 android:gravity="center"/>
 
 
@@ -48,7 +48,7 @@
                     android:background="@color/icons_8_muted_orange"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:text="Ok"
+                    android:text="@string/ok"
                     android:textColor="@color/pure_white">
                 </TextView>
             </android.support.v7.widget.CardView>

@@ -183,11 +183,8 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/currency_symbol"
-                            android:textSize="50dp" />
+
+
 
 
                         <TextView
@@ -236,7 +233,7 @@
                                 android:id="@+id/tv_ride_distance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="55345.Miles"
+                                android:text=""
                                 android:textColor="@color/pure_black"
                                 android:textSize="15dp" />
 
@@ -360,11 +357,6 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
 
                             <TextView
                                 android:id="@+id/fare_txt"
@@ -398,11 +390,7 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
+
 
 
                             <TextView
@@ -439,11 +427,7 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
+
 
                             <TextView
                                 android:id="@+id/waiting_charge_txt"
@@ -482,11 +466,7 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
+
 
                             <TextView
                                 android:id="@+id/night_charge_txt"
@@ -527,11 +507,7 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
+
 
                             <TextView
                                 android:id="@+id/peak__charge_txt_charge_txt"
@@ -576,11 +552,6 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp" />
 
 
                             <TextView
@@ -619,12 +590,7 @@
                             android:gravity="center|left"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/currency_symbol"
-                                android:textSize="17dp"
-                                android:textStyle="bold" />
+
 
 
                             <TextView

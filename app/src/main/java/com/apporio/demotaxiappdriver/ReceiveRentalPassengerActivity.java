@@ -178,7 +178,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                     TimeOfBookingTxt.setText("" + response.getDetails().getBooking_time());
                     carTypeNameTxt.setText(""+response.getDetails().getCar_type_name());
                     packageTxt.setText(""+response.getDetails().getPackage_name());
-                    etaPriceTxt.setText(ReceiveRentalPassengerActivity.this.getResources().getString(R.string.currency_symbol)+""+response.getDetails().getPackage_price());
+                    etaPriceTxt.setText(sessionManager.getCurrencyCode()+""+response.getDetails().getPackage_price());
 
                     String value = ""+response.getDetails().getPayment_option_id();
 

@@ -296,7 +296,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
         if(a == ApiManager.APIFETCHER.KEY_API_IS_STARTED){
             progressDialog.show();
-        }else {
+        }else if(progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

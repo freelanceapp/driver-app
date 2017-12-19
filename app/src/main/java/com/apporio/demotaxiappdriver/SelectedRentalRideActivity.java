@@ -196,7 +196,7 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
             drop_layout.setVisibility(View.GONE);
         }
         RIDE_STATUS = ""+response.getDetails().getBooking_status();
-        tvRupee.setText("" + response.getDetails().getFinal_bill_amount());
+        tvRupee.setText(""+sessionManager.getCurrencyCode() + response.getDetails().getFinal_bill_amount());
         tvDis.setText("" + response.getDetails().getTotal_distance_travel());
         tvTime1.setText("" + response.getDetails().getTotal_time_travel());
         startTimeTxt.setText("" + response.getDetails().getBegin_time());
@@ -207,13 +207,13 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
         tvRideDistance.setText("" + response.getDetails().getTotal_distance_travel());
         totalHoursTxt.setText("" + response.getDetails().getTotal_time_travel());
         basePackageTxt.setText(getString(R.string.SELECTED_RENTAL_RIDE_ACTIVITY__base_package_txt_package) + response.getDetails().getRental_package_distance() + " " + getString(R.string.SELECTED_RENTAL_RIDE_ACTIVITY__for) + " " + response.getDetails().getRental_package_hours() + getString(R.string.SELECTED_RENTAL_RIDE_ACTIVITY__hours));
-        basePackagePrice.setText("" + response.getDetails().getRental_package_price());
+        basePackagePrice.setText("" +sessionManager.getCurrencyCode()+ response.getDetails().getRental_package_price());
         extraDistanceTxt.setText(getString(R.string.SELECTED_RENTAL_RIDE_ACTIVITY__extra_distance_travel) + response.getDetails().getExtra_distance_travel() + this.getResources().getString(R.string.distance_symbol) + " )");
-        extraDistancePriceTxt.setText("" + response.getDetails().getExtra_distance_travel_charge());
+        extraDistancePriceTxt.setText(""+sessionManager.getCurrencyCode() + response.getDetails().getExtra_distance_travel_charge());
         extraTimePriceTxt.setText(getString(R.string.SELECTED_RENTAL_RIDE_ACTIVITY__extra_time) + response.getDetails().getExtra_hours_travel() + ")");
-        extraTimePriceTxt.setText("" + response.getDetails().getExtra_hours_travel_charge());
-        totalPriceTxt.setText("" + response.getDetails().getFinal_bill_amount());  /// need to be changes later
-        totalPaybleBottom.setText("" + response.getDetails().getFinal_bill_amount());
+        extraTimePriceTxt.setText(""+sessionManager.getCurrencyCode() + response.getDetails().getExtra_hours_travel_charge());
+        totalPriceTxt.setText(""+sessionManager.getCurrencyCode() + response.getDetails().getFinal_bill_amount());  /// need to be changes later
+        totalPaybleBottom.setText("" +sessionManager.getCurrencyCode()+ response.getDetails().getFinal_bill_amount());
         try{ratingSelected.setRating(Float.parseFloat(""+response.getDetails().getDriver_rating()));}catch (Exception e){}
 
         if (response.getDetails().getPayment_option_id().equals("1")){

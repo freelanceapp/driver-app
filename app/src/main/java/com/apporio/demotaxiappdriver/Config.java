@@ -18,7 +18,6 @@ import java.util.List;
 
 public class Config {
 
-    public static String currency_symbol = "₦";
 
 
     public static String DriverReference = "Drivers_A";

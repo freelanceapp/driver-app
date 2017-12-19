@@ -116,7 +116,6 @@
     <string name="password_should_be_minimum_six_digit">Password should be of min. 6 character</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="please_enter_the_maindatory_details">Please Enter the mandatory details</string>
-    <string name="currency_symbol">₦</string>
     <string name="distance_symbol"></string>
     //// need to look out
     <string name="user_info">User Info</string>
@@ -335,6 +334,8 @@
     <string name="SELECTED_RIDE_ACTIVITY__coupon_applied">Coupon Applied</string>
 
 
+    //
+
     /////////////////// SelectedRentalRideActivity
     <string name="SELECTED_RENTAL_RIDE_ACTIVITY__ride_details">Ride Details</string>
     <string name="SELECTED_RENTAL_RIDE_ACTIVITY__trip_detail">Trip Detail</string>
@@ -535,6 +536,36 @@
     <string name="METER_IMAGE_ACTIVITY__current_meter_reading_txt">Please upload a pic of your current meter reading.</string>
     <string name="METER_IMAGE_ACTIVITY__please_upload_a_photo_of_your_meter_of_your_car_or_motorcycle">Please Upload a photo of your meter of your car or motorcycle</string>
     <string name="METER_IMAGE_ACTIVITY__enter_meter_value">Enter meter value</string>
+    <string name="please_ask_drop_location_from_passenger">Please Ask Drop Location From the Passenger.</string>
+    <string name="ride_started_but_with_low_accuracy">Ride Started but with Accuracy =</string>
+    <string name="ride_end_but_with_accuracy">Ride End but with Accuracy =</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="enter_expiry_date_of_your_document">Enter Expiry date of your document</string>
+    <string name="submit">Submit</string>
+    <string name="online_time">Online Time</string>
+    <string name="overall_rating">Overall Rating</string>
+    <string name="documents">Documents</string>
+    <string name="submit">Submit</string>
+    <string name="use_in_case_of_emergency">Use in Case of Emergency</string>
+    <string name="login">Login</string>
+    <string name="login_as_demo_driver">Login as Demo Driver</string>
+    <string name="some_information_about_status_will_be_fetched_according_to_the_status_and_image_as_well">Some information about status will be fetched according to the status and image as well</string>
+    <string name="send_message">Send Message</string>
+    <string name="in_coning_message_frpom_user_user_user_user_user_user_user_user_user_user_user_user_user_app_app_app_app_app_app_app_app_app">In coning message Frpom user user user user user user user user user user user user user app app app app app app app app app</string>
+    <string name="click_to_view">Click To View</string>
+    <string name="connectivity_status_development_purpose">connectivity status (development purpose)</string>
+    <string name="please_enter_you_name_and_details_for_the_identification_of_your_demo_driver">Please enter you name and details for the identification of your demo driver</string>
+    <string name="please_enter_these_details_to_create_a_demo_driver">Please Enter these details to create a Demo Driver</string>
+    <string name="driver_name">Driver name</string>
+    <string name="driver_phone_email">Driver Phone/email</string>
+    <string name="login_as_demo">Login as demo</string>
+    <string name="or_skip_entering_details">or skip entering details</string>
+    <string name="you_have_logged_in_as_a_demo_driver_by_default_your_car_category_is_mini">You have logged in as a demo driver , by default your car category is MINI</string>
+    <string name="ok">Ok</string>
+    <string name="driving_licence">Driving Licence</string>
+    <string name="not_sumitted">Not Sumitted</string>
+    <string name="user_has_cancel_the_ride">User has Cancel the ride</string>
 
 </resources>
 

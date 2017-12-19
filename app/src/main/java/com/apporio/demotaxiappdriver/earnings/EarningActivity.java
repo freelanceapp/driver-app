@@ -112,7 +112,7 @@ public class EarningActivity extends FragmentActivity implements ApiManager.APIF
                         // Toast.makeText(this, "" + weeklyEarningModel.getMsg(), Toast.LENGTH_SHORT).show();
 
 
-                        totalSummaryTV.setText(this.getResources().getString(R.string.currency_symbol) + weeklyEarningModel.getCompany_payment().toString());
+                        totalSummaryTV.setText(sessinManager.getCurrencyCode() + weeklyEarningModel.getCompany_payment().toString());
                         for (int i = 0; i < weeklyEarningModel.getDetails().size(); i++) {
 
                             String current_date = weeklyEarningModel.getDetails().get(0).getDate().toString().replace("2017-" , "");

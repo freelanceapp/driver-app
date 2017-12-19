@@ -155,17 +155,17 @@ public class WeeklyStatementActivity extends Activity implements ApiManager.APIF
                         // Toast.makeText(this, "" + weeklyEarningModel.getMsg(), Toast.LENGTH_SHORT).show();
 
                         totalEarningTV.setText(String.valueOf(weeklyEarningModel.getWeekly_amount()));
-                        textView4.setText(""+Config.currency_symbol + String.valueOf(weeklyEarningModel.getWeekly_amount()));
+                        textView4.setText(""+sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getWeekly_amount()));
                         completedTripsTV.setText(String.valueOf(weeklyEarningModel.getTotal_rides()));
-                        fareEarnedTV.setText(""+Config.currency_symbol + String.valueOf(weeklyEarningModel.getFare_recevied()));
-                        taxiFeeTV.setText(""+Config.currency_symbol + String.valueOf(weeklyEarningModel.getCompany_cut()));
+                        fareEarnedTV.setText(""+sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getFare_recevied()));
+                        taxiFeeTV.setText(""+sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getCompany_cut()));
 
                         for (int i = 0; i < weeklyEarningModel.getDetails().size(); i++) {
 
                             try {
                                 String start_date = weeklyEarningModel.getDetails().get(0).getDate() + "    to    " + weeklyEarningModel.getDetails().get(weeklyEarningModel.getDetails().size() - 1).getDate();
                                 weekDatesTV.setText(start_date);
-                                String amount = ""+Config.currency_symbol + weeklyEarningModel.getDetails().get(i).getDetail().getAmount().toString().trim();
+                                String amount = ""+sessinManager.getCurrencyCode() + weeklyEarningModel.getDetails().get(i).getDetail().getAmount().toString().trim();
                                 String week_name = weeklyEarningModel.getDetails().get(i).getDay() + " " + weeklyEarningModel.getDetails().get(i).getDate();
                                 incoming_date = weeklyEarningModel.getDetails().get(i).getDate();
                                 date1 = weeklyEarningModel.getDetails().get(i).getDate();
@@ -177,7 +177,7 @@ public class WeeklyStatementActivity extends Activity implements ApiManager.APIF
                             }
                         }
                         for (int i = 0; i < week_data_list.size(); i++) {
-                            if (!price_data_list.get(i).equals(Config.currency_symbol+"0")) {
+                            if (!price_data_list.get(i).equals(sessinManager.getCurrencyCode()+"0")) {
                                 mTripContainer.addView(getTripItemView(week_data_list.get(i), price_data_list.get(i), date_list.get(i), this));
                             }
                         }

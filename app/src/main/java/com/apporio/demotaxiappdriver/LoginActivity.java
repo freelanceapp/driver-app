@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.register.Register;
@@ -75,21 +76,21 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
                 String pass = edt_pass_login.getText().toString().trim();
 
                 if (edt_phone_login.getText().toString().equals("") && edt_email_login.getText().toString().equals("")) {
-                    Log.d("**both edt empty, 1", "1");
+                    ApporioLog.logD("**both edt empty, 1", "1");
                     Toast.makeText(LoginActivity.this,LoginActivity.this.getResources().getString(R.string.email_can_not_be_empty) , Toast.LENGTH_SHORT).show();
                 }
                 else if (!edt_email_login.getText().toString().equals("") && edt_phone_login.getText().toString().equals("")){
-                    Log.d("**phone edt empty not email, 2", "2");
+                    ApporioLog.logD("**phone edt empty not email, 2", "2");
                     accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
                 }else if (!edt_phone_login.getText().toString().equals("") && edt_email_login.getText().toString().equals("")){
-                    Log.d("**email edt empty not phone, 3", "3");
+                    ApporioLog.logD("**email edt empty not phone, 3", "3");
                     accountModule.loginApi(ccp.getSelectedCountryCodeWithPlus()+edt_phone_login.getText().toString(), pass, language_id);
                 }
                 else if (pass.equals("")) {
-                    Log.d("**passwrd edt empty, 4", "4");
+                    ApporioLog.logD("**passwrd edt empty, 4", "4");
                     Toast.makeText(LoginActivity.this,LoginActivity.this.getResources().getString(R.string.password_can_not_be_empty) , Toast.LENGTH_SHORT).show();
                 } else if (!edt_phone_login.getText().toString().equals("") && !edt_email_login.getText().toString().equals("")){
-                    Log.d("**both edt not empty, 5", "5");
+                    ApporioLog.logD("**both edt not empty, 5", "5");
                     accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
                 }else {
                     accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
@@ -125,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
 
             if (APINAME.equals("Login")) {
 
-                Log.d("****** LOGIN_RESPONSE" , ""+script);
+                ApporioLog.logD("****** LOGIN_RESPONSE" , ""+script);
                 Register register;
                 register = gson.fromJson(""+script, Register.class);
 

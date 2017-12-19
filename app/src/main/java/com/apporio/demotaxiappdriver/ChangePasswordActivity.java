@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.apporio.demotaxiappdriver.logger.Logger;
+import com.apporio.apporiologs.ApporioLog;
+
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.deviceid.DeviceId;
@@ -127,7 +128,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements ApiMana
                     startActivity(intent);
                     overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
                     finish();
-                    Logger.e("lat long update       " + deviceId.getMsg());
+                    ApporioLog.logE("lat long update       " ,""+ deviceId.getMsg());
                 } else {
                     Toast.makeText(this, "" + deviceId.getMsg(), Toast.LENGTH_SHORT).show();
                 }

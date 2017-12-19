@@ -38,6 +38,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/register"
                 android:textSize="16dp" />
+
+
         </LinearLayout>
 
         <LinearLayout

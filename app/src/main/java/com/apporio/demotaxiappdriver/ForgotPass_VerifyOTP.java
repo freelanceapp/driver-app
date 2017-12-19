@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.newdriveraccount.RegistrationModel;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
@@ -75,22 +76,22 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
             @Override
             public void onClick(View v) {
                 input_OTP = otp_input.getText().toString().trim();
-//                Log.e("otp_details--getOTP", otp);
-//                Log.e("otp_details--edittext", otp_input.getText().toString());
+//                ApporioLog.logE("otp_details--getOTP", otp);
+//                ApporioLog.logE("otp_details--edittext", otp_input.getText().toString());
 
                 if (input_OTP.equals("")) {
                     Toast.makeText(ForgotPass_VerifyOTP.this, "Required field empty !", Toast.LENGTH_SHORT).show();
                 }
                 //uncomment it to compare the otp receive and the entered one
                  else if (!otp_input.getText().toString().equals(otp)) {
-                     Log.e("otp_details--elseIF", String.valueOf(otp_details.getOtp()));
+                     ApporioLog.logE("otp_details--elseIF", String.valueOf(otp_details.getOtp()));
                      Toast.makeText(ForgotPass_VerifyOTP.this, "Invalid OTP !", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //    Log.e("otp_details--lastelse", String.valueOf(getIntent().getStringExtra("otp")));
-                    //    Log.e("otp_details--edittext", otp_input.getText().toString());
+                    //    ApporioLog.logE("otp_details--lastelse", String.valueOf(getIntent().getStringExtra("otp")));
+                    //    ApporioLog.logE("otp_details--edittext", otp_input.getText().toString());
 
-                    Log.e("PHONE_NUMBER--", code+input_number);
+                    ApporioLog.logE("PHONE_NUMBER--", code+input_number);
                     Intent intent = new Intent(ForgotPass_VerifyOTP.this, ForgotPass_ConfirmPass.class);
                     intent.putExtra("phone_number", code+input_number);
                     startActivity(intent);
@@ -104,9 +105,9 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
             @Override
             public void onClick(View v) {
                 input_number = phone_number.getText().toString().trim();
-                Log.e("input_phone_number====", String.valueOf(input_number));
+                ApporioLog.logE("input_phone_number====", String.valueOf(input_number));
                 code = countryCodePicker.getSelectedCountryCodeWithPlus();
-                Log.e("COUNTRY_CODE_PICKER===", code);
+                ApporioLog.logE("COUNTRY_CODE_PICKER===", code);
                 if (input_number.equals("")){
                     Toast.makeText(ForgotPass_VerifyOTP.this, "Required field empty !", Toast.LENGTH_SHORT).show();
                 }else {
@@ -119,13 +120,13 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
 
     //generate otp from the server
     private void SignUpAccount(String number) {
-        Log.e("**PHONE_NUMBER===", number);
+        ApporioLog.logE("**PHONE_NUMBER===", number);
 
         HashMap<String , String > bodyparameters  = new HashMap<String, String>();
         bodyparameters.put("phone" , number);
         bodyparameters.put("flag" , "2");
 
-        Log.e("**HASHMAP_OTP", String.valueOf(bodyparameters));
+        ApporioLog.logE("**HASHMAP_OTP", String.valueOf(bodyparameters));
         apiManager.execution_method_post(Config.ApiKeys.KEY_FORGOTPASS_OTP,  Apis.FORGOTPASS_OTP, bodyparameters);
     }
 
@@ -148,11 +149,11 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
                 register = gson.fromJson(""+script + "", RegistrationModel.OTP_Details.class);*/
             RegistrationModel.ForgotPass_OTP_Details otp_response = gson.fromJson("" + script, RegistrationModel.ForgotPass_OTP_Details.class);
 
-            Log.e("register---model", String.valueOf(otp_response.getResult()));
+            ApporioLog.logE("register---model", String.valueOf(otp_response.getResult()));
             if (otp_response.getResult()== 1) {
                 //            Toast.makeText(this, "" + otp_response.getStatus(), Toast.LENGTH_SHORT).show();
                 otp = otp_response.getOtp();
-                Log.e("OTP_RECEIVED--", String.valueOf(otp));
+                ApporioLog.logE("OTP_RECEIVED--", String.valueOf(otp));
                 otp_input.requestFocus();
             } else {
                 Toast.makeText(this, "" + otp_response.getMessage(), Toast.LENGTH_SHORT).show();

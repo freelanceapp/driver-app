@@ -137,25 +137,25 @@ public class PriceFareActivity extends AppCompatActivity implements  ApiManager.
                         pay_mode.setText("Payment Mode : PAY WITH CARD");
                     }
 
-                    fare_txt.setText(""+doneRideInfo.getMsg().getAmount());
+                    fare_txt.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getAmount());
 
-                    tv_ride_fare.setText(""+doneRideInfo.getMsg().getTotal_amount());
-                    waiting_charge_txt.setText(""+doneRideInfo.getMsg().getWaiting_price());
+                    tv_ride_fare.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getTotal_amount());
+                    waiting_charge_txt.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getWaiting_price());
                     pick_location_txt.setText(""+doneRideInfo.getMsg().getBegin_location());
                     drop_location_txt.setText(""+doneRideInfo.getMsg().getEnd_location());
                     tv_ride_distance.setText(""+doneRideInfo.getMsg().getDistance());
                     tv_waiting_time.setText(""+doneRideInfo.getMsg().getWaiting_time());
                     tv_total_time.setText(""+doneRideInfo.getMsg().getTot_time()+"min");
-                    ride_time_charges_txt.setText(""+doneRideInfo.getMsg().getRide_time_price());
-                    total_payble_fare_txt_large.setText(""+doneRideInfo.getMsg().getTotal_amount());
-                    night_charge_txt.setText(""+doneRideInfo.getMsg().getNight_time_charge());
-                    peak__charge_txt_charge_txt.setText(""+doneRideInfo.getMsg().getPeak_time_charge());
+                    ride_time_charges_txt.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getRide_time_price());
+                    total_payble_fare_txt_large.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getTotal_amount());
+                    night_charge_txt.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getNight_time_charge());
+                    peak__charge_txt_charge_txt.setText(""+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getPeak_time_charge());
                     if(doneRideInfo.getMsg().getCoupons_code().equals("")){
                         coupon_layout.setVisibility(View.GONE);
                     }else{
                         coupon_layout.setVisibility(View.VISIBLE);
                         coupon_code_txt.setText(getString(R.string.PRICE_FARE_coupon)+doneRideInfo.getMsg().getCoupons_code()+")");
-                        coupon_price_txt.setText("-"+doneRideInfo.getMsg().getCoupons_price());
+                        coupon_price_txt.setText("-"+sessionManager.getCurrencyCode()+doneRideInfo.getMsg().getCoupons_price());
                     }
 
                 } else {

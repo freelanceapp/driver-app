@@ -175,7 +175,7 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                         llBill.setVisibility(View.GONE
                         );
                     }
-                    tvRupee.setText(""+viewRideInfoDriver.getDetails().getTotal_amount());
+                    tvRupee.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getTotal_amount());
                     tvDis.setText(""+viewRideInfoDriver.getDetails().getDistance());
                     tvTime1.setText(""+viewRideInfoDriver.getDetails().getDone_ride_time());
                     startTimeTxt.setText(""+viewRideInfoDriver.getDetails().getBegin_time());
@@ -183,16 +183,16 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                     tvStartLocation.setText(""+viewRideInfoDriver.getDetails().getBegin_location());
                     tvEndLocation.setText(""+viewRideInfoDriver.getDetails().getEnd_location());
                     totalDistanceTxt.setText(""+viewRideInfoDriver.getDetails().getDistance());
-                    totalFareTxt.setText(""+viewRideInfoDriver.getDetails().getAmount());
-                    rideTimeChargesTxt.setText(""+viewRideInfoDriver.getDetails().getRide_time_price());
-                    watingChargeTxt.setText(""+viewRideInfoDriver.getDetails().getWaiting_price());
-                    totalGrossBillTxt.setText(""+viewRideInfoDriver.getDetails().getTotal_amount());
+                    totalFareTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getAmount());
+                    rideTimeChargesTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getRide_time_price());
+                    watingChargeTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getWaiting_price());
+                    totalGrossBillTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getTotal_amount());
                     paymentModeTxt.setText(""+viewRideInfoDriver.getDetails().getPayment_option_name());
-                    paymentAmountDoneTxt.setText(""+viewRideInfoDriver.getDetails().getTotal_amount());
+                    paymentAmountDoneTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getTotal_amount());
                     customer_name_txt.setText(""+viewRideInfoDriver.getDetails().getUser_name());
                     customer_phone_txt.setText(""+viewRideInfoDriver.getDetails().getUser_phone());
-                    night_time_charge_txt.setText(""+viewRideInfoDriver.getDetails().getNight_time_charge());
-                    peak__charge_txt.setText(""+viewRideInfoDriver.getDetails().getPeak_time_charge());
+                    night_time_charge_txt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getNight_time_charge());
+                    peak__charge_txt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getPeak_time_charge());
 
                     try{ratingBar.setRating(Float.parseFloat(""+viewRideInfoDriver.getDetails().getRating_user()));}catch (Exception e){}
                     if(viewRideInfoDriver.getDetails().getCoupons_price().equals("")){
@@ -202,7 +202,7 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                         couponCodeTxt.setVisibility(View.VISIBLE);
                         couponValueTxt.setVisibility(View.VISIBLE);
                         couponCodeTxt.setText(SelectedRidesActivity.this.getResources().getString(R.string.SELECTED_RIDE_ACTIVITY__coupon_applied)+" ("+viewRideInfoDriver.getDetails().getCoupon_code()+")");
-                        couponValueTxt.setText("-"+this.getResources().getString(R.string.currency_symbol)+viewRideInfoDriver.getDetails().getCoupons_price());
+                        couponValueTxt.setText("-"+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getCoupons_price());
                     }
                 } else if (viewRideInfoDriver.getResult() == 419) {
                     sessionManager.logoutUser();

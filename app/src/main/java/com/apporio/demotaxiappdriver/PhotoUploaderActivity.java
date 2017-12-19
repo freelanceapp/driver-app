@@ -146,6 +146,16 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
 
 
 
+    public void selectFromgalery() throws Exception{
+        Intent i1 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        i1.setType("image/*");
+        startActivityForResult(i1, PICK_IMAGE);
+    }
+
+
+
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -166,11 +176,6 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     }
 
 
-    public void selectFromgalery() throws Exception{
-        Intent i1 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        i1.setType("image/*");
-        startActivityForResult(i1, PICK_IMAGE);
-    }
 
 
     @Override
@@ -181,24 +186,32 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                 try {
                     selectedImage = data.getData();
                     imagePath = getPath(selectedImage);
-                    image.setImageURI(data.getData());
-                    Toast.makeText(this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    // Set the Image in ImageView after decoding the String
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(filePath, options);
+                    final int REQUIRED_SIZE = 300;
+                    int scale = 1;
+                    while (options.outWidth / scale / 2 >= REQUIRED_SIZE && options.outHeight / scale / 2 >= REQUIRED_SIZE)
+                        scale *= 2;
+                    options.inSampleSize = scale;
+                    options.inJustDecodeBounds = false;
+                    bitmap1 = BitmapFactory.decodeFile(filePath, options);
+                    image.setImageBitmap(bitmap1);
+                    Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                     openDateFDialog();
                 } catch (Exception e) {
-                    ApporioLog.logE(""+TAG, "Exception Caught while Pick image from gallery -->"+e.getMessage());
+//                    Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 break;
         }
-    }
-
-
-
-
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
     }
 
     public String getPath(Uri uri) {

@@ -59,6 +59,10 @@ public class SessionManager {
     public static final String KEY_accuracy = "KEY_accuracy";
     public static final String LANGUAGE = "Languagae";
 
+    public static final String Currency_symbol = "currency_symbol";
+    public static final String Currency_ISO_Code = "currency_iso_code";
+
+
     public SessionManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -260,4 +264,169 @@ public class SessionManager {
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
     }
+
+
+
+    public String getCurrencyCode(){
+        String currency = "NA";
+        switch (pref.getString(Currency_symbol, "0024")){
+            case "0":
+                currency = ""+pref.getString(Currency_ISO_Code, "ISO");
+                break;
+            case "0024":
+                currency = "\u0024";
+                break;
+            case "00A2":
+                currency = "\u00A2";
+                break;
+            case "00A3":
+                currency = "\u00A3";
+                break;
+            case "00A5":
+                currency = "\u00A5";
+                break;
+            case "058F":
+                currency = "\u058F";
+                break;
+            case "060B":
+                currency = "\u060B";
+                break;
+            case "09F2":
+                currency = "\u09F2";
+                break;
+            case "20A0":
+                currency = "\u20A0";
+                break;
+            case "20A1":
+                currency = "\u20A1";
+                break;
+            case "20A2":
+                currency = "\u20A2";
+                break;
+            case "20A3":
+                currency = "\u20A3";
+                break;
+            case "20A4":
+                currency = "\u20A4";
+                break;
+            case "20A5":
+                currency = "\u20A5";
+                break;
+            case "20A6":
+                currency = "\u20A6";
+                break;
+            case "20A7":
+                currency = "\u20A7";
+                break;
+            case "20A8":
+                currency = "\u20A8";
+                break;
+            case "20A9":
+                currency = "\u20A9";
+                break;
+            case "20AA":
+                currency = "\u20AA";
+                break;
+            case "20AB":
+                currency = "\u20AB";
+                break;
+            case "20AC":
+                currency = "\u20AC";
+                break;
+            case "20AD":
+                currency = "\u20AD";
+                break;
+            case "20AE":
+                currency = "\u20AE";
+                break;
+            case "20AF":
+                currency = "\u20AF";
+                break;
+            case "20B0":
+                currency = "\u20B0";
+                break;
+            case "20B1":
+                currency = "\u20B1";
+                break;
+            case "20B2":
+                currency = "\u20B2";
+                break;
+            case "20B3":
+                currency = "\u20B3";
+                break;
+            case "20B4":
+                currency = "\u20B4";
+                break;
+            case "20B5":
+                currency = "\u20B5";
+                break;
+            case "20B6":
+                currency = "\u20B6";
+                break;
+            case "20B7":
+                currency = "\u20B7";
+                break;
+            case "20B8":
+                currency = "\u20B8";
+                break;
+            case "20B9":
+                currency = "\u20B9";
+                break;
+            case "20BA":
+                currency = "\u20BA";
+                break;
+            case "20BB":
+                currency = "\u20BB";
+                break;
+            case "20BC":
+                currency = "\u20BC";
+                break;
+            case "20BD":
+                currency = "\u20BD";
+                break;
+            case "20BE":
+                currency = "\u20BE";
+                break;
+            case "20BF":
+                currency = "\u20BF";
+                break;
+            case "A838":
+                currency = "\uA838";
+                break;
+            case "FDFC":
+                currency = "\uFDFC";
+                break;
+            case "FE69":
+                currency = "\uFE69";
+                break;
+            case "FF04":
+                currency = "\uFF04";
+                break;
+            case "FFE0":
+                currency = "\uFFE0";
+                break;
+            case "FFE1":
+                currency = "\uFFE1";
+                break;
+            case "FFE5":
+                currency = "\uFFE5";
+                break;
+            case "FFE6":
+                currency = "\uFFE6";
+                break;
+            default:
+                currency = "0";
+                break;
+        }
+
+        return currency ;
+    }
+
+
+    public void setCurrencyCode(String iso_code , String symbol_id ){
+        editor.putString(Currency_ISO_Code, ""+iso_code);
+        editor.putString(Currency_symbol, ""+symbol_id);
+        editor.commit();
+    }
+
 }

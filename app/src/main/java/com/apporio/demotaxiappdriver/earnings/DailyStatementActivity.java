@@ -124,7 +124,7 @@ public class DailyStatementActivity extends Activity implements ApiManager.APIFE
 
 
         trip_no_txt.setText("CRN" + " " + "" + ride_id);
-        amount_txt.setText("" + amount.toString());
+        amount_txt.setText(""+sessinManager.getCurrencyCode() + amount.toString());
         date_txt.setText("" + date);
 
 
@@ -179,11 +179,11 @@ public class DailyStatementActivity extends Activity implements ApiManager.APIFE
                     if (dailyEarningModel.getResult() == 1) {
 
                         try {
-                            totalEarningTV.setText(""+Config.currency_symbol + dailyEarningModel.getDetails().getAmount().toString());
-                            totalEarningTV1.setText(""+Config.currency_symbol + dailyEarningModel.getDetails().getAmount().toString());
+                            totalEarningTV.setText(""+sessinManager.getCurrencyCode() + dailyEarningModel.getDetails().getAmount().toString());
+                            totalEarningTV1.setText(""+sessinManager.getCurrencyCode() + dailyEarningModel.getDetails().getAmount().toString());
                             totalRidesTV.setText(dailyEarningModel.getDetails().getRides().toString());
-                            faredEarnedTV.setText(""+Config.currency_symbol+String.valueOf(dailyEarningModel.getDetails().getFare_recevied()));
-                            companyTaxTV.setText(""+Config.currency_symbol+String.valueOf(dailyEarningModel.getDetails().getCompany_cut()));
+                            faredEarnedTV.setText(""+sessinManager.getCurrencyCode()+String.valueOf(dailyEarningModel.getDetails().getFare_recevied()));
+                            companyTaxTV.setText(""+sessinManager.getCurrencyCode()+String.valueOf(dailyEarningModel.getDetails().getCompany_cut()));
 
                             for (int i = 0; i < dailyEarningModel.getDetails().getFull_ride_details().size(); i++) {
 

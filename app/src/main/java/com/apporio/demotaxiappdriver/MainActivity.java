@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
 import com.apporio.demotaxiappdriver.location.SamLocationRequestService;
 import com.apporio.demotaxiappdriver.manager.DeviceManager;
@@ -204,7 +205,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("*********" , ""+Locale.getDefault().getDisplayName());
+                ApporioLog.logD("*********" , ""+Locale.getDefault().getDisplayName());
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
@@ -295,7 +296,7 @@ public class MainActivity extends BaseActivity implements Apis,
     }
 
     private void startActivityAccordingToSatatus(int val, String donRideId) {
-        Log.d("**VAL===", String.valueOf(val));
+        ApporioLog.logD("**VAL===", String.valueOf(val));
         if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3") ||  rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("5")  ||  rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")  ){
           if(!Constants.is_track_ride_activity_is_open){
               startActivity(new Intent(this, TrackRideActivity.class)
@@ -341,7 +342,7 @@ public class MainActivity extends BaseActivity implements Apis,
 
         String inmage = Apis.imageDomain + driverImage ;
         if(!inmage.equals("")){
-            Log.d("**driver_image" , ""+inmage);
+            ApporioLog.logD("**driver_image" , ""+inmage);
             Glide.with(this).load(""+inmage.replace(" " , "")).into(iv_profile_pic);
         }
 
@@ -359,7 +360,7 @@ public class MainActivity extends BaseActivity implements Apis,
                             startActivity(new Intent(MainActivity.this, SplashActivity.class));
                         }
                     } catch (Exception e) {
-                        Log.d("Exception occur ", "" + e);
+                        ApporioLog.logD("Exception occur ", "" + e);
                     }
                 }
 
@@ -820,13 +821,24 @@ public class MainActivity extends BaseActivity implements Apis,
                                     activeRidesResponse.getDetails().get(0).getNormal_Ride().getStatus());
                             startActivityAccordingToSatatus(Integer.parseInt(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status()), activeRidesResponse.getDetails().get(0).getNormal_Ride().getDone_ride_id());
                         }else if (activeRidesResponse.getDetails().get(0).getRide_mode().equals("2")){ // rental ride types
-
-                            Log.d("rental", "1");
-                            rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id(),activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_name(),activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_phone(),activeRidesResponse.getDetails().get(0).getRental_Ride().getReferral_code(),activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_lat(),activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_long(),activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_location(),"" , "" , "",activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),activeRidesResponse.getDetails().get(0).getRental_Ride().getDriver_id(),activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_type(),activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status(),activeRidesResponse.getDetails().get(0).getRental_Ride().getStatus());
-
+                            rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_name(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_phone(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getReferral_code(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_lat(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_long(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_location(),
+                                    "" , "" , "",
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getDriver_id(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_type(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status(),
+                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getStatus());
                             if (activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status().equals("16")){
-                                Log.d("rental", "2");
-
                                 startActivity(new Intent(MainActivity.this, RentalPriceFareActiviy.class).putExtra("ride_id", activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id()).putExtra("user_id", activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id()));
 
                             }

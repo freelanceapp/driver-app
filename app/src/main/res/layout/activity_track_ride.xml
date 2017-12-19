@@ -80,7 +80,7 @@
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/chat"
-                                android:text="Send Message"
+                                android:text="@string/send_message"
                                 android:gravity="center|right"
                                 android:paddingRight="5dp"
                                 android:textStyle="bold"
@@ -232,7 +232,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:layout_marginLeft="10dp">
+                    android:layout_marginLeft="10dp"
+                    android:visibility="gone">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -286,7 +287,7 @@
                         android:animateLayoutChanges="true"
                         android:id="@+id/chat_message"
                         android:textColor="@color/pure_white"
-                        android:text="In coning message Frpom user user user user user user user user user user user user user app app app app app app app app app"
+                        android:text="@string/in_coning_message_frpom_user_user_user_user_user_user_user_user_user_user_user_user_user_app_app_app_app_app_app_app_app_app"
                         android:gravity="center|left"
                         android:maxLines="2"/>
 
@@ -294,7 +295,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Click To View "
+                        android:text="@string/click_to_view"
                         android:textColor="@color/icons_8_muted_blue"
                         android:layout_marginTop="5dp"
                         android:gravity="center|right"/>
@@ -319,7 +320,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="connectivity status (development purpose)"
+            android:text="@string/connectivity_status_development_purpose"
             android:id="@+id/connectivity_status"/>
     </LinearLayout>
 
@@ -368,6 +369,7 @@
                 android:text="0.0"
                 android:gravity="center"
                 android:paddingRight="5dp"
+                android:visibility="gone"
                 android:textSize="17dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"

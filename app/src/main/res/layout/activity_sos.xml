@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Use in Case of Emergency"
+            android:text="@string/use_in_case_of_emergency"
             android:textStyle="bold"
             android:textSize="30dp"
             android:layout_margin="10dp"

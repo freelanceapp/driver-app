@@ -9,6 +9,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.restmodels.NewDoneRidemodel;
 import com.apporio.demotaxiappdriver.models.restmodels.ResultStatusChecker;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
@@ -77,6 +78,7 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
     TextView peakTimeTxt;
     @Bind(R.id.peak_time_price_txt)
     TextView peakTimePriceTxt;
+    SessionManager sessionManager ;
 
 
     @Override
@@ -87,6 +89,7 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
+        sessionManager = new SessionManager(this);
         setContentView(R.layout.activity_rental_price_fare_activiy);
         ButterKnife.bind(this);
 
@@ -189,12 +192,12 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
       //  startMeterTxt.setText("" + done_ride_response.getDetails().getStart_meter_reading());
        // endMeterTxt.setText("" + done_ride_response.getDetails().getEnd_meter_reading());
 
-        totalPaybleTop.setText("" + done_ride_response.getDetails().getFinal_bill_amount());
+        totalPaybleTop.setText(""+sessionManager.getCurrencyCode()+ done_ride_response.getDetails().getFinal_bill_amount());
       //  tvRideDistance.setText("" + done_ride_response.getDetails().getTotal_distance_travel());
         totalHoursTxt.setText("" + done_ride_response.getDetails().getTotal_time_travel());
 
         basePackageTxt.setText(getString(R.string.RENTAL_PRICE_FARE_ACTIVITY__package) + done_ride_response.getDetails().getRental_package_distance() + " " + getString(R.string.RENTAL_PRICE_FARE_ACTIVITY__for) + " " + done_ride_response.getDetails().getRental_package_hours() + getString(R.string.RENTAL_PRICE_FARE_ACTIVITY__hours));
-        basePackagePrice.setText("" + done_ride_response.getDetails().getRental_package_price());
+        basePackagePrice.setText(""+sessionManager.getCurrencyCode() + done_ride_response.getDetails().getRental_package_price());
 
         //extraDistanceTxt.setText(getString(R.string.RENTAL_PRICE_FARE_ACTIVITY__extra_distance_travel) + done_ride_response.getDetails().getExtra_distance_travel() + " )");
         //extraDistancePriceTxt.setText("" + done_ride_response.getDetails().getExtra_distance_travel_charge());
@@ -202,14 +205,14 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
       //  extraTimePriceTxt.setText(getString(R.string.RENTAL_PRICE_FARE_ACTIVITY__extra_time) + done_ride_response.getDetails().getExtra_hours_travel() + ")");
         //extraTimePriceTxt.setText("" + done_ride_response.getDetails().getExtra_hours_travel_charge());
 
-        totalPriceTxt.setText("" + done_ride_response.getDetails().getTotal_amount());
+        totalPriceTxt.setText(""+sessionManager.getCurrencyCode() + done_ride_response.getDetails().getTotal_amount());
 
-        totalPaybleBottom.setText("" + done_ride_response.getDetails().getFinal_bill_amount());
+        totalPaybleBottom.setText(""+sessionManager.getCurrencyCode() + done_ride_response.getDetails().getFinal_bill_amount());
         if (!done_ride_response.getDetails().getCoupan_code().equals("")) {
             couponPriceTxt.setVisibility(View.VISIBLE);
             couponTxt.setVisibility(View.VISIBLE);
             couponTxt.setText("Coupon Applied " + "(" + done_ride_response.getDetails().getCoupan_code() + ")");
-            couponPriceTxt.setText("" + Config.currency_symbol + done_ride_response.getDetails().getCoupan_price());
+            couponPriceTxt.setText("" + sessionManager.getCurrencyCode() + done_ride_response.getDetails().getCoupan_price());
         } else {
             couponPriceTxt.setVisibility(View.GONE);
             couponTxt.setVisibility(View.GONE);

@@ -177,7 +177,7 @@ public class ApiManager {
         ApporioLog.logD(tag +" **Body API Posting parameter ==> ",  ""+ hashmapdetails);
         ApporioLog.logD(tag +" **Body(Images) API Posting parameter ==> ",  image_key+ "  "+ image);
         ApporioLog.logD(tag + " **Url API Url executed ==> ", "" + url);
-
+        apifetcher.onAPIRunningState(KEY_API_IS_STARTED , tag);
         AndroidNetworking.upload(url)
                 .addMultipartParameter(hashmapdetails)
                 .addMultipartFile(""+image_key, new File(image))

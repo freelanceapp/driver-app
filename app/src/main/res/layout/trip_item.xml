@@ -32,12 +32,7 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/currency_symbol"
-        android:id="@+id/currency"
-        android:textColor="@color/icons_8_muted_grey"/>
+
 
     <TextView
         android:layout_width="wrap_content"

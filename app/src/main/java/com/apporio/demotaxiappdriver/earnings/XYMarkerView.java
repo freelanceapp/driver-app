@@ -6,6 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.demotaxiappdriver.R;
+import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
@@ -26,14 +27,16 @@ public class XYMarkerView extends MarkerView {
 
     private DecimalFormat format;
     Context mContext ;
+    SessionManager sessionManager ;
 
-    public XYMarkerView(Context context, IAxisValueFormatter xAxisValueFormatter) {
+    public XYMarkerView(Context context, IAxisValueFormatter xAxisValueFormatter , SessionManager sessionManager ) {
         super(context, R.layout.custom_marker_view);
 
         mContext = context ;
         this.xAxisValueFormatter = xAxisValueFormatter;
         tvContent = (TextView) findViewById(R.id.tvContent);
         format = new DecimalFormat("###.0");
+        this.sessionManager = sessionManager ;
     }
 
     // callbacks everytime the MarkerView is redrawn, can be used to update the
@@ -42,7 +45,7 @@ public class XYMarkerView extends MarkerView {
     public void refreshContent(Entry e, Highlight highlight) {
 
 //        tvContent.setText("x: " + xAxisValueFormatter.getFormattedValue(e.getX(), null) + ", y: " + format.format(e.getY()));
-        tvContent.setText(""+ format.format(e.getY())+""+this.getResources().getString(R.string.currency_symbol));
+        tvContent.setText(""+ format.format(e.getY())+""+sessionManager.getCurrencyCode());
 
         tvContent.setOnClickListener(new OnClickListener() {
             @Override

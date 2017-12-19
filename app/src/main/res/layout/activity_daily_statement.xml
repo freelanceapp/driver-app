@@ -191,7 +191,7 @@
                                 <customviews.typefacesviews.TypefaceDosisRegular
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Online Time "
+                                    android:text="@string/online_time"
                                     android:textSize="18dp"
                                     android:textColor="@color/icons_8_muted_green_2_dark"/>
 
@@ -219,7 +219,7 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/icons_8_muted_yellow"
                                     android:textSize="18dp"
-                                    android:text="Overall Rating "/>
+                                    android:text="@string/overall_rating"/>
 
 
                             </LinearLayout>

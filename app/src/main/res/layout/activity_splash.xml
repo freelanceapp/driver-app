@@ -112,7 +112,7 @@
                     <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Login"
+                        android:text="@string/login"
                         android:textColor="@color/colorTextFooter"
                         android:textSize="15dp"
                         geekui:customTypeface="OpenSans_Regular.ttf" />
@@ -136,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textSize="18dp"
-                        android:text="Login as Demo Driver"
+                        android:text="@string/login_as_demo_driver"
                         android:textColor="#333333"/>
 
 

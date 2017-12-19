@@ -31,6 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.ChatActivity;
 import com.apporio.demotaxiappdriver.Config;
 import com.apporio.demotaxiappdriver.LocationEvent;
@@ -210,12 +211,12 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("5")){
                     // run begin trip api
                     if(location_txt.getText().toString().equals("") || location_txt.getText().toString() == null ||  location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point))){
-                        Toast.makeText(TrackRideActivity.this, "Please Ask Drop Location From the Passenger.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TrackRideActivity.this, R.string.please_ask_drop_location_from_passenger, Toast.LENGTH_SHORT).show();
                     }else{
                         try{samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {
                             @Override
                             public void onLocationUpdate(Location location) {
-                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, "Ride Started but with Accuracy = "+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
+                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, getString(R.string.ride_started_but_with_low_accuracy)+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
                                 try{apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP , Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+location.getLatitude()+"&begin_long="+location.getLongitude()+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));}catch (Exception E){}
                             }
                         });}catch (Exception e){}
@@ -231,7 +232,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {@Override public void onLocationUpdate(Location location) {
                             try{Double distance_travel = Double.parseDouble(""+meter_txt.getText().toString().replace(" km" , ""));
                                 distance_travel = distance_travel * 1000 ;
-                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, "Ride End but with Accuracy = "+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
+                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, getString(R.string.ride_end_but_with_accuracy)+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
                                 apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+"&end_lat="+location.getLatitude()+"&end_long="+location.getLongitude()+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+distance_travel+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID)+"&lat_long="+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
                             }catch (Exception e){}
                         }
@@ -436,19 +437,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
 
-
-        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Toast.makeText(TrackRideActivity.this, "Present Value of Tail "+sessionManager.getUserDetails().get(SessionManager.KEY_TAIL), Toast.LENGTH_SHORT).show();
-                try{
-                    Toast.makeText(TrackRideActivity.this, ""+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)), Toast.LENGTH_SHORT).show();
-                    Log.d("****"+TAG , ""+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
-                }catch (Exception e){
-                    Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
 
@@ -460,7 +448,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 DrawRouteMaps.getInstance(this , 6 , R.color.icons_8_muted_green_1).draw(new LatLng(Double.parseDouble(event.getlatitude_string()) , Double.parseDouble(event.getLongitude_string())), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap , sessionManager);
             }
         }catch (Exception e){
-            Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            ApporioLog.logE(""+TAG , "(a) Exception caught in onMessage Event ==>"+e.getMessage());
         }
 
 
@@ -476,7 +464,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             value_in_km = Math.round(value_in_km * 100D) / 100D;
             meter_txt.setText(""+value_in_km+" km");
         }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            ApporioLog.logE(""+TAG , "(b) Exception caught in onMessage Event ==>"+e.getMessage());
         }
 
 
@@ -485,7 +473,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) ,  new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)) , Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))) ,mGooglemap ,R.drawable.ic_contact_green , R.drawable.ic_very_small );
             }
         }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            ApporioLog.logE(""+TAG , "(c) Exception caught in onMessage Event ==>"+e.getMessage());
         }
     }
 
@@ -585,7 +573,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 //            startBeginToEndTracking();
             }
         }catch (Exception e){
-            Toast.makeText(this, "TrackRideActivity SetViewAccordingToStatus  "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            ApporioLog.logE(""+TAG , "Exception caught while setViewAccordingToStatus ==>"+e.getMessage());
         }
     }
 
@@ -704,10 +692,9 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 setView();
 
             }else {
-                Toast.makeText(this, "Server Error while executing API ", Toast.LENGTH_SHORT).show();
+                ApporioLog.logE(""+TAG , "Error While Executing API ");
             }
             Log.d("*****"+APINAME , ""+script);}catch (Exception E){
-            Toast.makeText(activity, ""+E.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -894,7 +881,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             };
             runOnUiThread(mRunnable);
         }catch (Exception e){
-            Toast.makeText(this, "TrackRideActivity startRunnableProcess  "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            ApporioLog.logE(""+TAG , "Caught Exception in start Runnable Process method ==>"+e.getMessage());
         }
     }
 

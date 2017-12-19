@@ -88,7 +88,7 @@
                                 android:id="@+id/totalearningcurrency"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="₦"
+                                android:text=""
                                 android:textColor="@color/icons_8_muted_green_1"
                                 android:textSize="17dp"/>
                             <TextView

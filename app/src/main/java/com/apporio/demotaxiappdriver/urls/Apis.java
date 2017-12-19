@@ -37,7 +37,6 @@ public interface Apis {
     String viewDoneRide = baseDomain+"" + "view_done_ride_info.php";
     String weeklyEarnings = baseDomain + "driver_account.php?driver_id=";
     String dailyEarnings = baseDomain + "daily_amount.php?driver_id=";
-    String dailyEarnignRentsl = "http://alakowetaxi.com/api/rental_daily_amount.php?driver_id=" ;  //     3&date=06-11-2017&language_code=en";
     String week_amount = baseDomain+"week_amount.php?driver_id=";  //    &date=   2017-08-7
     String change_drop_location = baseDomain+"change_drop_location.php?";  //  drop_lat  drop_long  drop_location  app_id (1 for user and 2 for demotaxiappdriver) ride_id
     String heatmap = baseDomain+"heatmap.php?driver_id=";

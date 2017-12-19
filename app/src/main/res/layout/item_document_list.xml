@@ -20,7 +20,7 @@
             android:id="@+id/document_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Driving Licence"
+            android:text="@string/driving_licence"
             android:textColor="@color/icon_8_muted_black" />
 
 
@@ -33,7 +33,7 @@
         android:id="@+id/document_status_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Sumitted"
+        android:text="@string/not_sumitted"
         android:textColor="@color/icons_8_muted_grey" />
 
     <ImageView
