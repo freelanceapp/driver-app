@@ -104,6 +104,7 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
 
         try{NewUpdateLatLongModel response = gson.fromJson(""+script , NewUpdateLatLongModel.class);
             sessionManager.setCurrencyCode(""+response.getCurrency_iso_code() , ""+response.getCurrency_unicode());
+            sessionManager.setAccuracy(""+response.getApplication_accuracy());
 
         } catch (Exception e){
             ApporioLog.logE(""+TAG , "Exxception caught while parsing ==>"+e.getMessage());}

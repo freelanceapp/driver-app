@@ -12,12 +12,14 @@ public class NewUpdateLatLongModel {
      * msg : Updated Successfully
      * currency_iso_code : 0
      * currency_unicode : 20B9
+     * application_accuracy : 134
      */
 
     private int result;
     private String msg;
     private String currency_iso_code;
     private String currency_unicode;
+    private String application_accuracy;
 
     public int getResult() {
         return result;
@@ -49,5 +51,13 @@ public class NewUpdateLatLongModel {
 
     public void setCurrency_unicode(String currency_unicode) {
         this.currency_unicode = currency_unicode;
+    }
+
+    public String getApplication_accuracy() {
+        return application_accuracy;
+    }
+
+    public void setApplication_accuracy(String application_accuracy) {
+        this.application_accuracy = application_accuracy;
     }
 }
