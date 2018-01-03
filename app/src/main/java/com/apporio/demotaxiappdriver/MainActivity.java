@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -22,6 +25,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,13 +41,17 @@ import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.ActiveRidesResponse;
 import com.apporio.demotaxiappdriver.models.CallSupportResponse;
 import com.apporio.demotaxiappdriver.models.DriverLocation;
+import com.apporio.demotaxiappdriver.models.ModelReportIssue;
+import com.apporio.demotaxiappdriver.models.ModelScheduleAndunacceptedRide;
 import com.apporio.demotaxiappdriver.models.ResultCheck;
 import com.apporio.demotaxiappdriver.models.deviceid.DeviceId;
 import com.apporio.demotaxiappdriver.models.restmodels.NewHeatmapModel;
 import com.apporio.demotaxiappdriver.models.restmodels.NewUpdateLatLongModel;
 import com.apporio.demotaxiappdriver.others.Constants;
+import com.apporio.demotaxiappdriver.others.EventAddress;
 import com.apporio.demotaxiappdriver.others.FirebaseUtils;
 import com.apporio.demotaxiappdriver.others.Maputils;
+import com.apporio.demotaxiappdriver.parsing.AccountModule;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.trackride.TrackRideActivity;
 import com.apporio.demotaxiappdriver.urls.Apis;
@@ -93,7 +101,7 @@ public class MainActivity extends BaseActivity implements Apis,
 
 
     public static Activity mainActivity;
-    TextView tv_address, tv_car_name, tv_name, tv_car_number, tv_profile_email, tv_profile_name  , lat_txt , long_txt , driver_id  , driver_city_txt , accuracy ;
+    TextView scheduled_rides , unaccepted_ride_txt ,  tv_address, tv_car_name, tv_name, tv_car_number, tv_profile_email, tv_profile_name  , lat_txt , long_txt , driver_id  , driver_city_txt , accuracy ;
     ImageView iv_profile_pic , status_image;
     SwitchCompat rental_switch ;
     TypefaceDosisRegular status_txt ;
@@ -116,11 +124,13 @@ public class MainActivity extends BaseActivity implements Apis,
     RideSession rideSession ;
     FirebaseUtils firebaseutil;
     FirebaseDatabase database;
+    ModelReportIssue modelReportIssue ;
     GsonBuilder builder ;
     Gson gson ;
     boolean  is_location_updation_running   = false  ;
 
-
+    LocationSession locationSession ;
+    private boolean isLatLongUpdateAPIisRunning = false ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,10 +138,12 @@ public class MainActivity extends BaseActivity implements Apis,
         builder = new GsonBuilder();
         gson = builder.create();
         database = FirebaseDatabase.getInstance();
+
         mDatabaseReference = database.getReference("Drivers_A");
         rideSession = new RideSession(this);
         firebaseutil = new FirebaseUtils(this);
         apiManager_new = new ApiManager(this);
+        locationSession = new LocationSession(this);
         setContentView(R.layout.activity_main);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -157,6 +169,8 @@ public class MainActivity extends BaseActivity implements Apis,
         long_txt = (TextView) findViewById(R.id.long_txt);
         driver_city_txt = (TextView) findViewById(R.id.driver_city_txt);
         accuracy = (TextView) findViewById(R.id.accuracy);
+        scheduled_rides = (TextView) findViewById(R.id.scheduled_rides);
+        unaccepted_ride_txt = (TextView) findViewById(R.id.unaccepted_ride_txt);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         languageManager = new LanguageManager(this);
@@ -191,6 +205,7 @@ public class MainActivity extends BaseActivity implements Apis,
 
         apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DEVICE_ID , Apis.deviceid+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&device_id="+deviceId+"&flag="+Config.Devicetype+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
+        apiManager_new.execution_method_get("" +Config.ApiKeys.KEY_REPORT_ISSUE, ""+Apis.RepostIssueDetails);
 
         apiManager_new.execution_method_get(Config.ApiKeys.KEY_CALL_SUPPORT ,Apis.Callsupport+"?language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) );
 
@@ -206,7 +221,12 @@ public class MainActivity extends BaseActivity implements Apis,
             @Override
             public void onClick(View view) {
                 ApporioLog.logD("*********" , ""+Locale.getDefault().getDisplayName());
-                drawer.openDrawer(Gravity.LEFT);
+                if(Locale.getDefault().getLanguage().equals("ar")){
+                    drawer.openDrawer(Gravity.RIGHT);
+                }else{
+                    drawer.openDrawer(Gravity.LEFT);
+                }
+
             }
         });
 
@@ -337,6 +357,12 @@ public class MainActivity extends BaseActivity implements Apis,
 
         setScrocabilityOnmap();
         setLocationonBoxex();
+        apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+
+
+        HashMap<String , String > data = new HashMap<>();
+        data.put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
+        apiManager_new.execution_method_post(Config.ApiKeys.KEY_SCHEDULE_AND_UPDATED , ""+Apis.ScheduleAndunacceptedRide , data);
 
 
 
@@ -426,10 +452,6 @@ public class MainActivity extends BaseActivity implements Apis,
     }
 
 
-
-
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -453,7 +475,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(R.id.my_rides_menu_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RidesActivity.class));
+                startActivity(new Intent(MainActivity.this, TripHistoryActivity.class));
             }
         });
 
@@ -493,6 +515,24 @@ public class MainActivity extends BaseActivity implements Apis,
             }
         });
 
+        findViewById(R.id.ll_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showlogoutdialog();
+            }
+        });
+
+        findViewById(R.id.report_issue).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", ""+modelReportIssue.getDeatils(), null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "" + MainActivity.this.getResources().getString(R.string.report_issue));
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(emailIntent, "" + MainActivity.this.getResources().getString(R.string.send_email)));
+                emailIntent.setType("text/plain");
+            }
+        });
+
 
 
         findViewById(R.id.language_menu_btn).setOnClickListener(new View.OnClickListener() {
@@ -515,13 +555,30 @@ public class MainActivity extends BaseActivity implements Apis,
                         }
                         dialogInterface.dismiss();
 
-                        startActivity(new Intent(MainActivity.this , TrialSplashActivity.class));
+                        startActivity(new Intent(MainActivity.this , SplashActivity.class));
                         finish();
                     }
                 });
                 builder.show();
             }
         });
+
+
+        findViewById(R.id.today_schedule_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class));
+            }
+        });
+
+
+        findViewById(R.id.unaccepted_rides_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class));
+            }
+        });
+
 
     }
 
@@ -631,13 +688,13 @@ public class MainActivity extends BaseActivity implements Apis,
                 public void onLocationUpdate(Location location) {
                         Maputils.moverCamera(mGooglemap , new LatLng(location.getLatitude() , location.getLongitude()) );
                     lat_txt.setText(""+location.getLatitude()); long_txt.setText(""+location.getLongitude());
-                    apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ location.getLatitude()+"&current_long="+location.getLongitude()+"&current_location="+app_location_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                 }
             });
         }catch (Exception e){
 
         }
     }
+
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -648,11 +705,15 @@ public class MainActivity extends BaseActivity implements Apis,
         }
 
         lat_txt.setText(""+event.getlatitude_string()); long_txt.setText(""+event.getLongitude_string());
-        if(!is_location_updation_running){
-            apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ app_location_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+app_location_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-        }
+
 
         setStatusViewAccordingly();
+
+        if(!isLatLongUpdateAPIisRunning){
+            apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ event.getlatitude_string()+"&current_long="+event.getLongitude_string()+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+            is_location_updation_running = true ;
+        }
+
     }
 
 
@@ -661,11 +722,6 @@ public class MainActivity extends BaseActivity implements Apis,
     public void onMessageEvent(AccuracyEvent event){
        try{accuracy.setText("Acc = "+event.Accuracy);}catch (Exception e){}
     }
-
-
-
-
-
 
 
 
@@ -683,7 +739,7 @@ public class MainActivity extends BaseActivity implements Apis,
         dialog.findViewById(R.id.demo_ok_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this , RidesActivity.class));
+                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class));
                 dialog.dismiss();
             }
         });
@@ -720,40 +776,40 @@ public class MainActivity extends BaseActivity implements Apis,
     }
 
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            ride_status = extras.getString("ride_status");
-            ride_id = extras.getString("ride_id");
-
-            if (ride_status.equals("1")) {
-                Intent i = new Intent();
-                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.TrialReceivePassengerActivity");
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
-                startActivity(i);
-            } else if (ride_status.equals("2")) {
-                Intent i = new Intent();
-                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.RidesActivity");
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            } else if (ride_status.equals("8")) {
-                Intent i = new Intent();
-                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.TrialReceivePassengerActivity");
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
-                startActivity(i);
-            }else if (ride_status.equals("10")) {
-                Intent i = new Intent();
-                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.ReceiveRentalPassengerActivity");
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
-                startActivity(i);
-            }
-        }
-    }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//
+//        Bundle extras = intent.getExtras();
+//        if (extras != null) {
+//            ride_status = extras.getString("ride_status");
+//            ride_id = extras.getString("ride_id");
+//
+//            if (ride_status.equals("1")) {
+//                Intent i = new Intent();
+//                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.TrialReceivePassengerActivity");
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
+//                startActivity(i);
+//            } else if (ride_status.equals("2")) {
+//                Intent i = new Intent();
+//                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.RidesActivity");
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(i);
+//            } else if (ride_status.equals("8")) {
+//                Intent i = new Intent();
+//                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.TrialReceivePassengerActivity");
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
+//                startActivity(i);
+//            }else if (ride_status.equals("10")) {
+//                Intent i = new Intent();
+//                i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.ReceiveRentalPassengerActivity");
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                i.putExtra(""+Config.IntentKeys.RIDE_ID, ride_id);
+//                startActivity(i);
+//            }
+//        }
+//    }
 
 
 
@@ -783,10 +839,6 @@ public class MainActivity extends BaseActivity implements Apis,
                             sessionManager.setonline_offline(false);
                             firebaseutil.setDriverOnlineStatus(false);
                         }
-                        break;
-                    case Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG:
-                        NewUpdateLatLongModel response = gson.fromJson(""+script , NewUpdateLatLongModel.class);
-                        tv_address.setText(""+response.getDetails());
                         break;
                     case  Config.ApiKeys.KEY_CALL_SUPPORT :
                         CallSupportResponse call_response = gson.fromJson(""+script, CallSupportResponse.class);
@@ -844,6 +896,26 @@ public class MainActivity extends BaseActivity implements Apis,
                             }
                         }
                         break;
+                    case Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG :
+                        isLatLongUpdateAPIisRunning = false ;
+                        NewUpdateLatLongModel response = gson.fromJson(""+script , NewUpdateLatLongModel.class);
+                        sessionManager.setCurrencyCode(""+response.getCurrency_iso_code() , ""+response.getCurrency_unicode());
+                        break ;
+                    case Config.ApiKeys.KEY_SCHEDULE_AND_UPDATED :
+                        ModelScheduleAndunacceptedRide modelScheduleAndunacceptedRide = gson.fromJson(""+script ,ModelScheduleAndunacceptedRide.class);
+                        unaccepted_ride_txt.setText(""+modelScheduleAndunacceptedRide.getDetails().getUnaccepted_ride());
+                        scheduled_rides.setText(""+modelScheduleAndunacceptedRide.getDetails().getScheduled_ride());
+                        break;
+                    case Config.ApiKeys.KEY_REPORT_ISSUE :
+                        modelReportIssue = gson.fromJson("" +script, ModelReportIssue.class);
+                        break;
+                    case Config.ApiKeys.LOGOUT:
+                        firebaseutil.setDriverOnlineStatus(false);
+                        firebaseutil.setDriverLoginLogoutStatus(false);
+                        sessionManager.logoutUser();
+                        startActivity(new Intent(MainActivity.this, SplashActivity.class));
+                        finish();
+                        break;
                 }
             } else if(resultCheck.result.equals("419")) {
                 sessionManager.logoutUser();
@@ -858,10 +930,40 @@ public class MainActivity extends BaseActivity implements Apis,
                 if(APINAME.equals(Config.ApiKeys.DRIVER_ACTIVE_RIDES)){
                     rideSession.clearRideSession();
                 }
-
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
+
+
+    public void showlogoutdialog() {
+
+        CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this)
+                .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET)
+                .setTitle(MainActivity.this.getResources().getString(R.string.PROFILE_ACTIVITY__logout))
+                .setMessage(MainActivity.this.getResources().getString(R.string.are_you_sure_to_log_out))
+                .addButton(MainActivity.this.getResources().getString(R.string.PROFILE_ACTIVITY__logout), -1, -1, CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        apiManager_new.execution_method_get(""+Config.ApiKeys.LOGOUT , ""+Apis.logout+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
+                        dialogInterface.dismiss();
+                    }
+                }).addButton(MainActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__cancel), -1, -1, CFAlertDialog.CFAlertActionStyle.NEGATIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.show();
+
+
+    }
+
+
 }
-
-

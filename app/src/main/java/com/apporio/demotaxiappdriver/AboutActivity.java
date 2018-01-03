@@ -85,6 +85,11 @@ public class AboutActivity extends AppCompatActivity implements  ApiManager.APIF
             }}catch (Exception e){}
     }
 
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 
     private class ImageGetter implements Html.ImageGetter {
 

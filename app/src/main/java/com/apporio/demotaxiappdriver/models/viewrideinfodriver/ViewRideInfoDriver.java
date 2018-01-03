@@ -3,11 +3,10 @@ package com.apporio.demotaxiappdriver.models.viewrideinfodriver;
 
 public class ViewRideInfoDriver {
 
-
     /**
      * result : 1
      * msg :
-     * details : {"ride_id":"1515","user_id":"323","coupon_code":"","pickup_lat":"28.412090804771257","pickup_long":"77.04330235719681","pickup_location":"68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India","drop_lat":"28.427036620986584","drop_long":"77.06294283270836","drop_location":"N 247, Pearl Ln, Block N, Mayfield Garden, Sector 51, Shamshpur, Haryana 122003, India","ride_date":"Monday, Aug 28","ride_time":"16:07:01","last_time_stamp":"04:07:21 PM","ride_image":"https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=600x300&maptype=roadmap&markers=color:green|label:S|28.412090804771257,77.04330235719681&markers=color:red|label:D|28.427036620986584,77.06294283270836&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4","later_date":"","later_time":"","driver_id":"212","car_type_id":"2","ride_type":"1","ride_status":"7","reason_id":"0","payment_option_id":"1","card_id":"0","ride_admin_status":"1","date":"2017-08-28","payment_option_name":"Cash","user_image":"","user_name":"Samir Goel","user_phone":"+919650923089","rating":"4.7954545454545","arrived_time":"04:07:06 PM","begin_lat":"28.412090804771257","begin_long":"77.04330235719681","begin_location":"68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India","begin_time":"04:07:11 PM","end_lat":"28.4120412","end_long":"77.043294","end_location":"68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India","amount":"100.00","distance":"0.00 Miles","time":"0","payment_status":"0","waiting_time":"0 Min","waiting_price":"0.00","done_ride_time":"0 Min","ride_time_price":"00.00","end_time":"04:07:21 PM","peak_time_charge":"0.00","night_time_charge":"0.00","coupons_code":"","coupons_price":"","total_amount":"100"}
+     * details : {"ride_id":"306","user_id":"1","coupon_code":"","pickup_lat":"28.412476817052905","pickup_long":"77.04400174319744","pickup_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","drop_lat":"28.427140997794556","drop_long":"77.05362886190414","drop_location":"A/131, M2K Aura, Sector 47, Gurugram, Haryana 122022, India","ride_date":"Friday, Dec 29","ride_time":"16:03:35","last_time_stamp":"04:03:35 PM","ride_image":"https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.412476817052905,77.04400174319744&markers=color:red|label:D|28.427140997794556,77.05362886190414&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4","later_date":"","later_time":"","driver_id":"0","car_type_id":"30","ride_type":"1","pem_file":"1","ride_status":"1","driver_rating":"0","user_rating":"0","payment_status":"","reason_id":"0","payment_option_id":"1","card_id":"","ride_platform":"1","ride_admin_status":"1","date":"2017-12-29","payment_option_name":"Cash","driver_request_time":"60","differenceInSeconds":"11","user_image":"http://apporio.info/Apporiotaxi/Apporiotaxi/uploads/1514541220288.jpg","user_name":"Samir goel","user_phone":"+2349650923089","rating":"4.1111111111111","arrived_time":"","begin_lat":"","begin_long":"","begin_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","begin_time":"","end_lat":"","end_long":"","end_location":"A/131, M2K Aura, Sector 47, Gurugram, Haryana 122022, India","amount":"","distance":"","time":"","waiting_time":"","waiting_price":"","done_ride_time":"","ride_time_price":"","end_time":"","coupons_code":"","coupons_price":"","total_amount":"","peak_time_charge":"","night_time_charge":"","rating_user":""}
      */
 
     private int result;
@@ -40,57 +39,64 @@ public class ViewRideInfoDriver {
 
     public static class DetailsBean {
         /**
-         * ride_id : 1515
-         * user_id : 323
+         * ride_id : 306
+         * user_id : 1
          * coupon_code :
-         * pickup_lat : 28.412090804771257
-         * pickup_long : 77.04330235719681
-         * pickup_location : 68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India
-         * drop_lat : 28.427036620986584
-         * drop_long : 77.06294283270836
-         * drop_location : N 247, Pearl Ln, Block N, Mayfield Garden, Sector 51, Shamshpur, Haryana 122003, India
-         * ride_date : Monday, Aug 28
-         * ride_time : 16:07:01
-         * last_time_stamp : 04:07:21 PM
-         * ride_image : https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=600x300&maptype=roadmap&markers=color:green|label:S|28.412090804771257,77.04330235719681&markers=color:red|label:D|28.427036620986584,77.06294283270836&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4
+         * pickup_lat : 28.412476817052905
+         * pickup_long : 77.04400174319744
+         * pickup_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * drop_lat : 28.427140997794556
+         * drop_long : 77.05362886190414
+         * drop_location : A/131, M2K Aura, Sector 47, Gurugram, Haryana 122022, India
+         * ride_date : Friday, Dec 29
+         * ride_time : 16:03:35
+         * last_time_stamp : 04:03:35 PM
+         * ride_image : https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.412476817052905,77.04400174319744&markers=color:red|label:D|28.427140997794556,77.05362886190414&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4
          * later_date :
          * later_time :
-         * driver_id : 212
-         * car_type_id : 2
+         * driver_id : 0
+         * car_type_id : 30
          * ride_type : 1
-         * ride_status : 7
+         * pem_file : 1
+         * ride_status : 1
+         * driver_rating : 0
+         * user_rating : 0
+         * payment_status :
          * reason_id : 0
          * payment_option_id : 1
-         * card_id : 0
+         * card_id :
+         * ride_platform : 1
          * ride_admin_status : 1
-         * date : 2017-08-28
+         * date : 2017-12-29
          * payment_option_name : Cash
-         * user_image :
-         * user_name : Samir Goel
-         * user_phone : +919650923089
-         * rating : 4.7954545454545
-         * arrived_time : 04:07:06 PM
-         * begin_lat : 28.412090804771257
-         * begin_long : 77.04330235719681
-         * begin_location : 68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India
-         * begin_time : 04:07:11 PM
-         * end_lat : 28.4120412
-         * end_long : 77.043294
-         * end_location : 68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India
-         * amount : 100.00
-         * distance : 0.00 Miles
-         * time : 0
-         * payment_status : 0
-         * waiting_time : 0 Min
-         * waiting_price : 0.00
-         * done_ride_time : 0 Min
-         * ride_time_price : 00.00
-         * end_time : 04:07:21 PM
-         * peak_time_charge : 0.00
-         * night_time_charge : 0.00
+         * driver_request_time : 60
+         * differenceInSeconds : 11
+         * user_image : http://apporio.info/Apporiotaxi/Apporiotaxi/uploads/1514541220288.jpg
+         * user_name : Samir goel
+         * user_phone : +2349650923089
+         * rating : 4.1111111111111
+         * arrived_time :
+         * begin_lat :
+         * begin_long :
+         * begin_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * begin_time :
+         * end_lat :
+         * end_long :
+         * end_location : A/131, M2K Aura, Sector 47, Gurugram, Haryana 122022, India
+         * amount :
+         * distance :
+         * time :
+         * waiting_time :
+         * waiting_price :
+         * done_ride_time :
+         * ride_time_price :
+         * end_time :
          * coupons_code :
          * coupons_price :
-         * total_amount : 100
+         * total_amount :
+         * peak_time_charge :
+         * night_time_charge :
+         * rating_user :
          */
 
         private String ride_id;
@@ -111,13 +117,20 @@ public class ViewRideInfoDriver {
         private String driver_id;
         private String car_type_id;
         private String ride_type;
+        private String pem_file;
         private String ride_status;
+        private String driver_rating;
+        private String user_rating;
+        private String payment_status;
         private String reason_id;
         private String payment_option_id;
         private String card_id;
+        private String ride_platform;
         private String ride_admin_status;
         private String date;
         private String payment_option_name;
+        private String driver_request_time;
+        private String differenceInSeconds;
         private String user_image;
         private String user_name;
         private String user_phone;
@@ -133,17 +146,17 @@ public class ViewRideInfoDriver {
         private String amount;
         private String distance;
         private String time;
-        private String payment_status;
         private String waiting_time;
         private String waiting_price;
         private String done_ride_time;
         private String ride_time_price;
         private String end_time;
-        private String peak_time_charge;
-        private String night_time_charge;
         private String coupons_code;
         private String coupons_price;
         private String total_amount;
+        private String peak_time_charge;
+        private String night_time_charge;
+        private String rating_user;
 
         public String getRide_id() {
             return ride_id;
@@ -289,12 +302,44 @@ public class ViewRideInfoDriver {
             this.ride_type = ride_type;
         }
 
+        public String getPem_file() {
+            return pem_file;
+        }
+
+        public void setPem_file(String pem_file) {
+            this.pem_file = pem_file;
+        }
+
         public String getRide_status() {
             return ride_status;
         }
 
         public void setRide_status(String ride_status) {
             this.ride_status = ride_status;
+        }
+
+        public String getDriver_rating() {
+            return driver_rating;
+        }
+
+        public void setDriver_rating(String driver_rating) {
+            this.driver_rating = driver_rating;
+        }
+
+        public String getUser_rating() {
+            return user_rating;
+        }
+
+        public void setUser_rating(String user_rating) {
+            this.user_rating = user_rating;
+        }
+
+        public String getPayment_status() {
+            return payment_status;
+        }
+
+        public void setPayment_status(String payment_status) {
+            this.payment_status = payment_status;
         }
 
         public String getReason_id() {
@@ -321,6 +366,14 @@ public class ViewRideInfoDriver {
             this.card_id = card_id;
         }
 
+        public String getRide_platform() {
+            return ride_platform;
+        }
+
+        public void setRide_platform(String ride_platform) {
+            this.ride_platform = ride_platform;
+        }
+
         public String getRide_admin_status() {
             return ride_admin_status;
         }
@@ -343,6 +396,22 @@ public class ViewRideInfoDriver {
 
         public void setPayment_option_name(String payment_option_name) {
             this.payment_option_name = payment_option_name;
+        }
+
+        public String getDriver_request_time() {
+            return driver_request_time;
+        }
+
+        public void setDriver_request_time(String driver_request_time) {
+            this.driver_request_time = driver_request_time;
+        }
+
+        public String getDifferenceInSeconds() {
+            return differenceInSeconds;
+        }
+
+        public void setDifferenceInSeconds(String differenceInSeconds) {
+            this.differenceInSeconds = differenceInSeconds;
         }
 
         public String getUser_image() {
@@ -465,14 +534,6 @@ public class ViewRideInfoDriver {
             this.time = time;
         }
 
-        public String getPayment_status() {
-            return payment_status;
-        }
-
-        public void setPayment_status(String payment_status) {
-            this.payment_status = payment_status;
-        }
-
         public String getWaiting_time() {
             return waiting_time;
         }
@@ -513,22 +574,6 @@ public class ViewRideInfoDriver {
             this.end_time = end_time;
         }
 
-        public String getPeak_time_charge() {
-            return peak_time_charge;
-        }
-
-        public void setPeak_time_charge(String peak_time_charge) {
-            this.peak_time_charge = peak_time_charge;
-        }
-
-        public String getNight_time_charge() {
-            return night_time_charge;
-        }
-
-        public void setNight_time_charge(String night_time_charge) {
-            this.night_time_charge = night_time_charge;
-        }
-
         public String getCoupons_code() {
             return coupons_code;
         }
@@ -551,6 +596,30 @@ public class ViewRideInfoDriver {
 
         public void setTotal_amount(String total_amount) {
             this.total_amount = total_amount;
+        }
+
+        public String getPeak_time_charge() {
+            return peak_time_charge;
+        }
+
+        public void setPeak_time_charge(String peak_time_charge) {
+            this.peak_time_charge = peak_time_charge;
+        }
+
+        public String getNight_time_charge() {
+            return night_time_charge;
+        }
+
+        public void setNight_time_charge(String night_time_charge) {
+            this.night_time_charge = night_time_charge;
+        }
+
+        public String getRating_user() {
+            return rating_user;
+        }
+
+        public void setRating_user(String rating_user) {
+            this.rating_user = rating_user;
         }
     }
 }

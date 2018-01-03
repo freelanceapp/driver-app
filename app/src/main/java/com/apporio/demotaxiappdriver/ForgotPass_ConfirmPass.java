@@ -112,4 +112,10 @@ public class ForgotPass_ConfirmPass extends AppCompatActivity implements ApiMana
             }
         }
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
     }

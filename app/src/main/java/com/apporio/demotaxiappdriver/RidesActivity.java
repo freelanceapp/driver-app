@@ -54,20 +54,6 @@ public class RidesActivity extends AppCompatActivity implements  ApiManager.APIF
         try{RentalTrackRideActivity.activity.finish();}catch (Exception e){}
         try{TrackRideActivity.activity.finish();}catch (Exception e){}
 
-//
-//        lv_all_rides.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String date_time = viewRides.getMsg().get(position).getRideDate() + ", " + viewRides.getMsg().get(position).getRideTime();
-//                startActivity(new Intent(RidesActivity.this, SelectedRidesActivity.class).putExtra("ride_id", ""+viewRides.getMsg().get(position).getRideId())
-//                        .putExtra("ride_status", ""+viewRides.getMsg().get(position).getRideStatus())
-//                        .putExtra("date_time", date_time)
-//                        .putExtra("ride_type", ""+viewRides.getMsg().get(position).getRideType()));
-//                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
-//
-//            }
-//        });
-
         ll_back_rides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,15 +104,16 @@ public class RidesActivity extends AppCompatActivity implements  ApiManager.APIF
                         place_holder.addView(new HolderRentalRideHistory(this , rideshistory_response.getDetails().get(i).getRental_Ride()));
                     }
                 }
-
-            }else {
-
-                Toast.makeText(ridesActivity, ""+rs.getMessage(), Toast.LENGTH_SHORT).show();
-
             }} catch (Exception e){}
 
 
 
+
+    }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
 
     }
 

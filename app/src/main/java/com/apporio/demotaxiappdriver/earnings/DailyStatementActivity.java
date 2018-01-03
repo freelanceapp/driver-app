@@ -217,4 +217,10 @@ public class DailyStatementActivity extends Activity implements ApiManager.APIFE
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

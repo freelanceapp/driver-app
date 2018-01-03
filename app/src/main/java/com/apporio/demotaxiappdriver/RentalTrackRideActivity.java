@@ -350,10 +350,16 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     }
 
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
     private void finaliseAftercancelation() {
         rideSession.clearRideSession();
         try{
-            RidesActivity.activity.finish();
+            TripHistoryActivity.activity.finish();
         }catch (Exception e){
 
         }
@@ -364,7 +370,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         }
         rideSession.setRideStatus("18");
         finish();
-        startActivity(new Intent(RentalTrackRideActivity.this , RidesActivity.class ));
+        startActivity(new Intent(RentalTrackRideActivity.this , TripHistoryActivity.class ));
     }
 
 

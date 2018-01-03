@@ -257,5 +257,7 @@ public class ApiManager {
 
         void onFetchComplete(Object script, String APINAME); // This will give the full script
 
+        void onFetchResultZero(String script);
+
     }
 }

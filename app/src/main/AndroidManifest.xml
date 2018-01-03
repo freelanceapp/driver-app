@@ -47,7 +47,7 @@
         android:required="true" />
 
     <application
-        android:name="com.apporio.demotaxiappdriver.MainApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@drawable/app_logo_100"
         android:label="@string/app_name"
@@ -66,7 +66,7 @@
         </provider>
 
         <activity
-            android:name="com.apporio.demotaxiappdriver.SplashActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -76,63 +76,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.apporio.demotaxiappdriver.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.LoginActivity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.RegisterActivity"
+            android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.PriceFareActivity"
+            android:name=".PriceFareActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.ProfileActivity"
+            android:name=".ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.AboutActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
-
-        <activity android:name="com.apporio.demotaxiappdriver.ForgotPass_VerifyOTP"
-            android:screenOrientation="portrait"></activity>
-
-        <activity android:name="com.apporio.demotaxiappdriver.ForgotPass_ConfirmPass"
-            android:screenOrientation="portrait"></activity>
-
-        <activity
-            android:name="com.apporio.demotaxiappdriver.TermsAndCondition"
+            android:name=".AboutActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.ChangePasswordActivity"
+            android:name=".ForgotPass_VerifyOTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.DocumentActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name=".ForgotPass_ConfirmPass"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TermsAndCondition"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocumentActivity"
+            android:screenOrientation="portrait" />
 
-        <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiver">
+        <receiver android:name=".others.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.apporio.demotaxiappdriver" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.apporio.demotaxiappdriver.others.MyBroadcastReceiverCancel">
-            <intent-filter>
-                <action android:name="GCM_RECEIVED_ACTION_CANCEL_TAXI_DRIVER" />
-            </intent-filter>
-        </receiver>
 
-        <service android:name="com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseInstanceIDService">
+        <service android:name=".fcmclasses.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService">
+        <service android:name=".fcmclasses.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -168,84 +161,91 @@
 
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
 
-        <activity android:name="com.apporio.demotaxiappdriver.RidesActivity" />
-        <activity android:name="com.apporio.demotaxiappdriver.SelectedRidesActivity" />
+        <activity android:name=".RidesActivity" />
+        <activity android:name=".SelectedRidesActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="54a77e298a52fd6775e6faf0b621fde0a76d5b04" />
 
         <activity
-            android:name="com.apporio.demotaxiappdriver.CustomerSupportActivity"
+            android:name=".CustomerSupportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.trackride.TrackRideActivity"
+            android:name=".trackride.TrackRideActivity"
             android:screenOrientation="portrait" />
 
-        <service android:name="com.apporio.demotaxiappdriver.TimeService" />
-        <service android:name="com.apporio.demotaxiappdriver.TimelySessionService" />
+        <service android:name=".TimeService" />
+        <service android:name=".TimelySessionService" />
 
         <activity
-            android:name="com.apporio.demotaxiappdriver.earnings.EarningActivity"
+            android:name=".earnings.EarningActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.earnings.WeeklyStatementActivity"
+            android:name=".earnings.WeeklyStatementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.earnings.DailyStatementActivity"
+            android:name=".earnings.DailyStatementActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.TrialReceivePassengerActivity"
+            android:name=".TrialReceivePassengerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.OnlineOfflineActivity"
+            android:name=".OnlineOfflineActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.ReceiveRentalPassengerActivity"
+            android:name=".ReceiveRentalPassengerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.RentalTrackRideActivity"
+            android:name=".RentalTrackRideActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.MeterImageActivity"
+            android:name=".MeterImageActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.RentalPriceFareActiviy"
-            android:screenOrientation="portrait" />
-        <activity android:name="com.apporio.demotaxiappdriver.TrialSplashActivity" />
-        <activity
-            android:name="com.apporio.demotaxiappdriver.BaseActivity"
+            android:name=".RentalPriceFareActiviy"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.SelectedRentalRideActivity"
+            android:name=".BaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectedRentalRideActivity"
             android:label="@string/title_activity_selected_rental_ride"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.NotificationActivity"
+            android:name=".NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.NotificationWebViewActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.apporio.demotaxiappdriver.Verify_OTP"
+            android:name=".NotificationWebViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.apporio.demotaxiappdriver.SosActivity"
+            android:name=".Verify_OTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SosActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
-        <activity android:name="com.apporio.demotaxiappdriver.PhotoUploaderActivity"
+        <activity
+            android:name=".PhotoUploaderActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"></activity>
-
-        <activity android:name="com.apporio.demotaxiappdriver.StatusActiity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity
+            android:name=".StatusActiity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TripHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AcceptPassActivity" />
+        <activity
+            android:name=".ReceivePassengerActivity"
             android:screenOrientation="portrait"></activity>
-
-        <activity android:name=".ChatActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity android:name=".ReAcceptpassActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

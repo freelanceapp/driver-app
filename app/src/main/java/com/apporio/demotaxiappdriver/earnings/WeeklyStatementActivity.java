@@ -154,7 +154,7 @@ public class WeeklyStatementActivity extends Activity implements ApiManager.APIF
                     if (weeklyEarningModel.getResult() == 1) {
                         // Toast.makeText(this, "" + weeklyEarningModel.getMsg(), Toast.LENGTH_SHORT).show();
 
-                        totalEarningTV.setText(String.valueOf(weeklyEarningModel.getWeekly_amount()));
+                        totalEarningTV.setText(""+sessinManager.getCurrencyCode()+String.valueOf(weeklyEarningModel.getWeekly_amount()));
                         textView4.setText(""+sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getWeekly_amount()));
                         completedTripsTV.setText(String.valueOf(weeklyEarningModel.getTotal_rides()));
                         fareEarnedTV.setText(""+sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getFare_recevied()));
@@ -191,4 +191,10 @@ public class WeeklyStatementActivity extends Activity implements ApiManager.APIF
                 }
             }}catch (Exception e ){}
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

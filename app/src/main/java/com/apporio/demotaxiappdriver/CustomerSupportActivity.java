@@ -66,7 +66,7 @@ public class CustomerSupportActivity extends AppCompatActivity implements  ApiMa
                     HashMap<String , String > data = new HashMap<String, String>();
                     data.put("application" , "2");
                     data.put("name" , ""+user_name_edt.getText().toString());
-                    data.put("email" , ""+user_name_edt.getText().toString());
+                    data.put("email" , ""+email_edt.getText().toString());
                     data.put("phone" , ""+pone_edt.getText().toString());
                     data.put("query" , ""+query_edt.getText().toString());
                     data.put("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
@@ -126,6 +126,12 @@ public class CustomerSupportActivity extends AppCompatActivity implements  ApiMa
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 
 
 

@@ -17,6 +17,7 @@ import com.apporio.demotaxiappdriver.models.restmodels.ResultStatusChecker;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.typeface.TypefaceTextView;
 import com.apporio.demotaxiappdriver.urls.Apis;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -185,6 +186,12 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
             }} catch (Exception e){}
     }
 
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
     private void setView() {
         if (response.getDetails().getFinal_bill_amount().equals("0")) {
             bill_layout.setVisibility(View.GONE);
@@ -203,6 +210,8 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
         dropTimeTxt.setText("" + response.getDetails().getEnd_time());
         tvStartLocation.setText("" + response.getDetails().getPickup_location());
         tvEndLocation.setText("" + response.getDetails().getEnd_location());
+
+        Glide.with(SelectedRentalRideActivity.this).load(""+response.getDetails().getUser_image()).into(ivImageDriver);
 
         tvRideDistance.setText("" + response.getDetails().getTotal_distance_travel());
         totalHoursTxt.setText("" + response.getDetails().getTotal_time_travel());
@@ -225,7 +234,7 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
         customerNameTxt.setText("" + response.getDetails().getUser_name());
         customerPhoneTxt.setText("" + response.getDetails().getUser_phone());
 
-        if (RIDE_STATUS.equals("" + Config.Status.RENTAL_RIDE_END) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN ) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER ) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCEL_BY_USER )) {
+        if (RIDE_STATUS.equals("" + Config.Status.RENTAL_RIDE_END) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN ) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER ) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCEL_BY_USER ) || RIDE_STATUS.equals(""+Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN) || RIDE_STATUS.equals(""+Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN )) {
             llTrackRide.setVisibility(View.GONE);
         } else {
             llTrackRide.setVisibility(View.VISIBLE);

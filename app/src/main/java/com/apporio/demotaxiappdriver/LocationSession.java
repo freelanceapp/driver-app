@@ -30,7 +30,7 @@ public class LocationSession {
     RideSession rideSession ;
     DBHelper dbHelper ;
 
-    public static String TAG = "****LOCATIONSESSION";
+    public static String TAG = "LocationSession";
 
 
     public static final String KEY_CURRENT_LAT = "current_lat";
@@ -39,6 +39,9 @@ public class LocationSession {
     public static final String KEY_BEARING_FACTOR  = "bearing_factor";
     public static final String KEY_LOCATION_SERVICE_STARTED  = "location_service_started";
     public static final String KEY_METER_VALUE = "meter+value";
+    public static final String KEY_ACCURACY = "accuracy";
+
+
 
 
     public void setKeyMeterValuelue (String meter_value){
@@ -106,6 +109,9 @@ public class LocationSession {
         }
         editor.putString(KEY_CURRENT_LAT, ""+location.getLatitude());
         editor.putString(KEY_CURRENT_LONG, ""+location.getLongitude());
+        editor.putString(KEY_ACCURACY, ""+location.getAccuracy());
+
+        Log.d("" +TAG, "Recent updated in session lat:"+location.getLatitude()+" longitude:"+location.getLongitude()+"   Accuracy:"+location.getAccuracy());
         editor.commit();
     }
 
@@ -138,6 +144,7 @@ public class LocationSession {
         user.put(KEY_CURRENT_LONG , pref.getString(KEY_CURRENT_LONG , ""));
         user.put(KEY_CURRENT_LOCATION_TEXT , pref.getString(KEY_CURRENT_LOCATION_TEXT , "Not yet fetched"));
         user.put(KEY_BEARING_FACTOR , pref.getString(KEY_BEARING_FACTOR , "0.0"));
+        user.put(KEY_ACCURACY , pref.getString(KEY_ACCURACY , "0.0"));
         user.put(KEY_METER_VALUE , pref.getString(KEY_METER_VALUE , "0.0"));
         return user;
     }

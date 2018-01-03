@@ -135,4 +135,10 @@ public class ChangePasswordActivity extends AppCompatActivity implements ApiMana
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

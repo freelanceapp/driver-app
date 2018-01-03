@@ -1,5 +1,8 @@
 package com.apporio.demotaxiappdriver;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.apporio.demotaxiappdriver.analytics.MyApplication;
 import com.bugfender.sdk.Bugfender;
 
@@ -18,4 +21,9 @@ public class MainApplication extends MyApplication {
         Bugfender.enableUIEventLogging(this);
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        MultiDex.install(base);
+        super.attachBaseContext(base);
+    }
 }

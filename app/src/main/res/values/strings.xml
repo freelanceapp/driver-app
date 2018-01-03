@@ -216,7 +216,8 @@
     <string name="MAIN_ACTIVITY__terms_and_condition">Terms and Conditions</string>
     <string name="MAIN_ACTIVITY__about_us">ABOUT US</string>
     <string name="MAIN_ACTIVITY__off_duty">Off Duty</string>
-    <string name="MAIN_ACTIVITY__move_your_vehicle">Please move your Vehicle to et you exact location...</string>////////////////////
+    <string name="MAIN_ACTIVITY__move_your_vehicle">Please move your Vehicle to et you exact location...</string>
+    ////////////////////
     <string name="MAIN_ACTIVITY__online">Online</string>
     <string name="MAIN_ACTIVITY__offline">Offline</string>
     <string name="Main_ACTIVITY_rentals">Rentals</string>
@@ -531,8 +532,6 @@
     <string name="attach_expirey_date_of_your_document">Please attach expiry date of your document</string>
     <string name="language">Language</string>
     <string name="select_language">Select language</string>
-
-
     <string name="METER_IMAGE_ACTIVITY__current_meter_reading_txt">Please upload a pic of your current meter reading.</string>
     <string name="METER_IMAGE_ACTIVITY__please_upload_a_photo_of_your_meter_of_your_car_or_motorcycle">Please Upload a photo of your meter of your car or motorcycle</string>
     <string name="METER_IMAGE_ACTIVITY__enter_meter_value">Enter meter value</string>
@@ -546,7 +545,6 @@
     <string name="online_time">Online Time</string>
     <string name="overall_rating">Overall Rating</string>
     <string name="documents">Documents</string>
-    <string name="submit">Submit</string>
     <string name="use_in_case_of_emergency">Use in Case of Emergency</string>
     <string name="login">Login</string>
     <string name="login_as_demo_driver">Login as Demo Driver</string>
@@ -566,6 +564,47 @@
     <string name="driving_licence">Driving Licence</string>
     <string name="not_sumitted">Not Sumitted</string>
     <string name="user_has_cancel_the_ride">User has Cancel the ride</string>
+    <string name="your_trips">Your Trips</string>
+    <string name="on__going">On Going</string>
+    <string name="new_request">New Request</string>
+    <string name="history">History</string>
+    <string name="accept_pass">Accept/Pass</string>
+    <string name="in_order_to_use_app_settings">In Order to use this app properly please turn on your device location from settings</string>
+    <string name="no_internet_connectivity">No Internet Connectivity!</string>
+    <string name="it_seems_you_are_out_of_internet_connection">It Seems You are out of Network, Please check you internet connection!</string>
+    <string name="new_version_is_avaiable">New version of this app is available on play store</string>
+    <string name="do_it_later">Do it later</string>
+    <string name="checking_new_versions">Checking for new versions...</string>
+    <string name="fetching_versions">Fetching versions...</string>
+    <string name="some_man_datory_is_available">Some mandatory update is available</string>
+    <string name="non_mandatory_update">Update is available (Non mandatory)</string>
+    <string name="started_with_login_procedure">Stated with login procedure</string>
+    <string name="normal_type">Normal Type</string>
+    <string name="rental_request">Rental Request</string>
+    <string name="app_is_up_to_date">App is Up to date</string>
+    <string name="start_for_customer_pickup">Start For Customer Pick Up</string>
+    <string name="your_app_is_in_maintainance">Your App is in under maintenance.</string>
+    <string name="please_upload_all_documents">Please upload all documents first !</string>
+    <string name="no_doc_found_inthis_city">No Documents found in this city</string>
+    <string name="upcomings">Upcomings</string>
+    <string name="past_trips">Past Trips</string>
+    <string name="ride_cancelled_bu_admin">Ride Cancelled bu Admin</string>
+    <string name="send_email">Send Email</string>
+    <string name="upload_profile_pic">Upload profile pic</string>
+    <string name="are_you_sure_to_log_out">Are you sure you want to log out ?</string>
+    <string name="required_field_empty">Required field empty !</string>
+    <string name="invalid_otp">Invalid OTP !</string>
+    <string name="this_app_need_telephony_permission">This app need to access telephony permission for this task</string>
+    <string name="please_upload_a_good_quality_image_for_your_profile">Please upload a good quality image for your profile</string>
+    <string name="select_navigation">Select Navigation.</string>
+    <string name="google_map">Google map</string>
+    <string name="waze_map">Waze map</string>
+    <string name="booking_date">Booking Date</string>
+    <string name="requested_date">Requested Date</string>
+    <string name="profile_updated_successfully">Profile updated Successfully</string>
+    <string name="new_message">New Message</string>
+    <string name="your_ride_is_expired">Your Ride is Expired</string>
+
 
 </resources>
 

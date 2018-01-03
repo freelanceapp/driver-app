@@ -125,7 +125,7 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
 
 
                 } else {
-                    Toast.makeText(this, "No Documents found in this city ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.no_doc_found_inthis_city, Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
                 Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -136,13 +136,10 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
            //     LoginResponse loginResponse;
                 Gson gson = new GsonBuilder().create();
                 register = gson.fromJson("" + script, Register.class);
-
-
-                Log.d("**register_script*****", String.valueOf(script));
                 String driver_id = register.getDetails().getDriver_id();
                 String detail_status = register.getDetails().getDetail_status();
                 if (detail_status.equals("1")) {
-                    Toast.makeText(this, "getting detail status = 1 ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.please_upload_all_documents, Toast.LENGTH_SHORT).show();
                 } else if (detail_status.equals("2")) {
                     new SessionManager(this).createLoginSession(register.getDetails().getDriver_id(), register.getDetails().getDriver_name(),
                             register.getDetails().getDriver_phone(), register.getDetails().getDriver_email(),
@@ -190,6 +187,12 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
 
             }
         }catch (Exception e){}
+
+    }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
 
     }
 

@@ -162,6 +162,12 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
     }
 
     @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(ForgotPass_VerifyOTP.this, SplashActivity.class);
         startActivity(intent);

@@ -77,6 +77,7 @@
             android:layout_height="80dp"
             android:gravity="center|top"
             android:orientation="vertical"
+            android:visibility="gone"
             android:background="@color/pure_white">
 
             <LinearLayout
@@ -165,26 +166,37 @@
                     android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/dot_green"
+                    android:visibility="gone"
                     android:layout_gravity="center"/>
 
 
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"></RelativeLayout>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/curent_location">
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="top|right"
-                    android:layout_margin="10dp"
-                    android:id="@+id/curent_location">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:tint="@color/colorPrimary"
+                            android:src="@drawable/gps"/>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:tint="@color/colorPrimary"
-                        android:src="@drawable/gps"/>
-                </android.support.v7.widget.CardView>
+
 
 
 
@@ -218,6 +230,66 @@
                         </TextView>
                     </LinearLayout>
 
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/today_schedule_btn">
+
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/timer"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:text=""
+                        android:layout_gravity="top|right"
+                        android:padding="3dp"
+                        android:textColor="#ffffff"
+                        android:layout_margin="2dp"
+                        android:textSize="10dp"
+                        android:gravity="center"
+                        android:background="@drawable/green_filled_circle"
+                        android:id="@+id/scheduled_rides"/>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/unaccepted_rides_btn">
+
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_notifications"
+                        android:tint="@color/colorPrimary"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:text=""
+                        android:layout_gravity="top|right"
+                        android:padding="3dp"
+                        android:gravity="center"
+                        android:textColor="#ffffff"
+                        android:layout_margin="2dp"
+                        android:textSize="10dp"
+                        android:background="@drawable/red_filled_circle"
+                        android:id="@+id/unaccepted_ride_txt"/>
                 </android.support.v7.widget.CardView>
 
             </FrameLayout>

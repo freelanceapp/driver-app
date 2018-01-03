@@ -3,7 +3,9 @@ package com.apporio.demotaxiappdriver;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -38,21 +40,26 @@ import com.apporio.demotaxiappdriver.parsing.AccountModule;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.urls.Apis;
 import com.bumptech.glide.Glide;
+import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.apporio.demotaxiappdriver.logger.Logger;
+import com.sampermissionutils.AfterPermissionGranted;
+import com.sampermissionutils.EasyPermissions;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity implements ApiManager.APIFETCHER, Apis {
     TextView email;
     EditText account_name, bank_name, account_number;
     ImageView iv_edit_name, iv_edit_phone, iv_edit_account_number, iv_edit_account_name, iv_edit_bank_name;
-    LinearLayout ll_back_profile, ll_done_profile, ll_change_password, ll_logout ;
+    LinearLayout ll_back_profile, ll_done_profile, ll_change_password, ll_logout  ;
     EditText name, mobile , meter_ranger , location_accuracy;
     String driverid, drivername, drivermobile, drivermail, driverimage, driver_bank_name, driver_account_number, driver_account_name;
     public static Activity profileActivity;
 
-    ImageView iv_profile_pic_upload;
+    CircleImageView iv_profile_pic_upload;
     FirebaseUtils firebaseutil;
 
     Uri selectedImage;
@@ -74,6 +81,13 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
     SessionManager sessionManager ;
     CheckBox service_switcher ;
     ApiManager apiManager;
+    private static final int RC_CAMERA_PERM = 123;
+    private ContentValues values;
+    private Bitmap thumbnail;
+    private static final int CAMERS_PICKER = 122;
+    private Uri imageUri;
+    private int VERIFY_OTP = 110;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +108,8 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         ll_done_profile = (LinearLayout) findViewById(R.id.ll_done_profile);
         ll_change_password = (LinearLayout) findViewById(R.id.ll_change_password);
         ll_logout = (LinearLayout) findViewById(R.id.ll_logout);
-        iv_profile_pic_upload = (ImageView) findViewById(R.id.iv_profile_pic_upload);
+        iv_profile_pic_upload = (CircleImageView) findViewById(R.id.iv_profile_pic_upload);
+
         meter_ranger = (EditText) findViewById(R.id.meter_ranger);
         service_switcher = (CheckBox) findViewById(R.id.service_switcher);
         location_accuracy = (EditText) findViewById(R.id.location_accuracy);
@@ -174,13 +189,38 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
             }
         });
 
+        findViewById(R.id.phone_edit_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(ProfileActivity.this, Verify_OTP.class), VERIFY_OTP);
+            }
+        });
+
 
         iv_profile_pic_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                i1.setType("image/*");
-                startActivityForResult(i1, 101);
+
+
+                CFAlertDialog.Builder builder = new CFAlertDialog.Builder(ProfileActivity.this);
+                builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
+                builder.setTitle(R.string.upload_profile_pic);
+                builder.setItems(new String[]{getString(R.string.camera), getString(R.string.gallery)}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int index) {
+                      if(index == 0 ){
+                          try{cameraTask();}catch (Exception e){}
+                      }else if (index == 1 ){
+                          Intent i1 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                          i1.setType("image/*");
+                          startActivityForResult(i1, 101);
+                      }
+                      dialogInterface.dismiss();
+                    }
+                });
+                builder.show();
+
+
             }
         });
 
@@ -365,10 +405,38 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+
+    @AfterPermissionGranted(RC_CAMERA_PERM)
+    public void cameraTask()throws Exception {
+        if (EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)) {
+            try{ // Have permission, do the thing!
+                values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+                imageUri = getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CAMERS_PICKER);
+            }catch (Exception e){}
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.rationale_camera), RC_CAMERA_PERM, android.Manifest.permission.CAMERA);
+        }
     }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        try{cameraTask();}catch (Exception e){}
+    }
+
+
+
+
+
+
 
     @Override
     protected void onDestroy() {
@@ -413,11 +481,29 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                     bitmap1 = BitmapFactory.decodeFile(filePath, options);
                     iv_profile_pic_upload.setImageBitmap(bitmap1);
                 }
+                if(req == CAMERS_PICKER){
+                    thumbnail = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                    iv_profile_pic_upload.setImageBitmap(thumbnail);
+                    imagePath = getRealPathFromURI(imageUri);
+                    ImageCompressMode imageCompressMode = new ImageCompressMode(this);
+                    imagePathCompressed = imageCompressMode.compressImage(imagePath);
+                }
+                if(req == VERIFY_OTP){
+                    mobile.setText(data.getExtras().getString("phone_number"));
+                }
             } catch (Exception e) {
                 Logger.e("res         " + e.toString());
             }
         }
     }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
 
     public String getPath(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -459,8 +545,6 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
     }
 
 
-
-
     @Override
     public void onAPIRunningState(int a, String APINAME) {
         if (a == ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
@@ -500,7 +584,17 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                         register.getDetails().getDriver_account_name(), register.getDetails().getDriver_account_number(),
                         register.getDetails().getDriver_bank_name());
 
-                finish();
+                  new CFAlertDialog.Builder(this)
+                        .setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT)
+                        .setTitle(R.string.profile_updated_successfully)
+                        .addButton(getString(R.string.ok), -1, -1, CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.END, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                                finish();
+                            }
+                        }).show();
+
             } else if (register.getResult()== 419) {
                 sessionManager.logoutUser();
                 Intent intent = new Intent(this, SplashActivity.class);
@@ -565,4 +659,10 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                 }}catch (Exception e){}
         }
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

@@ -65,7 +65,15 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/layout_light"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/driver_image"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dummy_pic"/>
 
                 <EditText
                     android:id="@+id/edt_username_signup"

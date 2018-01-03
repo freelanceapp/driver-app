@@ -98,4 +98,10 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ApiMana
 
         }
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

@@ -2,6 +2,7 @@ package com.apporio.demotaxiappdriver;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -42,6 +44,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import customviews.typefacesviews.TypefaceDosisRegular;
+import id.zelory.compressor.Compressor;
 import io.reactivex.functions.Consumer;
 
 public class PhotoUploaderActivity extends Activity implements EasyPermissions.PermissionCallbacks , DatePickerDialog.OnDateSetListener , ApiManager.APIFETCHER {
@@ -62,6 +65,9 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     private Uri imageUri;
     ApiManager apiManager ;
     ProgressDialog progressDialog;
+    private File compressedImage;
+    private ContentValues values;
+    private Bitmap thumbnail;
 
 
     @Override
@@ -103,8 +109,13 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                     if(date.getText().toString().equals("DD MM YYYY")){
                         Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
                     }else{
+
+                        compressedImage = new Compressor(PhotoUploaderActivity.this)
+                                .setQuality(75)
+                                .compressToFile(new File(imagePath));
+
                         HashMap<String , File>  images  = new HashMap<>();
-                        images.put("document_image" , new File(imagePath) );
+                        images.put("document_image" , compressedImage );
                         HashMap<String  , String > data  = new HashMap<>();
                         data.put("document_expiry_date" , ""+date.getText().toString());
                         data.put("driver_id" , ""+getIntent().getExtras().getString("driver_id"));
@@ -127,18 +138,15 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     public void cameraTask()throws Exception {
         if (EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)) {
             try{ // Have permission, do the thing!
-
-                RxImagePicker.with(PhotoUploaderActivity.this).requestImage(Sources.CAMERA).subscribe(new Consumer<Uri>() {
-                    @Override
-                    public void accept(@NonNull Uri uri) throws Exception {
-                        image.setImageURI(uri);
-                        imagePath = getRealPathFromURI(uri);
-                        Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
-                        openDateFDialog();
-                    }
-                });
+                values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+                imageUri = getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CAMERS_PICKER);
             }catch (Exception e){}
-
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.rationale_camera), RC_CAMERA_PERM, android.Manifest.permission.CAMERA);
         }
@@ -182,6 +190,30 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+
+            case CAMERS_PICKER:
+                if (resultCode == Activity.RESULT_OK) {
+                    try {
+                        if (resultCode == RESULT_OK) {
+//
+//                            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//                            image.setImageBitmap(photo);
+//                            Uri tempUri = getImageUri(getApplicationContext(), photo);
+//                            imagePath = getPath(tempUri);
+                            thumbnail = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                            image.setImageBitmap(thumbnail);
+                            imagePath = getRealPathFromURI(imageUri);
+                            Toast.makeText(PhotoUploaderActivity.this, R.string.attach_expirey_date_of_your_document, Toast.LENGTH_SHORT).show();
+                            openDateFDialog();
+                        }
+                    } catch (Exception e) {
+                        Logger.e("Exception -->" + e.toString());
+                    }
+                }
+                break;
+
+
+
             case PICK_IMAGE:
                 try {
                     selectedImage = data.getData();
@@ -213,6 +245,15 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
                 break;
         }
     }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+
 
     public String getPath(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -275,6 +316,12 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
             }
         }catch (Exception e){}
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 
 
 

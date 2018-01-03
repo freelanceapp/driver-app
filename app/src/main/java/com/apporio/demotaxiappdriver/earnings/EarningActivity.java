@@ -138,6 +138,12 @@ public class EarningActivity extends FragmentActivity implements ApiManager.APIF
 
     }
 
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
          date = year+"-"+(monthOfYear+1)+"-"+dayOfMonth;

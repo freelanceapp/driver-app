@@ -14,7 +14,7 @@ public interface Apis {
     String forgotPassword = baseDomain + "forgot_password_driver.php";
     String editProfile = baseDomain + "edit_profile_driver.php";
     String logout = baseDomain + "logout_driver.php";
-    String viewCities = baseDomain + "city.php";
+    String viewCities = baseDomain + "city.php?";
     String viewCarByCities = baseDomain + "car_by_city.php";
     String viewCarModels = baseDomain + "car_model.php";
     String onlineOffline = baseDomain + "online_offline.php";  // //
@@ -40,6 +40,7 @@ public interface Apis {
     String week_amount = baseDomain+"week_amount.php?driver_id=";  //    &date=   2017-08-7
     String change_drop_location = baseDomain+"change_drop_location.php?";  //  drop_lat  drop_long  drop_location  app_id (1 for user and 2 for demotaxiappdriver) ride_id
     String heatmap = baseDomain+"heatmap.php?driver_id=";
+    String PartialAccept = baseDomain+"ride_later_accept.php";
 
     String RideSync = restdomain+"/Rental/Ride_Sync";   //  rental_booking_id      app_id= 2 for demotaxiappdriver and 1 for cutomer
     String Rideinfo = restdomain+"/Rental/Ride_Info";
@@ -55,10 +56,15 @@ public interface Apis {
     String RideCancel = restdomain+"/Rental/Rental_Driver_Cancel_Ride";  //   rental_booking_id   user_id
     String CustomerSupport = restdomain+"/Common/Customer_support";  //  application(1 for user and 2 for demotaxiappdriver)  name  email  phone  query  driver_id  user_id
     String DriverReport = restdomain+"/Driver/Driver_Report";
+    String RepostIssueDetails = baseDomain+"report_issue_email.php?";
+
 
     String DocumentList = baseDomain+"document_list.php?city_id=";
     String Document_Upload = baseDomain+"upload_document.php";
-    String googleImage = "https://maps.googleapis.com/maps/api/staticmap?center="; // 28.413600,77.041991    &zoom=15&size=400x400    &key=AIzaSyA8iPfyMKM5EQZDZCeu5h_QxDXLRCBB2-g";
+    String googleImage = "https://maps.googleapis.com/maps/api/staticmap?center=";
+    String ScheduleAndunacceptedRide = baseDomain+"scheduled_and_unaccepted_rides.php";  //  driver_id
+    String CheckRideTime = baseDomain+"check_ride_time.php?ride_id=" ; // &ride_mode=
+
 
     //  driver_id=4&name=1&email=12&phone=&query=hello
     String Notifications = restdomain+"/Common/Notification"; // application  (1 for user and 2 for demotaxiappdriver)
@@ -72,4 +78,7 @@ public interface Apis {
     String FORGOTPASS_CONFIRMPASS = baseDomain + "forgot_password_driver.php";
 
 
+    String AppVersions = baseDomain+"app_version.php"; // application_version  application  (1 for user and 2 for driver)   flag (1 for ios and 2 for android)
+
+    String BackGroundAppUpdate= baseDomain+"driver_backgroud_location.php"; // driver_id  current_lat  current_long  current_location  driver_token
 }

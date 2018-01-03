@@ -69,4 +69,11 @@ public class TermsAndCondition extends AppCompatActivity implements  ApiManager.
             }}catch (Exception e){}
 
     }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

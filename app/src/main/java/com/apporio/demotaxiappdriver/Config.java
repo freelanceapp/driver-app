@@ -110,6 +110,14 @@ public class Config {
 
         String KEY_FORGOTPASS_OTP = "KEY_FORGOTPASS_OTP";
         String KEY_FORGOTPASS_CONFIRMPASS = "KEY_FORGOTPASS_CONFIRMPASS";
+        String APP_VERSIONS= "APP_VERSIONS";
+        String PARTIAL_ACCEPT = "PARTIAL_ACCEPT";
+        String KEY_SCHEDULE_AND_UPDATED  ="KEY_SCHEDULE_AND_UPDATED";
+        String CHECK_RIDE_TIME = "CHECK_RIDE_TIME";
+        String KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND = "KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND";
+        String KEY_REPORT_ISSUE = "KEY_REPORT_ISSUE";
+
+        String LOGOUT = "LOGOUT";
     }
 
 
@@ -145,14 +153,15 @@ public class Config {
 
     public interface Status{
         String VAL_1 = "1";  // ride booked by user
-        String VAL_2 = "2";  //  ride cancelled by user
-        String VAL_3 = "3";  // accepted by demotaxiappdriver
+        String NORMAL_CANCEL_BY_USER = "2";  //  ride cancelled by user
+        String NORMAL_ACCEPTED = "3";  // accepted by demotaxiappdriver
         String VAL_4 = "4";  // Ride cancelled by demotaxiappdriver and trying to alloting to other
-        String VAL_5 = "5";  // demotaxiappdriver arrived on door
-        String VAL_6 = "6";  //  Ride started
-        String VAL_7 = "7";  ///  ride ended by demotaxiappdriver
-        String VAL_8 = "8";  // when user booked ride for later
-        String VAL_9 = "9";  // ride cancelled by demotaxiappdriver
+        String NORMAL_ARRIVED = "5";  // demotaxiappdriver arrived on door
+        String NORMAL_STARTED = "6";  //  Ride started
+        String NORMAL_RIDE_END = "7";  ///  ride ended by demotaxiappdriver
+        String NORMAL_LATER = "8";  // when user booked ride for later
+        String NORMAL_CANCEL_BY_DRIVER = "9";  // ride cancelled by demotaxiappdriver
+        String NORMAL_RIDE_CANCEl_BY_ADMIN = "17";  // normal ride cancel by admin
 
         // for rental approach
         String RENTAL_BOOKED = "10";  // ride booked via user
@@ -162,29 +171,30 @@ public class Config {
         String RENTAL_RIDE_REJECTED = "14";  // rental ride reject by demotaxiappdriver
         String RENTAL_RIDE_CANCEL_BY_USER = "15";  // rental ride cancelled by user
         String RENTAL_RIDE_END = "16";  // rental ride end by demotaxiappdriver
-        String RENTAL_RIDE_CANCEl_BY_ADMIN = "17";  // rental ride cancel by admin
+        String RENTAL_RIDE_CANCEl_BY_ADMIN = "19";  // rental ride cancel by admin
         String RENTAL_RIDE_CANCELLED_BY_DRIVER = "18";  // rental ride end by demotaxiappdriver
-
-
+        String PARTIAL_ACCEPTED = "22";
+        String RIDE_LATER_BOOKING= "52";
+        String RIDE_LATER_REASSIGNED = "54";
     }
     public static String getStatustext(String val ){
         if(val.equals(""+Status.VAL_1)){
             return  "Booked";
-        } if(val.equals(""+Status.VAL_2)){
-            return  "Cancelled";
-        } if(val.equals(""+Status.VAL_3)){
+        } if(val.equals(""+Status.NORMAL_CANCEL_BY_USER)){
+            return  "Cancelled by user";
+        } if(val.equals(""+Status.NORMAL_ACCEPTED)){
             return  "Accepted";
         } if(val.equals(""+Status.VAL_4)){
             return  "Rejected";
-        } if(val.equals(""+Status.VAL_5)){
+        } if(val.equals(""+Status.NORMAL_ARRIVED)){
             return  "Arrived";
-        } if(val.equals(""+Status.VAL_6)){
+        } if(val.equals(""+Status.NORMAL_STARTED)){
             return  "Riding Now";
-        } if(val.equals(""+Status.VAL_7)){
+        } if(val.equals(""+Status.NORMAL_RIDE_END)){
             return "Completed";
-        } if(val.equals(""+Status.VAL_8)){
+        } if(val.equals(""+Status.NORMAL_LATER)){
             return  "Later Request";
-        } if(val.equals(""+Status.VAL_9)){
+        } if(val.equals(""+Status.NORMAL_CANCEL_BY_DRIVER)){
             return  "Cancelled by You";
         }if(val.equals(""+Status.RENTAL_BOOKED)){
             return  "Rental Booking";
@@ -202,6 +212,12 @@ public class Config {
             return  "User Cancelled";
         }if(val.equals(""+Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)){
             return  "You Cancelled";
+        }if(val.equals(""+Status.PARTIAL_ACCEPTED)){
+            return  "Scheduled";
+        }if(val.equals(""+Status.NORMAL_RIDE_CANCEl_BY_ADMIN)){
+            return  "Cancelled by admin";
+        }if(val.equals(""+Status.RENTAL_RIDE_CANCEl_BY_ADMIN)){
+            return  "Cancelled By Admin";
         }else {
             return  "Something Went Wrong";
         }

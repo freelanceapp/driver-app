@@ -16,7 +16,8 @@ import com.apporio.demotaxiappdriver.Config;
 import com.apporio.demotaxiappdriver.MainActivity;
 import com.apporio.demotaxiappdriver.NotificationActivity;
 import com.apporio.demotaxiappdriver.R;
-import com.apporio.demotaxiappdriver.RidesActivity;
+import com.apporio.demotaxiappdriver.ReAcceptpassActivity;
+import com.apporio.demotaxiappdriver.TripHistoryActivity;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.RideSession;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
@@ -73,17 +74,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
     }
 
     private void checkStatus() {
-
             if(!pn_ride_status.equals("20")){
                 rideSession.setRideStatus(""+pn_ride_status);
             }
-
             if (pn_ride_status.equals("1")  || pn_ride_status.equals("8")  ) {
                 if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
                     apiManager_new.execution_method_get(Config.ApiKeys.KEY_NEW_RIDE_SYNC , Apis.newRideSync+"?ride_id="+pn_ride_id+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                 }
             }
-
             if(pn_ride_status.equals("2")){
                 if (Constants.is_track_ride_activity_is_open == true) {
                     EventBus.getDefault().post(new RideEvent(pn_ride_id , pn_ride_status , pn_message));
@@ -97,8 +95,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             if(pn_ride_status.equals("8")){
 
             }
-
-
+            if(pn_ride_status.equals(""+Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)){
+                EventBus.getDefault().post(new RideEvent(pn_ride_id , pn_ride_status , pn_message));
+            }
             else if (pn_ride_status.equals("10")){// that for rental request
                 HashMap<String , String > data = new HashMap<>();
                 data.put("rental_booking_id" , ""+pn_ride_id);
@@ -122,6 +121,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             else if (pn_ride_status.equals("51")){
                 sendNotification(""+pn_message);
             }
+            else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_BOOKING)){
+                sendNotification(""+pn_message);
+            }
+            else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_REASSIGNED)){
+                sendNotification(""+pn_message);
+            }
     }
 
     void sendNotification(String message123) {
@@ -132,13 +137,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
                     .putExtra("ride_status", pn_ride_status);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("15")){
-            intent = new Intent(this, RidesActivity.class);
+            intent = new Intent(this, TripHistoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("20")){
             intent = new Intent(this, TrackRideActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("51")){
             intent = new Intent(this, NotificationActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }else if (pn_ride_status.equals(Config.Status.RIDE_LATER_BOOKING)){
+            intent = new Intent(this, TripHistoryActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_REASSIGNED)){
+            intent = new Intent(this, ReAcceptpassActivity.class).putExtra("ride_id" , ""+pn_ride_id);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 
@@ -205,26 +216,26 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
 
                     if (app_id.equals("2")) {
                         switch (pn_ride_status){
-                            case "1":
-                                if(!Config.ReceiverPassengerActivity  && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
-                                    Config.ReceiverPassengerActivity = true ;
-                                    Intent broadcastIntent = new Intent();
-                                    broadcastIntent.putExtra("ride_id", ""+pn_ride_id);
-                                    broadcastIntent.putExtra("ride_status", ""+pn_ride_status);
-                                    broadcastIntent.setAction("com.apporio.demotaxiappdriver");
-                                    sendBroadcast(broadcastIntent);
-                                }
-                                break;
-                            case "8":
-                                if ( !Config.RentalReceivepassengerActivity && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
-                                    Config.RentalReceivepassengerActivity = true ;
-                                    Intent broadcastIntent_rental = new Intent();
-                                    broadcastIntent_rental.putExtra("ride_id", ""+pn_ride_id);
-                                    broadcastIntent_rental.putExtra("ride_status", ""+pn_ride_status);
-                                    broadcastIntent_rental.setAction("com.apporio.demotaxiappdriver");
-                                    sendBroadcast(broadcastIntent_rental);
-                                }
-                                break;
+//                            case "1":
+//                                if(!Config.ReceiverPassengerActivity  && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
+//                                    Config.ReceiverPassengerActivity = true ;
+//                                    Intent broadcastIntent = new Intent();
+//                                    broadcastIntent.putExtra("ride_id", ""+pn_ride_id);
+//                                    broadcastIntent.putExtra("ride_status", ""+pn_ride_status);
+//                                    broadcastIntent.setAction("com.apporio.demotaxiappdriver");
+//                                    sendBroadcast(broadcastIntent);
+//                                }
+//                                break;
+//                            case "8":
+//                                if ( !Config.RentalReceivepassengerActivity && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
+//                                    Config.RentalReceivepassengerActivity = true ;
+//                                    Intent broadcastIntent_rental = new Intent();
+//                                    broadcastIntent_rental.putExtra("ride_id", ""+pn_ride_id);
+//                                    broadcastIntent_rental.putExtra("ride_status", ""+pn_ride_status);
+//                                    broadcastIntent_rental.setAction("com.apporio.demotaxiappdriver");
+//                                    sendBroadcast(broadcastIntent_rental);
+//                                }
+//                                break;
                         }
                     }
                 }
@@ -240,11 +251,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
 
                     if (app_id.equals("2")) {
                         if (Constants.mainActivity == true) {
-                            Intent broadcastIntent = new Intent();
-                            broadcastIntent.putExtra("ride_id", pn_ride_id);
-                            broadcastIntent.putExtra("ride_status", pn_ride_status);
-                            broadcastIntent.setAction("com.apporio.demotaxiappdriver");
-                            sendBroadcast(broadcastIntent);
+//                            Intent broadcastIntent = new Intent();
+//                            broadcastIntent.putExtra("ride_id", pn_ride_id);
+//                            broadcastIntent.putExtra("ride_status", pn_ride_status);
+//                            broadcastIntent.setAction("com.apporio.demotaxiappdriver");
+//                            sendBroadcast(broadcastIntent);
                         } else if (Constants.mainActivity == false) {
                             sendNotification(pn_message);
                         } else {
@@ -260,6 +271,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
                 rideSession.setDropLocation(viewRideInfoDriver.getDetails().getDrop_location() , ""+viewRideInfoDriver.getDetails().getDrop_lat(), ""+viewRideInfoDriver.getDetails().getDrop_long());
                 sendNotification(pn_message);
             }}catch (Exception e){}
+
+    }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
 
     }
 

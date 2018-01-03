@@ -65,4 +65,11 @@ public class SosActivity extends Activity implements ApiManager.APIFETCHER {
         }catch (Exception e){}
 
     }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

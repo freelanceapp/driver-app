@@ -157,6 +157,12 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
 
     }
 
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
     private void finalizeActivity() {
         finish();
         try {
@@ -170,7 +176,7 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
 
         }
         try {
-            RidesActivity.activity.finish();
+            TripHistoryActivity.activity.finish();
         } catch (Exception e) {
 
         }

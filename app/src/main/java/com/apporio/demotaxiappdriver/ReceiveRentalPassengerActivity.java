@@ -33,6 +33,9 @@ import butterknife.ButterKnife;
 import customviews.progresswheel.ProgressWheel;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
+
+
 public class ReceiveRentalPassengerActivity extends Activity implements ApiManager.APIFETCHER {
 
     int max_progress = 360;
@@ -90,10 +93,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
             public void onFinish() {
                 // invoke expired ride view
                 if (Config.RentalReceivepassengerActivity) {
-                    try {
-                        MyBroadcastReceiver.mediaPlayer.stop();
-                    }catch (Exception e){
-                    }
+
                     HashMap<String, String> data = new HashMap<String, String>();
                     data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
                     data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
@@ -103,7 +103,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
             }
         };
 
-        Glide.with(this).load("http://i2.wikimapia.org/?x=5850&y=3412&zoom=13&type=map&lng=0").into(mapImage);
+
 
         mProgresdsWheel.setProgress(360);
         countDownTimer.start();
@@ -112,10 +112,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    MyBroadcastReceiver.mediaPlayer.stop();
-                }catch (Exception e){
-                }
+
 
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
@@ -129,10 +126,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    MyBroadcastReceiver.mediaPlayer.stop();
-                }catch (Exception e){
-                }
+
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
                 data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
@@ -159,11 +153,16 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     @Override
     public void onAPIRunningState(int a, String APINAME) {
 
-        if(a == ApiManager.APIFETCHER.KEY_API_IS_STARTED){
-            progressDialog.show();
-        }else if (progressDialog.isShowing()){
-            progressDialog.dismiss();
+        try{
+            if(a == ApiManager.APIFETCHER.KEY_API_IS_STARTED){
+                progressDialog.show();
+            }else if (progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }catch (Exception e){
+
         }
+
     }
 
     @Override
@@ -183,6 +182,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                     String value = ""+response.getDetails().getPayment_option_id();
 
                     Log.d("**value==", response.getDetails().getPayment_option_id());
+                    Glide.with(this).load(""+ Apis.googleImage + "" + response.getDetails().getPickup_lat() + "," + response.getDetails().getPickup_long() + "&zoom=15&size=400x400&key=" + ReceiveRentalPassengerActivity.this.getResources().getString(R.string.google_map_key)).into(mapImage);
 
                     if (value.equals("1")){
                         cash_layout.setVisibility(View.VISIBLE);
@@ -225,6 +225,12 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         }}catch (Exception e){}
     }
 
+
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
 
 
 

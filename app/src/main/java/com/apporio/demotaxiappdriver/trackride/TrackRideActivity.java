@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,7 +18,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -38,10 +38,10 @@ import com.apporio.demotaxiappdriver.LocationEvent;
 import com.apporio.demotaxiappdriver.LocationSession;
 import com.apporio.demotaxiappdriver.PriceFareActivity;
 import com.apporio.demotaxiappdriver.R;
-import com.apporio.demotaxiappdriver.RidesActivity;
 import com.apporio.demotaxiappdriver.SelectedRidesActivity;
 import com.apporio.demotaxiappdriver.SosActivity;
 import com.apporio.demotaxiappdriver.SplashActivity;
+import com.apporio.demotaxiappdriver.TripHistoryActivity;
 import com.apporio.demotaxiappdriver.adapter.ReasonAdapter;
 import com.apporio.demotaxiappdriver.database.DBHelper;
 import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
@@ -85,6 +85,9 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sampermissionutils.AfterPermissionGranted;
+import com.sampermissionutils.EasyPermissions;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -117,7 +120,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     SamLocationRequestService samLocationRequestService ;
 
     FirebaseChatUtillistener firebaseChatUtillistener ;
-
+    private static final int TELEPHONE_PERM = 657;
 
 
 
@@ -192,13 +195,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         findViewById(R.id.call_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:"+getIntent().getExtras().getString("customer_phone")));
-                if (ActivityCompat.checkSelfPermission(TrackRideActivity.this,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                startActivity(callIntent);
+                try{callingTask();}catch (Exception e){}
             }
         });
 
@@ -213,30 +210,20 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     if(location_txt.getText().toString().equals("") || location_txt.getText().toString() == null ||  location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point))){
                         Toast.makeText(TrackRideActivity.this, R.string.please_ask_drop_location_from_passenger, Toast.LENGTH_SHORT).show();
                     }else{
-                        try{samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {
-                            @Override
-                            public void onLocationUpdate(Location location) {
-                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, getString(R.string.ride_started_but_with_low_accuracy)+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
-                                try{apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP , Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+location.getLatitude()+"&begin_long="+location.getLongitude()+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));}catch (Exception E){}
-                            }
-                        });}catch (Exception e){}
+                        if(  Double.parseDouble(""+ locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY)) >100.0){
+                            Toast.makeText(TrackRideActivity.this, getString(R.string.ride_started_but_with_low_accuracy)+locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY), Toast.LENGTH_SHORT).show();}else{}
+                        try{apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP , Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&begin_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));}catch (Exception E){}
+
                     }
-                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
-                    // run ride end api
-//                    if(meter_txt.getText().equals("0.0")){
-//                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&end_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&end_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+locationSession.getLocationDetails().get(LocationSession.KEY_METER_VALUE)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-//                    }else {
-//                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&end_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&end_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+meter_txt.getText().toString()+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-//                    }
+                }
+                else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
                     try{
-                        samLocationRequestService.executeService(new SamLocationRequestService.SamLocationListener() {@Override public void onLocationUpdate(Location location) {
-                            try{Double distance_travel = Double.parseDouble(""+meter_txt.getText().toString().replace(" km" , ""));
-                                distance_travel = distance_travel * 1000 ;
-                                if(location.getAccuracy()>100.0){ Toast.makeText(TrackRideActivity.this, getString(R.string.ride_end_but_with_accuracy)+location.getAccuracy(), Toast.LENGTH_SHORT).show();}else{}
-                                apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+"&end_lat="+location.getLatitude()+"&end_long="+location.getLongitude()+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+distance_travel+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID)+"&lat_long="+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
-                            }catch (Exception e){}
-                        }
-                        });
+                        Double distance_travel = Double.parseDouble(""+meter_txt.getText().toString().replace(" km" , ""));
+                        distance_travel = distance_travel * 1000 ;
+                        if(Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY))> 100.0){
+                            Toast.makeText(TrackRideActivity.this, getString(R.string.ride_end_but_with_accuracy)+locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY), Toast.LENGTH_SHORT).show();}else{}
+                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP , Apis.endTripMeter+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+"&begin_long="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)+"&begin_location="+"&end_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&end_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&end_location="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)+"&end_time="+getArrivalTime()+"&distance="+distance_travel+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID)+"&lat_long="+dbHelper.getRideLocationData(""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
+
                     }catch (Exception e){
                         Toast.makeText(TrackRideActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -248,15 +235,21 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View view) {
 
-                if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+","+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&daddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
-                    startActivity(intent);
-                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&daddr=" +rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION)));
-                    startActivity(intent);
-                }else {
-                    Snackbar.make(root , ""+TrackRideActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__please_start_your_ridr_first) , Snackbar.LENGTH_SHORT).show();
+                if(isPackageExisted("com.waze")){
+                    showDialogForWazemap();
+                }else{
+                    if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+","+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&daddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                        startActivity(intent);
+                    }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&daddr=" +rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION)));
+                        startActivity(intent);
+                    }else {
+                        Snackbar.make(root , ""+TrackRideActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__please_start_your_ridr_first) , Snackbar.LENGTH_SHORT).show();
+                    }
                 }
+
+
             }
         });
 
@@ -309,7 +302,33 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+
     }
+
+    @AfterPermissionGranted(TELEPHONE_PERM)
+    public void callingTask()throws Exception {
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.CALL_PHONE)) {
+            try{ // Have permission, do the thing!
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:"+getIntent().getExtras().getString("customer_phone")));
+                if (ActivityCompat.checkSelfPermission(TrackRideActivity.this,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+            }catch (Exception e){}
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.this_app_need_telephony_permission), TELEPHONE_PERM, Manifest.permission.CALL_PHONE);
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        try{callingTask();}catch (Exception e){}
+    }
+
 
     private void showDemodialog() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -485,9 +504,9 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event){
-        if(event.getRideStatus().equals("2")){
+        if(event.getRideStatus().equals(Config.Status.NORMAL_CANCEL_BY_USER)){
             showDialogForCancelation();
-        }if(event.getRideStatus().equals("17")){
+        }if(event.getRideStatus().equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)){
             showDialogForCancelationViaAdmin();
         }
 
@@ -522,7 +541,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         dialog.setCancelable(true);
         window.setGravity(Gravity.CENTER);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setContentView(R.layout.dialog_for_cancel_via_customer);
+        dialog.setContentView(R.layout.dialog_for_cancel_via_admin);
         dialog.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -641,19 +660,19 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             if(result_check.result.equals("1")){
                 if(APINAME.equals(Config.ApiKeys.KEY_ARRIVED)){
                     rideSession.setRideStatus("5");
-                    updateFirebaseEvent(Config.Status.VAL_5 , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                    updateFirebaseEvent(Config.Status.NORMAL_ARRIVED, ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_BEGIN_TRIP)){
                     rideSession.setRideStatus("6");
                     locationSession.clearMeterValue();
-                    apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id=1");
-                    updateFirebaseEvent(Config.Status.VAL_6 , ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                    apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id=1");
+                    updateFirebaseEvent(Config.Status.NORMAL_STARTED, ""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_END_TRIP)){
                     rideSession.setRideStatus("7");
                     RideArrived rideArrived = new RideArrived();
                     rideArrived = gson.fromJson(""+script, RideArrived.class);
-                    updateFirebaseEventWithDoneRide(Config.Status.VAL_7  , rideArrived.getDetails().getDoneRideId() , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                    updateFirebaseEventWithDoneRide(Config.Status.NORMAL_RIDE_END, rideArrived.getDetails().getDoneRideId() , rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                     startActivity(new Intent(this, PriceFareActivity.class)
                             .putExtra("amount", rideArrived.getDetails().getAmount())
                             .putExtra("distance", rideArrived.getDetails().getDistance())
@@ -670,14 +689,13 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 }
                 if(APINAME.equals(Config.ApiKeys.KEY_CANCEL_TRIP)){
                     rideSession.setRideStatus("4");
-                    updateFirebaseEvent(Config.Status.VAL_9,""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) );
+                    updateFirebaseEvent(Config.Status.NORMAL_CANCEL_BY_DRIVER,""+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) );
                     rideSession.clearRideSession();
                     finish();
-                    startActivity(new Intent(this, RidesActivity.class));
+                    startActivity(new Intent(this, TripHistoryActivity.class));
                 }
                 if(APINAME.equals(""+Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG)){
                     NewUpdateLatLongModel response = gson.fromJson(""+script , NewUpdateLatLongModel.class);
-                    your_location_txt.setText(""+response.getDetails());
                 }
                 if(APINAME.equals(""+Config.ApiKeys.KEY_CHANGE_DESTINATION)){
                     updateFirebaseEventWithDestinationChange();
@@ -698,6 +716,12 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
 
+
+    }
+
+
+    @Override
+    public void onFetchResultZero(String script) {
 
     }
 
@@ -780,7 +804,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     private void finaliseAftercancelation() {
         try{
-            RidesActivity.activity.finish();
+            TripHistoryActivity.activity.finish();
         }catch (Exception e){
 
         }
@@ -791,7 +815,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
         rideSession.setRideStatus("18");
         finish();
-        startActivity(new Intent(TrackRideActivity.this , RidesActivity.class ));
+        startActivity(new Intent(TrackRideActivity.this , TripHistoryActivity.class ));
     }
 
 
@@ -883,6 +907,64 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }catch (Exception e){
             ApporioLog.logE(""+TAG , "Caught Exception in start Runnable Process method ==>"+e.getMessage());
         }
+    }
+
+
+
+
+
+    public boolean isPackageExisted(String targetPackage){
+        PackageManager pm=getPackageManager();
+        try {
+            PackageInfo info=pm.getPackageInfo(targetPackage,PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public void showDialogForWazemap(){
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        dialog.setCancelable(true);
+        window.setGravity(Gravity.CENTER);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_for_navigation_types);
+        dialog.findViewById(R.id.google_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+","+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&daddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                    startActivity(intent);
+                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&daddr=" +rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION)));
+                    startActivity(intent);
+                }else {
+                    Snackbar.make(root , ""+TrackRideActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__please_start_your_ridr_first) , Snackbar.LENGTH_SHORT).show();
+                }
+                dialog.dismiss();
+            }
+        });
+
+        dialog.findViewById(R.id.waze_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = "https://waze.com/ul?ll=45.6906304,-120.810983";
+                if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
+                    s = "https://waze.com/ul?ll="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)+","+rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE);
+                }else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")){
+                    s = "https://waze.com/ul?ll="+rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION);
+                }
+
+                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( s ) );
+                startActivity( intent );
+
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 

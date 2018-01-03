@@ -17,14 +17,10 @@ import butterknife.ButterKnife;
 public class CityAdapter extends BaseAdapter {
     Context context;
     ViewCity viewCity;
-    LanguageManager languageManager;
-    String language_id;
 
     public CityAdapter(Context context, ViewCity viewCity) {
         this.context = context;
         this.viewCity = viewCity;
-        languageManager = new LanguageManager(context);
-        language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
     }
 
     @Override
@@ -52,14 +48,7 @@ public class CityAdapter extends BaseAdapter {
         } else {
             myHolder = (MyHolder) convertView.getTag();
         }
-
-        if (language_id.equals("1")) {
-            myHolder.tv_city1.setText(viewCity.getMsg().get(position).getCityName());
-        } else if (language_id.equals("2")) {
-            myHolder.tv_city1.setText(viewCity.getMsg().get(position).getCityNameFrench());
-        } else if (language_id.equals("3")) {
-            myHolder.tv_city1.setText(viewCity.getMsg().get(position).getCityNameArabic());
-        }
+        myHolder.tv_city1.setText(viewCity.getMsg().get(position).getCityName());
         return convertView;
     }
 

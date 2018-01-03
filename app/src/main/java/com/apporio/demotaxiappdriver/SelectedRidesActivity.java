@@ -18,11 +18,13 @@ import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.trackride.TrackRideActivity;
 import com.apporio.demotaxiappdriver.typeface.TypefaceTextView;
 import com.apporio.demotaxiappdriver.urls.Apis;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SelectedRidesActivity extends AppCompatActivity implements ApiManager.APIFETCHER {
 
@@ -63,6 +65,7 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
     @Bind(R.id.tv_date_time1) TypefaceTextView tvDateTime1;
     @Bind(R.id.customer_name_txt) TextView customer_name_txt;
     @Bind(R.id.customer_phone_txt) TextView customer_phone_txt;
+    @Bind(R.id.iv_image_driver) CircleImageView ivImageDriver;
 
 
     @Bind(R.id.night_time_charge_txt) TextView night_time_charge_txt;
@@ -90,7 +93,7 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
 
 
                 String ride_status  = super.getIntent().getExtras().getString("ride_status") ;
-        if(ride_status.equals("2") || ride_status.equals("4") || ride_status.equals("7") || ride_status.equals("9")){
+        if(ride_status.equals(Config.Status.NORMAL_CANCEL_BY_USER) || ride_status.equals(Config.Status.VAL_4) || ride_status.equals(Config.Status.NORMAL_RIDE_END) || ride_status.equals(Config.Status.NORMAL_CANCEL_BY_DRIVER) || ride_status.equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)){
 
             llTrackRide.setVisibility(View.GONE);
         }
@@ -193,6 +196,7 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                     customer_phone_txt.setText(""+viewRideInfoDriver.getDetails().getUser_phone());
                     night_time_charge_txt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getNight_time_charge());
                     peak__charge_txt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getPeak_time_charge());
+                    Glide.with(SelectedRidesActivity.this).load(""+viewRideInfoDriver.getDetails().getUser_image()).into(ivImageDriver);
 
                     try{ratingBar.setRating(Float.parseFloat(""+viewRideInfoDriver.getDetails().getRating_user()));}catch (Exception e){}
                     if(viewRideInfoDriver.getDetails().getCoupons_price().equals("")){
@@ -218,6 +222,12 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 
 
 

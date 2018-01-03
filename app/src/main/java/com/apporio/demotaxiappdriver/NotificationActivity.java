@@ -69,6 +69,12 @@ public class NotificationActivity extends Activity implements ApiManager.APIFETC
 
     }
 
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
 
     @Layout(R.layout.holder_notification)
     private class HolderNotifications{

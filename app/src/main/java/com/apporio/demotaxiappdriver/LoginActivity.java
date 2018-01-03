@@ -181,4 +181,10 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
             }}catch (Exception e){}
 
     }
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
 }

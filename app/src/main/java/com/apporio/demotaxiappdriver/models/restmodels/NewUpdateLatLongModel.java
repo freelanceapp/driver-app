@@ -6,15 +6,18 @@ package com.apporio.demotaxiappdriver.models.restmodels;
 
 public class NewUpdateLatLongModel {
 
+
     /**
      * result : 1
      * msg : Updated Successfully
-     * details : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+     * currency_iso_code : 0
+     * currency_unicode : 20B9
      */
 
     private int result;
     private String msg;
-    private String details;
+    private String currency_iso_code;
+    private String currency_unicode;
 
     public int getResult() {
         return result;
@@ -32,11 +35,19 @@ public class NewUpdateLatLongModel {
         this.msg = msg;
     }
 
-    public String getDetails() {
-        return details;
+    public String getCurrency_iso_code() {
+        return currency_iso_code;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setCurrency_iso_code(String currency_iso_code) {
+        this.currency_iso_code = currency_iso_code;
+    }
+
+    public String getCurrency_unicode() {
+        return currency_unicode;
+    }
+
+    public void setCurrency_unicode(String currency_unicode) {
+        this.currency_unicode = currency_unicode;
     }
 }

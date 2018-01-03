@@ -1,5 +1,6 @@
 package com.apporio.demotaxiappdriver;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,7 +73,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Verify_OTP.this.finish();
+                finish();
             }
         });
 
@@ -80,21 +81,15 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
             @Override
             public void onClick(View v) {
                 input_OTP = otp_input.getText().toString().trim();
-                Log.e("otp_details--getOTP", otp);
-                Log.e("otp_details--edittext", otp_input.getText().toString());
 
                 if (input_OTP.equals("")) {
-                     Toast.makeText(Verify_OTP.this, "Required field empty !", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(Verify_OTP.this, R.string.required_field_empty, Toast.LENGTH_SHORT).show();
                  }else if (!otp_input.getText().toString().equals(otp)) {
-                     Log.e("otp_details--elseIF", String.valueOf(otp_details.getOtp()));
-                     Toast.makeText(Verify_OTP.this, "Invalid OTP !", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(Verify_OTP.this, R.string.invalid_otp, Toast.LENGTH_SHORT).show();
                 }else {
-                    Log.e("otp_details--lastelse", String.valueOf(getIntent().getStringExtra("otp")));
-                    Log.e("otp_details--edittext", otp_input.getText().toString());
-
                     Intent intent = new Intent();
                     intent.putExtra("phone_number", "+"+countryCodePicker.getSelectedCountryCode()+ input_number);
-                    setResult(KEY_REGISTER, intent);
+                    setResult(Activity.RESULT_OK, intent);
                     finish();
                    // apiManager.execution_method_get(Config.ApiKeys.KEY_Driver_register, Apis.register + "?driver_name=" + name + "&driver_email=" + email + "&driver_phone=" + phone + "&driver_password=" + password + "&city_id=" + city_id + "&car_type_id=" + car_id + "&car_model_id=" + car_model_id + "&car_number=" + carNumber + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                  }
@@ -102,32 +97,6 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
             }
         });
 
-        /*
-        //apply textwatcher on editext
-        phone_number.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                Log.e("EDITABLE---", String.valueOf(editable));
-                input_number = editable.toString();
-                Log.e("INPUT_EDITABLE--", input_number);
-                if (editable.length() >= 8){
-                    SignUpAccount(editable.toString(), countryCodePicker.getSelectedCountryCode());
-                }else {
-              //      Toast.makeText(getApplicationContext(), Verify_OTP.this.getResources().getString(R.string.phone_number_should_be_of_ten_digit), Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });*/
 
         generate_otp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +106,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
                 code = countryCodePicker.getSelectedCountryCodeWithPlus();
                 Log.e("COUNTRY_CODE_PICKER===", code);
                 if (input_number.equals("")){
-                    Toast.makeText(Verify_OTP.this, "Required field empty !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Verify_OTP.this, R.string.required_field_empty, Toast.LENGTH_SHORT).show();
                 }else {
                     SignUpAccount(code+input_number);
 
@@ -191,11 +160,11 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
         }
 }
 
+
     @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(Verify_OTP.this, SplashActivity.class);
-        startActivity(intent);
-        super.onBackPressed();
+    public void onFetchResultZero(String script) {
+
     }
+
 }
 

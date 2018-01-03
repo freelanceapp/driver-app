@@ -3,9 +3,16 @@ package com.apporio.demotaxiappdriver;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,6 +20,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,11 +35,16 @@ import com.apporio.demotaxiappdriver.models.carmodels.CarModels;
 import com.apporio.demotaxiappdriver.models.register.Register;
 import com.apporio.demotaxiappdriver.models.viewcartype.ViewCarType;
 import com.apporio.demotaxiappdriver.models.viewcity.ViewCity;
+import com.apporio.demotaxiappdriver.others.ImageCompressMode;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.urls.Apis;
+import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sampermissionutils.AfterPermissionGranted;
+import com.sampermissionutils.EasyPermissions;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,6 +53,10 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
     TextView tv_car_type, tv_car_model, tv_city , tv_city_two, tv_ride_category, txt_phone_signup;
     EditText edt_username_signup, edt_email_signup, edt_pass_signup, edt_car_number, edt_bank_name, edt_account_number, edt_account_name;
     LinearLayout ll_register, ll_back_signup;
+    ImageView driver_image ;
+    Uri selectedImage;
+    Bitmap bitmap1;
+    String imagePath = "", imagePathCompressed = "";
 
     public static Activity register;
 
@@ -55,8 +72,6 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
     ViewCarType viewCarType;
     CarModels carModels;
 
-    LanguageManager languageManager;
-    String language_id;
 
     com.apporio.demotaxiappdriver.samwork.ApiManager apimanager ;
 
@@ -66,7 +81,11 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
     private static final int KEY_REGISTER = 110;
     String phoneNumber, bank_name, account_number, account_name;
 
-
+    private static final int RC_CAMERA_PERM = 123;
+    private ContentValues values;
+    private Bitmap thumbnail;
+    private static final int CAMERS_PICKER = 122;
+    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
 
         tv_ride_category = (TextView) findViewById(R.id.tv_ride_category);
 
+        driver_image = (ImageView) findViewById(R.id.driver_image);
         tv_city = (TextView) findViewById(R.id.tv_city);
         tv_car_type = (TextView) findViewById(R.id.tv_car_type);
         tv_car_model = (TextView) findViewById(R.id.tv_car_model);
@@ -119,10 +139,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         edt_account_number.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_account_name.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
 
-        languageManager = new LanguageManager(this);
-        language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
-
-        apimanager.execution_method_get( Config.ApiKeys.KEY_View_cities , Apis.viewCities+"?&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) );
+        apimanager.execution_method_get( Config.ApiKeys.KEY_View_cities , Apis.viewCities);
 
         tv_city.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,15 +160,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             city_id = viewCity.getMsg().get(position).getCityId();
-                            if (language_id.equals("1")) {
-                                city_name = viewCity.getMsg().get(position).getCityName();
-                            } else if (language_id.equals("2")) {
-                                city_name = viewCity.getMsg().get(position).getCityNameFrench();
-                            } else if (language_id.equals("3")) {
-                                city_name = viewCity.getMsg().get(position).getCityNameArabic();
-                            }
-                            tv_city.setText(city_name);
-                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                            tv_city.setText(""+viewCity.getMsg().get(position).getCityName());
+                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id);
                             dialog.dismiss();
                         }
                     });
@@ -162,12 +172,33 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
             }
         });
 
+        driver_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CFAlertDialog.Builder builder = new CFAlertDialog.Builder(RegisterActivity.this);
+                builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
+                builder.setTitle(R.string.upload_profile_pic);
+                builder.setItems(new String[]{getString(R.string.camera), getString(R.string.gallery)}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int index) {
+                        if(index == 0 ){
+                            try{cameraTask();}catch (Exception e){}
+                        }else if (index == 1 ){
+                            Intent i1 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            i1.setType("image/*");
+                            startActivityForResult(i1, 101);
+                        }
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
+
 
         txt_phone_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(RegisterActivity.this, Verify_OTP.class);
-                // startActivityForResult(intent, KEY_REGISTER);
                 startActivityForResult(new Intent(RegisterActivity.this, Verify_OTP.class), 110);
             }
         });
@@ -207,6 +238,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         tv_city_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if (cityCheck.equals("1")) {
 
                     final Dialog dialog = new Dialog(RegisterActivity.this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -223,20 +256,10 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             city_id = viewCity.getMsg().get(position).getCityId();
-                            if (language_id.equals("1")) {
-                                city_name = viewCity.getMsg().get(position).getCityName();
-                                tv_city_two.setVisibility(View.GONE);
-                            } else if (language_id.equals("2")) {
-                                city_name = viewCity.getMsg().get(position).getCityNameFrench();
-                                tv_city_two.setVisibility(View.GONE);
-                            } else if (language_id.equals("3")) {
-                                city_name = viewCity.getMsg().get(position).getCityNameArabic();
-                                tv_city_two.setVisibility(View.GONE);
-                            }
-                            tv_city.setText(city_name);
+                            tv_city.setText(viewCity.getMsg().get(position).getCityName());
                             tv_city_two.setVisibility(View.GONE);
 
-                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id);
                             dialog.dismiss();
                         }
                     });
@@ -271,15 +294,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             car_id = viewCarType.getMsg().get(position).getCarTypeId();
 
-                            if (language_id.equals("1")) {
-                                car_name = viewCarType.getMsg().get(position).getCarTypeName();
-                            } else if (language_id.equals("2")) {
-                                car_name = viewCarType.getMsg().get(position).getCarTypeNameFrench();
-                            } else if (language_id.equals("3")) {
-                                car_name = viewCarType.getMsg().get(position).getCarNameArabic();
-                            }
-                            tv_car_type.setText(car_name);
-                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_Model , Apis.viewCarModels+"?car_type_id="+car_id+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                            tv_car_type.setText(viewCarType.getMsg().get(position).getCarTypeName());
+                            apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_Model , Apis.viewCarModels+"?car_type_id="+car_id);
                             dialog.dismiss();
                         }
                     });
@@ -313,14 +329,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             car_model_id = carModels.getMsg().get(position).getCarModelId();
 
-                            if (language_id.equals("1")) {
-                                car_model_name = carModels.getMsg().get(position).getCarModelName();
-                            } else if (language_id.equals("2")) {
-                                car_model_name = carModels.getMsg().get(position).getCarModelNameFrench();
-                            } else if (language_id.equals("3")) {
-                                car_model_name = carModels.getMsg().get(position).getCarModelNameArabic();
-                            }
-                            tv_car_model.setText(car_model_name);
+                            tv_car_model.setText(""+carModels.getMsg().get(position).getCarModelName());
                             dialog.dismiss();
                         }
                     });
@@ -372,6 +381,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_enter_account_number), Toast.LENGTH_SHORT).show();
                 }else if (account_name.equals("")){
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_enter_account_name), Toast.LENGTH_SHORT).show();
+                }else if (imagePathCompressed.equals("")){
+                    Toast.makeText(RegisterActivity.this, R.string.please_upload_a_good_quality_image_for_your_profile, Toast.LENGTH_SHORT).show();
                 }else {
                     cretaDriverAccount(name, email, password, city_id, car_id, car_model_id, carNumber, ride_cat_id, bank_name, account_number, account_name);
                 }
@@ -386,8 +397,36 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         });
     }
 
+
+    @AfterPermissionGranted(RC_CAMERA_PERM)
+    public void cameraTask()throws Exception {
+        if (EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)) {
+            try{ // Have permission, do the thing!
+                values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+                imageUri = getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CAMERS_PICKER);
+            }catch (Exception e){}
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.rationale_camera), RC_CAMERA_PERM, android.Manifest.permission.CAMERA);
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        try{cameraTask();}catch (Exception e){}
+    }
+
+
     private void cretaDriverAccount(String name, String email, String password, String city_id, String car_id, String car_model_id, String carNumber, String ride_cat_id, String bank_name, String account_number, String account_name) {
         HashMap<String, String> bodyParameters = new HashMap<String, String>();
+        HashMap<String, File> data_image = new HashMap<String, File>();
         bodyParameters.put("driver_name", name);
         bodyParameters.put("driver_email", email);
         bodyParameters.put("driver_phone", phoneNumber);
@@ -400,10 +439,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         bodyParameters.put("driver_bank_name", bank_name);
         bodyParameters.put("driver_account_name", account_name);
         bodyParameters.put("driver_account_number", account_number);
-        bodyParameters.put("language_id", languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-        apimanager.execution_method_post(Config.ApiKeys.KEY_Driver_register , Apis.register, bodyParameters);
-
-      //  apimanager.execution_method_get(Config.ApiKeys.KEY_Driver_register, Apis.register + "?driver_name="+ name + "&driver_email=" + email + "&driver_phone=" +phoneNumber+ "&driver_password="+password+"&city_id="+city_id+"&car_type_id="+car_id+"&car_number="+carNumber+"&car_model_id="+car_model_id+"&driver_category="+ride_cat_id+"&driver_bank_name="+bank_name+"&driver_account_name="+account_name+"&driver_account_number="+account_number);
+        data_image.put("driver_image" , new File(imagePathCompressed));
+        apimanager.execution_method_image_post(Config.ApiKeys.KEY_Driver_register , Apis.register,data_image, bodyParameters);
 
     }
 
@@ -482,6 +519,14 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
 
 
 
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
+
+
+
+
 
 
 
@@ -501,15 +546,67 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)   {
         super.onActivityResult(requestCode, resultCode, data);
+        try{
+            switch (requestCode){
+                case KEY_REGISTER:
+                    phoneNumber = data.getExtras().getString("phone_number");
+                    txt_phone_signup.setText(data.getExtras().getString("phone_number"));
+                    break;
+                case 101 :
+                    selectedImage = data.getData();
+                    imagePath = getPath(selectedImage);
 
-        switch (requestCode){
-            case KEY_REGISTER:
-                phoneNumber = data.getExtras().getString("phone_number");
-                Log.e("**PHONE_NUMBER---", phoneNumber);
-                txt_phone_signup.setText(data.getExtras().getString("phone_number"));
-                break;
-        }
+                    ImageCompressMode imageCompressMode = new ImageCompressMode(this);
+                    imagePathCompressed = imageCompressMode.compressImage(imagePath);
+
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    // Set the Image in ImageView after decoding the String
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(filePath, options);
+                    final int REQUIRED_SIZE = 300;
+                    int scale = 1;
+                    while (options.outWidth / scale / 2 >= REQUIRED_SIZE && options.outHeight / scale / 2 >= REQUIRED_SIZE)
+                        scale *= 2;
+                    options.inSampleSize = scale;
+                    options.inJustDecodeBounds = false;
+                    bitmap1 = BitmapFactory.decodeFile(filePath, options);
+                    driver_image.setImageBitmap(bitmap1);
+                    break ;
+                case CAMERS_PICKER:
+                    thumbnail = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                    driver_image.setImageBitmap(thumbnail);
+                    imagePath = getRealPathFromURI(imageUri);
+                    ImageCompressMode imageCompressModee = new ImageCompressMode(this);
+                    imagePathCompressed = imageCompressModee.compressImage(imagePath) ;
+                    break;
+            }
+        } catch (Exception e){}
+
     }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+
+    public String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+
 }

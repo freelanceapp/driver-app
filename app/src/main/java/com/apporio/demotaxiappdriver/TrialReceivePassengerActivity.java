@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import customviews.progresswheel.ProgressWheel;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+
+
 
 public class TrialReceivePassengerActivity extends Activity implements ApiManager.APIFETCHER {
 
@@ -81,6 +85,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
         languageManager = new LanguageManager(this);
         setContentView(R.layout.activity_trial_receive_passenger);
         ButterKnife.bind(this);
+
         countDownTimer = new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
                 max_progress = max_progress - 12;
@@ -110,10 +115,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    MyBroadcastReceiver.mediaPlayer.stop();
-                } catch (Exception e) {
-                }
+
                 apiManager.execution_method_get(Config.ApiKeys.KEY_REJECT_RIDE, Apis.rejectRide
                         + "?ride_id=" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&ride_status=4" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
             }
@@ -124,10 +126,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
             @Override
             public void onClick(View v) {
 
-                try {
-                    MyBroadcastReceiver.mediaPlayer.stop();
-                } catch (Exception e) {
-                }
+
                 countDownTimer.cancel();
                 apiManager.execution_method_get(Config.ApiKeys.KEY_ACEPT_RIDE, Apis.acceptRide + "?ride_id=" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
@@ -191,6 +190,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
                 rideExpirePickAddressTxt.setText("" + viewRideInfoDriver.getDetails().getPickup_location());
                 rideExpireDropAddressTxt.setText("" + viewRideInfoDriver.getDetails().getDrop_location());
                 Glide.with(this).load("" + Apis.googleImage + "" + viewRideInfoDriver.getDetails().getPickup_lat() + "," + viewRideInfoDriver.getDetails().getPickup_long() + "&zoom=15&size=400x400&key=" + TrialReceivePassengerActivity.this.getResources().getString(R.string.google_map_key)).into(mapImage);
+
                 String value = viewRideInfoDriver.getDetails().getPayment_option_name();
                 Log.d("**value==", viewRideInfoDriver.getDetails().getPayment_option_name());
 
@@ -224,7 +224,6 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
 
 
             if (APINAME.equals("" + Config.ApiKeys.KEY_ACEPT_RIDE)) {
-
                 AcceptCheck ac = gson.fromJson(""+script , AcceptCheck.class);
                 if(ac.getResult() == 1){
                     RideAccept rideAccept = gson.fromJson("" + script, RideAccept.class);
@@ -232,7 +231,7 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
 
                     if (rideAccept.getResult() == 1) {
                         new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(),rideAccept.getDetails().getUser_id(),rideAccept.getDetails().getUser_name(),rideAccept.getDetails().getUser_phone(),rideAccept.getDetails().getCoupon_code(),rideAccept.getDetails().getPickup_lat(),rideAccept.getDetails().getPickup_long(),rideAccept.getDetails().getPickup_location(),rideAccept.getDetails().getDrop_lat(),rideAccept.getDetails().getDrop_long(),rideAccept.getDetails().getDrop_location(),rideAccept.getDetails().getRide_date(),rideAccept.getDetails().getRide_time(),rideAccept.getDetails().getLater_date(),rideAccept.getDetails().getLater_time(),rideAccept.getDetails().getDriver_id(),rideAccept.getDetails().getRide_type(),rideAccept.getDetails().getRide_status(),rideAccept.getDetails().getStatus());
-                        FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent(""+rideAccept.getDetails().getRide_id() , ""+Config.Status.VAL_3 , "Not yet generated" , "0"));
+                        FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent(""+rideAccept.getDetails().getRide_id() , ""+Config.Status.NORMAL_ACCEPTED, "Not yet generated" , "0"));
                         startActivity(new Intent(this, TrackRideActivity.class)
                                 .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
                                 .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
@@ -248,6 +247,12 @@ public class TrialReceivePassengerActivity extends Activity implements ApiManage
         }
     }
 
+
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
 
 
     public class AcceptCheck {

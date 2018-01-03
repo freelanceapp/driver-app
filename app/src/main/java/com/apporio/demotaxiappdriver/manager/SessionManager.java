@@ -268,11 +268,32 @@ public class SessionManager {
 
 
     public String getCurrencyCode(){
+
+        if(pref.getString(Currency_symbol, "").equals("0")){
+            return ""+pref.getString(Currency_ISO_Code, "ISO") ;
+        }if (pref.getString(Currency_ISO_Code, "").equals("0")){
+            return ""+getSymbol() ;
+        }else{
+            return ""+getSymbol();
+        }
+    }
+
+
+    public void setCurrencyCode(String iso_code , String symbol ){
+
+        Log.i("" +TAG , "Setting symbol = "+symbol);
+        Log.i("" +TAG , "Setting ISO = "+iso_code);
+        editor.putString(Currency_ISO_Code, ""+iso_code);
+        editor.putString(Currency_symbol, ""+symbol);
+        editor.commit();
+    }
+
+
+
+
+    public String getSymbol(){
         String currency = "NA";
-        switch (pref.getString(Currency_symbol, "0024")){
-            case "0":
-                currency = ""+pref.getString(Currency_ISO_Code, "ISO");
-                break;
+        switch (pref.getString(Currency_symbol, "")){
             case "0024":
                 currency = "\u0024";
                 break;
@@ -414,19 +435,15 @@ public class SessionManager {
             case "FFE6":
                 currency = "\uFFE6";
                 break;
+            case "00024":
+                currency = "\u0024";
+                break;
             default:
-                currency = "0";
+                currency = "##";
                 break;
         }
 
         return currency ;
-    }
-
-
-    public void setCurrencyCode(String iso_code , String symbol_id ){
-        editor.putString(Currency_ISO_Code, ""+iso_code);
-        editor.putString(Currency_symbol, ""+symbol_id);
-        editor.commit();
     }
 
 }

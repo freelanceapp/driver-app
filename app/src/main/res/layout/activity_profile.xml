@@ -222,6 +222,64 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/lock" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/PROFILE_ACTIVITY__password_big"
+                        android:textSize="13dp"
+                        geekui:customTypeface="OpenSans_Regular.ttf" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:id="@+id/passwrd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="********"
+                        android:textColor="@color/colorText"
+                        android:textSize="15dp"
+                        geekui:customTypeface="OpenSans_Regular.ttf" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorView" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="25dp"
+                    android:src="@drawable/next_48" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_account_name"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -347,64 +405,6 @@
 
 
             <LinearLayout
-                android:id="@+id/ll_change_password"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/lock" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/PROFILE_ACTIVITY__password_big"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-
-                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
-                        android:id="@+id/passwrd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="********"
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/next_48" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:gravity="center_vertical"
@@ -468,6 +468,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:gravity="center_vertical"
+                android:id="@+id/phone_edit_btn"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -479,7 +480,6 @@
                     android:src="@drawable/phone" />
 
                 <LinearLayout
-                    android:id="@+id/ll2112"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -530,7 +530,7 @@
             <LinearLayout
                 android:id="@+id/ll_logout"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="0dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"

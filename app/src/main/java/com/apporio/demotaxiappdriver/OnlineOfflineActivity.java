@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
+import com.apporio.demotaxiappdriver.models.ModelDeviceOnlineIffline;
 import com.apporio.demotaxiappdriver.models.ResultCheck;
 import com.apporio.demotaxiappdriver.models.deviceid.DeviceId;
 import com.apporio.demotaxiappdriver.others.FirebaseUtils;
@@ -125,8 +126,8 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
             if(resultCheck.result.equals("1")){
                 switch (APINAME){
                     case Config.ApiKeys.KEY_ONLINE_OFFLINE :
-                        DeviceId deviceToken = gson.fromJson(""+script, DeviceId.class);
-                        if(deviceToken.getMsg().equals("Online")){
+                        ModelDeviceOnlineIffline modelDeviceOnlineIffline = gson.fromJson(""+script, ModelDeviceOnlineIffline.class);
+                        if(modelDeviceOnlineIffline.getOffline() == 1){
                             sessionManager.setonline_offline(true);
                             firebaseutil.setDriverOnlineStatus(true);
                         }else {
@@ -144,6 +145,11 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
 
     }
 
+
+    @Override
+    public void onFetchResultZero(String script) {
+
+    }
 
 
 
