@@ -375,33 +375,6 @@ public class MainActivity extends BaseActivity implements Apis,
 
 
 
-        if (sessionManager.isLoggedIn()) {
-            mDatabaseReference.child(sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    DriverLocation driver_location = dataSnapshot.getValue(DriverLocation.class);
-                    try {
-                        if (!driver_location.driver_admin_status.equals("1")) {
-                            sessionManager.logoutUser();
-                            startActivity(new Intent(MainActivity.this, SplashActivity.class));
-                        }
-                    } catch (Exception e) {
-                        ApporioLog.logD("Exception occur ", "" + e);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Logger.e("databaseError     " + databaseError);
-                }
-            });
-        }
-
-//
-//        if(sessionManager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status).equals("2")){
-//            startActivity(new Intent(MainActivity.this , OnlineOfflineActivity.class));
-//        }
-
     }
 
     private void setScrocabilityOnmap() {
@@ -896,7 +869,7 @@ public class MainActivity extends BaseActivity implements Apis,
                             }
                         }
                         break;
-                    case Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG :
+                    case Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND :
                         isLatLongUpdateAPIisRunning = false ;
                         NewUpdateLatLongModel response = gson.fromJson(""+script , NewUpdateLatLongModel.class);
                         sessionManager.setCurrencyCode(""+response.getCurrency_iso_code() , ""+response.getCurrency_unicode());
@@ -917,16 +890,7 @@ public class MainActivity extends BaseActivity implements Apis,
                         finish();
                         break;
                 }
-            } else if(resultCheck.result.equals("419")) {
-                sessionManager.logoutUser();
-                mGooglemap.setOnMyLocationChangeListener(null);
-                Intent intent = new Intent(MainActivity.this, SplashActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
-                finish();
-            }
-            else if(resultCheck.result.equals("0")){
+            } else if(resultCheck.result.equals("0")){
                 if(APINAME.equals(Config.ApiKeys.DRIVER_ACTIVE_RIDES)){
                     rideSession.clearRideSession();
                 }

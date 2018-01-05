@@ -625,12 +625,12 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                 sessionManager.logoutUser();
                 dialog.dismiss();
             } else if (deviceId.getResult().toString().equals("419")) {
-                sessionManager.logoutUser();
-                Intent intent = new Intent(this, SplashActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
-                finish();
+//                sessionManager.logoutUser();
+//                Intent intent = new Intent(this, SplashActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+//                finish();
             } else {
                 Toast.makeText(this, "" + deviceId.getMsg(), Toast.LENGTH_LONG).show();
             }

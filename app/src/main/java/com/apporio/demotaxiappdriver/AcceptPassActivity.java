@@ -1,6 +1,7 @@
 package com.apporio.demotaxiappdriver;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -75,6 +76,8 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     TextView requested_date_txt;
 
 
+    public static Activity activity ;
+
 
     @Bind(R.id.accept_ride_btn)
     LinearLayout acceptRideBtn;
@@ -84,12 +87,17 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     TextView loadingText;
 
 
+    ProgressDialog progressDialog ;
     ModelCheckTime modelCheckTime ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_pass);
         ButterKnife.bind(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(""+this.getResources().getString(R.string.loading));
+        progressDialog.setCancelable(false);
+        activity = this ;
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,6 +175,12 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
 
     @Override
     public void onAPIRunningState(int a, String APINAME) {
+
+        if(a == ApiManager.APIFETCHER.KEY_API_IS_STARTED){
+            progressDialog.show();
+        }else if (progressDialog.isShowing()){
+            try{progressDialog.dismiss();} catch ( Exception e){}
+        }
     }
 
     @Override

@@ -106,7 +106,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     SessionManager sessionManager ;
     TextView customer_info_txt ,location_txt, trip_status_txt, your_location_txt, meter_txt , cancel_btn ,customer_phone_txt , connectivity_status  , acc_txt , chat_message;
     LinearLayout root , sos , message_layout ;
-    ImageView dot ;
+    ImageView dot , pencil_icon ;
     ApiManager apiManager ;
     ProgressDialog progressDialog;
     DBHelper dbHelper ;
@@ -147,6 +147,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         your_location_txt = (TextView) findViewById(R.id.your_location_txt);
         cancel_btn = (TextView) findViewById(R.id.cancel_btn);
         meter_txt = (TextView) findViewById(R.id.meter_txt);
+        pencil_icon = (ImageView) findViewById(R.id.pencil_icon);
         message_layout = (LinearLayout) findViewById(R.id.message_layout);
         customer_phone_txt = (TextView) findViewById(R.id.customer_phone_txt);
         connectivity_status = (TextView) findViewById(R.id.connectivity_status);
@@ -212,7 +213,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     }else{
                         if(  Double.parseDouble(""+ locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY)) >100.0){
                             Toast.makeText(TrackRideActivity.this, getString(R.string.ride_started_but_with_low_accuracy)+locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY), Toast.LENGTH_SHORT).show();}else{}
-                        try{apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP , Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&begin_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));}catch (Exception E){}
+                        try{String url  = ""+Apis.beginTrip+"?ride_id="+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)+"&driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&begin_lat="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&begin_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&begin_location="+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION)+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) ;
+                            apiManager.execution_method_get(Config.ApiKeys.KEY_BEGIN_TRIP ,url.replace(" " , "%20") );}catch (Exception E){}
 
                     }
                 }
@@ -366,10 +368,12 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             location_txt.setText(""+rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
             location_txt.setTextColor(Color.parseColor("#2ecc71"));
             dot.setColorFilter(Color.parseColor("#2ecc71"));
+            pencil_icon.setVisibility(View.GONE);
         }else {
             location_txt.setText(""+rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
             location_txt.setTextColor(Color.parseColor("#e74c3c"));
             dot.setColorFilter(Color.parseColor("#e74c3c"));
+            pencil_icon.setVisibility(View.VISIBLE);
         }
         setviewAccordingToStatus();
     }
@@ -576,7 +580,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
                 if(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("")   ||  rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE)  == null  ){  // no drop off location
-                    mGooglemap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)) , Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)))).zoom(17).build()));
+                    mGooglemap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)) , Double.parseDouble(""+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)))).zoom(17).build()));
 
                 }else{
                     drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
@@ -610,7 +614,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     .include(destination).build();
             Point displaySize = new Point();
             getWindowManager().getDefaultDisplay().getSize(displaySize);
-            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, displaySize.x, 500, 60));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, displaySize.x, 500, 60));
         }catch (Exception e ){
 
         }

@@ -121,15 +121,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements ApiMana
                 if (deviceId.getResult().toString().equals("1")) {
                     Toast.makeText(this, "" + deviceId.getMsg(), Toast.LENGTH_SHORT).show();
                     ChangePasswordActivity.changepasswordactivity.finish();
-                } else if (deviceId.getResult().toString().equals("419")) {
-                    sessionManager.logoutUser();
-                    Intent intent = new Intent(this, SplashActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
-                    finish();
-                    ApporioLog.logE("lat long update       " ,""+ deviceId.getMsg());
-                } else {
+                }else {
                     Toast.makeText(this, "" + deviceId.getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }}catch (Exception e){}

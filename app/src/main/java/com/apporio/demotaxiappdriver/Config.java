@@ -54,7 +54,7 @@ public class Config {
         String KEY_View_done_ride_info = "KEY_View_done_ride_info";
         String KEY_Documents_Submit = "KEY_Documents_Submit";
         String DRIVER_ACTIVE_RIDES = "DRIVER_ACTIVE_RIDES";
-
+        String SOS_REQUEST_NOTIFIER = "Sos_Request";
 
 
         String KEY_ONLINE_OFFLINE = "KEY_ONLINE_OFFLINE";

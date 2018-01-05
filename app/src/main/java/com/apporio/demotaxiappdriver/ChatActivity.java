@@ -57,11 +57,13 @@ public class ChatActivity extends Activity {
     @Bind(R.id.riding_status)
     TextView ridingStatus;
 
+    public static Activity activity ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        activity = this ;
         try {
             firebaseChatUtillistener = new FirebaseChatUtillistener(getIntent().getExtras().getString("ride_id"));
         } catch (Exception e) {

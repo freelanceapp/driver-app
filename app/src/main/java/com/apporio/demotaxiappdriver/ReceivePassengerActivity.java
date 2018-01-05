@@ -103,12 +103,14 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     @Bind(R.id.pulsator)
     PulsatorLayout pulsator;
     private String TAG = "ReceivePassengerActivity";
+    public static  Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_passenger);
         ButterKnife.bind(this);
+        activity = this ;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(R.string.loading));

@@ -384,7 +384,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                 }else if (imagePathCompressed.equals("")){
                     Toast.makeText(RegisterActivity.this, R.string.please_upload_a_good_quality_image_for_your_profile, Toast.LENGTH_SHORT).show();
                 }else {
-                    cretaDriverAccount(name, email, password, city_id, car_id, car_model_id, carNumber, ride_cat_id, bank_name, account_number, account_name);
+                    cretaDriverAccount(name, email, password, city_id, car_id, car_model_id, carNumber, "1", bank_name, account_number, account_name);
                 }
             }
         });

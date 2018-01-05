@@ -41,6 +41,9 @@ public interface Apis {
     String change_drop_location = baseDomain+"change_drop_location.php?";  //  drop_lat  drop_long  drop_location  app_id (1 for user and 2 for demotaxiappdriver) ride_id
     String heatmap = baseDomain+"heatmap.php?driver_id=";
     String PartialAccept = baseDomain+"ride_later_accept.php";
+    String Sos_Request = restdomain+"/Common/SOS_Request";
+
+
 
     String RideSync = restdomain+"/Rental/Ride_Sync";   //  rental_booking_id      app_id= 2 for demotaxiappdriver and 1 for cutomer
     String Rideinfo = restdomain+"/Rental/Ride_Info";

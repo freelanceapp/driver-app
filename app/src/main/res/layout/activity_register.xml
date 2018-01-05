@@ -248,6 +248,7 @@
                     android:layout_marginTop="30dp"
                     android:text="@string/REGISTER_ACTIVITY__select_ride_category"
                     android:textSize="15dp"
+                    android:visibility="gone"
                     geekui:customTypeface="OpenSans_Regular.ttf" />
 
                 <View

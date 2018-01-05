@@ -11,12 +11,21 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.apporio.demotaxiappdriver.AcceptPassActivity;
+import com.apporio.demotaxiappdriver.ChatActivity;
 import com.apporio.demotaxiappdriver.Config;
 import com.apporio.demotaxiappdriver.MainActivity;
 import com.apporio.demotaxiappdriver.NotificationActivity;
+import com.apporio.demotaxiappdriver.PriceFareActivity;
+import com.apporio.demotaxiappdriver.ProfileActivity;
 import com.apporio.demotaxiappdriver.R;
 import com.apporio.demotaxiappdriver.ReAcceptpassActivity;
+import com.apporio.demotaxiappdriver.ReceivePassengerActivity;
+import com.apporio.demotaxiappdriver.SelectedRidesActivity;
+import com.apporio.demotaxiappdriver.SplashActivity;
 import com.apporio.demotaxiappdriver.TripHistoryActivity;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.RideSession;
@@ -43,6 +52,7 @@ import java.util.HashMap;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService implements ApiManager.APIFETCHER {
 
+    private static final String TAG = "MyFirebaseMessagingService";
     Intent intent;
     String pn_message, pn_ride_id, pn_ride_status, app_id;
     String driver_id, language_id;
@@ -127,6 +137,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_REASSIGNED)){
                 sendNotification(""+pn_message);
             }
+            else if (pn_ride_status.equals("101")){
+                sessionManager.logoutUser();
+                Intent it = this.getApplicationContext().getPackageManager()
+                        .getLaunchIntentForPackage( this.getApplicationContext().getPackageName() );
+                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                this.startActivity(it);
+                finishallOtherActivities();
+            }else if (pn_ride_status.equals("17")){
+                sendNotification(""+pn_message);
+            }
     }
 
     void sendNotification(String message123) {
@@ -137,6 +157,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
                     .putExtra("ride_status", pn_ride_status);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("15")){
+            intent = new Intent(this, TripHistoryActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }else if (pn_ride_status.equals("17")){
             intent = new Intent(this, TripHistoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("20")){
@@ -309,5 +332,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
 
     }
 
-
+    private void finishallOtherActivities() {
+        try {MainActivity.mainActivity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {TrackRideActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {TripHistoryActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {SelectedRidesActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {ProfileActivity.profileActivity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {ReceivePassengerActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {AcceptPassActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {ChatActivity.activity.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+        try {PriceFareActivity.pricefare.finish();}catch (Exception E){Log.e("" +TAG, "Exception caught while finish activity "+E.getMessage());}
+    }
 }

@@ -246,11 +246,17 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                     for (int i = 0; i < mRideshistory_response.getDetails().size(); i++) {
 
                         if (mRideshistory_response.getDetails().get(i).getRide_mode().equals("1")) {   // ride type normal
-                            if (mRideshistory_response.getDetails().get(i).getRide_type().equals("2") && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("22")) {
+                            if (mRideshistory_response.getDetails().get(i).getRide_type().equals("2") && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("22")
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_CANCEL_BY_USER)
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_CANCEL_BY_DRIVER)) {
                                 placeHolder.addView(new HolderNewRequestNormal(getActivity(), mRideshistory_response.getDetails().get(i).getNormal_Ride()));
                             }
                         } if (mRideshistory_response.getDetails().get(i).getRide_mode().equals("2")) {   // ride type Rentals
-                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2") && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")) {
+                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2") && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)) {
                                 placeHolder.addView(new HoldernewRequesRental(getActivity(), mRideshistory_response.getDetails().get(i).getRental_Ride()));
                             }
                         }
