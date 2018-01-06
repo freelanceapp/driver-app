@@ -313,7 +313,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         modelAppVersion = gson.fromJson("" + script, ModelAppVersion.class);
 
         try {
-            if(modelAppVersion.getDetails().getAndroid_driver_maintenance_mode().equals("1")){
+            if(modelAppVersion.getDetails().getAndroid_user_maintenance_mode().equals("1")){
                 ApporioLog.logI(TAG, "Application is in under maintainence");
             showAppmaintainanceDialog();
             } else{
