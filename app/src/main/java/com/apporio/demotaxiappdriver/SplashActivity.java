@@ -145,11 +145,11 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
 
 
                 try {
-                    if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().contains(""+result.getNewVersionCode()) &&modelAppVersion.getDetails().getAndroid_user_mandantory_update().contains("1")) {
+                    if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().contains(""+result.getNewVersionCode()) &&modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("1")) {
                         ApporioLog.logI(TAG, "Now Showing app update dialog with mandatory approach");
                         loadingText.setText(R.string.some_man_datory_is_available);
                         showUpdationDialog(true, result);
-                    } else if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().equals("" + result.getNewVersionCode()) && modelAppVersion.getDetails().getAndroid_user_mandantory_update().contains("0")) {
+                    } else if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().equals("" + result.getNewVersionCode()) && modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("")) {
                         ApporioLog.logI(TAG, "Now Showing app update dialog with Non mandatory approach");
                         loadingText.setText(R.string.non_mandatory_update);
                         showUpdationDialog(false, result);
