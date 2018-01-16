@@ -57,24 +57,15 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
     Uri selectedImage;
     Bitmap bitmap1;
     String imagePath = "", imagePathCompressed = "";
-
     public static Activity register;
-
     ArrayList<String> driver_arr;
-
     String city_id, city_name, car_id, car_name, car_model_id, car_model_name, ride_cat_id, password;
-
     ProgressDialog pd;
-
     String cityCheck = "", carTypeCheck = "", carNameCheck = "";
-
     ViewCity viewCity;
     ViewCarType viewCarType;
     CarModels carModels;
-
-
     com.apporio.demotaxiappdriver.samwork.ApiManager apimanager ;
-
     GsonBuilder builder ;
     Gson gson ;
 
@@ -128,8 +119,6 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         edt_bank_name = (EditText) findViewById(R.id.bank_name);
         edt_account_number = (EditText) findViewById(R.id.account_number);
         edt_account_name = (EditText) findViewById(R.id.account_holder_name);
-
-
         edt_username_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_email_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         txt_phone_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
@@ -138,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
         edt_bank_name.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_account_number.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_account_name.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
-
         apimanager.execution_method_get( Config.ApiKeys.KEY_View_cities , Apis.viewCities);
 
         tv_city.setOnClickListener(new View.OnClickListener() {
@@ -384,7 +372,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                 }else if (imagePathCompressed.equals("")){
                     Toast.makeText(RegisterActivity.this, R.string.please_upload_a_good_quality_image_for_your_profile, Toast.LENGTH_SHORT).show();
                 }else {
-                    cretaDriverAccount(name, email, password, city_id, car_id, car_model_id, carNumber, "1", bank_name, account_number, account_name);
+                    cretaDriverAccount(name, email, password, city_id, car_id, car_model_id, carNumber, "3", bank_name, account_number, account_name);
                 }
             }
         });
@@ -557,17 +545,14 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                 case 101 :
                     selectedImage = data.getData();
                     imagePath = getPath(selectedImage);
-
                     ImageCompressMode imageCompressMode = new ImageCompressMode(this);
                     imagePathCompressed = imageCompressMode.compressImage(imagePath);
-
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
                     Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                     cursor.moveToFirst();
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
-
                     // Set the Image in ImageView after decoding the String
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inJustDecodeBounds = true;
