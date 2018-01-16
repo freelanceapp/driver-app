@@ -239,7 +239,6 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
 
             try{
-
                 if(mRideshistory_response == null ){
                 }else{
                     try{for(int i = 0 ;i < placeHolder.getChildCount() ; i++){placeHolder.removeView(i);}}catch (Exception e){}
@@ -253,10 +252,12 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                                 placeHolder.addView(new HolderNewRequestNormal(getActivity(), mRideshistory_response.getDetails().get(i).getNormal_Ride()));
                             }
                         } if (mRideshistory_response.getDetails().get(i).getRide_mode().equals("2")) {   // ride type Rentals
-                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2") && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)) {
+                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2")
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_END)) {
                                 placeHolder.addView(new HoldernewRequesRental(getActivity(), mRideshistory_response.getDetails().get(i).getRental_Ride()));
                             }
                         }
@@ -302,7 +303,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
             try{
                 if(mRideshistory_response == null){
-
+                    /// need to handle this
                 }else{
                     try{for(int i = 0 ;i < placeHolder.getChildCount() ; i++){placeHolder.removeView(i);}}catch (Exception e){}
                     for (int i = 0; i < mRideshistory_response.getDetails().size(); i++) {
