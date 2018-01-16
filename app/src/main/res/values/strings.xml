@@ -588,7 +588,7 @@
     <string name="no_doc_found_inthis_city">No Documents found in this city</string>
     <string name="upcomings">Upcomings</string>
     <string name="past_trips">Past Trips</string>
-    <string name="ride_cancelled_bu_admin">Ride Cancelled bu Admin</string>
+    <string name="ride_cancelled_bu_admin">Ride Cancelled by Admin</string>
     <string name="send_email">Send Email</string>
     <string name="upload_profile_pic">Upload profile pic</string>
     <string name="are_you_sure_to_log_out">Are you sure you want to log out ?</string>
