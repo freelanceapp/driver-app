@@ -10,7 +10,7 @@ public class RentalRideInfoModel {
     /**
      * status : 1
      * message : Ride Information
-     * details : {"rental_booking_id":"77","user_id":"14","rentcard_id":"42","payment_option_id":"1","coupan_code":"","car_type_id":"32","booking_type":"1","driver_id":"0","pickup_lat":"28.412242968680523","pickup_long":"77.04342138022184","pickup_location":"322B, Sohna Rd, Sector 49, Gurugram, Haryana 122018, India","start_meter_reading":"0","start_meter_reading_image":"","end_meter_reading":"0","end_meter_reading_image":"","booking_date":"Wednesday, Nov 22","booking_time":"10:40 AM","ride_platform":"1","user_booking_date_time":"Wednesday, Nov 22, 10:40 AM","last_update_time":"10:40:07 AM","booking_status":"10","payment_status":"0","reason_id":"0","pem_file":"1","date":"2017-11-22","booking_admin_status":"1","user_rating":"0","driver_rating":"0","user_type":"1","user_name":"Pooja Srivastava","user_email":"","user_phone":"+23428596948595","user_password":"","user_image":"","device_id":"","flag":"0","wallet_money":"0","register_date":"Wednesday, Nov 22","referral_code":"","free_rides":"0","referral_code_send":"0","phone_verified":"0","email_verified":"0","password_created":"0","facebook_id":"1691286130944901","facebook_mail":"pooja140294@gmail.com","facebook_image":"http://graph.facebook.com/1691286130944901/picture?type=large","facebook_firstname":"Pooja","facebook_lastname":"Srivastava","google_id":"","google_name":"","google_mail":"","google_image":"","google_token":"","facebook_token":"","token_created":"0","login_logout":"0","rating":"5","user_delete":"0","unique_number":"","user_signup_type":"2","user_signup_date":"2017-11-22","status":"1","driver_name":"","driver_email":"","driver_phone":"","driver_image":"","car_number":"","car_type_name":"new demo","car_type_image":"uploads/car/car_32.png","car_model_name":"","car_model_image":"","package_name":"mum","package_price":"3434"}
+     * details : {"rental_booking_id":"38","user_id":"3","rentcard_id":"2","payment_option_id":"1","coupan_code":"","car_type_id":"2","booking_type":"1","driver_id":"0","pickup_lat":"28.41854696266962","pickup_long":"77.04322122037411","pickup_location":"Building A, 339, Sohna Rd, Sector 49, Gurugram, Haryana 122018, India","start_meter_reading":"0","start_meter_reading_image":"","end_meter_reading":"0","end_meter_reading_image":"","booking_date":"Wednesday, Jan 17","booking_time":"04:30 PM","ride_platform":"1","user_booking_date_time":"Wednesday, Jan 17, 04:30 PM","last_update_time":"04:30:52 PM","booking_status":"10","payment_status":"0","reason_id":"0","pem_file":"1","date":"2018-01-17","booking_admin_status":"1","user_rating":"0","driver_rating":"0","user_type":"1","user_name":"aman .","user_email":"anu@g.com","user_phone":"+23457488998","user_password":"qwerty","user_image":"","device_id":"","flag":"0","wallet_money":"0","register_date":"Saturday, Jan 6","referral_code":"","free_rides":"0","referral_code_send":"0","phone_verified":"0","email_verified":"0","password_created":"0","facebook_id":"","facebook_mail":"","facebook_image":"","facebook_firstname":"","facebook_lastname":"","google_id":"","google_name":"","google_mail":"","google_image":"","google_token":"","facebook_token":"","token_created":"0","login_logout":"1","rating":"0","user_delete":"0","unique_number":"","user_signup_type":"1","user_signup_date":"2018-01-06","status":"1","differenceInSeconds":"20","driver_request_time":"30","driver_name":"","driver_email":"","driver_phone":"","driver_image":"","car_number":"","car_type_name":"Luxury","car_type_image":"uploads/car/car_2.png","car_model_name":"","car_model_image":"","package_name":"Delhi Go","package_price":"10","payment_option_name":"Cash"}
      */
 
     private int status;
@@ -43,55 +43,55 @@ public class RentalRideInfoModel {
 
     public static class DetailsBean {
         /**
-         * rental_booking_id : 77
-         * user_id : 14
-         * rentcard_id : 42
+         * rental_booking_id : 38
+         * user_id : 3
+         * rentcard_id : 2
          * payment_option_id : 1
          * coupan_code :
-         * car_type_id : 32
+         * car_type_id : 2
          * booking_type : 1
          * driver_id : 0
-         * pickup_lat : 28.412242968680523
-         * pickup_long : 77.04342138022184
-         * pickup_location : 322B, Sohna Rd, Sector 49, Gurugram, Haryana 122018, India
+         * pickup_lat : 28.41854696266962
+         * pickup_long : 77.04322122037411
+         * pickup_location : Building A, 339, Sohna Rd, Sector 49, Gurugram, Haryana 122018, India
          * start_meter_reading : 0
          * start_meter_reading_image :
          * end_meter_reading : 0
          * end_meter_reading_image :
-         * booking_date : Wednesday, Nov 22
-         * booking_time : 10:40 AM
+         * booking_date : Wednesday, Jan 17
+         * booking_time : 04:30 PM
          * ride_platform : 1
-         * user_booking_date_time : Wednesday, Nov 22, 10:40 AM
-         * last_update_time : 10:40:07 AM
+         * user_booking_date_time : Wednesday, Jan 17, 04:30 PM
+         * last_update_time : 04:30:52 PM
          * booking_status : 10
          * payment_status : 0
          * reason_id : 0
          * pem_file : 1
-         * date : 2017-11-22
+         * date : 2018-01-17
          * booking_admin_status : 1
          * user_rating : 0
          * driver_rating : 0
          * user_type : 1
-         * user_name : Pooja Srivastava
-         * user_email :
-         * user_phone : +23428596948595
-         * user_password :
+         * user_name : aman .
+         * user_email : anu@g.com
+         * user_phone : +23457488998
+         * user_password : qwerty
          * user_image :
          * device_id :
          * flag : 0
          * wallet_money : 0
-         * register_date : Wednesday, Nov 22
+         * register_date : Saturday, Jan 6
          * referral_code :
          * free_rides : 0
          * referral_code_send : 0
          * phone_verified : 0
          * email_verified : 0
          * password_created : 0
-         * facebook_id : 1691286130944901
-         * facebook_mail : pooja140294@gmail.com
-         * facebook_image : http://graph.facebook.com/1691286130944901/picture?type=large
-         * facebook_firstname : Pooja
-         * facebook_lastname : Srivastava
+         * facebook_id :
+         * facebook_mail :
+         * facebook_image :
+         * facebook_firstname :
+         * facebook_lastname :
          * google_id :
          * google_name :
          * google_mail :
@@ -99,24 +99,27 @@ public class RentalRideInfoModel {
          * google_token :
          * facebook_token :
          * token_created : 0
-         * login_logout : 0
-         * rating : 5
+         * login_logout : 1
+         * rating : 0
          * user_delete : 0
          * unique_number :
-         * user_signup_type : 2
-         * user_signup_date : 2017-11-22
+         * user_signup_type : 1
+         * user_signup_date : 2018-01-06
          * status : 1
+         * differenceInSeconds : 20
+         * driver_request_time : 30
          * driver_name :
          * driver_email :
          * driver_phone :
          * driver_image :
          * car_number :
-         * car_type_name : new demo
-         * car_type_image : uploads/car/car_32.png
+         * car_type_name : Luxury
+         * car_type_image : uploads/car/car_2.png
          * car_model_name :
          * car_model_image :
-         * package_name : mum
-         * package_price : 3434
+         * package_name : Delhi Go
+         * package_price : 10
+         * payment_option_name : Cash
          */
 
         private String rental_booking_id;
@@ -182,6 +185,8 @@ public class RentalRideInfoModel {
         private String user_signup_type;
         private String user_signup_date;
         private String status;
+        private String differenceInSeconds;
+        private String driver_request_time;
         private String driver_name;
         private String driver_email;
         private String driver_phone;
@@ -193,6 +198,7 @@ public class RentalRideInfoModel {
         private String car_model_image;
         private String package_name;
         private String package_price;
+        private String payment_option_name;
 
         public String getRental_booking_id() {
             return rental_booking_id;
@@ -698,6 +704,22 @@ public class RentalRideInfoModel {
             this.status = status;
         }
 
+        public String getDifferenceInSeconds() {
+            return differenceInSeconds;
+        }
+
+        public void setDifferenceInSeconds(String differenceInSeconds) {
+            this.differenceInSeconds = differenceInSeconds;
+        }
+
+        public String getDriver_request_time() {
+            return driver_request_time;
+        }
+
+        public void setDriver_request_time(String driver_request_time) {
+            this.driver_request_time = driver_request_time;
+        }
+
         public String getDriver_name() {
             return driver_name;
         }
@@ -784,6 +806,14 @@ public class RentalRideInfoModel {
 
         public void setPackage_price(String package_price) {
             this.package_price = package_price;
+        }
+
+        public String getPayment_option_name() {
+            return payment_option_name;
+        }
+
+        public void setPayment_option_name(String payment_option_name) {
+            this.payment_option_name = payment_option_name;
         }
     }
 }

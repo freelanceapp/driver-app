@@ -540,7 +540,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(R.id.today_schedule_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class));
+                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class).putExtra("tab_number" , "0"));
             }
         });
 
@@ -548,7 +548,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(R.id.unaccepted_rides_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class));
+                startActivity(new Intent(MainActivity.this , TripHistoryActivity.class).putExtra("tab_number" , "1"));
             }
         });
 

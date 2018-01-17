@@ -64,6 +64,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     public static Activity activity;
     private static NewRidehistoryModel mRideshistory_response;
     ProgressDialog progressDialog;
+    private int OPEN_TAB = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         });
         activityName.setText(this.getResources().getString(R.string.your_trips));
 
+        try{OPEN_TAB = Integer.parseInt(""+getIntent().getExtras().getString("tab_number"));}catch (Exception E){}
 
 
         try {
@@ -100,6 +102,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         container.setAdapter(mSectionsPagerAdapter);
         viewpagertab.setViewPager(container);
 
+        container.setCurrentItem(OPEN_TAB);
 
 
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +150,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                 mSectionsPagerAdapter = new PagerAdapter(getSupportFragmentManager());
                 container.setAdapter(mSectionsPagerAdapter);
                 viewpagertab.setViewPager(container);
+                container.setCurrentItem(OPEN_TAB);
             }
 
 
