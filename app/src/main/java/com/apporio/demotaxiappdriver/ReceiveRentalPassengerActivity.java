@@ -152,16 +152,11 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
             long difference_time = (Long.parseLong(TimeDifference ) * 1000);
             STARTTIME = MAXTIME - difference_time;
             if(STARTTIME <=1){
-                HashMap<String, String> data = new HashMap<String, String>();
-                data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
-                data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
-                data.put("driver_token", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
-                apiManager.execution_method_post(Config.ApiKeys.KEY_REST_REJECT_RIDE, "" + Apis.RejectRide, data);
+                firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                finish();
             }else{
                 timeTxt.setText(""+(STARTTIME / 1000));
                 startTimer();
-                firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
-                finish();
             }
 
         } catch (Exception e) {

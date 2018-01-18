@@ -397,7 +397,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         }
         rideSession.setRideStatus("18");
         finish();
-        startActivity(new Intent(RentalTrackRideActivity.this , TripHistoryActivity.class ));
+        startActivity(new Intent(RentalTrackRideActivity.this , TripHistoryActivity.class ).putExtra("tab_number" , "2"));
     }
 
 
