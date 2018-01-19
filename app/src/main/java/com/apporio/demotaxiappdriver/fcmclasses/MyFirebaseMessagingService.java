@@ -127,6 +127,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
                 }else {
                     apiManager_new.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1" );
                 }
+            } else if (pn_ride_status.equals("19")){
+                if(Constants.is_Rental_Track_Activity_is_open){
+                    EventBus.getDefault().post(new RideEvent(pn_ride_id , pn_ride_status , pn_message));
+                }else {
+                    sendNotification(""+pn_message);
+                }
             }
             else if (pn_ride_status.equals("51")){
                 sendNotification(""+pn_message);
@@ -162,7 +168,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
         }else if (pn_ride_status.equals("17")){
             intent = new Intent(this, TripHistoryActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }else if (pn_ride_status.equals("20")){
+        }else if (pn_ride_status.equals("19")){
+            rideSession.clearRideSession();
+            intent = new Intent(this, TripHistoryActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        else if (pn_ride_status.equals("20")){
             intent = new Intent(this, TrackRideActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals("51")){

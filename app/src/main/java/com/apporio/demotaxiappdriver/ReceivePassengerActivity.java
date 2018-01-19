@@ -226,6 +226,25 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     }
 
 
+    private void setTimeInterval(String maxtime, String differencetime) {
+        try {
+            MAXTIME = (Long.parseLong(""+maxtime ) * 1000);
+            long difference_time = (Long.parseLong(""+differencetime) * 1000);
+            STARTTIME = MAXTIME - difference_time;
+            if(STARTTIME <= 1 ){
+                apiManager.execution_method_get(Config.ApiKeys.KEY_REJECT_RIDE, Apis.rejectRide
+                        + "?ride_id=" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&ride_status=4" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+            }else{
+                timeTxt.setText(""+(STARTTIME / 1000));
+                setprogressQuadAndMaxProgress(MAXTIME, STARTTIME);
+            }
+        } catch (Exception e) {
+            ApporioLog.logE("" + TAG, "Exception Caught while taking time for progress timer -->" + e.getMessage());
+        }
+    }
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -289,17 +308,9 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
                     card_Layout.setVisibility(View.VISIBLE);
                 }
 
-                try {
-                    MAXTIME = (Long.parseLong(""+viewRideInfoDriver.getDetails().getDriver_request_time() ) * 1000);
-                    long difference_time = (Long.parseLong(""+viewRideInfoDriver.getDetails().getDifferenceInSeconds() ) * 1000);
-                    STARTTIME = MAXTIME - difference_time;
-                    Log.d("" + TAG, "MAX TIME" + MAXTIME);
-                    Log.d("" + TAG, "START TIME " + STARTTIME);
-                    timeTxt.setText(""+(STARTTIME / 1000));
-                    setprogressQuadAndMaxProgress(MAXTIME, STARTTIME);
-                } catch (Exception e) {
-                    ApporioLog.logE("" + TAG, "Exception Caught while taking time for progress timer -->" + e.getMessage());
-                }
+                setTimeInterval(""+viewRideInfoDriver.getDetails().getDriver_request_time() , ""+viewRideInfoDriver.getDetails().getDifferenceInSeconds() );
+
+
 
 
             }
@@ -350,6 +361,8 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
             Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 
     @Override

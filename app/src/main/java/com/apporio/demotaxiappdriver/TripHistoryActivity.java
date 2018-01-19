@@ -64,6 +64,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     public static Activity activity;
     private static NewRidehistoryModel mRideshistory_response;
     ProgressDialog progressDialog;
+    private int OPEN_TAB = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         });
         activityName.setText(this.getResources().getString(R.string.your_trips));
 
+        try{OPEN_TAB = Integer.parseInt(""+getIntent().getExtras().getString("tab_number"));}catch (Exception E){}
 
 
         try {
@@ -100,6 +102,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         container.setAdapter(mSectionsPagerAdapter);
         viewpagertab.setViewPager(container);
 
+        container.setCurrentItem(OPEN_TAB);
 
 
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +150,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                 mSectionsPagerAdapter = new PagerAdapter(getSupportFragmentManager());
                 container.setAdapter(mSectionsPagerAdapter);
                 viewpagertab.setViewPager(container);
+                container.setCurrentItem(OPEN_TAB);
             }
 
 
@@ -239,7 +243,6 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
 
             try{
-
                 if(mRideshistory_response == null ){
                 }else{
                     try{for(int i = 0 ;i < placeHolder.getChildCount() ; i++){placeHolder.removeView(i);}}catch (Exception e){}
@@ -253,10 +256,12 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                                 placeHolder.addView(new HolderNewRequestNormal(getActivity(), mRideshistory_response.getDetails().get(i).getNormal_Ride()));
                             }
                         } if (mRideshistory_response.getDetails().get(i).getRide_mode().equals("2")) {   // ride type Rentals
-                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2") && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)) {
+                            if (mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_type().equals("2")
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("22")
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)
+                                    && !mRideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals(Config.Status.RENTAL_RIDE_END)) {
                                 placeHolder.addView(new HoldernewRequesRental(getActivity(), mRideshistory_response.getDetails().get(i).getRental_Ride()));
                             }
                         }
@@ -302,7 +307,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
             try{
                 if(mRideshistory_response == null){
-
+                    /// need to handle this
                 }else{
                     try{for(int i = 0 ;i < placeHolder.getChildCount() ; i++){placeHolder.removeView(i);}}catch (Exception e){}
                     for (int i = 0; i < mRideshistory_response.getDetails().size(); i++) {

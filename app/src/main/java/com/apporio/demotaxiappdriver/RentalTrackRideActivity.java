@@ -180,7 +180,9 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         super.onResume();
         EventBus.getDefault().register(this);
         Constants.is_Rental_Track_Activity_is_open = true  ;
-        if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("15")){showDialogForCancelation();}
+        if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)){showDialogForCancelation();}
+        if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)){showDialogForCancelationByAdmin();}
+        if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)){showDialogForCancelation();}
     }
 
     @Override
@@ -220,8 +222,12 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event){
-        if(event.getRideStatus().equals("15")){
+    public void onMessageEvent(MyFirebaseMessagingService.RideEvent event){
+        if(event.getRideStatus().equals(Config.Status.RENTAL_RIDE_CANCEL_BY_USER)){
+            showDialogForCancelation();
+        }if(event.getRideStatus().equals(Config.Status.RENTAL_RIDE_CANCEl_BY_ADMIN)){
+            showDialogForCancelationByAdmin();
+        }if(event.getRideStatus().equals(Config.Status.RENTAL_RIDE_CANCELLED_BY_DRIVER)){
             showDialogForCancelation();
         }
     }
@@ -244,6 +250,27 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
         dialog.show();
     }
+
+    private void showDialogForCancelationByAdmin() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        dialog.setCancelable(true);
+        window.setGravity(Gravity.CENTER);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_for_cancel_via_admin);
+        dialog.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finaliseAftercancelation();
+            }
+        });
+
+        dialog.show();
+    }
+
+
 
 
     public void setviewAccordingToStatus (){
@@ -370,7 +397,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         }
         rideSession.setRideStatus("18");
         finish();
-        startActivity(new Intent(RentalTrackRideActivity.this , TripHistoryActivity.class ));
+        startActivity(new Intent(RentalTrackRideActivity.this , TripHistoryActivity.class ).putExtra("tab_number" , "2"));
     }
 
 
