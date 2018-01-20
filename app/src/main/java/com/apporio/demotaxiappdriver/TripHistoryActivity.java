@@ -252,7 +252,8 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
                             if (mRideshistory_response.getDetails().get(i).getRide_type().equals("2") && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("22")
                                     && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_CANCEL_BY_USER)
                                     && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)
-                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_CANCEL_BY_DRIVER)) {
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_CANCEL_BY_DRIVER)
+                                    && !mRideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals(Config.Status.NORMAL_RIDE_END)) {
                                 placeHolder.addView(new HolderNewRequestNormal(getActivity(), mRideshistory_response.getDetails().get(i).getNormal_Ride()));
                             }
                         } if (mRideshistory_response.getDetails().get(i).getRide_mode().equals("2")) {   // ride type Rentals
@@ -409,7 +410,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("" + mNormalRideResponse.getRide_date());
+            tv_date_time.setText("#"+mNormalRideResponse.getRide_id()+"  " + mNormalRideResponse.getRide_date());
             tv_pickup_addresss.setText("" + mNormalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mNormalRideResponse.getDrop_location());
             customer_name_txt.setText("" + mNormalRideResponse.getUser_name());
@@ -478,7 +479,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("" + mRentalRideResponse.getBooking_date());
+            tv_date_time.setText("#"+mRentalRideResponse.getRental_booking_id() +"  "+ mRentalRideResponse.getBooking_date());
             tv_pickup_addresss.setText("" + mRentalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mRentalRideResponse.getEnd_location());
             customer_name_txt.setText("" + mRentalRideResponse.getUser_name());
@@ -546,7 +547,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("" + mNormalRideResponse.getLater_date() + " | " + mNormalRideResponse.getLater_time());
+            tv_date_time.setText("#"+mNormalRideResponse.getRide_id() +"  "+ mNormalRideResponse.getLater_date() + " | " + mNormalRideResponse.getLater_time());
             tv_pickup_addresss.setText("" + mNormalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mNormalRideResponse.getDrop_location());
             customer_name_txt.setText("" + mNormalRideResponse.getUser_name());
@@ -605,7 +606,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("" + mRentalRideResponse.getBooking_date());
+            tv_date_time.setText("#"+ mRentalRideResponse.getRental_booking_id()+"  " + mRentalRideResponse.getBooking_date());
             tv_pickup_addresss.setText("" + mRentalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mRentalRideResponse.getEnd_location());
             customer_name_txt.setText("" + mRentalRideResponse.getUser_name());
