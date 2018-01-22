@@ -825,47 +825,52 @@ public class MainActivity extends BaseActivity implements Apis,
                     case Config.ApiKeys.DRIVER_ACTIVE_RIDES:
                         activeRidesResponse = gson.fromJson(""+script , ActiveRidesResponse.class);
                         if(activeRidesResponse.getDetails().get(0).getRide_mode().equals("1")){ // normal type ride
-                            rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_id(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_id(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_name(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_phone(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getCoupon_code(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_lat(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_long(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_location(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_lat(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_long(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_location(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_date(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_time(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getLater_date(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getLater_time(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getDriver_id(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_type(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status(),
-                                    activeRidesResponse.getDetails().get(0).getNormal_Ride().getStatus());
-                            startActivityAccordingToSatatus(Integer.parseInt(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status()), activeRidesResponse.getDetails().get(0).getNormal_Ride().getDone_ride_id());
+                            if(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status().equals("1")&& !Config.ReceiverPassengerActivity  ){
+                                startActivity(new Intent(MainActivity.this , ReceivePassengerActivity.class).putExtra(""+Config.IntentKeys.RIDE_ID ,""+activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_id()));
+                            }else{
+                                rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_id(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_id(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_name(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getUser_phone(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getCoupon_code(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_lat(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_long(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getPickup_location(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_lat(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_long(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getDrop_location(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_date(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_time(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getLater_date(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getLater_time(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getDriver_id(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_type(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status(),
+                                        activeRidesResponse.getDetails().get(0).getNormal_Ride().getStatus());
+                                startActivityAccordingToSatatus(Integer.parseInt(activeRidesResponse.getDetails().get(0).getNormal_Ride().getRide_status()), activeRidesResponse.getDetails().get(0).getNormal_Ride().getDone_ride_id());
+                            }
                         }else if (activeRidesResponse.getDetails().get(0).getRide_mode().equals("2")){ // rental ride types
-                            rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_name(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_phone(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getReferral_code(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_lat(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_long(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_location(),
-                                    "" , "" , "",
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getDriver_id(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_type(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status(),
-                                    activeRidesResponse.getDetails().get(0).getRental_Ride().getStatus());
-                            if (activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status().equals("16")){
+                            if(activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status().equals("10")&& !Config.RentalReceivepassengerActivity){
+                                startActivity(new Intent(MainActivity.this , ReceiveRentalPassengerActivity.class).putExtra(""+Config.IntentKeys.RIDE_ID ,""+activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id()));
+                            }else{
+                                rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_name(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_phone(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getReferral_code(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_lat(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_long(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_location(),
+                                        "" , "" , "",
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getDriver_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_type(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getStatus());
                                 startActivity(new Intent(MainActivity.this, RentalPriceFareActiviy.class).putExtra("ride_id", activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id()).putExtra("user_id", activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id()));
-
                             }
                         }
                         break;

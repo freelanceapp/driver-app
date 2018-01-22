@@ -309,9 +309,18 @@ public class RegistrationModel {
 
     public static class OTP_Details{
 
-        String message;
-        String otp;
-        int status;
+
+        /**
+         * status : 1
+         * message : Otp Sent to phone for Verification
+         * otp : 2017
+         * auto_otp : 1
+         */
+
+        private int status;
+        private String message;
+        private String otp;
+        private int auto_otp;
 
         public int getStatus() {
             return status;
@@ -321,6 +330,13 @@ public class RegistrationModel {
             this.status = status;
         }
 
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
         public String getOtp() {
             return otp;
@@ -330,13 +346,12 @@ public class RegistrationModel {
             this.otp = otp;
         }
 
-        public String getMessage() {
-
-            return message;
+        public int getAuto_otp() {
+            return auto_otp;
         }
 
-        public void setMessage(String message) {
-            this.message = message;
+        public void setAuto_otp(int auto_otp) {
+            this.auto_otp = auto_otp;
         }
     }
 

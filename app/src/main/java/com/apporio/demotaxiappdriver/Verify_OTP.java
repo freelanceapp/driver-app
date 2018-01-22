@@ -154,6 +154,9 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
                 otp = otp_response.getOtp();
                 Log.e("OTP_RECEIVED--", String.valueOf(otp));
                 otp_input.requestFocus();
+                if(otp_response.getAuto_otp() == 1){
+                    otp_input.setText(""+otp);
+                }
             } else {
                 Toast.makeText(this, "" + otp_response.getMessage(), Toast.LENGTH_SHORT).show();
             }

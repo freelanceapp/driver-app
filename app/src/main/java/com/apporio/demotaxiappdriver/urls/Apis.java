@@ -68,6 +68,7 @@ public interface Apis {
     String ScheduleAndunacceptedRide = baseDomain+"scheduled_and_unaccepted_rides.php";  //  driver_id
     String CheckRideTime = baseDomain+"check_ride_time.php?ride_id=" ; // &ride_mode=
 
+    String DemoRegister = baseDomain+"demo_register_driver.php";
 
     //  driver_id=4&name=1&email=12&phone=&query=hello
     String Notifications = restdomain+"/Common/Notification"; // application  (1 for user and 2 for demotaxiappdriver)

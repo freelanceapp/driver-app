@@ -118,6 +118,7 @@ public class Config {
         String KEY_REPORT_ISSUE = "KEY_REPORT_ISSUE";
 
         String LOGOUT = "LOGOUT";
+        String KEY_DEMO_USER = "KEY_DEMO_USER";
     }
 
 
