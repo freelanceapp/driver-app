@@ -697,6 +697,19 @@ public class MainActivity extends BaseActivity implements Apis,
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(EventNewRide event){
+        try{
+            if(event.RideStatus.equals("1")){  //   ride booked for normal type
+                startActivity(new Intent(MainActivity.this , ReceivePassengerActivity.class).putExtra(""+Config.IntentKeys.RIDE_ID , ""+event.RideId));
+//                Toast.makeText(mainActivity, "Open Activity", Toast.LENGTH_SHORT).show();
+            }else if (event.RideStatus.equals("10")){  //  ride booked for rental type
+                startActivity(new Intent(MainActivity.this , ReceiveRentalPassengerActivity.class).putExtra(""+Config.IntentKeys.RIDE_ID , ""+event.RideId));
+            }
+        }catch (Exception e){}
+    }
+
+
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)

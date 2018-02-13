@@ -82,7 +82,7 @@ public class TimelySessionService extends  Service {
                                 Log.d(""+TAG , "Device screen is interactive.");
                                 fetchRideFromPool();
                             }else {
-                            Log.d(""+TAG , "Device screen is not interactive.");
+                                Log.d(""+TAG , "Device screen is not interactive.");
                             }
                         }
 
@@ -96,43 +96,43 @@ public class TimelySessionService extends  Service {
             ApporioLog.logD("**"+TAG , "fetching data from pool ");
             try{
                 try{
-                myRef.child(""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                    try{
-                            if(dataSnapshot.child("ride_status").getValue().equals("1") && !Config.ReceiverPassengerActivity  && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
-                                ApporioLog.logD("***"+TAG , "getting ride successfuly ");
-                                Config.ReceiverPassengerActivity = true ;
-                                Intent broadcastIntent = new Intent();
-                                broadcastIntent.putExtra("ride_id", ""+dataSnapshot.child("ride_id").getValue());
-                                broadcastIntent.putExtra("ride_status", ""+dataSnapshot.child("ride_status").getValue());
-                                broadcastIntent.setAction("com.apporio.demotaxiappdriver");
-                                sendBroadcast(broadcastIntent);
-                            }else if (dataSnapshot.child("ride_status").getValue().equals("10")&& !Config.RentalReceivepassengerActivity && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
-                                Config.RentalReceivepassengerActivity = true ;
-                                Intent broadcastIntent_rental = new Intent();
-                                broadcastIntent_rental.putExtra("ride_id", ""+dataSnapshot.child("ride_id").getValue());
-                                broadcastIntent_rental.putExtra("ride_status", ""+dataSnapshot.child("ride_status").getValue());
-                                broadcastIntent_rental.setAction("com.apporio.demotaxiappdriver");
-                                sendBroadcast(broadcastIntent_rental);
-                            }else{
-                                ApporioLog.logE(""+TAG , "After fetch no intent were called => datasnapshot ride status ="+dataSnapshot.child("ride_status").getValue()+"  ReceiverPassengerActivity="+Config.ReceiverPassengerActivity+"  Ride_Id in ridesession =>"+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                    myRef.child(""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            try{
+                                if(dataSnapshot.child("ride_status").getValue().equals("1") && !Config.ReceiverPassengerActivity  && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
+                                    ApporioLog.logD("***"+TAG , "getting ride successfuly ");
+                                    Config.ReceiverPassengerActivity = true ;
+                                    Intent broadcastIntent = new Intent();
+                                    broadcastIntent.putExtra("ride_id", ""+dataSnapshot.child("ride_id").getValue());
+                                    broadcastIntent.putExtra("ride_status", ""+dataSnapshot.child("ride_status").getValue());
+                                    broadcastIntent.setAction("com.apporio.demotaxiappdriver");
+                                    sendBroadcast(broadcastIntent);
+                                }else if (dataSnapshot.child("ride_status").getValue().equals("10")&& !Config.RentalReceivepassengerActivity && rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID).equals("")){
+                                    Config.RentalReceivepassengerActivity = true ;
+                                    Intent broadcastIntent_rental = new Intent();
+                                    broadcastIntent_rental.putExtra("ride_id", ""+dataSnapshot.child("ride_id").getValue());
+                                    broadcastIntent_rental.putExtra("ride_status", ""+dataSnapshot.child("ride_status").getValue());
+                                    broadcastIntent_rental.setAction("com.apporio.demotaxiappdriver");
+                                    sendBroadcast(broadcastIntent_rental);
+                                }else{
+                                    ApporioLog.logE(""+TAG , "After fetch no intent were called => datasnapshot ride status ="+dataSnapshot.child("ride_status").getValue()+"  ReceiverPassengerActivity="+Config.ReceiverPassengerActivity+"  Ride_Id in ridesession =>"+rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                                }
+
+
+                            }catch (Exception e){
+                                ApporioLog.logE("" +TAG , "Exception caught while fetching data from active ride ==>"+e.getMessage());
                             }
-
-
-                    }catch (Exception e){
-                        ApporioLog.logE("" +TAG , "Exception caught while fetching data from active ride ==>"+e.getMessage());
-                    }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        ApporioLog.logI(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
-                    }
-                });
-            }catch (Exception e){
-                ApporioLog.logE(""+TAG , "TAXI EXCEPTION "+e.getMessage());
-            }}catch (Exception e){}
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            ApporioLog.logI(""+TAG , "Data Fetched from firebase cancelled "+databaseError.getMessage());
+                        }
+                    });
+                }catch (Exception e){
+                    ApporioLog.logE(""+TAG , "TAXI EXCEPTION "+e.getMessage());
+                }}catch (Exception e){}
         }
     }
 }

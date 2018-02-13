@@ -407,7 +407,10 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
                         showAppmaintainanceDialog();
                     } else {
                         ApporioLog.logI(TAG, "Checking version of application.");
-                        checkForVersionUpdation();
+//                        checkForVersionUpdation();
+                        ApporioLog.logI(TAG, "Initiating splash process");
+                        loadingText.setText("Update ignored");
+                        startCheckingLoginProcedure();
                     }
                 } catch (Exception e) {
                     ApporioLog.logE("" + TAG, "Exception Caught in OnFetchComplete ==>" + e.getMessage());
