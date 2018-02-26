@@ -59,9 +59,6 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
     private Handler mHandler = new Handler();
     private Timer mTimer = null;
 
-    Location mLocation = null ;
-
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -79,13 +76,6 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
         dbHelper = new DBHelper(this);
         builder = new GsonBuilder();
         gson = builder.create();
-        if(mLocation == null){
-            mLocation = new Location("");
-            mLocation.setLatitude(28.412089);
-            mLocation.setLongitude(77.044540);
-            mLocation.setAccuracy(20);
-        }
-
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -154,13 +144,13 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
                     EventBus.getDefault().post(new EventytrackAccuracy(""+location.getAccuracy()));
                     try{
                         if(app_location_mamanger.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT).equals("")){
-                            updateLocationToSession(mLocation);
+                            updateLocationToSession(location);
                         }else{
                             if(location.getAccuracy()<Float.parseFloat(""+sessionManager.getUserDetails().get(SessionManager.KEY_accuracy))){
                                 Double distance =Double.parseDouble(""+ AerialDistance.aerialDistanceFunctionInMeters(Double.parseDouble(app_location_mamanger.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)),Double.parseDouble(app_location_mamanger.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)), location.getLatitude(),location.getLongitude()) ) ;
                                 if( distance > Double.parseDouble(""+sessionManager.getUserDetails().get(SessionManager.KEY_meter_range))){
                                     // if distance between two lat long is greater than 100 then only update on firebase and location session
-                                    updateLocationToSession(mLocation );
+                                    updateLocationToSession(location );
                                     if(!isApiRunnign){
                                         apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ location.getLatitude()+"&current_long="+location.getLongitude()+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                                     }
