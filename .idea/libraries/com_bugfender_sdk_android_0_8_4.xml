@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.bugfender.sdk:android-0.8.4">
     <CLASSES>
-      <root url="file://C:/location_settings/.android/build-cache/22a234c4e45a33c2fd30faae3eddd3e10ff85a0e/output/res" />
-      <root url="jar://C:/location_settings/.android/build-cache/22a234c4e45a33c2fd30faae3eddd3e10ff85a0e/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/69faa73fcbfef44707977f460414276a9d6f858a/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/69faa73fcbfef44707977f460414276a9d6f858a/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

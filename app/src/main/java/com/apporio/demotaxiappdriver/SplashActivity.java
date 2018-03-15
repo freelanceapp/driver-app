@@ -66,6 +66,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
     Gson gson;
     ModelAppVersion modelAppVersion;
     public static Activity splash;
+    LanguageManager languageManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         firebaseUtils = new FirebaseUtils(this);
         gson = new GsonBuilder().create();
         splash = this;
+        languageManager = new LanguageManager(this);
         new LanguageManager(this).createLanguageSession();
 
         if (!AppUtils.hasPermissions(this, PERMISSIONS)) {
@@ -85,6 +87,8 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         } else {
             startGPSCheck();
         }
+
+        setlanguage();
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -269,6 +273,20 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
             LoginBox.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    private void setlanguage() {
+
+        try {
+            if (languageManager.getLanguage().equals("") || languageManager.getLanguage().equals("null")) {
+                languageManager.setLanguage("en");
+            } else {
+                languageManager.setLanguage("" + languageManager.getLanguage());
+            }
+        }
+        catch (Exception e){
+
+        }
     }
 
     public void showGPSDialog() {

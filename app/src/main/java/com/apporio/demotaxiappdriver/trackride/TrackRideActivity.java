@@ -68,6 +68,8 @@ import com.apporio.demotaxiappdriver.routedrawer.DrawMarker;
 import com.apporio.demotaxiappdriver.routedrawer.DrawRouteMaps;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
 import com.apporio.demotaxiappdriver.urls.Apis;
+import com.apporio.demotaxiappdriver.views.MButton;
+import com.apporio.demotaxiappdriver.views.MaterialRippleLayout;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -106,10 +108,13 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     LanguageManager languageManager ;
     RideSession rideSession;
     SessionManager sessionManager ;
-    TextView customer_info_txt ,location_txt, trip_status_txt, your_location_txt, meter_txt , cancel_btn ,customer_phone_txt , connectivity_status  , acc_txt , chat_message;
+    TextView customer_info_txt ,location_txt, cancel_btn,your_location_txt, meter_txt ,customer_phone_txt , connectivity_status  , acc_txt , chat_message;
     LinearLayout root , sos , message_layout ;
     ImageView dot , pencil_icon ;
     ApiManager apiManager ;
+
+    MButton trip_status_txt;
+
     ProgressDialog progressDialog;
     DBHelper dbHelper ;
     boolean  is_location_updation_running   = false  ;
@@ -123,11 +128,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     FirebaseChatUtillistener firebaseChatUtillistener ;
     private static final int TELEPHONE_PERM = 657;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,9 +145,16 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         progressDialog.setCancelable(false);
         setContentView(R.layout.activity_track_ride);
         customer_info_txt = (TextView) findViewById(R.id.customer_info_txt);
-        trip_status_txt = (TextView) findViewById(R.id.trip_status_txt);
-        your_location_txt = (TextView) findViewById(R.id.your_location_txt);
+
+        trip_status_txt = ((MaterialRippleLayout) findViewById(R.id.trip_status_txt)).getChildView();
+        trip_status_txt.setTextSize(15);
+
         cancel_btn = (TextView) findViewById(R.id.cancel_btn);
+      //  cancel_btn.setText(getResources().getString(R.string.TRACK_RIDE_ACTIVITY__cancel));
+     //   cancel_btn.setTextSize(15);
+
+
+        your_location_txt = (TextView) findViewById(R.id.your_location_txt);
         meter_txt = (TextView) findViewById(R.id.meter_txt);
         pencil_icon = (ImageView) findViewById(R.id.pencil_icon);
         message_layout = (LinearLayout) findViewById(R.id.message_layout);
@@ -165,7 +172,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         firebaseChatUtillistener = new FirebaseChatUtillistener(rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
-
         apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG , Apis.updateLatLong+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)+"&current_long="+locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id=1");
 
 
@@ -184,7 +190,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
 
-
         findViewById(R.id.location_changer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,6 +206,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 try{callingTask();}catch (Exception e){}
             }
         });
+
 
         trip_status_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,6 +241,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+
         findViewById(R.id.navigation_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -252,8 +259,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         Snackbar.make(root , ""+TrackRideActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__please_start_your_ridr_first) , Snackbar.LENGTH_SHORT).show();
                     }
                 }
-
-
             }
         });
 
@@ -264,8 +269,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 showDemodialog();
             }
         });
-
-
 
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,7 +283,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 startActivity(new Intent(TrackRideActivity.this , SosActivity.class));
             }
         });
-
 
 
         findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
@@ -381,16 +383,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        firebaseChatUtillistener.startChatListening();
-        EventBus.getDefault().register(this);
-        Constants.is_track_ride_activity_is_open = true;
-        try{if(is_map_loaded){setView();}}catch (Exception e){}
-    }
-
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ChangeLocationEvent event){
         apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1" );
@@ -427,6 +419,15 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         try{acc_txt.setText("Acc = "+eventtt.Accuracy);}catch (Exception e){}
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        firebaseChatUtillistener.startChatListening();
+        EventBus.getDefault().register(this);
+        Constants.is_track_ride_activity_is_open = true;
+        try{if(is_map_loaded){setView();}}catch (Exception e){}
+    }
+
 
     @Override
     protected void onPause() {
@@ -435,6 +436,13 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         mHandeler.removeCallbacks(mRunnable);
         firebaseChatUtillistener.stopChatListener();
         Constants.is_track_ride_activity_is_open = false ;
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        is_map_loaded = false ;
     }
 
     @Override
@@ -502,11 +510,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        is_map_loaded = false ;
-    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event){
@@ -517,7 +520,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
     }
-
 
     private void showDialogForCancelation() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -539,7 +541,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-
     private void showDialogForCancelationViaAdmin() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -558,9 +559,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
         dialog.show();
     }
-
-
-
 
     public void setviewAccordingToStatus (){
 
@@ -623,7 +621,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-
     public String getArrivalTime (){
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -636,6 +633,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         int second = Integer.parseInt(h1[2]);
         return ""+(second + (60 * minute) + (3600 * hours));
     }
+
 
     @Override
     public void onAPIRunningState(int a, String APINAME) {
@@ -731,6 +729,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
+
     private void updateFirebaseEvent(final String status_value  , final String Ride_Id) throws  Exception{
 
         FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child(""+Ride_Id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -804,7 +803,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
         dialog.show();
     }
-
 
 
 
@@ -914,8 +912,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             ApporioLog.logE(""+TAG , "Caught Exception in start Runnable Process method ==>"+e.getMessage());
         }
     }
-
-
 
 
 

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="morxander.zaman:Zaman-1.0.0">
     <CLASSES>
-      <root url="jar://C:/location_settings/.android/build-cache/b62dd20064d3e474ded02ab71e62191393cff2ce/output/jars/classes.jar!/" />
-      <root url="file://C:/location_settings/.android/build-cache/b62dd20064d3e474ded02ab71e62191393cff2ce/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/d448d24b0a09fe3b6c9ce6487ee5b1e530d3bcd8/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/d448d24b0a09fe3b6c9ce6487ee5b1e530d3bcd8/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

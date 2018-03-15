@@ -3,7 +3,7 @@
     <string name="google_map_key">AIzaSyCTAg2TXt8AiswL_Ro6k76c_p1bisIWxEU</string>
 
 
-    <string name="app_name">Demo Taxi Driver</string>
+    <string name="app_name">Apporio Taxi Driver</string>
     <string name="closeDrawer">Close</string>
     <string name="openDrawer">open</string>
 
@@ -222,6 +222,9 @@
     <string name="MAIN_ACTIVITY__offline">Offline</string>
     <string name="Main_ACTIVITY_rentals">Rentals</string>
 
+    <string name="MAIN_ACTIVITY_manual_dispatch">Manual Dispatch</string>
+
+
 
     ////////////// Select car Activity dialog
     <string name="SELECT_CAR_ACTIVITY_DIALOG__select_car_model">Select Car Model</string>
@@ -356,6 +359,20 @@
 
     //////////// RidesActivity
     <string name="RIDES_ACTIVITY__rides">Your Trips</string>
+
+
+    /////////ManualUserDetailsActivity/////////////
+
+    <string name="UserDetails_Activity_tittle">User Details</string>
+    <string name="Manual_ACTIVITY__enter_pickup">Enter PickUp</string>
+    <string name="Manual_ACTIVITY__select_drop_location">Select Drop Location</string>
+    <string name="Manual_Activity_enter_cus_phone">Enter Customer Number</string>
+    <string name="Manual_Activity_enter_cus_name">Enter Customer Name</string>
+    <string name="Manual_Activity_button_start_ride">Start Ride</string>
+    <string name="Manual_Activity_string_start_ride">Ride is started</string>
+    <string name="Manual_Activity_offline">You are offline.</string>
+    <string name="Manual_Activity_select_drop_location">Please select drop location</string>
+    <string name="Manual_Activity_select_pick_location">You don\'t  have a pick up location</string>
 
 
     ////////////////// RentalPricefareActivity

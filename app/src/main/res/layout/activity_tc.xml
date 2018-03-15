@@ -7,48 +7,53 @@
     android:orientation="vertical"
     tools:context="com.apporio.demotaxiappdriver.TermsAndCondition">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorHeader"
-        android:orientation="horizontal">
+    <include
+        android:id="@+id/toolbar_include"
+        layout="@layout/app_toolbar" />
 
-        <LinearLayout
-            android:id="@+id/bck"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:gravity="center">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/back_arrow"
-                android:tint="@color/colorPrimary"/>
-        </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/colorHeader"-->
+        <!--android:orientation="horizontal">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/bck"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center">-->
 
-            <customviews.typefacesviews.TypeFaceTextMonixRegular
-                android:textColor="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TC_ACTIVITY__tc"
-                android:textSize="16dp" />
-        </LinearLayout>
+            <!--<ImageView-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:background="@drawable/back_arrow"-->
+                <!--android:tint="@color/colorPrimary"/>-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center">-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
+            <!--<customviews.typefacesviews.TypeFaceTextMonixRegular-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/TC_ACTIVITY__tc"-->
+                <!--android:textSize="16dp" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="match_parent" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/colorView" />-->
 
     <ScrollView
         android:layout_width="match_parent"

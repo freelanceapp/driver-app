@@ -52,10 +52,9 @@
         android:icon="@drawable/app_logo_100"
         android:label="@string/app_name"
         android:largeHeap="true"
-
+        android:resizeableActivity="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="com.hypertrack.lib"
-        android:resizeableActivity="true"
         tools:replace="android:icon, android:name">
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -180,6 +179,15 @@
         <service android:name=".TimeService" />
         <service android:name=".TimelySessionService" />
 
+        <service
+            android:name="com.apporio.GcmServiceClass"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".earnings.EarningActivity"
             android:screenOrientation="portrait" />
@@ -245,9 +253,11 @@
         <activity android:name=".AcceptPassActivity" />
         <activity
             android:name=".ReceivePassengerActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ReAcceptpassActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReAcceptpassActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ManualUserDetailActivity"></activity>
     </application>
 
 </manifest>

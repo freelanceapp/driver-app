@@ -18,8 +18,6 @@ import java.util.List;
 
 public class Config {
 
-
-
     public static String DriverReference = "Drivers_A";
     public static String DriverEventReference = "driver_event";
     public static String Devicetype = "2";
@@ -29,6 +27,7 @@ public class Config {
     public static String ChatReferencetable = "Chat";
     public static boolean ReceiverPassengerActivity = false;
     public static boolean RentalReceivepassengerActivity = false ;
+
 
     public static List<ChatModel> cities = new ArrayList<ChatModel>(){{
         add(new ChatModel("NOCHAT" , "NO CHAT" , ""+System.currentTimeMillis()));
@@ -111,6 +110,7 @@ public class Config {
         String KEY_FORGOTPASS_OTP = "KEY_FORGOTPASS_OTP";
         String KEY_FORGOTPASS_CONFIRMPASS = "KEY_FORGOTPASS_CONFIRMPASS";
         String APP_VERSIONS= "APP_VERSIONS";
+        String MANUAL_RIDE = "manual_ride";
         String PARTIAL_ACCEPT = "PARTIAL_ACCEPT";
         String KEY_SCHEDULE_AND_UPDATED  ="KEY_SCHEDULE_AND_UPDATED";
         String CHECK_RIDE_TIME = "CHECK_RIDE_TIME";

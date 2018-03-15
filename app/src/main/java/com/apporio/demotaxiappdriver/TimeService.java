@@ -34,12 +34,6 @@ import java.util.TimerTask;
  * Created by samirgoel3@gmail.com on 4/28/2017.
  */
 
-
-
-
-
-
-
 public class TimeService extends Service implements ApiManager.APIFETCHER{
 
     private static final String TAG = "TimeService";
@@ -78,7 +72,6 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
         gson = builder.create();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-
 
 
         // cancel if already existed
@@ -179,7 +172,6 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
                 app_location_mamanger.setBearingFactor(""+location.getBearing());
             }
             app_location_mamanger.setLocationLatLong(location);
-            app_location_mamanger.setLocationAddress("----");
         }
     }
 

@@ -43,6 +43,8 @@ public interface Apis {
     String PartialAccept = baseDomain+"ride_later_accept.php";
     String Sos_Request = restdomain+"/Common/SOS_Request";
 
+    String Manual_Ride = restdomain +"ManualRide/Book_Manual_Ride";
+
 
 
     String RideSync = restdomain+"/Rental/Ride_Sync";   //  rental_booking_id      app_id= 2 for demotaxiappdriver and 1 for cutomer
