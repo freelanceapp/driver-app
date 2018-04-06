@@ -38,8 +38,8 @@ android {
 
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 83
-        versionName "2.19.20180120"
+        versionCode 86
+        versionName "2.19.20180406"
         multiDexEnabled true
     }
     buildTypes {
@@ -47,8 +47,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.SignedConfig
-        }
-        debug {
         }
     }
     lintOptions {

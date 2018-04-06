@@ -644,7 +644,8 @@
                         android:id="@+id/rating_bar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/RatingBar"/>
 
 
                     <EditText

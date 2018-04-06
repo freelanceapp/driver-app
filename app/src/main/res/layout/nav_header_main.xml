@@ -115,6 +115,32 @@
                             android:gravity="center|left"/>
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/my_upcoming_menu_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingLeft="25dp"
+                        android:background="@color/pure_white">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_width"
+                            android:layout_height="@dimen/icon_height"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_trips"
+                            android:tint="@color/color_menu_icon" />
+
+                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                            android:layout_width="fill_parent"
+                            android:textSize="@dimen/menu_text_size"
+                            android:layout_height="fill_parent"
+                            android:text="@string/MAIN_ACTIVITY__upcoming_rides"
+                            android:textColor="@color/color_menu_text"
+                            android:gravity="center|left"/>
+                    </LinearLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -203,6 +229,7 @@
                         android:gravity="center"
                         android:paddingLeft="25dp"
                         android:id="@+id/report_issue"
+                        android:visibility="gone"
                         android:background="@color/pure_white">
                         <ImageView
                             android:layout_width="@dimen/icon_width"
@@ -227,6 +254,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
+                    android:visibility="gone"
                     android:background="@color/icons_8_muted_grey"
                     android:layout_margin="20dp"/>
 
@@ -240,6 +268,7 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingLeft="25dp"
+                    android:visibility="gone"
                     android:id="@+id/language_menu_btn"
                     android:background="@color/pure_white">
 
@@ -262,6 +291,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
+                    android:visibility="gone"
                     android:background="@color/icons_8_muted_grey"
                     android:layout_margin="20dp"/>
 
@@ -279,6 +309,7 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingLeft="25dp"
+                    android:visibility="gone"
                     android:id="@+id/customer_support_menu_btn"
                     android:background="@color/pure_white">
 
@@ -306,6 +337,7 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingLeft="25dp"
+                    android:visibility="gone"
                     android:id="@+id/terms_and_condition_menu_btn"
                     android:background="@color/pure_white">
 
@@ -333,6 +365,7 @@
                     android:gravity="center"
                     android:paddingLeft="25dp"
                     android:id="@+id/about_menu_btn"
+                    android:visibility="gone"
                     android:background="@color/pure_white">
 
                     <ImageView
@@ -348,6 +381,31 @@
                         android:text="@string/MAIN_ACTIVITY__about_us"
                         android:textColor="@color/color_menu_text"
                         android:gravity="center|left"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingLeft="25dp"
+                    android:id="@+id/settings_menu_btn"
+                    android:background="@color/pure_white">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:tint="@color/color_menu_icon"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_settings_black_24dp"/>
+
+                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="Settings"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_text_size" />
                 </LinearLayout>
 
 

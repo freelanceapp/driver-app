@@ -250,6 +250,16 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void setDemoDialog(String demo){
+        editor.putString("Demo", demo);
+        editor.commit();
+    }
+
+    public String getDemoDialog(){
+
+        return pref.getString("Demo", "No name defined");
+    }
+
 
     public void setonline_offline(boolean value ){
         if(value){

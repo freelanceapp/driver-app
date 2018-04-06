@@ -10,7 +10,7 @@ public class RideDetailsModel {
     /**
      * result : 1
      * msg :
-     * details : {"ride_id":"6","user_id":"14","coupon_code":"","pickup_lat":"28.43042114870706","pickup_long":"77.04125247895718","pickup_location":"737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India","drop_lat":"28.4592693","drop_long":"77.0724192","drop_location":"Huda City Centre","ride_date":"Tuesday, Nov 7","ride_time":"19:21:23","last_time_stamp":"07:23:36 PM","ride_image":"https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=200x200&maptype=roadmap&markers=color:green|label:S|28.43042114870706,77.04125247895718&markers=color:red|label:D|28.4592693,77.0724192&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4","later_date":"","later_time":"","driver_id":"4","car_type_id":"32","ride_type":"1","pem_file":"1","ride_status":"7","driver_rating":"1","user_rating":"1","payment_status":"1","reason_id":"0","payment_option_id":"1","card_id":"","ride_platform":"1","ride_admin_status":"1","date":"2017-11-07","payment_option_name":"Cash","user_image":"","user_name":"mehjabi .","user_phone":"+2341234568096","rating":"2.8125","arrived_time":"07:21:46 PM","begin_lat":"28.430461","begin_long":"77.0412701","begin_location":"737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India","begin_time":"07:21:59 PM","end_lat":"28.43061","end_long":"77.0413396","end_location":"737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India","amount":"19000.00","distance":"0.00 Miles","time":"1","waiting_time":"0 Min","waiting_price":"0.00","done_ride_time":"1 Min","ride_time_price":"00.00","end_time":"07:23:36 PM","rating_user":"0","peak_time_charge":"0.00","night_time_charge":"38000.00","coupons_code":"","coupons_price":"","total_amount":"57000"}
+     * details : {"ride_id":"42","user_id":"12","coupon_code":"","pickup_lat":"28.412441725085422","pickup_long":"77.0440473407507","pickup_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","drop_lat":"28.4592693","drop_long":"77.0724192","drop_location":"Huda City Centre, Sector 29, Gurugram, Haryana, India","ride_date":"Monday, Apr 2","ride_time":"14:40:07","last_time_stamp":"02:40:24 PM","ride_image":"https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.4124632,77.0440054&markers=color:red|label:D|28.4124632,77.0440054&key=AIzaSyAOn6JaRdW5UTlqDUHlU1LQ_LHMOQ44Ors","later_date":"","later_time":"","driver_id":"4","car_type_id":"1","ride_type":"1","pem_file":"1","ride_status":"7","driver_rating":"1","user_rating":"1","payment_status":"1","reason_id":"0","payment_option_id":"1","card_id":"null","ride_platform":"1","ride_admin_status":"1","date":"2018-04-02","payment_option_name":"Cash","driver_request_time":"45","differenceInSeconds":"0","user_image":"","user_name":"sahil .","user_phone":"+919852456555","rating":"3.3333333333333","arrived_time":"02:40:18 PM","begin_lat":"28.4124632","begin_long":"77.0440054","begin_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","begin_time":"02:40:21 PM","end_lat":"28.4124632","end_long":"77.0440054","end_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","amount":"100.00","distance":"0.00 Km","time":"0.05","waiting_time":"0.05 Min","waiting_price":"0.00","done_ride_time":"0.05 Min","ride_time_price":"0.50","end_time":"02:40:24 PM","rating_user":"3.5","peak_time_charge":"0.00","night_time_charge":"100.00","wallet_deducted_amount":"100","coupons_code":"","coupons_price":"","total_amount":"201"}
      */
 
     private int result;
@@ -43,23 +43,23 @@ public class RideDetailsModel {
 
     public static class DetailsBean {
         /**
-         * ride_id : 6
-         * user_id : 14
+         * ride_id : 42
+         * user_id : 12
          * coupon_code :
-         * pickup_lat : 28.43042114870706
-         * pickup_long : 77.04125247895718
-         * pickup_location : 737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India
+         * pickup_lat : 28.412441725085422
+         * pickup_long : 77.0440473407507
+         * pickup_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
          * drop_lat : 28.4592693
          * drop_long : 77.0724192
-         * drop_location : Huda City Centre
-         * ride_date : Tuesday, Nov 7
-         * ride_time : 19:21:23
-         * last_time_stamp : 07:23:36 PM
-         * ride_image : https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=200x200&maptype=roadmap&markers=color:green|label:S|28.43042114870706,77.04125247895718&markers=color:red|label:D|28.4592693,77.0724192&key=AIzaSyAIFe17P91Mfez3T6cqk7hfDSyvMO812Z4
+         * drop_location : Huda City Centre, Sector 29, Gurugram, Haryana, India
+         * ride_date : Monday, Apr 2
+         * ride_time : 14:40:07
+         * last_time_stamp : 02:40:24 PM
+         * ride_image : https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.4124632,77.0440054&markers=color:red|label:D|28.4124632,77.0440054&key=AIzaSyAOn6JaRdW5UTlqDUHlU1LQ_LHMOQ44Ors
          * later_date :
          * later_time :
          * driver_id : 4
-         * car_type_id : 32
+         * car_type_id : 1
          * ride_type : 1
          * pem_file : 1
          * ride_status : 7
@@ -68,37 +68,40 @@ public class RideDetailsModel {
          * payment_status : 1
          * reason_id : 0
          * payment_option_id : 1
-         * card_id :
+         * card_id : null
          * ride_platform : 1
          * ride_admin_status : 1
-         * date : 2017-11-07
+         * date : 2018-04-02
          * payment_option_name : Cash
+         * driver_request_time : 45
+         * differenceInSeconds : 0
          * user_image :
-         * user_name : mehjabi .
-         * user_phone : +2341234568096
-         * rating : 2.8125
-         * arrived_time : 07:21:46 PM
-         * begin_lat : 28.430461
-         * begin_long : 77.0412701
-         * begin_location : 737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India
-         * begin_time : 07:21:59 PM
-         * end_lat : 28.43061
-         * end_long : 77.0413396
-         * end_location : 737, Sector 38, Islampur Village, Sector 38, Gurugram, Haryana 122018, India
-         * amount : 19000.00
-         * distance : 0.00 Miles
-         * time : 1
-         * waiting_time : 0 Min
+         * user_name : sahil .
+         * user_phone : +919852456555
+         * rating : 3.3333333333333
+         * arrived_time : 02:40:18 PM
+         * begin_lat : 28.4124632
+         * begin_long : 77.0440054
+         * begin_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * begin_time : 02:40:21 PM
+         * end_lat : 28.4124632
+         * end_long : 77.0440054
+         * end_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * amount : 100.00
+         * distance : 0.00 Km
+         * time : 0.05
+         * waiting_time : 0.05 Min
          * waiting_price : 0.00
-         * done_ride_time : 1 Min
-         * ride_time_price : 00.00
-         * end_time : 07:23:36 PM
-         * rating_user : 0
+         * done_ride_time : 0.05 Min
+         * ride_time_price : 0.50
+         * end_time : 02:40:24 PM
+         * rating_user : 3.5
          * peak_time_charge : 0.00
-         * night_time_charge : 38000.00
+         * night_time_charge : 100.00
+         * wallet_deducted_amount : 100
          * coupons_code :
          * coupons_price :
-         * total_amount : 57000
+         * total_amount : 201
          */
 
         private String ride_id;
@@ -131,6 +134,8 @@ public class RideDetailsModel {
         private String ride_admin_status;
         private String date;
         private String payment_option_name;
+        private String driver_request_time;
+        private String differenceInSeconds;
         private String user_image;
         private String user_name;
         private String user_phone;
@@ -154,6 +159,7 @@ public class RideDetailsModel {
         private String rating_user;
         private String peak_time_charge;
         private String night_time_charge;
+        private String wallet_deducted_amount;
         private String coupons_code;
         private String coupons_price;
         private String total_amount;
@@ -398,6 +404,22 @@ public class RideDetailsModel {
             this.payment_option_name = payment_option_name;
         }
 
+        public String getDriver_request_time() {
+            return driver_request_time;
+        }
+
+        public void setDriver_request_time(String driver_request_time) {
+            this.driver_request_time = driver_request_time;
+        }
+
+        public String getDifferenceInSeconds() {
+            return differenceInSeconds;
+        }
+
+        public void setDifferenceInSeconds(String differenceInSeconds) {
+            this.differenceInSeconds = differenceInSeconds;
+        }
+
         public String getUser_image() {
             return user_image;
         }
@@ -580,6 +602,14 @@ public class RideDetailsModel {
 
         public void setNight_time_charge(String night_time_charge) {
             this.night_time_charge = night_time_charge;
+        }
+
+        public String getWallet_deducted_amount() {
+            return wallet_deducted_amount;
+        }
+
+        public void setWallet_deducted_amount(String wallet_deducted_amount) {
+            this.wallet_deducted_amount = wallet_deducted_amount;
         }
 
         public String getCoupons_code() {

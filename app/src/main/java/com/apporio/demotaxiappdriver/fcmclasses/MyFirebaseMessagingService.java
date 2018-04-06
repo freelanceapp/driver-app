@@ -24,6 +24,7 @@ import com.apporio.demotaxiappdriver.ProfileActivity;
 import com.apporio.demotaxiappdriver.R;
 import com.apporio.demotaxiappdriver.ReAcceptpassActivity;
 import com.apporio.demotaxiappdriver.ReceivePassengerActivity;
+import com.apporio.demotaxiappdriver.RidesActivity;
 import com.apporio.demotaxiappdriver.SelectedRidesActivity;
 import com.apporio.demotaxiappdriver.SplashActivity;
 import com.apporio.demotaxiappdriver.TripHistoryActivity;
@@ -180,7 +181,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             intent = new Intent(this, NotificationActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals(Config.Status.RIDE_LATER_BOOKING)){
-            intent = new Intent(this, TripHistoryActivity.class);
+            intent = new Intent(this, RidesActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_REASSIGNED)){
             intent = new Intent(this, ReAcceptpassActivity.class).putExtra("ride_id" , ""+pn_ride_id);

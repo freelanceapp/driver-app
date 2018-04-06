@@ -70,7 +70,7 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
 
                 try {
                     AccountModule accountModule = new AccountModule(DocumentActivity.this, DocumentActivity.this);
-                    accountModule.loginApi("" + getIntent().getExtras().getString("email"), "" + getIntent().getExtras().getString("password"), "1");
+                    accountModule.loginApi("" + getIntent().getExtras().getString("email"), "" + getIntent().getExtras().getString("password"), "1","1");
                 } catch (Exception e) {
                     Toast.makeText(DocumentActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/bill_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/bill_layout">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_total_bill"
@@ -101,9 +101,6 @@
                 android:orientation="horizontal">
 
 
-
-
-
                 <TextView
                     android:id="@+id/total_fare_txt"
                     android:layout_width="wrap_content"
@@ -142,8 +139,6 @@
                 android:orientation="horizontal">
 
 
-
-
                 <TextView
                     android:id="@+id/ride_time_charges_txt"
                     android:layout_width="match_parent"
@@ -180,7 +175,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
                 android:orientation="horizontal">
-
 
 
                 <TextView
@@ -222,8 +216,6 @@
                 android:orientation="horizontal">
 
 
-
-
                 <TextView
                     android:id="@+id/night_time_charge_txt"
                     android:layout_width="match_parent"
@@ -261,7 +253,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
                 android:orientation="horizontal">
-
 
 
                 <TextView
@@ -385,6 +376,85 @@
             android:textSize="14dp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:id="@+id/ll_wallet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/wallet_mode_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".9"
+                android:text="@string/SELECTED_RIDE_ACTIVITY__wallet"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/wallet_amount_done_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="----"
+                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cash_mode_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".9"
+                android:text="@string/SELECTED_RIDE_ACTIVITY__cash"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cash_amount_done_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="----"
+                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -400,7 +470,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".9"
-                android:text="@string/SELECTED_RIDE_ACTIVITY__cash"
+                android:text="@string/SELECTED_RIDE_ACTIVITY__tootal_paid"
                 android:textColor="@color/icons_8_muted_blueblack_dark"
                 android:textSize="15dp"
                 android:textStyle="bold" />

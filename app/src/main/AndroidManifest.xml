@@ -178,7 +178,6 @@
 
         <service android:name=".TimeService" />
         <service android:name=".TimelySessionService" />
-
         <service
             android:name="com.apporio.GcmServiceClass"
             android:exported="true"
@@ -257,7 +256,8 @@
         <activity
             android:name=".ReAcceptpassActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ManualUserDetailActivity"></activity>
+        <activity android:name=".ManualUserDetailActivity" />
+        <activity android:name=".settings.SettingsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.apporio.demotaxiapp.settings.SettingsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_text"
+            style="@style/ToolBarWithNavigationBack"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/tv_toolbar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:alpha="0.8"
+                    android:background="@color/settings_strip_color"
+                    android:gravity="start|center_vertical">
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/SETTINGS_ACTIVITY_app_settings"
+                        android:textColor="@color/settings_strip_text_color"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_language_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_language"
+                        android:tint="@color/color_menu_icon" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/language"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:alpha="0.8"
+                    android:background="@color/settings_strip_color"
+                    android:gravity="start|center_vertical">
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/SETTINGS_ACTIVITY_support_settings"
+                        android:textColor="@color/settings_strip_text_color"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_customer_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_phone"
+                        android:tint="@color/color_menu_icon" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/MAIN_ACTIVITY__customer_support"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icons_8_muted_grey" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_report_issue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/report"
+                        android:tint="@color/color_menu_icon" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/report_issue"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:alpha="0.8"
+                    android:background="@color/settings_strip_color"
+                    android:gravity="start|center_vertical">
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/SETTINGS_ACTIVITY_information_settings"
+                        android:textColor="@color/settings_strip_text_color"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_terms_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_terms_condition"
+                        android:tint="@color/color_menu_icon"
+                        android:visibility="gone" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/MAIN_ACTIVITY__terms_and_condition"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icons_8_muted_grey" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_about_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_about_us"
+                        android:tint="@color/color_menu_icon"
+                        android:visibility="gone" />
+
+                    <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/MAIN_ACTIVITY__about_us"
+                        android:textColor="@color/color_menu_text"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icons_8_muted_grey" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_about_us"
+                        android:tint="@color/color_menu_icon"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="start|center_vertical">
+
+                        <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/MAIN_ACTIVITY__versions"
+                            android:textColor="@color/color_menu_text"
+                            android:textSize="@dimen/menu_settings_text_size" />
+
+                        <com.apporio.demotaxiappdriver.typeface.TypefaceTextView
+                           android:id="@+id/textView_version_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
+                            android:text="(0.5)"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/color_menu_text"
+                            android:textSize="@dimen/menu_settings_text_size" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/icons_8_muted_grey" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+</LinearLayout>

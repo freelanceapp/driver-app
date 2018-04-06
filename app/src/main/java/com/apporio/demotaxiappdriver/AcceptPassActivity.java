@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -48,7 +47,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     String RIDE_ID, RIDE_STATUS, RIDE_TYPE;
     ApiManager apiManager;
     SessionManager sessionManager;
-    FirebaseUtils firebaseUtils ;
+    FirebaseUtils firebaseUtils;
     Gson gson;
     @Bind(R.id.back)
     RelativeLayout back;
@@ -76,7 +75,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     TextView requested_date_txt;
 
 
-    public static Activity activity ;
+    public static Activity activity;
 
 
     @Bind(R.id.accept_ride_btn)
@@ -87,24 +86,25 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     TextView loadingText;
 
 
-    ProgressDialog progressDialog ;
-    ModelCheckTime modelCheckTime ;
+    ProgressDialog progressDialog;
+    ModelCheckTime modelCheckTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_pass);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(""+this.getResources().getString(R.string.loading));
+        progressDialog.setMessage("" + this.getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
-        activity = this ;
+        activity = this;
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        activityNameTxt.setText(R.string.your_trips);
+        activityNameTxt.setText(R.string.trip_details);
         apiManager = new ApiManager(this);
         firebaseUtils = new FirebaseUtils(this);
         sessionManager = new SessionManager(this);
@@ -126,7 +126,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
         }
         try {
 
-            Glide.with(this).load("" +getIntent().getExtras().getString("user_image")).into(userImage);
+            Glide.with(this).load("" + getIntent().getExtras().getString("user_image")).into(userImage);
         } catch (Exception e) {
             ApporioLog.logE("" + TAG, "Exception caught while loading user image ==>" + e.getMessage());
         }
@@ -139,19 +139,19 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
         acceptRideBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(RIDE_STATUS.equals(""+Config.Status.PARTIAL_ACCEPTED)){
-                    if(RIDE_TYPE.equals("1") && modelCheckTime.getResult() == 1 ){  // NORMAL
+                if (RIDE_STATUS.equals("" + Config.Status.PARTIAL_ACCEPTED)) {
+                    if (RIDE_TYPE.equals("1") && modelCheckTime.getResult() == 1) {  // NORMAL
                         // call normal accept API
-                        apiManager.execution_method_get(Config.ApiKeys.KEY_ACEPT_RIDE, Apis.acceptRide + "?ride_id=" + RIDE_ID + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" +new LanguageManager(AcceptPassActivity.this).getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-                    }else if(RIDE_TYPE.equals("2") && modelCheckTime.getResult() == 1){  // RENTAL
+                        apiManager.execution_method_get(Config.ApiKeys.KEY_ACEPT_RIDE, Apis.acceptRide + "?ride_id=" + RIDE_ID + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + new LanguageManager(AcceptPassActivity.this).getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                    } else if (RIDE_TYPE.equals("2") && modelCheckTime.getResult() == 1) {  // RENTAL
                         // call rental accept API
                         HashMap<String, String> data = new HashMap<String, String>();
-                        data.put("rental_booking_id", "" +RIDE_ID);
+                        data.put("rental_booking_id", "" + RIDE_ID);
                         data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
                         data.put("driver_token", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
                         apiManager.execution_method_post(Config.ApiKeys.KEY_RESt_ACCEPT_API, "" + Apis.AcceptRide, data);
                     }
-                }else{
+                } else {
                     HashMap<String, String> data = new HashMap<>();
                     data.put("ride_id", "" + RIDE_ID);
                     data.put("ride_mode", "" + RIDE_TYPE);
@@ -166,9 +166,9 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     @Override
     protected void onResume() {
         super.onResume();
-        if(RIDE_STATUS.equals("22")){
+        if (RIDE_STATUS.equals("22")) {
             apiManager.execution_method_get("" + Config.ApiKeys.CHECK_RIDE_TIME, "" + Apis.CheckRideTime + RIDE_ID + "&ride_mode=" + RIDE_TYPE);
-        }else{
+        } else {
             loadingText.setText(AcceptPassActivity.this.getResources().getString(R.string.accept));
         }
     }
@@ -176,25 +176,28 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     @Override
     public void onAPIRunningState(int a, String APINAME) {
 
-        if(a == ApiManager.APIFETCHER.KEY_API_IS_STARTED){
+        if (a == ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
             progressDialog.show();
-        }else if (progressDialog.isShowing()){
-            try{progressDialog.dismiss();} catch ( Exception e){}
+        } else if (progressDialog.isShowing()) {
+            try {
+                progressDialog.dismiss();
+            } catch (Exception e) {
+            }
         }
     }
 
     @Override
     public void onFetchComplete(Object script, String APINAME) {
-        try{
-            switch (APINAME){
+        try {
+            switch (APINAME) {
                 case Config.ApiKeys.CHECK_RIDE_TIME:
-                     modelCheckTime = gson.fromJson("" +script, ModelCheckTime.class);
-                    if(modelCheckTime.getResult() == 0 ){
-                        loadingText.setText(""+modelCheckTime.getMsg());
-                        loadingText.setTypeface(null , Typeface.NORMAL);
+                    modelCheckTime = gson.fromJson("" + script, ModelCheckTime.class);
+                    if (modelCheckTime.getResult() == 0) {
+                        loadingText.setText("" + modelCheckTime.getMsg());
+                        loadingText.setTypeface(null, Typeface.NORMAL);
                         loadingText.setTextColor(Color.parseColor("#ffffff"));
                         acceptRideBtn.setBackgroundColor(Color.parseColor("#3498db"));
-                    }else if (modelCheckTime.getResult() == 1){
+                    } else if (modelCheckTime.getResult() == 1) {
                         loadingText.setText(AcceptPassActivity.this.getResources().getString(R.string.start_for_customer_pickup));
                     }
                     break;
@@ -202,41 +205,46 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
                     ModelPartialRequestResponse modelPartialRequestResponse = gson.fromJson("" + script, ModelPartialRequestResponse.class);
                     Toast.makeText(this, "" + modelPartialRequestResponse.getMsg(), Toast.LENGTH_SHORT).show();
                     finish();
+                    try {
+                        RidesActivity.ridesActivity.finish();
+                    } catch (Exception e) {
+
+                    }
                     break;
                 case Config.ApiKeys.KEY_ACEPT_RIDE:
-                    ReceivePassengerActivity.AcceptCheck ac = gson.fromJson(""+script , ReceivePassengerActivity.AcceptCheck.class);
-                    if(ac.getResult() == 1){
+                    ReceivePassengerActivity.AcceptCheck ac = gson.fromJson("" + script, ReceivePassengerActivity.AcceptCheck.class);
+                    if (ac.getResult() == 1) {
                         RideAccept rideAccept = gson.fromJson("" + script, RideAccept.class);
                         if (rideAccept.getResult() == 1) {
-                            new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(),rideAccept.getDetails().getUser_id(),rideAccept.getDetails().getUser_name(),rideAccept.getDetails().getUser_phone(),rideAccept.getDetails().getCoupon_code(),rideAccept.getDetails().getPickup_lat(),rideAccept.getDetails().getPickup_long(),rideAccept.getDetails().getPickup_location(),rideAccept.getDetails().getDrop_lat(),rideAccept.getDetails().getDrop_long(),rideAccept.getDetails().getDrop_location(),rideAccept.getDetails().getRide_date(),rideAccept.getDetails().getRide_time(),rideAccept.getDetails().getLater_date(),rideAccept.getDetails().getLater_time(),rideAccept.getDetails().getDriver_id(),rideAccept.getDetails().getRide_type(),rideAccept.getDetails().getRide_status(),rideAccept.getDetails().getStatus());
-                            FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent(""+rideAccept.getDetails().getRide_id() , ""+Config.Status.NORMAL_ACCEPTED, "Not yet generated" , "0"));
+                            new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
+                            FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_ACCEPTED, "Not yet generated", "0"));
                             startActivity(new Intent(this, TrackRideActivity.class)
                                     .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
                                     .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
-                            firebaseUtils.createRidePool(""+ FirebaseUtils.NO_RIDES , ""+FirebaseUtils.NO_RIDE_STATUS);
+                            firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                             finish();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(this, R.string.your_ride_is_expired, Toast.LENGTH_SHORT).show();
                     }
-                    break ;
+                    break;
                 case Config.ApiKeys.KEY_RESt_ACCEPT_API:
-                    ReceiveRentalPassengerActivity.AcceptCheck ac_check = gson.fromJson(""+script , ReceiveRentalPassengerActivity.AcceptCheck.class);
-                    if(ac_check.getStatus() == 1){
-                        NewRideAcceptmodel accept_response = gson.fromJson(""+script , NewRideAcceptmodel.class);
-                        new RideSession(this).setRentalRideSession(accept_response.getDetails().getRental_booking_id(),accept_response.getDetails().getUser_id(),accept_response.getDetails().getUser_name(),accept_response.getDetails().getUser_phone(),accept_response.getDetails().getReferral_code(),accept_response.getDetails().getPickup_lat(),accept_response.getDetails().getPickup_long(),accept_response.getDetails().getPickup_location(),"" , "" , "",accept_response.getDetails().getBooking_date(),"ride_time",accept_response.getDetails().getBooking_date(),accept_response.getDetails().getBooking_time(),accept_response.getDetails().getDriver_id(),accept_response.getDetails().getBooking_type(),""+Config.Status.RENTAL_ACCEPTED,accept_response.getDetails().getStatus());
+                    ReceiveRentalPassengerActivity.AcceptCheck ac_check = gson.fromJson("" + script, ReceiveRentalPassengerActivity.AcceptCheck.class);
+                    if (ac_check.getStatus() == 1) {
+                        NewRideAcceptmodel accept_response = gson.fromJson("" + script, NewRideAcceptmodel.class);
+                        new RideSession(this).setRentalRideSession(accept_response.getDetails().getRental_booking_id(), accept_response.getDetails().getUser_id(), accept_response.getDetails().getUser_name(), accept_response.getDetails().getUser_phone(), accept_response.getDetails().getReferral_code(), accept_response.getDetails().getPickup_lat(), accept_response.getDetails().getPickup_long(), accept_response.getDetails().getPickup_location(), "", "", "", accept_response.getDetails().getBooking_date(), "ride_time", accept_response.getDetails().getBooking_date(), accept_response.getDetails().getBooking_time(), accept_response.getDetails().getDriver_id(), accept_response.getDetails().getBooking_type(), "" + Config.Status.RENTAL_ACCEPTED, accept_response.getDetails().getStatus());
                         finish();
-                        startActivity(new Intent(AcceptPassActivity.this , RentalTrackRideActivity.class));
-                        Toast.makeText(this, ""+accept_response.getMessage(), Toast.LENGTH_SHORT).show();
-                        FirebaseDatabase.getInstance().getReference(""+Config.RideTableReference).child(""+accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent(""+accept_response.getDetails().getRental_booking_id() , ""+Config.Status.RENTAL_ACCEPTED , "Not yet generated" , "0"));
+                        startActivity(new Intent(AcceptPassActivity.this, RentalTrackRideActivity.class));
+                        Toast.makeText(this, "" + accept_response.getMessage(), Toast.LENGTH_SHORT).show();
+                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
 
-                    }else{
+                    } else {
                         finish();
-                        Toast.makeText(this, ""+ac_check.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "" + ac_check.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                     break;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             ApporioLog.logE("" + TAG, "Exception caught while parsing ==>" + e.getMessage());
         }
     }

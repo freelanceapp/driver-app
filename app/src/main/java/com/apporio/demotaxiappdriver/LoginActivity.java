@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
     LinearLayout tv_forgot;
     LanguageManager languageManager;
     String language_id;
-    FirebaseUtils firebaseUtils ;
+    FirebaseUtils firebaseUtils;
     CountryCodePicker ccp;
 
     @Override
@@ -44,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
         loginactivity1 = this;
 
         pd = new ProgressDialog(this);
-        pd.setMessage(""+this.getResources().getString(R.string.loading));
+        pd.setMessage("" + this.getResources().getString(R.string.loading));
 
         languageManager = new LanguageManager(this);
         language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
@@ -70,30 +69,28 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
         ll_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AccountModule accountModule = new AccountModule(LoginActivity.this , LoginActivity.this);
+                AccountModule accountModule = new AccountModule(LoginActivity.this, LoginActivity.this);
 
-        //        String phone = edt_phone_login.getText().toString().trim();
+                //        String phone = edt_phone_login.getText().toString().trim();
                 String pass = edt_pass_login.getText().toString().trim();
 
                 if (edt_phone_login.getText().toString().equals("") && edt_email_login.getText().toString().equals("")) {
                     ApporioLog.logD("**both edt empty, 1", "1");
-                    Toast.makeText(LoginActivity.this,LoginActivity.this.getResources().getString(R.string.email_can_not_be_empty) , Toast.LENGTH_SHORT).show();
-                }
-                else if (!edt_email_login.getText().toString().equals("") && edt_phone_login.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, LoginActivity.this.getResources().getString(R.string.email_can_not_be_empty), Toast.LENGTH_SHORT).show();
+                } else if (!edt_email_login.getText().toString().equals("") && edt_phone_login.getText().toString().equals("")) {
                     ApporioLog.logD("**phone edt empty not email, 2", "2");
-                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
-                }else if (!edt_phone_login.getText().toString().equals("") && edt_email_login.getText().toString().equals("")){
+                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id, "1");
+                } else if (!edt_phone_login.getText().toString().equals("") && edt_email_login.getText().toString().equals("")) {
                     ApporioLog.logD("**email edt empty not phone, 3", "3");
-                    accountModule.loginApi(ccp.getSelectedCountryCodeWithPlus()+edt_phone_login.getText().toString(), pass, language_id);
-                }
-                else if (pass.equals("")) {
+                    accountModule.loginApi(ccp.getSelectedCountryCodeWithPlus() + edt_phone_login.getText().toString(), pass, language_id, "2");
+                } else if (pass.equals("")) {
                     ApporioLog.logD("**passwrd edt empty, 4", "4");
-                    Toast.makeText(LoginActivity.this,LoginActivity.this.getResources().getString(R.string.password_can_not_be_empty) , Toast.LENGTH_SHORT).show();
-                } else if (!edt_phone_login.getText().toString().equals("") && !edt_email_login.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, LoginActivity.this.getResources().getString(R.string.password_can_not_be_empty), Toast.LENGTH_SHORT).show();
+                } else if (!edt_phone_login.getText().toString().equals("") && !edt_email_login.getText().toString().equals("")) {
                     ApporioLog.logD("**both edt not empty, 5", "5");
-                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
-                }else {
-                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id);
+                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id, "1");
+                } else {
+                    accountModule.loginApi(edt_email_login.getText().toString(), pass, language_id, "1");
                 }
             }
         });
@@ -105,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
             }
         });
     }
-
 
 
     @Override
@@ -121,14 +117,15 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
     @Override
     public void onFetchComplete(Object script, String APINAME) {
 
-        try{GsonBuilder builder = new GsonBuilder();
+        try {
+            GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
 
             if (APINAME.equals("Login")) {
 
-                ApporioLog.logD("****** LOGIN_RESPONSE" , ""+script);
+                ApporioLog.logD("****** LOGIN_RESPONSE", "" + script);
                 Register register;
-                register = gson.fromJson(""+script, Register.class);
+                register = gson.fromJson("" + script, Register.class);
 
 
                 if (register.getResult() == 1) {
@@ -138,39 +135,42 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
 
                     if (detail_status.equals("1")) {
                         startActivity(new Intent(LoginActivity.this, DocumentActivity.class)
-                                .putExtra("driver_id" , ""+register.getDetails().getDriver_id())
-                                .putExtra("city_id" , ""+register.getDetails().getCity_id())
-                                .putExtra("phone" , ""+ edt_phone_login.getText().toString().trim())
-                                .putExtra("password" , ""+edt_pass_login.getText().toString().trim()));
+                                .putExtra("driver_id", "" + register.getDetails().getDriver_id())
+                                .putExtra("city_id", "" + register.getDetails().getCity_id())
+                                .putExtra("phone", "" + edt_phone_login.getText().toString().trim())
+                                .putExtra("password", "" + edt_pass_login.getText().toString().trim()));
                     } else if (detail_status.equals("2")) {
                         new SessionManager(this).createLoginSession(register.getDetails().getDriver_id(),
-                                register.getDetails().getDriver_name(),register.getDetails().getDriver_phone(),
-                                register.getDetails().getDriver_email(),register.getDetails().getDriver_image(),
-                                register.getDetails().getDriver_password(),register.getDetails().getDriver_token(),
-                                register.getDetails().getDevice_id(),Config.Devicetype,register.getDetails().getRating(),
-                                register.getDetails().getCar_type_id(),register.getDetails().getCar_model_id(),
-                                register.getDetails().getCar_number(),register.getDetails().getCity_id(),
-                                register.getDetails().getRegister_date(),register.getDetails().getLicense(),
-                                register.getDetails().getRc(),register.getDetails().getInsurance(),"other_doc","getlast update","last update date ",
+                                register.getDetails().getDriver_name(), register.getDetails().getDriver_phone(),
+                                register.getDetails().getDriver_email(), register.getDetails().getDriver_image(),
+                                register.getDetails().getDriver_password(), register.getDetails().getDriver_token(),
+                                register.getDetails().getDevice_id(), Config.Devicetype, register.getDetails().getRating(),
+                                register.getDetails().getCar_type_id(), register.getDetails().getCar_model_id(),
+                                register.getDetails().getCar_number(), register.getDetails().getCity_id(),
+                                register.getDetails().getRegister_date(), register.getDetails().getLicense(),
+                                register.getDetails().getRc(), register.getDetails().getInsurance(), "other_doc", "getlast update", "last update date ",
                                 register.getDetails().getCompleted_rides(), register.getDetails().getReject_rides(),
                                 register.getDetails().getCancelled_rides(),
-                                register.getDetails().getLogin_logout(),register.getDetails().getBusy(),
-                                register.getDetails().getOnline_offline(),register.getDetails().getDetail_status(),
-                                register.getDetails().getDriver_admin_status(),register.getDetails().getCar_type_name(),
-                                register.getDetails().getCar_model_name() , "" , ""+register.getDetails().getCity_name(),
+                                register.getDetails().getLogin_logout(), register.getDetails().getBusy(),
+                                register.getDetails().getOnline_offline(), register.getDetails().getDetail_status(),
+                                register.getDetails().getDriver_admin_status(), register.getDetails().getCar_type_name(),
+                                register.getDetails().getCar_model_name(), "", "" + register.getDetails().getCity_name(),
                                 register.getDetails().getDriver_bank_name(), register.getDetails().getDriver_account_number(),
                                 register.getDetails().getDriver_account_name());
 
                         firebaseUtils.setUpDriver();
-                        firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES , FirebaseUtils.NO_RIDE_STATUS);
+                        firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES, FirebaseUtils.NO_RIDE_STATUS);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else if (detail_status.equals("3")){
-                        startActivity(new Intent(LoginActivity.this , StatusActiity.class )
-                                .putExtra("image" , ""+register.getDetails().getDriver_status_image())
-                                .putExtra("message" , ""+register.getDetails().getDriver_status_message()));
-                        try{overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+                    } else if (detail_status.equals("3")) {
+                        startActivity(new Intent(LoginActivity.this, StatusActiity.class)
+                                .putExtra("image", "" + register.getDetails().getDriver_status_image())
+                                .putExtra("message", "" + register.getDetails().getDriver_status_message()));
+                        try {
+                            overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
                             finish();
-                            SplashActivity.splash.finish();}catch (Exception e){}
+                            SplashActivity.splash.finish();
+                        } catch (Exception e) {
+                        }
                     }
                     overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
                     finish();
@@ -178,7 +178,9 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
                 } else {
                     Toast.makeText(this, "" + register.getMsg(), Toast.LENGTH_SHORT).show();
                 }
-            }}catch (Exception e){}
+            }
+        } catch (Exception e) {
+        }
 
     }
 

@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
     String imagePath = "", imagePathCompressed = "";
     public static Activity register;
     ArrayList<String> driver_arr;
-    String city_id, city_name, car_id, car_name, car_model_id, car_model_name, ride_cat_id, password;
+    String city_id="", city_name, car_id="", car_name, car_model_id="", car_model_name, ride_cat_id, password;
     ProgressDialog pd;
     String cityCheck = "", carTypeCheck = "", carNameCheck = "";
     ViewCity viewCity;
@@ -149,6 +149,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             city_id = viewCity.getMsg().get(position).getCityId();
                             tv_city.setText(""+viewCity.getMsg().get(position).getCityName());
+                            tv_car_type.setText(getResources().getString(R.string.REGISTER_ACTIVITY__select_car_type));
+                            car_id ="";
                             apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id);
                             dialog.dismiss();
                         }
@@ -246,7 +248,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                             city_id = viewCity.getMsg().get(position).getCityId();
                             tv_city.setText(viewCity.getMsg().get(position).getCityName());
                             tv_city_two.setVisibility(View.GONE);
-
+                            tv_car_type.setText(getResources().getString(R.string.REGISTER_ACTIVITY__select_car_type));
+                            car_id = "";
                             apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_by_city , Apis.viewCarByCities+"?city_id="+city_id);
                             dialog.dismiss();
                         }
@@ -283,6 +286,8 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                             car_id = viewCarType.getMsg().get(position).getCarTypeId();
 
                             tv_car_type.setText(viewCarType.getMsg().get(position).getCarTypeName());
+                            tv_car_model.setText(getResources().getString(R.string.REGISTER_ACTIVITY__select_car_model));
+                            car_model_id = "";
                             apimanager.execution_method_get(Config.ApiKeys.KEY_View_car_Model , Apis.viewCarModels+"?car_type_id="+car_id);
                             dialog.dismiss();
                         }
@@ -352,9 +357,9 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_enter_email), Toast.LENGTH_SHORT).show();
                 } else if (password.equals("")) {
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_enter_password), Toast.LENGTH_SHORT).show();
-                } else if (carTypeName.equals("Select Car Type")) {
+                } else if (car_id.equals("")) {
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_select_car_type), Toast.LENGTH_SHORT).show();
-                } else if (carModelName.equals("Select Car Model")) {
+                } else if (car_model_id.equals("")) {
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_select_car_model), Toast.LENGTH_SHORT).show();
                 } else if (carNumber.equals("")) {
                     Toast.makeText(RegisterActivity.this, RegisterActivity.this.getResources().getString(R.string.please_enter_car_number), Toast.LENGTH_SHORT).show();

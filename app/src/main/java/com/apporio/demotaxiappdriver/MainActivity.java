@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,23 +27,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.apporio.GcmServiceClass;
 import com.apporio.apporiologs.ApporioLog;
 import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
 import com.apporio.demotaxiappdriver.location.SamLocationRequestService;
+import com.apporio.demotaxiappdriver.logger.Logger;
 import com.apporio.demotaxiappdriver.manager.DeviceManager;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.RideSession;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.ActiveRidesResponse;
 import com.apporio.demotaxiappdriver.models.CallSupportResponse;
-import com.apporio.demotaxiappdriver.models.DriverLocation;
 import com.apporio.demotaxiappdriver.models.ModelReportIssue;
 import com.apporio.demotaxiappdriver.models.ModelScheduleAndunacceptedRide;
 import com.apporio.demotaxiappdriver.models.ResultCheck;
@@ -50,11 +49,10 @@ import com.apporio.demotaxiappdriver.models.deviceid.DeviceId;
 import com.apporio.demotaxiappdriver.models.restmodels.NewHeatmapModel;
 import com.apporio.demotaxiappdriver.models.restmodels.NewUpdateLatLongModel;
 import com.apporio.demotaxiappdriver.others.Constants;
-import com.apporio.demotaxiappdriver.others.EventAddress;
 import com.apporio.demotaxiappdriver.others.FirebaseUtils;
 import com.apporio.demotaxiappdriver.others.Maputils;
-import com.apporio.demotaxiappdriver.parsing.AccountModule;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
+import com.apporio.demotaxiappdriver.settings.SettingsActivity;
 import com.apporio.demotaxiappdriver.trackride.TrackRideActivity;
 import com.apporio.demotaxiappdriver.urls.Apis;
 import com.bumptech.glide.Glide;
@@ -71,17 +69,12 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
-
-import com.apporio.demotaxiappdriver.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -128,6 +121,7 @@ public class MainActivity extends BaseActivity implements Apis,
     DeviceManager deviceManager;
 
     LanguageManager languageManager;
+    Address addressFromLocation;
 
     RideSession rideSession;
     FirebaseUtils firebaseutil;
@@ -141,6 +135,7 @@ public class MainActivity extends BaseActivity implements Apis,
     private boolean isLatLongUpdateAPIisRunning = false;
 
     Button button_manualDispatch;
+    String demoStatus="1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,6 +186,20 @@ public class MainActivity extends BaseActivity implements Apis,
         deviceManager = new DeviceManager(this);
         language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
 
+        if(demoStatus.equals("1")){
+            demoStatus = "2";
+            try {
+                String demoDialog = sessionManager.getDemoDialog();
+
+                if(demoDialog.equals("Demo")){
+                    showDialogForDemo();
+                }
+            }catch (Exception e){
+
+            }
+        }
+
+
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -216,19 +225,16 @@ public class MainActivity extends BaseActivity implements Apis,
 
         apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DEVICE_ID, Apis.deviceid + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&device_id=" + deviceId + "&flag=" + Config.Devicetype + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
-        apiManager_new.execution_method_get("" + Config.ApiKeys.KEY_REPORT_ISSUE, "" + Apis.RepostIssueDetails);
-
-        apiManager_new.execution_method_get(Config.ApiKeys.KEY_CALL_SUPPORT, Apis.Callsupport + "?language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+        //  apiManager_new.execution_method_get(Config.ApiKeys.KEY_CALL_SUPPORT, Apis.Callsupport + "?language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
         HashMap<String, String> data = new HashMap<>();
         data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
         apiManager_new.execution_method_post(Config.ApiKeys.DRIVER_ACTIVE_RIDES, "" + Apis.Driver_Active_Rides, data);
 
-        //startPeriodicTask();
+       // startPeriodicTask();
+
         startService(new Intent(this, TimeService.class));
         startService(new Intent(this, TimelySessionService.class));
-
-
 
         findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,6 +278,8 @@ public class MainActivity extends BaseActivity implements Apis,
                         @Override
                         public void onLocationUpdate(Location location) {
                             Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
+
+
                         }
                     });
                 } catch (Exception e) {
@@ -411,12 +419,13 @@ public class MainActivity extends BaseActivity implements Apis,
     private void setScrocabilityOnmap() {
         try {
             if (sessionManager.getUserDetails().get(SessionManager.KEY_service_switcher).equals("1")) {
-                mGooglemap.getUiSettings().setScrollGesturesEnabled(false);
+                mGooglemap.getUiSettings().setScrollGesturesEnabled(true);
 
                 new SamLocationRequestService(this).executeService(new SamLocationRequestService.SamLocationListener() {
                     @Override
                     public void onLocationUpdate(Location location) {
                         Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
+
                     }
                 });
 
@@ -475,6 +484,15 @@ public class MainActivity extends BaseActivity implements Apis,
             }
         });
 
+
+        findViewById(R.id.my_upcoming_menu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RidesActivity.class));
+            }
+        });
+
+
         findViewById(R.id.my_rides_menu_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -522,6 +540,13 @@ public class MainActivity extends BaseActivity implements Apis,
             @Override
             public void onClick(View view) {
                 showlogoutdialog();
+            }
+        });
+
+        findViewById(R.id.settings_menu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             }
         });
 
@@ -577,7 +602,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(R.id.unaccepted_rides_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TripHistoryActivity.class).putExtra("tab_number", "1"));
+                startActivity(new Intent(MainActivity.this, RidesActivity.class));
             }
         });
 
@@ -685,6 +710,11 @@ public class MainActivity extends BaseActivity implements Apis,
                     Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
                     lat_txt.setText("" + location.getLatitude());
                     long_txt.setText("" + location.getLongitude());
+
+//                    final Address addressFromLocation = LocationAddress.getAddressFromLocation(location.getLatitude(), location.getLongitude(), MainActivity.this);
+//
+//                    Log.e("Address11",""+ addressFromLocation);
+//                    Log.e("Address",""+ addressFromLocation.getAddressLine(0));
                 }
             });
         } catch (Exception e) {
@@ -889,6 +919,23 @@ public class MainActivity extends BaseActivity implements Apis,
                             }
                         } else if (activeRidesResponse.getDetails().get(0).getRide_mode().equals("2")) { // rental ride types
                             if (activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status().equals("10") && !Config.RentalReceivepassengerActivity) {
+                                rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_name(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getUser_phone(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getReferral_code(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_lat(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_long(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getPickup_location(),
+                                        "", "", "",
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_date(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_time(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getDriver_id(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_type(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getBooking_status(),
+                                        activeRidesResponse.getDetails().get(0).getRental_Ride().getStatus());
                                 startActivity(new Intent(MainActivity.this, ReceiveRentalPassengerActivity.class).putExtra("" + Config.IntentKeys.RIDE_ID, "" + activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id()));
                             } else {
                                 rideSession.setRideSesion(activeRidesResponse.getDetails().get(0).getRental_Ride().getRental_booking_id(),
@@ -922,9 +969,6 @@ public class MainActivity extends BaseActivity implements Apis,
                         unaccepted_ride_txt.setText("" + modelScheduleAndunacceptedRide.getDetails().getUnaccepted_ride());
                         scheduled_rides.setText("" + modelScheduleAndunacceptedRide.getDetails().getScheduled_ride());
                         break;
-                    case Config.ApiKeys.KEY_REPORT_ISSUE:
-                        modelReportIssue = gson.fromJson("" + script, ModelReportIssue.class);
-                        break;
                     case Config.ApiKeys.LOGOUT:
                         firebaseutil.setDriverOnlineStatus(false);
                         firebaseutil.setDriverLoginLogoutStatus(false);
@@ -946,6 +990,24 @@ public class MainActivity extends BaseActivity implements Apis,
     @Override
     public void onFetchResultZero(String script) {
 
+    }
+
+    private void showDialogForDemo() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        dialog.setCancelable(true);
+        window.setGravity(Gravity.CENTER);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_for_show_demo_message);
+        dialog.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 

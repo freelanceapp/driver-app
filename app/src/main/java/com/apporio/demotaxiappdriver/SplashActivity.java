@@ -413,6 +413,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         switch (APINAME){
             case Config.ApiKeys.KEY_DEMO_USER:
                 Register register = gson.fromJson(""+script, Register.class);
+                new SessionManager(this).setDemoDialog("Demo");
                 createDriverSession(register);
                 break ;
             case Config.ApiKeys.APP_VERSIONS:

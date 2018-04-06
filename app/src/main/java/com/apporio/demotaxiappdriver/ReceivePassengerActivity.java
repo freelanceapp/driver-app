@@ -74,10 +74,6 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     TextView mainLayoutPaymentMode;
     @Bind(R.id.main_layout_payment)
     TextView mainLayoutPayment;
-    @Bind(R.id.pay_with_card_mode)
-    TextView payWithCardMode;
-    @Bind(R.id.pay_with_card)
-    TextView payWithCard;
     @Bind(R.id.map_image)
     CircleImageView mapImage;
     @Bind(R.id.main_layout_pickup_txt)
@@ -98,19 +94,18 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     LinearLayout acceptRideBtn;
     @Bind(R.id.cash_layout)
     LinearLayout cash_Layout;
-    @Bind(R.id.card_layout)
-    LinearLayout card_Layout;
+
     @Bind(R.id.pulsator)
     PulsatorLayout pulsator;
     private String TAG = "ReceivePassengerActivity";
-    public static  Activity activity;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_passenger);
         ButterKnife.bind(this);
-        activity = this ;
+        activity = this;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(R.string.loading));
@@ -129,9 +124,6 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
 
         apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + super.getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
         apiManager.execution_method_get(Config.ApiKeys.KEY_NEW_RIDE_SYNC, Apis.newRideSync + "?ride_id=" + super.getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-
-
-
 
 
         rideExpireOkBtn.setOnClickListener(new View.OnClickListener() {
@@ -188,11 +180,16 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
             @Override
             public void onTick(long l) {
 
-                try{
-                    int vaaal = Integer.parseInt(""+timeTxt.getText().toString());
-                    if((vaaal - 1) <10){timeTxt.setTextColor(Color.parseColor("#e74c3c"));}else{timeTxt.setTextColor(Color.parseColor("#2ecc71"));}
+                try {
+                    int vaaal = Integer.parseInt("" + timeTxt.getText().toString());
+                    if ((vaaal - 1) < 10) {
+                        timeTxt.setTextColor(Color.parseColor("#e74c3c"));
+                    } else {
+                        timeTxt.setTextColor(Color.parseColor("#2ecc71"));
+                    }
                     timeTxt.setText("" + (vaaal - 1));
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
 
                 maxProgress = maxProgress - progress_quadrant;
                 progressWheel.setProgress(maxProgress);
@@ -228,21 +225,20 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
 
     private void setTimeInterval(String maxtime, String differencetime) {
         try {
-            MAXTIME = (Long.parseLong(""+maxtime ) * 1000);
-            long difference_time = (Long.parseLong(""+differencetime) * 1000);
+            MAXTIME = (Long.parseLong("" + maxtime) * 1000);
+            long difference_time = (Long.parseLong("" + differencetime) * 1000);
             STARTTIME = MAXTIME - difference_time;
-            if(STARTTIME <= 1 ){
+            if (STARTTIME <= 1) {
                 apiManager.execution_method_get(Config.ApiKeys.KEY_REJECT_RIDE, Apis.rejectRide
                         + "?ride_id=" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&ride_status=4" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-            }else{
-                timeTxt.setText(""+(STARTTIME / 1000));
+            } else {
+                timeTxt.setText("" + (STARTTIME / 1000));
                 setprogressQuadAndMaxProgress(MAXTIME, STARTTIME);
             }
         } catch (Exception e) {
             ApporioLog.logE("" + TAG, "Exception Caught while taking time for progress timer -->" + e.getMessage());
         }
     }
-
 
 
     @Override
@@ -302,15 +298,21 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
                 String value = viewRideInfoDriver.getDetails().getPayment_option_name();
                 Log.d("**value==", viewRideInfoDriver.getDetails().getPayment_option_name());
 
-                if (value.equals("Cash")) {
-                    cash_Layout.setVisibility(View.VISIBLE);
-                } else {
-                    card_Layout.setVisibility(View.VISIBLE);
+                if (viewRideInfoDriver.getDetails().getPayment_option_id().toString().equals("1")) {
+                    mainLayoutPayment.setText(getResources().getString(R.string.WEEKLY_STATEMENT_ACTIVITY__cash));
+                } else if (viewRideInfoDriver.getDetails().getPayment_option_id().toString().equals("2")) {
+                    mainLayoutPayment.setText(getResources().getString(R.string.WEEKLY_STATEMENT_ACTIVITY__paypal));
+
+                } else if (viewRideInfoDriver.getDetails().getPayment_option_id().toString().equals("3")) {
+                    mainLayoutPayment.setText(getResources().getString(R.string.WEEKLY_STATEMENT_ACTIVITY__card));
+
+                } else if (viewRideInfoDriver.getDetails().getPayment_option_id().toString().equals("4")) {
+                    mainLayoutPayment.setText(getResources().getString(R.string.WEEKLY_STATEMENT_ACTIVITY__wallet));
+
                 }
 
-                setTimeInterval(""+viewRideInfoDriver.getDetails().getDriver_request_time() , ""+viewRideInfoDriver.getDetails().getDifferenceInSeconds() );
 
-
+                setTimeInterval("" + viewRideInfoDriver.getDetails().getDriver_request_time(), "" + viewRideInfoDriver.getDetails().getDifferenceInSeconds());
 
 
             }
@@ -361,8 +363,6 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
             Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
 
     @Override

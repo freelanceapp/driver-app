@@ -61,7 +61,7 @@
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/otp_ccp"
-            app:defaultCode="234"
+            app:defaultCode="91"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:hideNameCode="true"

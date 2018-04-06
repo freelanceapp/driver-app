@@ -342,7 +342,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     }
 
     public class PagerAdapter extends FragmentStatePagerAdapter {
-        String[] fragmens_name = {getString(R.string.on__going), getString(R.string.upcomings), getString(R.string.past_trips)};
+        String[] fragmens_name = {getString(R.string.on__going),getString(R.string.past_trips)};
 
         public PagerAdapter(FragmentManager fm) {
             super(fm);
@@ -353,9 +353,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
             if (position == 0) {
                 return ActiveRideFragment.newInstance(position);
             }
-            if (position == 1) {
-                return NewRequestFragment.newInstance();
-            } else {
+            else {
                 return HistoryFragment.newInstance(position);
             }
         }

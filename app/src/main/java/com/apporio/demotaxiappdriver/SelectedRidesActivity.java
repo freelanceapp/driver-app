@@ -73,6 +73,12 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
     @Bind(R.id.peak__charge_txt) TextView peak__charge_txt;
     @Bind(R.id.rating_selected)
     RatingBar ratingBar;
+    @Bind(R.id.wallet_amount_done_txt)
+    TextView wallet_amount_done_txt;
+    @Bind(R.id.cash_amount_done_txt)
+    TextView cash_amount_done_txt;
+    @Bind(R.id.cash_mode_txt)
+    TextView cash_mode_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,7 +196,14 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                     rideTimeChargesTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getRide_time_price());
                     watingChargeTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getWaiting_price());
                     totalGrossBillTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getTotal_amount());
-                    paymentModeTxt.setText(""+viewRideInfoDriver.getDetails().getPayment_option_name());
+
+                    if(viewRideInfoDriver.getDetails().getPayment_option_id().equals("4")){
+                        cash_mode_txt.setText(getResources().getString(R.string.SELECTED_RIDE_ACTIVITY__cash));
+                    }
+                    else {
+                        cash_mode_txt.setText(""+viewRideInfoDriver.getDetails().getPayment_option_name());
+
+                    }
                     paymentAmountDoneTxt.setText(""+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getTotal_amount());
                     customer_name_txt.setText(""+viewRideInfoDriver.getDetails().getUser_name());
                     customer_phone_txt.setText(""+viewRideInfoDriver.getDetails().getUser_phone());
@@ -207,6 +220,18 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
                         couponValueTxt.setVisibility(View.VISIBLE);
                         couponCodeTxt.setText(SelectedRidesActivity.this.getResources().getString(R.string.SELECTED_RIDE_ACTIVITY__coupon_applied)+" ("+viewRideInfoDriver.getDetails().getCoupon_code()+")");
                         couponValueTxt.setText("-"+sessionManager.getCurrencyCode()+viewRideInfoDriver.getDetails().getCoupons_price());
+                    }
+
+                    try {
+                        if (!viewRideInfoDriver.getDetails().getWallet_deducted_amount().equals("") || !viewRideInfoDriver.getDetails().getWallet_deducted_amount().equals("0.00")) {
+                            wallet_amount_done_txt.setText(sessionManager.getCurrencyCode() + "" + viewRideInfoDriver.getDetails().getWallet_deducted_amount().toString());
+                        }
+
+                        Double money_left = Double.parseDouble(viewRideInfoDriver.getDetails().getTotal_amount()) - Double.parseDouble(viewRideInfoDriver.getDetails().getWallet_deducted_amount());
+                        cash_amount_done_txt.setText(sessionManager.getCurrencyCode() + "" + money_left);
+
+                    }catch (Exception e){
+
                     }
                 } else if (viewRideInfoDriver.getResult() == 419) {
                     sessionManager.logoutUser();

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:geekui="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_rides"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center|top"
     android:background="#efefef"
+    android:gravity="center|top"
+    android:orientation="vertical"
     tools:context="com.apporio.demotaxiappdriver.RidesActivity">
 
     <LinearLayout
@@ -26,7 +25,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@drawable/back_arrow"
-                android:tint="@color/colorPrimary"/>
+                android:tint="@color/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
@@ -36,11 +35,11 @@
             android:gravity="center">
 
             <customviews.typefacesviews.TypeFaceTextMonixRegular
-                android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RIDES_ACTIVITY__rides"
-                android:textSize="16dp" />
+                android:text="@string/upcomings"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,30 +53,31 @@
         android:background="@color/colorView" />
 
 
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+
         <ProgressBar
+            android:id="@+id/progress_wheel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/progress_wheel"/>
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/no_rides"
+            android:gravity="center"
+            android:layout_gravity="center|top"/>
 
 
         <com.sam.placer.PlaceHolderView
+            android:id="@+id/place_holder"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/place_holder"></com.sam.placer.PlaceHolderView>
-
-
+            android:layout_height="fill_parent"></com.sam.placer.PlaceHolderView>
 
 
     </FrameLayout>
-
-
-
-
 
 
 </LinearLayout>

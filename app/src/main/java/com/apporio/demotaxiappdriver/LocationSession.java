@@ -79,6 +79,7 @@ public class LocationSession {
     public void startLocationService(){
         if(!isLocationserviceStarted()){
             _context.startService(new Intent(_context, TimeService.class));
+
             editor.putBoolean(KEY_LOCATION_SERVICE_STARTED , true);
             editor.commit();
         }

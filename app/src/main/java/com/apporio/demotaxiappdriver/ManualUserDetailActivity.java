@@ -116,6 +116,7 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
         button_startRide.setText(getResources().getString(R.string.Manual_Activity_button_start_ride));
         button_startRide.setTextSize(16);
 
+
         initialClickListeners();
         setPickUpView();
 
@@ -126,7 +127,9 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
         try {
             manualPickLat = locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT);
             manualPickLng = locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG);
-            getAddress(getApplicationContext(), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)));
+            apiManager.execution_method_get("" + "reverse_code", "" + Apis.getAddress + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&longitude=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG));
+
+            //getAddress(getApplicationContext(), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)));
         } catch (Exception e) {
 
         }
@@ -230,8 +233,6 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
                 Log.d("", "getAddress:  postalCode" + postalCode);
                 Log.d("", "getAddress:  knownName" + knownName);
 
-                textView_pickUp.setText("" + address);
-                manualPickLocation = address;
 
             }
         } catch (IOException e) {
@@ -255,22 +256,34 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
     public void onFetchComplete(Object script, String APINAME) {
 
         try {
-            ReceivePassengerActivity.AcceptCheck ac = gson.fromJson("" + script, ReceivePassengerActivity.AcceptCheck.class);
-            if (ac.getResult() == 1) {
-                RideAccept rideAccept = gson.fromJson("" + script, RideAccept.class);
-                Log.e("**script--trialreceivepassener", String.valueOf(script));
+            if (APINAME.equals(Config.ApiKeys.MANUAL_RIDE)) {
+                ReceivePassengerActivity.AcceptCheck ac = gson.fromJson("" + script, ReceivePassengerActivity.AcceptCheck.class);
+                if (ac.getResult() == 1) {
+                    RideAccept rideAccept = gson.fromJson("" + script, RideAccept.class);
+                    Log.e("**script--trialreceivepassener", String.valueOf(script));
 
-                if (rideAccept.getResult() == 1) {
-                    new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_STARTED, "Not yet generated", "0"));
-                    startActivity(new Intent(this, TrackRideActivity.class)
-                            .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
-                            .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
-                    firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
-                    finish();
+                    if (rideAccept.getResult() == 1) {
+                        new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
+                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_STARTED, "Not yet generated", "0"));
+                        startActivity(new Intent(this, TrackRideActivity.class)
+                                .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
+                                .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
+                        firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                        finish();
+                    }
+                } else {
+
                 }
-            } else {
+            } else if (APINAME.equals("reverse_code")) {
 
+                GetAddressResponse getAddressResponse = gson.fromJson("" + script, GetAddressResponse.class);
+
+                if (getAddressResponse.getResult() == 1) {
+                    textView_pickUp.setText("" + getAddressResponse.getDetails().toString());
+                    manualPickLocation = getAddressResponse.getDetails().toString();
+                } else {
+
+                }
             }
 
         } catch (Exception e) {

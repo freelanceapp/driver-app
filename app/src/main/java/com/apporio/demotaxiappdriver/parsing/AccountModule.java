@@ -70,7 +70,7 @@ public class AccountModule implements Apis {
                 });
     }
 
-    public void loginApi(String email, String password, String language_id) {
+    public void loginApi(String email, String password, String language_id,String type) {
 
         Log.e("CHECK INTENT_DTA==", "phone_number"+email + "password" + password);
         apiFetcher.onAPIRunningState(ApiManager.APIFETCHER.KEY_API_IS_STARTED , "Login");
@@ -78,6 +78,7 @@ public class AccountModule implements Apis {
                 .addBodyParameter("language_code" , ""+ Locale.getDefault().getLanguage())
                 .addBodyParameter("driver_email_phone", email)
                 .addBodyParameter("driver_password", password)
+                .addBodyParameter("type", type)
                 .addBodyParameter("language_id", language_id)
                 .setTag(this)
                 .setPriority(Priority.HIGH)

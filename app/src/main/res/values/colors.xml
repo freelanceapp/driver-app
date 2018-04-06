@@ -13,6 +13,7 @@
 
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorDull">#a6a6a6</color>
 
 
 
@@ -33,6 +34,8 @@
     <color name="pure_white">#ffffff</color>
     <color name="pure_black">#000000</color>
     <color name="icon_8_muted_black">#333333</color>
+    <color name="settings_strip_color">#AAAAAA</color>
+    <color name="settings_strip_text_color">#555555</color>
 
 
 

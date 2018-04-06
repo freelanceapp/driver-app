@@ -13,9 +13,9 @@ public class LocationAddress {
 
     private static final String TAG = "LocationAddress";
 
-    Address address;
+    public static Address address;
 
-    public Address getAddressFromLocation(final double latitude, final double longitude, final Context context) {
+    public static Address getAddressFromLocation(final double latitude, final double longitude, final Context context) {
 
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 
@@ -23,6 +23,7 @@ public class LocationAddress {
             List<Address> addressList = geocoder.getFromLocation(
                     latitude, longitude, 1);
             if (addressList != null && addressList.size() > 0) {
+
                 address = addressList.get(0);
 
             }
