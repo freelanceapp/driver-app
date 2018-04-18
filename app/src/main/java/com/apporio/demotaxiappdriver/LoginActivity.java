@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -127,6 +128,7 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
                 Register register;
                 register = gson.fromJson("" + script, Register.class);
 
+                Log.e("Driver_phone_register11",""+ register.getDetails().getDriver_phone().toString());
 
                 if (register.getResult() == 1) {
 
@@ -134,6 +136,8 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
                     String detail_status = register.getDetails().getDetail_status();
 
                     if (detail_status.equals("1")) {
+                        Log.e("Driver_phone_register",""+ register.getDetails().getDriver_phone().toString());
+
                         startActivity(new Intent(LoginActivity.this, DocumentActivity.class)
                                 .putExtra("driver_id", "" + register.getDetails().getDriver_id())
                                 .putExtra("city_id", "" + register.getDetails().getCity_id())

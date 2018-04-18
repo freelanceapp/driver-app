@@ -68,6 +68,7 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
             @Override
             public void onClick(View view) {
 
+                Log.e("Phone_no_document",""+ getIntent().getStringExtra("phone"));
                 try {
                     AccountModule accountModule = new AccountModule(DocumentActivity.this, DocumentActivity.this);
                     accountModule.loginApi("" + getIntent().getExtras().getString("phone"), "" + getIntent().getExtras().getString("password"), "1","2");

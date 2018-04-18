@@ -492,12 +492,12 @@ public class RegisterActivity extends AppCompatActivity implements  com.apporio.
                     startActivity(new Intent(this, DocumentActivity.class)
                             .putExtra("driver_id", "" + register.getDetails().getDriver_id())
                             .putExtra("city_id", "" + register.getDetails().getCity_id())
-                            .putExtra("email", edt_email_signup.getText().toString())
+                            .putExtra("phone", register.getDetails().getDriver_phone().trim())
                             .putExtra("password", password));
 
                     Log.d("**city_id===", register.getDetails().getCity_id());
                     Log.d("**driver_id===", register.getDetails().getDriver_id());
-                    Log.d("**email===", edt_email_signup.getText().toString());
+                    Log.d("**phone===", register.getDetails().getDriver_phone().trim());
                     Log.d("**password===", password);
 //                firebaseUtils.setUpDriver(register);
                     overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
