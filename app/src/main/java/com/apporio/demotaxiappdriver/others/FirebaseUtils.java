@@ -55,9 +55,17 @@ public class FirebaseUtils {
             try{
                 DriverLocation driverLocation ;
                 if (val){
-                    driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+                    driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                            applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
+                            applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
+                            ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
+                            ""+ (System.currentTimeMillis()/1000) ,
+                            ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
 
 
                     geoFire.setLocation(""+sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
@@ -73,9 +81,18 @@ public class FirebaseUtils {
                             });
 //            mDatabaseReference.child(""+sessionmanager.getCurrentRideDetails().get(SessionManager.KEY_DRIVER_ID)).child("driver_online_offline_status").setValue("1");
                 }else {
-                    driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+                    driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                            sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                            applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
+                            applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
+                            ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
+                            ""+ (System.currentTimeMillis()/1000) ,
+                            ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
 
 //            mDatabasrdeReference.child(""+sessionmanager.getCurrentRideDetails().get(SessionManager.KEY_DRIVER_ID)).child("driver_online_offline_status").setValue("2");
                 }
@@ -93,9 +110,17 @@ public class FirebaseUtils {
     public void setDriverCurrentLocation(String latitude , String longitude){
 
 
-        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),latitude ,longitude ,""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
+                applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
+                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
+                ""+ (System.currentTimeMillis()/1000) ,
+                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
 
         mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(driverLocation);
 
@@ -106,9 +131,18 @@ public class FirebaseUtils {
     public void setUpDriver ( ){
 
         if(checkDriverExsistance()){
-            final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+
+            final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                    applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
+                    applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
+                    ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
+                    ""+ (System.currentTimeMillis()/1000) ,
+                    ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
 
 
             mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(mDriverLocation);
@@ -134,9 +168,17 @@ public class FirebaseUtils {
 
 
     public void logOutDriver(){
-        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                "2",sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),"" ,"" ,"Location Text Need to be Send" , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                "2",
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                "" ,
+                "" ,
+                "Location Text Need to be Send" ,
+                ""+ (System.currentTimeMillis()/1000) ,
+                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
 
 
         mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(driverLocation);
@@ -151,9 +193,17 @@ public class FirebaseUtils {
 
     public  void updateLocation_with_text(){
         if(checkDriverExsistance()){
-            final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),getDeviceType(),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),"other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides), sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) , ""+ (System.currentTimeMillis()/1000) , ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
+            final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
+                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
+                    applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
+                    applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
+                    ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
+                    ""+ (System.currentTimeMillis()/1000) ,
+                    ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
             try {
                 // updating to main table of firebase
                 mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(mDriverLocation);
@@ -179,35 +229,11 @@ public class FirebaseUtils {
     public void updateLocationOnCameramove (final String latitude  , final String longitude ){
         if(checkDriverExsistance()){
             final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_PHONE),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_DriverEmail),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_DriverImage),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_DriverPassword),
                     sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Device_id),
-                    getDeviceType(),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_rating),
                     sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_ModelID),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CAR_Number),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CityId),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_registeration_date),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_lisence),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_RC),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_insurence),
-                    "other_doc",""+sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdate),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_LastUpdateDate),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Completed_Rides),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Rejected_Rides),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Cancelled_Rides),
                     sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
                     sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
                     sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Detail_Status),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_Admin_Status),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_CarTypeName),
-                    sessionmanager.getUserDetails().get(SessionManager.KEY_CarModelName),
                     ""+latitude ,
                     ""+longitude ,
                     ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,

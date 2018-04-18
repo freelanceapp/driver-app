@@ -38,8 +38,8 @@ android {
 
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 86
-        versionName "2.19.20180406"
+        versionCode 87
+        versionName "2.19.20180417"
         multiDexEnabled true
     }
     buildTypes {

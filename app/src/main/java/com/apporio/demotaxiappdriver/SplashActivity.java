@@ -6,11 +6,15 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -67,6 +71,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
     ModelAppVersion modelAppVersion;
     public static Activity splash;
     LanguageManager languageManager;
+    String appVersionName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
             startGPSCheck();
         }
 
+        getAppVersionCode();
         setlanguage();
 
 
@@ -115,6 +121,18 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
                 showDemoUserDialog();
             }
         });
+    }
+
+    private void getAppVersionCode() {
+
+        PackageManager manager = getPackageManager();
+        PackageInfo info = null;
+        try {
+            info = manager.getPackageInfo(SplashActivity.this.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        appVersionName = info.versionName;
     }
 
 
@@ -224,43 +242,41 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         apiManager.execution_method_post("" + Config.ApiKeys.APP_VERSIONS, "" + Apis.AppVersions, data);
     }
 
-    private void checkForVersionUpdation() throws JSONException {
-        new CheckNewAppVersion(this).setOnTaskCompleteListener(new CheckNewAppVersion.ITaskComplete() {
-            @Override
-            public void onTaskComplete(final CheckNewAppVersion.Result result) {
-                ApporioLog.logI("" + TAG, "Has new version available " + result.hasNewVersion());
-                ApporioLog.logI("" + TAG, "App store version code " + result.getNewVersionCode());
-                ApporioLog.logI("" + TAG, "Current version of App" + result.getOldVersionCode());
 
+    private void checkForVersionUpdation() {
 
-                try {
-                    if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().contains("" + result.getNewVersionCode()) && modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("1")) {
-                        ApporioLog.logI(TAG, "Now Showing app update dialog with mandatory approach");
-                        loadingText.setText(R.string.some_man_datory_is_available);
-                        showUpdationDialog(true, result);
-                    } else if (result.hasNewVersion() && modelAppVersion.getDetails().getAndroid_driver_current_version().equals("" + result.getNewVersionCode()) && modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("")) {
-                        ApporioLog.logI(TAG, "Now Showing app update dialog with Non mandatory approach");
-                        loadingText.setText(R.string.non_mandatory_update);
-                        showUpdationDialog(false, result);
-                    } else if (result.hasNewVersion() && !modelAppVersion.getDetails().getAndroid_driver_current_version().equals("" + result.getNewVersionCode())) {
-                        ApporioLog.logI(TAG, "Now Showing app update dialog with Non mandatory approach because unable to judge from back end ");
-                        loadingText.setText(R.string.non_mandatory_update);
-                        showUpdationDialog(false, result);
-                    } else if (!result.hasNewVersion()) {
-                        ApporioLog.logI(TAG, "Initiating splash process");
-                        loadingText.setText(R.string.app_is_up_to_date);
-                        startCheckingLoginProcedure();
-                    } else {
-                        loadingText.setText("Something went wrong");
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(SplashActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+        Log.i("" + TAG, "App store version code " + appVersionName);
+        Log.i("" + TAG, "Current version of App" + appVersionName);
+        Log.i("" + TAG, "Has new version available " + modelAppVersion.getDetails().getAndroid_driver_current_version());
+
+        try {
+            if (!appVersionName.equals(modelAppVersion.getDetails().getAndroid_driver_current_version()) && modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("1")) {
+                Log.i(TAG, "Now Showing app update dialog with mandatory approach");
+                loadingText.setText(R.string.some_man_datory_is_available);
+                showUpdationDialog(true);
+            } else if (!appVersionName.equals(modelAppVersion.getDetails().getAndroid_driver_current_version()) && modelAppVersion.getDetails().getAndroid_driver_mandantory_update().contains("")) {
+                Log.i(TAG, "Now Showing app update dialog with Non mandatory approach");
+                loadingText.setText(R.string.non_mandatory_update);
+                showUpdationDialog(false);
+            } else if (!appVersionName.equals(modelAppVersion.getDetails().getAndroid_driver_current_version())){
+                Log.i(TAG, "Now Showing app update dialog with Non mandatory approach because unable to judge from back end ");
+                loadingText.setText(R.string.non_mandatory_update);
+                showUpdationDialog(false);
             }
-        }).execute();
+            else if (appVersionName.equals(modelAppVersion.getDetails().getAndroid_driver_current_version())){
+                Log.i(TAG, "Initiating splash process");
+                loadingText.setText(R.string.app_is_up_to_date);
+                startCheckingLoginProcedure();
+            }
+            else {
+                loadingText.setText("Something went wrong");
+            }
+        }catch (Exception e){
+            Log.e("Exception",""+e);
 
-
+        }
     }
+
 
     private void startCheckingLoginProcedure() {
         ApporioLog.logI(TAG, "Checking login status in session");
@@ -328,7 +344,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         is_internet_dialog_is_shown = true;
     }
 
-    private void showUpdationDialog(final boolean is_maindatory, final CheckNewAppVersion.Result result) {
+    private void showUpdationDialog(final boolean is_maindatory) {
         if (!is_version_dialog_is_shown) {
             final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setMessage(R.string.new_version_is_avaiable);
@@ -337,7 +353,13 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
                 @Override
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                     is_version_dialog_is_shown = false;
-                    result.openUpdateLink();
+
+                    final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    }
                 }
             });
 
@@ -426,9 +448,9 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
                         showAppmaintainanceDialog();
                     } else {
                         ApporioLog.logI(TAG, "Checking version of application.");
-//                        checkForVersionUpdation();
+                       checkForVersionUpdation();
                         ApporioLog.logI(TAG, "Initiating splash process");
-                        loadingText.setText("Update ignored");
+                        //loadingText.setText("Update ignored");
                         startCheckingLoginProcedure();
                     }
                 } catch (Exception e) {
