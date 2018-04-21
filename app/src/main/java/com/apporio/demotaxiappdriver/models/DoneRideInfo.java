@@ -6,7 +6,7 @@ public class DoneRideInfo {
 
     /**
      * result : 1
-     * msg : {"done_ride_id":"758","begin_location":"68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India","end_location":"68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India","waiting_time":"0 Min","waiting_price":"0.00","ride_time":"0 Min","ride_time_price":"00.00","distance":"0.00 Miles","amount":"100.00","tot_time":"0","user_id":"323","username":"Samir Goel","user_phone":"+919650923089","user_image":"","driver_id":"212","driver_name":"Samir Goel","driver_image":"uploads/demotaxiappdriver/1503124462driver_212.jpg","payment_option_id":"1","payment_option_name":"Cash","ride_id":"1514","ride_date":"Monday, Aug 28","car_type_id":"2","car_type_name":"HATCHBACK","car_type_image":"uploads/car/editcar_2.png","coupons_code":"","coupons_price":"0.00","total_amount":"100","peak_time_charge":"0.00","night_time_charge":"0.00"}
+     * msg : {"payment_status_message":"Cash To Be Collected","payment_status_show":"Pending","amount_show":"200","done_ride_id":"329","begin_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","end_location":"IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India","waiting_time":"0.03 Min","waiting_price":"0.00","ride_time":"0.03 Min","ride_time_price":"0.30","distance":"0.00 Km","amount":"100.00","tot_time":"0.03","user_id":"944","username":"hxxnn .","user_phone":"+916464444","user_image":"","driver_id":"574","driver_name":"hsshj","driver_image":"uploads/driver/1524067117driver_574.jpg","payment_option_id":"1","payment_option_name":"Cash","ride_id":"698","ride_date":"Friday, Apr 20","car_type_id":"1","car_type_name":"Sedan","car_type_image":"uploads/car/editcar_1.png","coupons_code":"","coupons_price":"0.00","total_amount":"200","peak_time_charge":"0.00","night_time_charge":"100.00","wallet_deducted_amount":"0.00","payment_falied_message":"","payment_status":"1","ride_image":"https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.4127488,77.0442665&markers=color:red|label:D|28.4127488,77.0442665&key=AIzaSyAOn6JaRdW5UTlqDUHlU1LQ_LHMOQ44Ors","total_payable_amount":"200"}
      */
 
     private int result;
@@ -30,37 +30,48 @@ public class DoneRideInfo {
 
     public static class MsgBean {
         /**
-         * done_ride_id : 758
-         * begin_location : 68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India
-         * end_location : 68, Plaza St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018, India
-         * waiting_time : 0 Min
+         * payment_status_message : Cash To Be Collected
+         * payment_status_show : Pending
+         * amount_show : 200
+         * done_ride_id : 329
+         * begin_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * end_location : IRIS Tech Park, Sector 49, Gurugram, Haryana 122018, India
+         * waiting_time : 0.03 Min
          * waiting_price : 0.00
-         * ride_time : 0 Min
-         * ride_time_price : 00.00
-         * distance : 0.00 Miles
+         * ride_time : 0.03 Min
+         * ride_time_price : 0.30
+         * distance : 0.00 Km
          * amount : 100.00
-         * tot_time : 0
-         * user_id : 323
-         * username : Samir Goel
-         * user_phone : +919650923089
+         * tot_time : 0.03
+         * user_id : 944
+         * username : hxxnn .
+         * user_phone : +916464444
          * user_image :
-         * driver_id : 212
-         * driver_name : Samir Goel
-         * driver_image : uploads/demotaxiappdriver/1503124462driver_212.jpg
+         * driver_id : 574
+         * driver_name : hsshj
+         * driver_image : uploads/driver/1524067117driver_574.jpg
          * payment_option_id : 1
          * payment_option_name : Cash
-         * ride_id : 1514
-         * ride_date : Monday, Aug 28
-         * car_type_id : 2
-         * car_type_name : HATCHBACK
-         * car_type_image : uploads/car/editcar_2.png
+         * ride_id : 698
+         * ride_date : Friday, Apr 20
+         * car_type_id : 1
+         * car_type_name : Sedan
+         * car_type_image : uploads/car/editcar_1.png
          * coupons_code :
          * coupons_price : 0.00
-         * total_amount : 100
+         * total_amount : 200
          * peak_time_charge : 0.00
-         * night_time_charge : 0.00
+         * night_time_charge : 100.00
+         * wallet_deducted_amount : 0.00
+         * payment_falied_message :
+         * payment_status : 1
+         * ride_image : https:maps.googleapis.com/maps/api/staticmap?center=&zoom=12&size=650x300&maptype=roadmap&markers=color:green|label:S|28.4127488,77.0442665&markers=color:red|label:D|28.4127488,77.0442665&key=AIzaSyAOn6JaRdW5UTlqDUHlU1LQ_LHMOQ44Ors
+         * total_payable_amount : 200
          */
 
+        private String payment_status_message;
+        private String payment_status_show;
+        private String amount_show;
         private String done_ride_id;
         private String begin_location;
         private String end_location;
@@ -90,6 +101,35 @@ public class DoneRideInfo {
         private String total_amount;
         private String peak_time_charge;
         private String night_time_charge;
+        private String wallet_deducted_amount;
+        private String payment_falied_message;
+        private String payment_status;
+        private String ride_image;
+        private String total_payable_amount;
+
+        public String getPayment_status_message() {
+            return payment_status_message;
+        }
+
+        public void setPayment_status_message(String payment_status_message) {
+            this.payment_status_message = payment_status_message;
+        }
+
+        public String getPayment_status_show() {
+            return payment_status_show;
+        }
+
+        public void setPayment_status_show(String payment_status_show) {
+            this.payment_status_show = payment_status_show;
+        }
+
+        public String getAmount_show() {
+            return amount_show;
+        }
+
+        public void setAmount_show(String amount_show) {
+            this.amount_show = amount_show;
+        }
 
         public String getDone_ride_id() {
             return done_ride_id;
@@ -321,6 +361,46 @@ public class DoneRideInfo {
 
         public void setNight_time_charge(String night_time_charge) {
             this.night_time_charge = night_time_charge;
+        }
+
+        public String getWallet_deducted_amount() {
+            return wallet_deducted_amount;
+        }
+
+        public void setWallet_deducted_amount(String wallet_deducted_amount) {
+            this.wallet_deducted_amount = wallet_deducted_amount;
+        }
+
+        public String getPayment_falied_message() {
+            return payment_falied_message;
+        }
+
+        public void setPayment_falied_message(String payment_falied_message) {
+            this.payment_falied_message = payment_falied_message;
+        }
+
+        public String getPayment_status() {
+            return payment_status;
+        }
+
+        public void setPayment_status(String payment_status) {
+            this.payment_status = payment_status;
+        }
+
+        public String getRide_image() {
+            return ride_image;
+        }
+
+        public void setRide_image(String ride_image) {
+            this.ride_image = ride_image;
+        }
+
+        public String getTotal_payable_amount() {
+            return total_payable_amount;
+        }
+
+        public void setTotal_payable_amount(String total_payable_amount) {
+            this.total_payable_amount = total_payable_amount;
         }
     }
 }

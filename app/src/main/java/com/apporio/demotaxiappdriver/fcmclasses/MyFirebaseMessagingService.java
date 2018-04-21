@@ -138,6 +138,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             else if (pn_ride_status.equals("51")){
                 sendNotification(""+pn_message);
             }
+            else if(pn_ride_status.equals("31")){
+                sendNotification(""+ pn_message);
+            }
             else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_BOOKING)){
                 sendNotification(""+pn_message);
             }
@@ -185,6 +188,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }else if (pn_ride_status.equals(""+Config.Status.RIDE_LATER_REASSIGNED)){
             intent = new Intent(this, ReAcceptpassActivity.class).putExtra("ride_id" , ""+pn_ride_id);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        else if(pn_ride_status.equals("31")){
+            intent = new Intent(this, PriceFareActivity.class).putExtra("done_ride_id" , ""+pn_ride_id);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 

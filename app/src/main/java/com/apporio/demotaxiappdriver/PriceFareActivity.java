@@ -1,11 +1,18 @@
 package com.apporio.demotaxiappdriver;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -23,34 +30,30 @@ import com.google.gson.GsonBuilder;
 
 public class PriceFareActivity extends AppCompatActivity implements ApiManager.APIFETCHER {
 
-    RatingBar rating_bar;
     public static Activity pricefare;
 
     ProgressDialog pd;
 
     SessionManager sessionManager;
-
     String driver_token;
     LanguageManager languageManager;
-    String language_id, ride_id;
-    TextView pay_mode, pick_location_txt, drop_location_txt, tv_total_time, tv_waiting_time, tv_ride_distance, fare_txt, ride_time_charges_txt, waiting_charge_txt, coupon_price_txt, coupon_code_txt, tv_ride_fare, total_payble_fare_txt_large, peak__charge_txt_charge_txt, night_charge_txt;
+    String language_id;
+    TextView pay_mode, pick_location_txt, drop_location_txt, total_payble_fare_txt_large,tv_payment_status,tv_payment_text;
     com.apporio.demotaxiappdriver.samwork.ApiManager apiManager;
     DoneRideInfo doneRideInfo;
-    LinearLayout coupon_layout;
     EditText comments;
+    Button btn_rate_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         apiManager = new ApiManager(this);
         languageManager = new LanguageManager(this);
-        setContentView(R.layout.price_fare_new);
+        setContentView(R.layout.activity_new_price_fare);
         getSupportActionBar().hide();
         pricefare = this;
         pd = new ProgressDialog(this);
         pd.setMessage("" + this.getResources().getString(R.string.loading));
-
-        apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info, Apis.viewDoneRide + "?done_ride_id=" + getIntent().getExtras().getString("done_ride_id") + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
 
         language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
@@ -58,53 +61,55 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
         sessionManager = new SessionManager(this);
         driver_token = sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken);
 
+        btn_rate_user = (Button) findViewById(R.id.btn_rate_user);
         pay_mode = (TextView) findViewById(R.id.pay_mode);
-        pick_location_txt = (TextView) findViewById(R.id.pick_location_txt);
-        tv_ride_distance = (TextView) findViewById(R.id.tv_ride_distance);
-        tv_waiting_time = (TextView) findViewById(R.id.tv_waiting_time);
-        tv_total_time = (TextView) findViewById(R.id.tv_total_time);
+        tv_payment_status = (TextView) findViewById(R.id.tv_payment_status);
+        tv_payment_text = (TextView) findViewById(R.id.tv_payment_text);
         drop_location_txt = (TextView) findViewById(R.id.drop_location_txt);
-        fare_txt = (TextView) findViewById(R.id.fare_txt);
-        ride_time_charges_txt = (TextView) findViewById(R.id.ride_time_charges_txt);
-        waiting_charge_txt = (TextView) findViewById(R.id.waiting_charge_txt);
-        coupon_price_txt = (TextView) findViewById(R.id.coupon_price_txt);
-        coupon_code_txt = (TextView) findViewById(R.id.coupon_code_txt);
-        tv_ride_fare = (TextView) findViewById(R.id.tv_ride_fare);
-        rating_bar = (RatingBar) findViewById(R.id.rating_bar);
-        coupon_layout = (LinearLayout) findViewById(R.id.coupon_layout);
+        pick_location_txt = (TextView) findViewById(R.id.pick_location_txt);
         comments = (EditText) findViewById(R.id.comments);
         total_payble_fare_txt_large = (TextView) findViewById(R.id.total_payble_fare_txt_large);
+        //ride_id = getIntent().getExtras().getString("ride_id");
 
-        night_charge_txt = (TextView) findViewById(R.id.night_charge_txt);
-        peak__charge_txt_charge_txt = (TextView) findViewById(R.id.peak__charge_txt_charge_txt);
+//        findViewById(R.id.pay_try).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info, Apis.baseDomain + "?done_ride_id=" + ride_id + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+//
+//            }
+//        });
 
-        ride_id = getIntent().getExtras().getString("ride_id");
-
-
-        findViewById(R.id.ll_submit_rating).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_view_receipt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String rating = String.valueOf(rating_bar.getRating());
-                if (rating.equals("0.0")) {
-                    Toast.makeText(PriceFareActivity.this, PriceFareActivity.this.getResources().getString(R.string.please_select_stars), Toast.LENGTH_SHORT).show();
-                } else {
-                    String user_id = getIntent().getExtras().getString("customerId");
-                    Log.d("user_id===", user_id);
-                    apiManager.execution_method_get(Config.ApiKeys.KEY_RATING_DRIVER, Apis.ratingDriver + "?ride_id=" + ride_id + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&user_id=" + user_id + "&rating_star=" + rating + "&comment=" + comments.getText().toString() + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-                }
+
+                showDialofForViewReceipt();
             }
         });
 
-        findViewById(R.id.pay_try).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.ll_reload_ride_fare).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //       apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info , Apis.baseDomain+"?done_ride_id="+getIntent().getExtras().getString("done_ride_id")+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
-                apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info, Apis.baseDomain + "?done_ride_id=" + ride_id + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+            public void onClick(View v) {
+                apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info, Apis.viewDoneRide + "?done_ride_id=" + getIntent().getExtras().getString("done_ride_id") + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+            }
+        });
 
+
+        btn_rate_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showDialofForRating();
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        apiManager.execution_method_get(Config.ApiKeys.KEY_View_done_ride_info, Apis.viewDoneRide + "?done_ride_id=" + getIntent().getExtras().getString("done_ride_id") + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+
+    }
 
     @Override
     public void onAPIRunningState(int a, String APINAME) {
@@ -128,35 +133,28 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                 if (doneRideInfo.getResult() == 1) {
 
                     if (doneRideInfo.getMsg().getPayment_option_id().equals("1")) {
-                        pay_mode.setText("Payment Mode : CASH");
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_cash));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("2")) {
-                        pay_mode.setText("Payment Mode : PAYPAL");
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_paypal));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("3")) {
-                        pay_mode.setText("Payment Mode : PAY WITH CARD");
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_card));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("4")) {
-                        pay_mode.setText("Payment Mode : WALLET ");
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_wallet));
                     }
 
-                    fare_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getAmount());
+                    if(doneRideInfo.getMsg().getPayment_status().equals("0")){
+                        btn_rate_user.setVisibility(View.GONE);
+                    }
+                    else if(doneRideInfo.getMsg().getPayment_status().equals("1")){
+                        btn_rate_user.setVisibility(View.VISIBLE);
+                    }
 
-                    tv_ride_fare.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getTotal_amount());
-                    waiting_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getWaiting_price());
                     pick_location_txt.setText("" + doneRideInfo.getMsg().getBegin_location());
                     drop_location_txt.setText("" + doneRideInfo.getMsg().getEnd_location());
-                    tv_ride_distance.setText("" + doneRideInfo.getMsg().getDistance());
-                    tv_waiting_time.setText("" + doneRideInfo.getMsg().getWaiting_time());
-                    tv_total_time.setText("" + doneRideInfo.getMsg().getTot_time() + "min");
-                    ride_time_charges_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getRide_time_price());
-                    total_payble_fare_txt_large.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getTotal_amount());
-                    night_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getNight_time_charge());
-                    peak__charge_txt_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getPeak_time_charge());
-                    if (doneRideInfo.getMsg().getCoupons_code().equals("")) {
-                        coupon_layout.setVisibility(View.GONE);
-                    } else {
-                        coupon_layout.setVisibility(View.VISIBLE);
-                        coupon_code_txt.setText(getString(R.string.PRICE_FARE_coupon) + doneRideInfo.getMsg().getCoupons_code() + ")");
-                        coupon_price_txt.setText("-" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getCoupons_price());
-                    }
+
+                    tv_payment_text.setText(doneRideInfo.getMsg().getPayment_status_message().toString());
+                    tv_payment_status.setText(getResources().getString(R.string.PRICE_FARE_payment_status)+ " "+doneRideInfo.getMsg().getPayment_status_show());
+                    total_payble_fare_txt_large.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getAmount_show());
 
                 } else {
                     Toast.makeText(PriceFareActivity.this, "" + doneRideInfo.getMsg().toString(), Toast.LENGTH_SHORT).show();
@@ -206,4 +204,107 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
         }
 
     }
+
+
+    private void showDialofForViewReceipt() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Setting dialogview
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+
+        window.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.FILL_PARENT);
+        dialog.setTitle(null);
+        dialog.setContentView(R.layout.dialog_rate_us);
+        dialog.setCancelable(false);
+
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_view_receipt);
+
+
+        TextView tv_ride_distance = (TextView) dialog.findViewById(R.id.tv_ride_distance);
+        TextView tv_waiting_time = (TextView) dialog.findViewById(R.id.tv_waiting_time);
+        TextView tv_total_time = (TextView) dialog.findViewById(R.id.tv_total_time);
+
+        TextView fare_txt = (TextView) dialog.findViewById(R.id.fare_txt);
+        TextView ride_time_charges_txt = (TextView) dialog.findViewById(R.id.ride_time_charges_txt);
+        TextView waiting_charge_txt = (TextView) dialog.findViewById(R.id.waiting_charge_txt);
+        TextView coupon_price_txt = (TextView) dialog.findViewById(R.id.coupon_price_txt);
+        TextView coupon_code_txt = (TextView) dialog.findViewById(R.id.coupon_code_txt);
+        TextView tv_ride_fare = (TextView) dialog.findViewById(R.id.tv_ride_fare);
+
+        LinearLayout coupon_layout = (LinearLayout) dialog.findViewById(R.id.coupon_layout);
+        TextView night_charge_txt = (TextView) dialog.findViewById(R.id.night_charge_txt);
+        TextView peak__charge_txt_charge_txt = (TextView) dialog.findViewById(R.id.peak__charge_txt_charge_txt);
+
+        fare_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getAmount());
+
+        tv_ride_fare.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getTotal_amount());
+        waiting_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getWaiting_price());
+
+        tv_ride_distance.setText("" + doneRideInfo.getMsg().getDistance());
+        tv_waiting_time.setText("" + doneRideInfo.getMsg().getWaiting_time());
+        tv_total_time.setText("" + doneRideInfo.getMsg().getTot_time() + "min");
+        ride_time_charges_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getRide_time_price());
+        night_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getNight_time_charge());
+        peak__charge_txt_charge_txt.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getPeak_time_charge());
+        if (doneRideInfo.getMsg().getCoupons_code().equals("")) {
+            coupon_layout.setVisibility(View.GONE);
+        } else {
+            coupon_layout.setVisibility(View.VISIBLE);
+            coupon_code_txt.setText(getString(R.string.PRICE_FARE_coupon) + doneRideInfo.getMsg().getCoupons_code() + ")");
+            coupon_price_txt.setText("-" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getCoupons_price());
+        }
+
+        dialog.findViewById(R.id.rl_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    private void showDialofForRating() {
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Setting dialogview
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+
+        window.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.FILL_PARENT);
+        dialog.setTitle(null);
+        dialog.setContentView(R.layout.dialog_rate_us);
+        dialog.setCancelable(true);
+
+
+//        Window window = dialog.getWindow();
+//        dialog.setCancelable(true);
+//        window.setGravity(Gravity.CENTER);
+//        window.setGravity(Gravity.CENTER_VERTICAL);
+
+        final RatingBar rating_bar = (RatingBar) dialog.findViewById(R.id.rating_bar);
+
+        dialog.findViewById(R.id.ll_submit_rating).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String rating = String.valueOf(rating_bar.getRating());
+                if (rating.equals("0.0")) {
+                    Toast.makeText(PriceFareActivity.this, PriceFareActivity.this.getResources().getString(R.string.please_select_stars), Toast.LENGTH_SHORT).show();
+                } else {
+                    String user_id = doneRideInfo.getMsg().getUser_id().toString();
+                    Log.d("user_id===", doneRideInfo.getMsg().getUser_id().toString());
+                    apiManager.execution_method_get(Config.ApiKeys.KEY_RATING_DRIVER, Apis.ratingDriver + "?ride_id=" + doneRideInfo.getMsg().getRide_id().toString() + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&user_id=" + user_id + "&rating_star=" + rating + "&comment=" + comments.getText().toString() + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
 }

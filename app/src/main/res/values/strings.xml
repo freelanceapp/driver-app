@@ -208,6 +208,19 @@
     <string name="PRICE_FARE__net_fare">Net Fare :</string>
     <string name="PRICE_FARE__submit">SUBMIT</string>
     <string name="PRICE_FARE_coupon">Coupon (</string>
+    <string name="PRICE_FARE_receipt">Receipt</string>
+    <string name="PRICE_FARE_rate_btn_text">Complete Ride and Rate User</string>
+    <string name="PRICE_FARE_rate_us">Rate us</string>
+    <string name="PRICE_FARE_comment">Comment</string>
+
+    <string name="PRICE_FARE_payment_mode">Payment Mode : </string>
+    <string name="PRICE_FARE_payment_status">Payment Status : </string>
+    <string name="PRICE_FARE_payment_amount_pending">Amount Pending</string>
+    <string name="PRICE_FARE_payment_cash_to_be_collected">Cash to be collected</string>
+    <string name="PRICE_FARE_payment_cash">CASH</string>
+    <string name="PRICE_FARE_payment_paypal">PAYPAL</string>
+    <string name="PRICE_FARE_payment_card">PAY WITH CARD</string>
+    <string name="PRICE_FARE_payment_wallet">WALLET</string>
     ////////////////// Main Activity
     <string name="MAIN_ACTIVITY__profile">Profile</string>
     <string name="MAIN_ACTIVITY__my_rides">Your trips</string>

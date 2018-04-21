@@ -31,6 +31,7 @@
     ////////////////////////  others colors
     <color name="icons_8_muted_grey">#95a5a6</color>
     <color name="icons_8_muted_greydark">#687576</color>
+    <color name="icons_8_muted_grey_very_dark">#4a4e4e</color>
     <color name="pure_white">#ffffff</color>
     <color name="pure_black">#000000</color>
     <color name="icon_8_muted_black">#333333</color>

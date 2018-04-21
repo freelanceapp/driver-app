@@ -95,6 +95,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 import morxander.zaman.ZamanUtil;
@@ -237,7 +238,39 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                             Toast.makeText(TrackRideActivity.this, getString(R.string.ride_end_but_with_accuracy) + locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY), Toast.LENGTH_SHORT).show();
                         } else {
                         }
-                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP, Apis.endTripMeter + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&begin_lat=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE) + "&begin_long=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE) + "&begin_location=" + "&end_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&end_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) + "&end_location=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) + "&end_time=" + getArrivalTime() + "&distance=" + distance_travel + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) + "&lat_long=" + dbHelper.getRideLocationData("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
+
+                        HashMap<String, String> data = new HashMap<>();
+                        data.put("ride_id", ""+ rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                        data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
+
+                        data.put("begin_lat", "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE));
+                        data.put("begin_long", "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE));
+                        data.put("begin_location", "");
+                        data.put("end_lat", "" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT));
+                        data.put("end_long", "" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG));
+                        data.put("end_location", "" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT));
+                        data.put("end_time", "" + getArrivalTime());
+                        data.put("distance", "" + distance_travel);
+                        data.put("driver_token", "" +sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
+                        data.put("language_id", "" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) );
+                        data.put("lat_long", "" + dbHelper.getRideLocationData("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
+
+                        apiManager.execution_method_post("" + Config.ApiKeys.KEY_END_TRIP, "" + Apis.endTripMeter, data);
+
+//                        apiManager.execution_method_get(Config.ApiKeys.KEY_END_TRIP,
+//                                Apis.endTripMeter + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)
+//                                        + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)
+//                                        + "&begin_lat=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)
+//                                        + "&begin_long=" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)
+//                                        + "&begin_location=" +
+//                                        "&end_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)
+//                                        + "&end_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)
+//                                        + "&end_location=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT)
+//                                        + "&end_time=" + getArrivalTime()
+//                                        + "&distance=" + distance_travel
+//                                        + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) +
+//                                        "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID)
+//                                        + "&lat_long=" + dbHelper.getRideLocationData("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
 
                     } catch (Exception e) {
                         Toast.makeText(TrackRideActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
