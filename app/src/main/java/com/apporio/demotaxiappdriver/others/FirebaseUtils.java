@@ -106,28 +106,6 @@ public class FirebaseUtils {
         }
     }
 
-
-    public void setDriverCurrentLocation(String latitude , String longitude){
-
-
-        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_login_logout),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
-                applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) ,
-                applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) ,
-                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT) ,
-                ""+ (System.currentTimeMillis()/1000) ,
-                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
-
-        mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(driverLocation);
-
-    }
-
-
-
     public void setUpDriver ( ){
 
         if(checkDriverExsistance()){
@@ -166,31 +144,6 @@ public class FirebaseUtils {
         }
     }
 
-
-    public void logOutDriver(){
-        DriverLocation driverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_DriverToken),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId),
-                "2",
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Busy_Status),
-                sessionmanager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status),
-                "" ,
-                "" ,
-                "Location Text Need to be Send" ,
-                ""+ (System.currentTimeMillis()/1000) ,
-                ""+applocation_manager.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR));
-
-
-        mDatabaseReference.child(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)).setValue(driverLocation);
-        setDriverOnlineStatus(false);
-        sessionmanager.logoutUser();
-    }
-
-
-
-
-
-
     public  void updateLocation_with_text(){
         if(checkDriverExsistance()){
             final DriverLocation mDriverLocation = new DriverLocation(sessionmanager.getUserDetails().get(SessionManager.KEY_DRIVER_ID),
@@ -224,7 +177,6 @@ public class FirebaseUtils {
         }
 
     }
-
 
     public void updateLocationOnCameramove (final String latitude  , final String longitude ){
         if(checkDriverExsistance()){
@@ -281,7 +233,6 @@ public class FirebaseUtils {
             });
         }
     }
-
 
     public void setDriverLoginLogoutStatus(boolean b) {
         if(checkDriverExsistance()){
