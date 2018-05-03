@@ -535,9 +535,9 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
 
-        if (!is_location_updation_running) {
-            apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG, Apis.updateLatLong + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + event.getlatitude_string() + "&current_long=" + event.getLongitude_string() + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
-        }
+//        if (!is_location_updation_running) {
+//            apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG, Apis.updateLatLong + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + event.getlatitude_string() + "&current_long=" + event.getLongitude_string() + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+//        }
 
 
         try {
