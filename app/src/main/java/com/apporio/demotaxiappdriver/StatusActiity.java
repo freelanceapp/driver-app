@@ -38,7 +38,10 @@ public class StatusActiity extends Activity {
         });
 
 
-        try{ Glide.with(this).load(""+getIntent().getExtras().getString("image")).into(image);}catch (Exception e){}
+        try{
+            Glide.with(this).load(""+getIntent().getExtras().getString("image")).into(image);
+        }catch
+                (Exception e){}
         try{message.setText(""+getIntent().getExtras().getString("message"));}catch (Exception e){}
 
     }
