@@ -2,13 +2,11 @@ package com.apporio.demotaxiappdriver.analytics;
 
 import android.support.multidex.MultiDexApplication;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.StandardExceptionParser;
 import com.google.android.gms.analytics.Tracker;
 
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Bhuvneshwar on 12/17/2016.
@@ -24,7 +22,6 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
         mInstance = this;
 
         AnalyticsTrackers.initialize(this);

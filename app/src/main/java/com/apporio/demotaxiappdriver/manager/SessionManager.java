@@ -448,8 +448,11 @@ public class SessionManager {
             case "00024":
                 currency = "\u0024";
                 break;
+            case "020B9":
+                currency = "\u20B9";
+                break;
             default:
-                currency = "##";
+                currency = "$";
                 break;
         }
 

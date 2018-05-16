@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import com.apporio.GcmServiceClass;
 import com.apporio.apporiologs.ApporioLog;
-import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
+
 import com.apporio.demotaxiappdriver.location.SamLocationRequestService;
 import com.apporio.demotaxiappdriver.logger.Logger;
 import com.apporio.demotaxiappdriver.manager.DeviceManager;
@@ -75,6 +75,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
+import com.onesignal.OneSignal;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -186,6 +187,14 @@ public class MainActivity extends BaseActivity implements Apis,
         deviceManager = new DeviceManager(this);
         language_id = languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID);
 
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                deviceId = userId ;
+                OneSignal.sendTag("driver_id" , ""+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
+            }
+        });
+
         if(demoStatus.equals("1")){
             demoStatus = "2";
             try {
@@ -212,7 +221,6 @@ public class MainActivity extends BaseActivity implements Apis,
         car_type_name = sessionManager.getUserDetails().get(SessionManager.KEY_CarTypeName);
         car_model_name = sessionManager.getUserDetails().get(SessionManager.KEY_CarModelName);
         car_type_id = sessionManager.getUserDetails().get(SessionManager.KEY_Driver_CarTypeId);
-        deviceId = FirebaseInstanceId.getInstance().getToken();
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
 
 
@@ -234,7 +242,6 @@ public class MainActivity extends BaseActivity implements Apis,
        // startPeriodicTask();
 
         startService(new Intent(this, TimeService.class));
-        startService(new Intent(this, TimelySessionService.class));
 
         findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -755,37 +762,37 @@ public class MainActivity extends BaseActivity implements Apis,
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(EventNewRide event) {
-        try {
-            if (event.RideStatus.equals("1")) {  //   ride booked for normal type
-                startActivity(new Intent(MainActivity.this, ReceivePassengerActivity.class).putExtra("" + Config.IntentKeys.RIDE_ID, "" + event.RideId));
-//                Toast.makeText(mainActivity, "Open Activity", Toast.LENGTH_SHORT).show();
-            } else if (event.RideStatus.equals("10")) {  //  ride booked for rental type
-                startActivity(new Intent(MainActivity.this, ReceiveRentalPassengerActivity.class).putExtra("" + Config.IntentKeys.RIDE_ID, "" + event.RideId));
-            }
-        } catch (Exception e) {
-        }
+//        try {
+//            if (event.RideStatus.equals("1")) {  //   ride booked for normal type
+//                startActivity(new Intent(MainActivity.this, ReceivePassengerActivity.class).putExtra("" + Config.IntentKeys.RIDE_ID, "" + event.RideId));
+////                Toast.makeText(mainActivity, "Open Activity", Toast.LENGTH_SHORT).show();
+//            } else if (event.RideStatus.equals("10")) {  //  ride booked for rental type
+//                startActivity(new Intent(MainActivity.this, ReceiveRentalPassengerActivity.class).putExtra("" + Config.IntentKeys.RIDE_ID, "" + event.RideId));
+//            }
+//        } catch (Exception e) {
+//        }
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MyFirebaseMessagingService.RideEvent event) {
-        rideSession.setRideStatus("18");
-        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Window window = dialog.getWindow();
-        window.setGravity(Gravity.CENTER);
-        dialog.setContentView(R.layout.user_ride_cancel_dialog);
-        dialog.setCancelable(false);
-
-        dialog.findViewById(R.id.demo_ok_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TripHistoryActivity.class));
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onMessageEvent(MyFirebaseMessagingService.RideEvent event) {
+//        rideSession.setRideStatus("18");
+//        final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        Window window = dialog.getWindow();
+//        window.setGravity(Gravity.CENTER);
+//        dialog.setContentView(R.layout.user_ride_cancel_dialog);
+//        dialog.setCancelable(false);
+//
+//        dialog.findViewById(R.id.demo_ok_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, TripHistoryActivity.class));
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.show();
+//    }
 
 
     private void setStatusViewAccordingly() {

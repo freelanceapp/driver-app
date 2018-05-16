@@ -38,13 +38,13 @@ import com.apporio.demotaxiappdriver.LocationEvent;
 import com.apporio.demotaxiappdriver.LocationSession;
 import com.apporio.demotaxiappdriver.PriceFareActivity;
 import com.apporio.demotaxiappdriver.R;
+import com.apporio.demotaxiappdriver.RideSessionActiveRideEvent;
 import com.apporio.demotaxiappdriver.SelectedRidesActivity;
 import com.apporio.demotaxiappdriver.SosActivity;
 import com.apporio.demotaxiappdriver.SplashActivity;
 import com.apporio.demotaxiappdriver.TripHistoryActivity;
 import com.apporio.demotaxiappdriver.adapter.ReasonAdapter;
 import com.apporio.demotaxiappdriver.database.DBHelper;
-import com.apporio.demotaxiappdriver.fcmclasses.MyFirebaseMessagingService;
 import com.apporio.demotaxiappdriver.location.SamLocationRequestService;
 import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.RideSession;
@@ -55,7 +55,6 @@ import com.apporio.demotaxiappdriver.models.restmodels.NewChangeDropLocationMode
 import com.apporio.demotaxiappdriver.models.restmodels.NewUpdateLatLongModel;
 import com.apporio.demotaxiappdriver.models.ridearrived.RideArrived;
 import com.apporio.demotaxiappdriver.models.viewrideinfodriver.ViewRideInfoDriver;
-import com.apporio.demotaxiappdriver.others.ChangeLocationEvent;
 import com.apporio.demotaxiappdriver.others.ChatModel;
 import com.apporio.demotaxiappdriver.others.Constants;
 import com.apporio.demotaxiappdriver.others.FirebaseChatEvent;
@@ -216,7 +215,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     apiManager.execution_method_get(Config.ApiKeys.KEY_ARRIVED, Apis.arrivedTrip + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                 } else if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("5")) {
                     // run begin trip api
-                    if (location_txt.getText().toString().equals("") || location_txt.getText().toString() == null || location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point))) {
+                    if (location_txt.getText().toString().equals("") || location_txt.getText().toString() == null || location_txt.getText().toString().equals(TrackRideActivity.this.getResources().getString(R.string.TrackRideActivity__set_your_drop_point)) || rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE).equals("0.0")) {
                         Toast.makeText(TrackRideActivity.this, R.string.please_ask_drop_location_from_passenger, Toast.LENGTH_SHORT).show();
                     } else {
                         if (Double.parseDouble("" + locationSession.getLocationDetails().get(LocationSession.KEY_ACCURACY)) > 100.0) {
@@ -240,7 +239,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         }
 
                         HashMap<String, String> data = new HashMap<>();
-                        data.put("ride_id", ""+ rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
+                        data.put("ride_id", "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                         data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
 
                         data.put("begin_lat", "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE));
@@ -251,8 +250,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         data.put("end_location", "" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LOCATION_TEXT));
                         data.put("end_time", "" + getArrivalTime());
                         data.put("distance", "" + distance_travel);
-                        data.put("driver_token", "" +sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
-                        data.put("language_id", "" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID) );
+                        data.put("driver_token", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
+                        data.put("language_id", "" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                         data.put("lat_long", "" + dbHelper.getRideLocationData("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)));
 
                         apiManager.execution_method_post("" + Config.ApiKeys.KEY_END_TRIP, "" + Apis.endTripMeter, data);
@@ -425,10 +424,10 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(ChangeLocationEvent event) {
-        apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onMessageEvent(ChangeLocationEvent event) {
+//        apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+//    }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -474,6 +473,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             if (is_map_loaded) {
                 setView();
             }
+            apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+
         } catch (Exception e) {
         }
     }
@@ -559,16 +560,16 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event) {
-        if (event.getRideStatus().equals(Config.Status.NORMAL_CANCEL_BY_USER)) {
-            showDialogForCancelation();
-        }
-        if (event.getRideStatus().equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)) {
-            showDialogForCancelationViaAdmin();
-        }
-
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void ownMessageEvent(MyFirebaseMessagingService.RideEvent event) {
+//        if (event.getRideStatus().equals(Config.Status.NORMAL_CANCEL_BY_USER)) {
+//            showDialogForCancelation();
+//        }
+//        if (event.getRideStatus().equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)) {
+//            showDialogForCancelationViaAdmin();
+//        }
+//
+//    }
 
     private void showDialogForCancelation() {
         final Dialog dialog = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -611,7 +612,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     public void setviewAccordingToStatus() {
 
-        Log.e("RideSttaus",""+ rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS));
+        Log.e("RideSttaus", "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS));
         try {
             if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("2")) {
                 showDialogForCancelation();
@@ -1035,6 +1036,25 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
         dialog.show();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(RideSessionActiveRideEvent event) {
+
+        if (event.getRide_status().equals("" + Config.Status.NORMAL_CANCEL_BY_USER)) {
+            rideSession.clearRideSession();
+            showDialogForCancelation();
+        }
+        if (event.getRide_status().equals("" + Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)) {
+            rideSession.clearRideSession();
+            showDialogForCancelationViaAdmin();
+        }
+        if (event.getRide_status().equals("20")) {
+            apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+        } else {
+            apiManager.execution_method_get(Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER, Apis.viewRideInfoDriver + "?ride_id=" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+
+        }
     }
 
 

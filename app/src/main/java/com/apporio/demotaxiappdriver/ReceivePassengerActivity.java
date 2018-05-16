@@ -34,6 +34,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import customviews.PulsatorLayout;
@@ -60,6 +64,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
 
     CountDownTimer SoundTimer, ProgressTimer;
     LanguageManager languageManager;
+    public static boolean RIDE_BTN_CLICKED = false;
 
 
     @Bind(R.id.activity_countdown_timer_days)
@@ -107,6 +112,8 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
         ButterKnife.bind(this);
         activity = this;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
@@ -250,6 +257,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mediaPlayer.stop();
         Config.ReceiverPassengerActivity = false;
     }
 
@@ -259,16 +267,16 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
             cancelLayout.setVisibility(View.VISIBLE);
             mainLayout.setVisibility(View.VISIBLE);
             acceptRideBtn.setVisibility(View.VISIBLE);
-            rideExpireLayout.setVisibility(View.GONE);
+           // rideExpireLayout.setVisibility(View.GONE);
 
 
         } // Ride is still live for demotaxiappdriver
         else {  // some thing went wrong
             cancelLayout.setVisibility(View.GONE);
-            mainLayout.setVisibility(View.GONE);
+           // mainLayout.setVisibility(View.GONE);
             acceptRideBtn.setVisibility(View.GONE);
-            rideExpireLayout.setVisibility(View.VISIBLE);
-            expireMsg.setText("" + message);
+          //  rideExpireLayout.setVisibility(View.VISIBLE);
+          //  expireMsg.setText("" + message);
         }
     }
 
@@ -276,7 +284,11 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     public void onAPIRunningState(int a, String APINAME) {
 
         if (a == ApiManager.APIFETCHER.KEY_API_IS_STARTED) {
-            progressDialog.show();
+            try {
+                progressDialog.show();
+            }catch (Exception e){
+
+            }
         } else {
             if (progressDialog != null) {
                 progressDialog.dismiss();
@@ -404,5 +416,35 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+
+    ////////////event to check the active ride, if ride is being accepted by other operator or cancelled it will simply cancel the call
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(RideSessionActiveRideEvent event) {
+        if (event.getRide_status().equals("104")){
+            if (!RIDE_BTN_CLICKED == true) {
+                Log.d("**RIDE_BTN++2+", ""+RIDE_BTN_CLICKED);
+                setViewAccordingToRideStatus(event.getRide_status(), getResources().getString(R.string.ride_cancel));
+                mediaPlayer.stop();
+                finish();
+                RIDE_BTN_CLICKED = false;
+            }else {
+                mediaPlayer.stop();
+                Log.d("**RIDE_BTN++3+", ""+RIDE_BTN_CLICKED);
+                RIDE_BTN_CLICKED = false;
+            }
+        }
+    }
 
 }

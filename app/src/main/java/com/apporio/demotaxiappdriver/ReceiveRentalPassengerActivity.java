@@ -9,15 +9,14 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
-import com.apporio.demotaxiappdriver.manager.LanguageManager;
 import com.apporio.demotaxiappdriver.manager.RideSession;
 import com.apporio.demotaxiappdriver.manager.SessionManager;
 import com.apporio.demotaxiappdriver.models.restmodels.NewRideAcceptmodel;
@@ -31,6 +30,10 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 
@@ -49,7 +52,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     Gson gson;
     ProgressDialog progressDialog;
     CountDownTimer SoundTimer, ProgressTimer;
-    FirebaseUtils firebaseUtils ;
+    FirebaseUtils firebaseUtils;
 
     LinearLayout cash_layout, card_layout;
     public static MediaPlayer mediaPlayer;
@@ -87,6 +90,9 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         apiManager = new ApiManager(this);
         sessionManager = new SessionManager(this);
         rideSession = new RideSession(this);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
@@ -106,14 +112,10 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         cash_layout = (LinearLayout) findViewById(R.id.cash_layout);
 
 
-
-        try {setMediaSound();} catch (Exception e) {}
-
-
-
-
-
-
+        try {
+            setMediaSound();
+        } catch (Exception e) {
+        }
 
 
         acceptBtn.setOnClickListener(new View.OnClickListener() {
@@ -146,16 +148,16 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
 
     }
 
-    private void setTimeInterval(String MaxValue , String TimeDifference) {
+    private void setTimeInterval(String MaxValue, String TimeDifference) {
         try {
-            MAXTIME = (Long.parseLong(MaxValue ) * 1000);
-            long difference_time = (Long.parseLong(TimeDifference ) * 1000);
+            MAXTIME = (Long.parseLong(MaxValue) * 1000);
+            long difference_time = (Long.parseLong(TimeDifference) * 1000);
             STARTTIME = MAXTIME - difference_time;
-            if(STARTTIME <=1){
+            if (STARTTIME <= 1) {
                 firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                 finish();
-            }else{
-                timeTxt.setText(""+(STARTTIME / 1000));
+            } else {
+                timeTxt.setText("" + (STARTTIME / 1000));
                 startTimer();
             }
 
@@ -169,12 +171,14 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     protected void onResume() {
         super.onResume();
         Config.RentalReceivepassengerActivity = true;
+        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         Config.RentalReceivepassengerActivity = false;
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -210,7 +214,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
 
                         String value = "" + response.getDetails().getPayment_option_id();
 
-                        setTimeInterval(""+response.getDetails().getDriver_request_time() , ""+response.getDetails().getDifferenceInSeconds());
+                        setTimeInterval("" + response.getDetails().getDriver_request_time(), "" + response.getDetails().getDifferenceInSeconds());
                         Glide.with(this).load("" + Apis.googleImage + "" + response.getDetails().getPickup_lat() + "," + response.getDetails().getPickup_long() + "&zoom=15&size=400x400&key=" + ReceiveRentalPassengerActivity.this.getResources().getString(R.string.google_map_key)).into(mapImage);
 
                         if (value.equals("1")) {
@@ -227,6 +231,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                 case Config.ApiKeys.KEY_RESt_ACCEPT_API:
                     AcceptCheck ac_check = gson.fromJson("" + script, AcceptCheck.class);
                     if (ac_check.getStatus() == 1) {
+                        mediaPlayer.stop();
                         NewRideAcceptmodel accept_response = gson.fromJson("" + script, NewRideAcceptmodel.class);
                         new RideSession(this).setRentalRideSession(accept_response.getDetails().getRental_booking_id(), accept_response.getDetails().getUser_id(), accept_response.getDetails().getUser_name(), accept_response.getDetails().getUser_phone(), accept_response.getDetails().getReferral_code(), accept_response.getDetails().getPickup_lat(), accept_response.getDetails().getPickup_long(), accept_response.getDetails().getPickup_location(), "", "", "", accept_response.getDetails().getBooking_date(), "ride_time", accept_response.getDetails().getBooking_date(), accept_response.getDetails().getBooking_time(), accept_response.getDetails().getDriver_id(), accept_response.getDetails().getBooking_type(), "" + Config.Status.RENTAL_ACCEPTED, accept_response.getDetails().getStatus());
                         finish();
@@ -243,6 +248,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                 case Config.ApiKeys.KEY_REST_REJECT_RIDE:
                     AcceptCheck ac = gson.fromJson("" + script, AcceptCheck.class);
                     if (ac.getStatus() == 1) {
+                        mediaPlayer.stop();
                         NewRideRejectModel reject_response = gson.fromJson("" + script, NewRideRejectModel.class);
                         finish();
                         Toast.makeText(this, "" + reject_response.getMessage(), Toast.LENGTH_SHORT).show();
@@ -274,34 +280,39 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
             @Override
             public void onTick(long l) {
 
-                try{
-                    int vaaal = Integer.parseInt(""+timeTxt.getText().toString());
-                    if((vaaal - 1) <10){
+                try {
+                    int vaaal = Integer.parseInt("" + timeTxt.getText().toString());
+                    if ((vaaal - 1) < 10) {
                         timeTxt.setTextColor(Color.parseColor("#e74c3c"));
                         mapImage.setBorderColor(Color.parseColor("#e74c3c"));
-                    }else{
+                    } else {
                         timeTxt.setTextColor(Color.parseColor("#2ecc71"));
                         mapImage.setBorderColor(Color.parseColor("#2ecc71"));
                     }
                     timeTxt.setText("" + (vaaal - 1));
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
             }
 
             @Override
             public void onFinish() {
-                try{
+                try {
                     timeTxt.setText("0");
                     SoundTimer.cancel();
                     ProgressTimer.cancel();
+                    mediaPlayer.stop();
                     HashMap<String, String> data = new HashMap<String, String>();
                     data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
                     data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
                     data.put("driver_token", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
                     apiManager.execution_method_post(Config.ApiKeys.KEY_REST_REJECT_RIDE, "" + Apis.RejectRide, data);
-                }catch (Exception e){finish();}
+                } catch (Exception e) {
+                    finish();
+                }
             }
         }.start();
     }
+
     private void setMediaSound() throws Exception {
 
         mediaPlayer = new MediaPlayer();
@@ -310,7 +321,6 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         mediaPlayer.prepare();
 
     }
-
 
 
     @Override
@@ -350,6 +360,20 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
 
     @Override
     public void onBackPressed() {
+    }
 
+    ////////////event to check the active ride, if ride is being accepted by other operator or cancelled it will simply cancel the call
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(RideSessionActiveRideEvent event) {
+        if (event.getRide_status().equals("108")) {
+            mediaPlayer.stop();
+            finish();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
     }
 }

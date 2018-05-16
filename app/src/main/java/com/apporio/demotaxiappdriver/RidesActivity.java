@@ -11,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.apporio.demotaxiappdriver.manager.SessionManager;
-import com.apporio.demotaxiappdriver.models.ResultCheck;
 import com.apporio.demotaxiappdriver.models.restmodels.NewRidehistoryModel;
 import com.apporio.demotaxiappdriver.models.restmodels.ResultStatusChecker;
 import com.apporio.demotaxiappdriver.samwork.ApiManager;
@@ -100,15 +99,23 @@ public class RidesActivity extends AppCompatActivity implements ApiManager.APIFE
             Gson gson = builder.create();
 
             ResultStatusChecker rs = gson.fromJson("" + script, ResultStatusChecker.class);
-            if(rs.getStatus() == 1){
+            if (rs.getStatus() == 1) {
                 NewRidehistoryModel rideshistory_response = gson.fromJson("" + script, NewRidehistoryModel.class);
 
                 for (int i = 0; i < rideshistory_response.getDetails().size(); i++) {
 
                     if (rideshistory_response.getDetails().get(i).getRide_mode().equals("1")) {   // ride type normal
-                        place_holder.addView(new HolderRideHistoryNormal(this, rideshistory_response.getDetails().get(i).getNormal_Ride()));
+
+                        if (rideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("1") || rideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("8") || rideshistory_response.getDetails().get(i).getNormal_Ride().getRide_status().equals("10")) {
+                            place_holder.addView(new HolderRideHistoryNormal(this, rideshistory_response.getDetails().get(i).getNormal_Ride()));
+
+                        }
                     } else if (rideshistory_response.getDetails().get(i).getRide_mode().equals("2")) {   // ride type Rentals
-                        place_holder.addView(new HolderRentalRideHistory(this, rideshistory_response.getDetails().get(i).getRental_Ride()));
+
+                        if (rideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("1") || rideshistory_response.getDetails().get(i).getRental_Ride().getBooking_status().equals("10")) {
+                            place_holder.addView(new HolderRentalRideHistory(this, rideshistory_response.getDetails().get(i).getRental_Ride()));
+
+                        }
                     }
                 }
             }
@@ -148,7 +155,7 @@ public class RidesActivity extends AppCompatActivity implements ApiManager.APIFE
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("#"+mNormalRideResponse.getRide_id() +"  "+ mNormalRideResponse.getLater_date() + " | " + mNormalRideResponse.getLater_time());
+            tv_date_time.setText("#" + mNormalRideResponse.getRide_id() + "  " + mNormalRideResponse.getLater_date() + " | " + mNormalRideResponse.getLater_time());
             tv_pickup_addresss.setText("" + mNormalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mNormalRideResponse.getDrop_location());
             customer_name_txt.setText("" + mNormalRideResponse.getUser_name());

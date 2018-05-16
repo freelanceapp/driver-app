@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.github.ApporioInfolabs:apporiolibraries-0.1.5">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/46d2d4670671ba2294193fbbef9410502c2054e9/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/46d2d4670671ba2294193fbbef9410502c2054e9/output/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/apporiolibraries-0.1.5.aar/869d81ac05506a1847fc36708d161ab9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/apporiolibraries-0.1.5.aar/869d81ac05506a1847fc36708d161ab9/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

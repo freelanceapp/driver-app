@@ -2,7 +2,7 @@ package com.apporio.demotaxiappdriver.urls;
 
 public interface Apis {
 
-    String BASE = "http://apporiotaxi.com/";
+    String BASE = "http://apporioinfolabs.com/ApporiotaxiOnesignal/";
     String baseDomain = BASE + "api/";
     String imageDomain = BASE + "";
     String restdomain = BASE + "Apporiotaxi/";
