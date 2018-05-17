@@ -630,7 +630,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 cancel_btn.setVisibility(View.VISIBLE);
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
-                if (rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("") || rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE) == null) {  // no drop off location
+                if (rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("") || rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE) == null || rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE).equals("0.0")) {  // no drop off location
                     mGooglemap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.parseDouble("" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble("" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)))).zoom(17).build()));
 
                 } else {
