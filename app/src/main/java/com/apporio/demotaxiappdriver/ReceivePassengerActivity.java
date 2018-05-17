@@ -56,6 +56,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     ApiManager apiManager;
     SessionManager sessionManager;
 
+
     GsonBuilder builder;
     Gson gson;
     ProgressDialog progressDialog;
