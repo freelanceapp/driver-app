@@ -406,7 +406,7 @@ public class MainActivity extends BaseActivity implements Apis,
 
         setScrocabilityOnmap();
         setLocationonBoxex();
-        apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&current_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+        apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&bearing_factor="+locationSession.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR)+ "&current_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&current_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
 
 
         HashMap<String, String> data = new HashMap<>();
@@ -744,7 +744,7 @@ public class MainActivity extends BaseActivity implements Apis,
         setStatusViewAccordingly();
 
         if (!isLatLongUpdateAPIisRunning) {
-            apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + event.getlatitude_string() + "&current_long=" + event.getLongitude_string() + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+            apiManager_new.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&bearing_factor="+event.getBearingfactor()+ "&current_lat=" + event.getlatitude_string() + "&current_long=" + event.getLongitude_string() + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
             is_location_updation_running = true;
         }
 

@@ -146,7 +146,7 @@ public class TimeService extends Service implements ApiManager.APIFETCHER{
                                     // if distance between two lat long is greater than 100 then only update on firebase and location session
                                     updateLocationToSession(location );
                                     if(!isApiRunnign){
-                                        apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+"&current_lat="+ location.getLatitude()+"&current_long="+location.getLongitude()+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                                        apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG_BACKGROUND , Apis.BackGroundAppUpdate+"?driver_id="+sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID)+ "&bearing_factor="+location.getBearing()+"&current_lat="+ location.getLatitude()+"&current_long="+location.getLongitude()+"&current_location="+"&driver_token="+sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken)+"&language_id="+languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                                     }
                                 }
                             }

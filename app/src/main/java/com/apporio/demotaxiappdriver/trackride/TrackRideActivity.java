@@ -719,7 +719,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 if (APINAME.equals(Config.ApiKeys.KEY_BEGIN_TRIP)) {
                     rideSession.setRideStatus("6");
                     locationSession.clearMeterValue();
-                    apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&current_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
+                    apiManager.execution_method_get(Config.ApiKeys.KEY_UPDATE_DRIVER_LAT_LONG, Apis.BackGroundAppUpdate + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&current_lat=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT) + "&bearing_factor=" + locationSession.getLocationDetails().get(LocationSession.KEY_BEARING_FACTOR) + "&current_long=" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG) + "&current_location=" + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=1");
                     updateFirebaseEvent(Config.Status.NORMAL_STARTED, "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID));
                 }
                 if (APINAME.equals(Config.ApiKeys.KEY_END_TRIP)) {
