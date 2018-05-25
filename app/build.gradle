@@ -3,12 +3,12 @@ apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     dexOptions {
         javaMaxHeapSize "4g"
     }
     defaultConfig {
-        applicationId "com.apporio.demotaxiappdriver"
+        applicationId "com.apporio.taasdriver"
 
         minSdkVersion 16
         targetSdkVersion 26
@@ -23,7 +23,7 @@ android {
         }
 
         manifestPlaceholders = [
-                onesignal_app_id: '39691bc9-f588-41ea-9b7f-1a4f16914ed9',
+                onesignal_app_id: '5630bab7-ace4-4c25-8037-5fb093939e76',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]

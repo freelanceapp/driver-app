@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.amitkma:stitch-lib-1.0.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stitch-lib-1.0.1.aar/d9866574ce1f34aa35c6cc4df5d53dce/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stitch-lib-1.0.1.aar/d9866574ce1f34aa35c6cc4df5d53dce/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stitch-lib-1.0.1.aar/c8d6849331a7e364314cfcb99d5f7130/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/stitch-lib-1.0.1.aar/c8d6849331a7e364314cfcb99d5f7130/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
