@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -54,11 +54,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     GsonBuilder builder;
     Gson gson;
     String versionName;
+    @Bind(R.id.back)
+    ImageView back;
+    @Bind(R.id.root_action_bar)
+    LinearLayout rootActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        ButterKnife.bind(this);
         getSupportActionBar().hide();
 
         initialization();
@@ -77,6 +82,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         ll_report_issue_btn.setOnClickListener(this);
         ll_terms_btn.setOnClickListener(this);
         ll_about_btn.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     private void initialization() {
@@ -88,23 +94,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         builder = new GsonBuilder();
         gson = builder.create();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_text);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        tv_toolbar_text.setText(getResources().getString(R.string.SETTINGS_ACTIVITY_header_text));
-
 
         try {
             versionName = getPackageManager()
                     .getPackageInfo(getPackageName(), 0).versionName;
 
-            Log.e("VersionNmae",""+ versionName);
-            textView_version_name.setText("("+versionName+")");
+            Log.e("VersionNmae", "" + versionName);
+            textView_version_name.setText("(" + versionName + ")");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -162,6 +158,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             case R.id.ll_about_btn:
                 startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
 
+                break;
+
+            case R.id.back:
+                finish();
                 break;
         }
     }

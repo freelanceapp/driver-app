@@ -257,7 +257,10 @@
             android:name=".ReAcceptpassActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ManualUserDetailActivity" />
-        <activity android:name=".settings.SettingsActivity"></activity>
+        <activity android:name=".settings.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

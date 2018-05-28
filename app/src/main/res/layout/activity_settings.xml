@@ -7,26 +7,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_text"
-            style="@style/ToolBarWithNavigationBack"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorWhite">
-
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/root_action_bar">
+            <ImageView
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:src="@drawable/ic_back_arrow"
+                android:tint="@color/pure_black"
+                android:id="@+id/back"
+                android:padding="15dp"/>
             <TextView
-                android:id="@+id/tv_toolbar_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/setting"
+                android:paddingRight="15dp"
 
-        </android.support.v7.widget.Toolbar>
+                android:layout_weight="1"
+
+                android:id="@+id/tv_toolbar_text"
+                android:textColor="@color/pure_black"
+                android:gravity="end|center_vertical"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -35,34 +47,41 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:alpha="0.8"
-                    android:background="@color/settings_strip_color"
+                    android:orientation="vertical"
+                    android:background="@color/pure_white"
                     android:gravity="start|center_vertical">
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:text="@string/SETTINGS_ACTIVITY_app_settings"
-                        android:textColor="@color/settings_strip_text_color"
+                        android:textColor="@color/pure_black"
                         android:textStyle="bold" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/pure_black"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_language_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="45dp"
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="15dp"
                     android:visibility="visible">
 
                     <ImageView
@@ -70,31 +89,38 @@
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_language"
-                        android:tint="@color/color_menu_icon" />
+                        android:tint="@color/pure_black" />
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
-                        android:text="@string/language"
-                        android:textColor="@color/color_menu_text"
+                        android:text="@string/change_language"
+                        android:textColor="@color/pure_black"
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:alpha="0.8"
-                    android:background="@color/settings_strip_color"
-                    android:gravity="start|center_vertical">
+                    android:background="@color/pure_white"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical">
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:text="@string/SETTINGS_ACTIVITY_support_settings"
-                        android:textColor="@color/settings_strip_text_color"
+                        android:textColor="@color/pure_black"
                         android:textStyle="bold" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/pure_black"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,29 +130,26 @@
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    android:paddingLeft="15dp">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_phone"
-                        android:tint="@color/color_menu_icon" />
+                        android:src="@drawable/ic_customer_support"
+                        android:tint="@color/pure_black" />
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
                         android:text="@string/MAIN_ACTIVITY__customer_support"
-                        android:textColor="@color/color_menu_text"
+                        android:textColor="@color/pure_black"
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icons_8_muted_grey" />
+
 
 
                 <LinearLayout
@@ -136,59 +159,66 @@
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="15dp"
                     android:visibility="visible">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/report"
-                        android:tint="@color/color_menu_icon" />
+                        android:src="@drawable/ic_comment"
+                        android:tint="@color/pure_black" />
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
-                        android:text="@string/report_issue"
-                        android:textColor="@color/color_menu_text"
+                        android:text="@string/report_a_problem"
+                        android:textColor="@color/pure_black"
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:alpha="0.8"
-                    android:background="@color/settings_strip_color"
-                    android:gravity="start|center_vertical">
+                    android:background="@color/pure_white"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical">
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:text="@string/SETTINGS_ACTIVITY_information_settings"
                         android:textColor="@color/settings_strip_text_color"
                         android:textStyle="bold" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/pure_black"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_terms_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="45dp"
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="15dp"
                     android:visibility="visible">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_terms_condition"
+                        android:src="@drawable/ic_term_c"
                         android:tint="@color/color_menu_icon"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="fill_parent"
@@ -199,20 +229,16 @@
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icons_8_muted_grey" />
 
 
                 <LinearLayout
                     android:id="@+id/ll_about_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="45dp"
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="15dp"
                     android:visibility="visible">
 
                     <ImageView
@@ -221,7 +247,7 @@
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_about_us"
                         android:tint="@color/color_menu_icon"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <com.apporio.taasdriver.typeface.TypefaceTextView
                         android:layout_width="fill_parent"
@@ -232,28 +258,25 @@
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icons_8_muted_grey" />
+
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="45dp"
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp"
+                    android:paddingLeft="15dp"
                     android:visibility="visible">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_about_us"
+                        android:src="@drawable/ic_version"
                         android:tint="@color/color_menu_icon"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -284,11 +307,6 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@color/icons_8_muted_grey" />
 
 
             </LinearLayout>

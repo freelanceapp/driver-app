@@ -19,8 +19,8 @@
 
 
     ///////////////////////  menu colors
-    <color name="color_menu_icon">#34495e</color>
-    <color name="color_menu_text">#34495e</color>
+    <color name="color_menu_icon">#000000</color>
+    <color name="color_menu_text">#000000</color>
     <color name="color_menu_back_ground">#ffffff</color>
     <color name="color_menu_header_background">#DDE2E3</color>
     <color name="color_menu_header_bold_text">#000</color>
@@ -36,7 +36,7 @@
     <color name="pure_black">#000000</color>
     <color name="icon_8_muted_black">#333333</color>
     <color name="settings_strip_color">#AAAAAA</color>
-    <color name="settings_strip_text_color">#555555</color>
+    <color name="settings_strip_text_color">#000000</color>
 
 
 
