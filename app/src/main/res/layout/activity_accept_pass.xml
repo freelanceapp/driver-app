@@ -231,7 +231,8 @@
         android:gravity="center"
         android:visibility="visible"
         android:id="@+id/accept_ride_btn"
-        android:background="@color/icons_8_muted_green_1">
+        android:background="@drawable/round_bg_color_black"
+        android:layout_margin="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"

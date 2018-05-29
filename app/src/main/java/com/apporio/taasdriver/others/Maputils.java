@@ -128,7 +128,31 @@ public class Maputils {
 
     }
 
+    public static Marker setDestinationMarkerForPickPoint(Context context, GoogleMap mMap, LatLng markerLatLng, String location_text) {
+        View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.destination_marker, null);
 
+        Marker customMarker = mMap.addMarker(new MarkerOptions()
+                .anchor(0.5f, 0.5f).flat(true)
+                .position(markerLatLng)
+                .title("Title")
+                .snippet("Description")
+                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker))));
+        return customMarker;
+
+    }
+
+    public static Marker setDestinationMarkerForDropPoint(Context context, GoogleMap mMap, LatLng markerLatLng, String location_text) {
+        View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.red_destination_marker, null);
+
+        Marker customMarker = mMap.addMarker(new MarkerOptions()
+                .position(markerLatLng)
+                .anchor(0.5f, 0.5f).flat(true)
+                .title("Title")
+                .snippet("Description")
+                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker))));
+        return customMarker;
+
+    }
 
     public static Bitmap createDrawableFromView(Context context, View view) {
         DisplayMetrics displayMetrics = new DisplayMetrics();

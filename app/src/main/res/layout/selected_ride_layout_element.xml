@@ -3,7 +3,8 @@
     android:id="@+id/bill_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/pure_black">
 
     <LinearLayout
         android:id="@+id/ll_total_bill"
@@ -19,15 +20,18 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:text="@string/SELECTED_RIDE_ACTIVITY__bill_details"
-            android:textSize="14dp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textColor="@color/pure_white"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textAllCaps="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <TextView
@@ -35,41 +39,47 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__total_distance_travel"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
+                android:textColor="@color/pure_white"
+                android:gravity="center"
                 android:textSize="13dp" />
 
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center|right"
+                android:gravity="center|left"
                 android:orientation="horizontal">
 
-
-                <LinearLayout
-                    android:layout_width="70dp"
+                <TextView
+                    android:id="@+id/total_distance_txt"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center|left"
-                    android:orientation="horizontal">
+                    android:text="---"
+                    android:textColor="@color/light_white"
+                    android:textSize="13dp" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center|left"-->
+                    <!--android:orientation="horizontal">-->
 
-                    <TextView
-                        android:id="@+id/total_distance_txt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="---"
-                        android:textColor="@color/icons_8_muted_blueblack_dark"
-                        android:textSize="13dp" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/total_distance_txt"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="right"-->
+                        <!--android:text="-&#45;&#45;"-->
+                        <!--android:textColor="@color/light_white"-->
+                        <!--android:textSize="13dp" />-->
 
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/distance_symbol"
-                        android:textColor="@color/icons_8_muted_blueblack_dark"
-                        android:textSize="13dp" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView5"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/distance_symbol"-->
+                        <!--android:textColor="@color/light_white"-->
+                        <!--android:textSize="13dp" />-->
+                <!--</LinearLayout>-->
 
             </LinearLayout>
 
@@ -90,8 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__distance_fare"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center"/>
 
 
             <LinearLayout
@@ -107,7 +118,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:text="-----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
+
                     android:textSize="13dp" />
 
             </LinearLayout>
@@ -129,8 +141,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__ride_time_charges"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center"/>
 
             <LinearLayout
                 android:layout_width="70dp"
@@ -144,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp" />
 
 
@@ -166,8 +179,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__waiting_charge"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center" />
 
 
             <LinearLayout
@@ -182,7 +196,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp" />
 
 
@@ -205,8 +219,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__night_time_charges"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center" />
 
 
             <LinearLayout
@@ -221,7 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp" />
 
 
@@ -244,8 +259,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__peak_time_charges"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center" />
 
 
             <LinearLayout
@@ -260,7 +276,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp" />
 
 
@@ -284,8 +300,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".9"
                 android:text="------------ (-------)"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp" />
+                android:textColor="@color/pure_white"
+                android:textSize="13dp"
+                android:gravity="center"/>
 
 
             <LinearLayout
@@ -299,7 +316,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp" />
             </LinearLayout>
 
@@ -307,14 +324,13 @@
         </LinearLayout>
 
 
-        <TextView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:maxLines="1"
-            android:text=".............................................................................................................."
-            android:textColor="@color/icons_8_muted_blueblack_dark" />
+            android:background="@color/light_white" />
 
 
         <LinearLayout
@@ -331,8 +347,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".9"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__total_bill"
-                android:textColor="@color/icons_8_muted_blueblack_dark"
-                android:textSize="13dp"
+                android:gravity="center"
+                android:textColor="@color/pure_white"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -347,7 +364,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="----"
-                    android:textColor="@color/icons_8_muted_blueblack_dark"
+                    android:textColor="@color/light_white"
                     android:textSize="13dp"
                     android:textStyle="bold" />
 
@@ -364,7 +381,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
-            android:background="@color/icons_8_muted_grey" />
+            android:background="@color/icons_8_muted_grey"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -374,7 +392,8 @@
             android:layout_marginTop="10dp"
             android:text="@string/SELECTED_RIDE_ACTIVITY__payment"
             android:textSize="14dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:id="@+id/ll_wallet_layout"
@@ -383,7 +402,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/wallet_mode_txt"
@@ -422,7 +442,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/cash_mode_txt"
@@ -463,7 +484,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/payment_mode_txt"

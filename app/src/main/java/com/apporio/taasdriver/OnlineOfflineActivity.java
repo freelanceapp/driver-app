@@ -94,15 +94,15 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
 
     private void setViewAccrodingly() {
         if(sessionManager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status).equals("1")){
-            status_image.setColorFilter(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
+          //  status_image.setColorFilter(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
             status__txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.ONLINE_OFFLINE_ACTIVITY__on_duty));
-            status__txt.setTextColor(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
+           // status__txt.setTextColor(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
             status_description_txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.online_status_description_txt));
             btn_txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.ONLINE_OFFLINE_ACTIVITY__go_offline));
         }else{
-            status_image.setColorFilter(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_red));
+          //  status_image.setColorFilter(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_red));
             status__txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.ONLINE_OFFLINE_ACTIVITY__off_duty));
-            status__txt.setTextColor(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_red));
+          //  status__txt.setTextColor(OnlineOfflineActivity.this.getResources().getColor(R.color.icons_8_muted_red));
             status_description_txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.ONLINE_OFFLINE_ACTIVITY__offline_status_description_txt));
             btn_txt.setText(""+OnlineOfflineActivity.this.getResources().getString(R.string.ONLINE_OFFLINE_ACTIVITY__go_online));
         }
@@ -171,6 +171,7 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
 
     @Override
     public void onBackPressed() {
-
+       super.onBackPressed();
+       finish();
     }
 }

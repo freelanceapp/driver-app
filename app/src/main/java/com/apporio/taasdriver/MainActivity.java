@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -102,7 +103,7 @@ public class MainActivity extends BaseActivity implements Apis,
     TextView scheduled_rides, unaccepted_ride_txt, tv_address, tv_car_name, tv_name, tv_car_number, tv_profile_email, tv_profile_name, lat_txt, long_txt, driver_id, driver_city_txt, accuracy;
     ImageView iv_profile_pic, status_image;
     SwitchCompat rental_switch;
-    TypefaceDosisRegular status_txt;
+    TextView status_txt;
     String driverId, language_id, ride_id, ride_status, driver_token, driverName,
             car_type_name, car_model_name, car_type_id, driverEmail,
             driverImage, callSupport, deviceId, android_id;
@@ -138,6 +139,9 @@ public class MainActivity extends BaseActivity implements Apis,
     Button button_manualDispatch;
     String demoStatus="1";
 
+    CardView status_btn;
+    ImageView ivDot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,14 +164,14 @@ public class MainActivity extends BaseActivity implements Apis,
         Constants.is_main_activity_open = true;
 
 
-        button_manualDispatch = (Button) findViewById(R.id.button_manualDispatch);
+        //button_manualDispatch = (Button) findViewById(R.id.button_manualDispatch);
         driver_id = (TextView) findViewById(R.id.driver_id);
         tv_address = (TextView) findViewById(R.id.tv_address);
         tv_car_name = (TextView) findViewById(R.id.tv_car_name);
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_car_number = (TextView) findViewById(R.id.tv_car_number);
         status_image = (ImageView) findViewById(R.id.status_image);
-        status_txt = (TypefaceDosisRegular) findViewById(R.id.status_txt);
+        status_txt = (TextView) findViewById(R.id.status_txt);
         iv_profile_pic = (ImageView) findViewById(R.id.iv_profile_pic);
         tv_profile_name = (TextView) findViewById(R.id.tv_profile_name);
         tv_profile_email = (TextView) findViewById(R.id.tv_profile_email);
@@ -179,6 +183,10 @@ public class MainActivity extends BaseActivity implements Apis,
         accuracy = (TextView) findViewById(R.id.accuracy);
         scheduled_rides = (TextView) findViewById(R.id.scheduled_rides);
         unaccepted_ride_txt = (TextView) findViewById(R.id.unaccepted_ride_txt);
+
+
+        status_btn = findViewById(R.id.status_btn);
+        ivDot = findViewById(R.id.ivDot);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         languageManager = new LanguageManager(this);
@@ -256,7 +264,7 @@ public class MainActivity extends BaseActivity implements Apis,
             }
         });
 
-        findViewById(R.id.button_manualDispatch).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.manual_dispatch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -797,13 +805,19 @@ public class MainActivity extends BaseActivity implements Apis,
 
     private void setStatusViewAccordingly() {
         if (sessionManager.getUserDetails().get(SessionManager.KEY_Driver_Online_Offline_Status).equals("1")) {
-            status_image.setColorFilter(this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
+            //status_image.setColorFilter(this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
             status_txt.setText("" + this.getResources().getString(R.string.MAIN_ACTIVITY__online));
-            status_txt.setTextColor(this.getResources().getColor(R.color.icons_8_muted_green_2_dark));
+            status_txt.setTextColor(this.getResources().getColor(R.color.pure_black));
+            status_btn.setCardBackgroundColor(getResources().getColor(R.color.green));
+            ivDot.setColorFilter(ContextCompat.getColor(this, R.color.pure_black), android.graphics.PorterDuff.Mode.SRC_IN);
         } else {
-            status_image.setColorFilter(this.getResources().getColor(R.color.icons_8_muted_red));
+           // status_image.setColorFilter(this.getResources().getColor(R.color.icons_8_muted_red));
             status_txt.setText("" + this.getResources().getString(R.string.MAIN_ACTIVITY__offline));
-            status_txt.setTextColor(this.getResources().getColor(R.color.icons_8_muted_red));
+            status_txt.setTextColor(this.getResources().getColor(R.color.dark_gray));
+
+            status_btn.setCardBackgroundColor(getResources().getColor(R.color.pure_white));
+            ivDot.setColorFilter(ContextCompat.getColor(this, R.color.dark_gray), android.graphics.PorterDuff.Mode.SRC_IN);
+            //ivDot.setBackgroundColor(getResources().getColor(R.color.dark_gray));
         }
     }
 
@@ -1024,13 +1038,13 @@ public class MainActivity extends BaseActivity implements Apis,
                 .setDialogStyle(CFAlertDialog.CFAlertStyle.BOTTOM_SHEET)
                 .setTitle(MainActivity.this.getResources().getString(R.string.PROFILE_ACTIVITY__logout))
                 .setMessage(MainActivity.this.getResources().getString(R.string.are_you_sure_to_log_out))
-                .addButton(MainActivity.this.getResources().getString(R.string.PROFILE_ACTIVITY__logout), -1, -1, CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
+                .addButton(MainActivity.this.getResources().getString(R.string.PROFILE_ACTIVITY__logout), getResources().getColor(R.color.pure_white), getResources().getColor(R.color.pure_black), CFAlertDialog.CFAlertActionStyle.POSITIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         apiManager_new.execution_method_get("" + Config.ApiKeys.LOGOUT, "" + Apis.logout + "?driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken));
                         dialogInterface.dismiss();
                     }
-                }).addButton(MainActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__cancel), -1, -1, CFAlertDialog.CFAlertActionStyle.NEGATIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
+                }).addButton(MainActivity.this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__cancel), getResources().getColor(R.color.pure_white), getResources().getColor(R.color.pure_black), CFAlertDialog.CFAlertActionStyle.NEGATIVE, CFAlertDialog.CFAlertActionAlignment.JUSTIFIED, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

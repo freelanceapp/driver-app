@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#34495e</color>
-    <color name="colorPrimaryDark">#687576</color>
-    <color name="colorAccent">#ffe57f</color>
+
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+
+    <!--<color name="colorPrimary">#34495e</color>-->
+    <!--<color name="colorPrimaryDark">#687576</color>-->
+    <!--<color name="colorAccent">#ffe57f</color>-->
 
     <color name="colorHeader">#ffffff</color>
     <color name="colorFooter">#ffffff</color>
@@ -106,7 +111,12 @@
     <color name="defaultBorderFlagColor">@android:color/transparent</color>
 
 
-    <color name="tracking_theme">#eae7dd</color>
+    <color name="tracking_theme">#000000</color>
+    <color name="light_white">#F4F6F6</color>
+    <color name="light_gray">#aeaead</color>
+    <color name="dark_gray">#8f8f8b</color>
+    <color name="green">#17cc1d</color>
+    <color name="pure_red">#e61010</color>
 
 
 </resources>

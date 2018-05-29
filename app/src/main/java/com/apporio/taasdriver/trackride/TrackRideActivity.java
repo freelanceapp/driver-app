@@ -97,6 +97,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import customviews.typefacesviews.TypeFaceTextMonixRegular;
 import morxander.zaman.ZamanUtil;
 
 public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCallback, ApiManager.APIFETCHER {
@@ -112,7 +113,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     ImageView dot, pencil_icon;
     ApiManager apiManager;
 
-    MButton trip_status_txt;
+    TextView trip_status_txt;
 
     ProgressDialog progressDialog;
     DBHelper dbHelper;
@@ -127,7 +128,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     FirebaseChatUtillistener firebaseChatUtillistener;
     private static final int TELEPHONE_PERM = 657;
-
+    TypeFaceTextMonixRegular map_progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         apiManager = new ApiManager(this);
@@ -145,7 +146,10 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         setContentView(R.layout.activity_track_ride);
         customer_info_txt = (TextView) findViewById(R.id.customer_info_txt);
 
-        trip_status_txt = ((MaterialRippleLayout) findViewById(R.id.trip_status_txt)).getChildView();
+//        trip_status_txt = ((MaterialRippleLayout) findViewById(R.id.trip_status_txt)).getChildView();
+//        trip_status_txt.setTextSize(15);
+
+        trip_status_txt = (TextView) findViewById(R.id.trip_status_txt);
         trip_status_txt.setTextSize(15);
 
         cancel_btn = (TextView) findViewById(R.id.cancel_btn);
@@ -634,7 +638,15 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     mGooglemap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.parseDouble("" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble("" + locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG)))).zoom(17).build()));
 
                 } else {
-                    drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green, R.drawable.dot_red);
+
+                    LatLng origin = new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                    LatLng destination = new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                    drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green , R.drawable.dot_red);
+                   // Maputils.setDestinationMarkerForPickPoint(this,mGooglemap,new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))),"");
+                   // Maputils.setDestinationMarkerForDropPoint(this,mGooglemap,new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))),"");
+
+
+                    //DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin,destination, mGooglemap,sessionManager);
                 }
             }
             if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")) {

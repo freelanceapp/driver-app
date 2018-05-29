@@ -122,4 +122,11 @@
         <attr name="met_isMButton_type2" format="boolean"/>
     </declare-styleable>
 
+
+    <style name="CustomDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
 </resources>

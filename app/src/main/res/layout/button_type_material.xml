@@ -13,6 +13,7 @@
     app:mrl_rippleColor="@color/colorPrimaryDark"
     app:mrl_rippleDelayClick="true"
     app:mrl_rippleHover="true"
+    android:background="@drawable/rounded_bg_red_color"
     app:mrl_rippleOverlay="true">
 
 </com.apporio.taasdriver.views.MaterialRippleLayout>

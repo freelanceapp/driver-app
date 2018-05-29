@@ -202,7 +202,7 @@
         <activity
             android:name=".OnlineOfflineActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:theme="@style/CustomDialogTheme" />
         <activity
             android:name=".ReceiveRentalPassengerActivity"
             android:screenOrientation="portrait" />

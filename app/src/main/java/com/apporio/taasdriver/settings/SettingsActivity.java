@@ -64,7 +64,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
 
         initialization();
         onClickListeners();

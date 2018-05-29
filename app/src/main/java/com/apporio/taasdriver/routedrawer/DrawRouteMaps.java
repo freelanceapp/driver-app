@@ -1,6 +1,8 @@
 package com.apporio.taasdriver.routedrawer;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.View;
 
 import com.apporio.taasdriver.manager.SessionManager;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,6 +22,10 @@ public class DrawRouteMaps {
     private static DrawRouteMaps instance;
     private Context context;
     private int route_width , color ;
+    static SessionManager mSessionManager ;
+    private static View mprogress_view ;
+    private static boolean mshow_progress ;
+    private static Activity mActivity;
 
     public static DrawRouteMaps getInstance(Context context , int route_width , int color) {
         instance = new DrawRouteMaps();
@@ -28,7 +34,15 @@ public class DrawRouteMaps {
         instance.color = color ;
         return instance;
     }
-
+    public static DrawRouteMaps getInstance(Context context , Activity activity , SessionManager sessionManager, View view  , boolean showprogress) {
+        instance = new DrawRouteMaps();
+        instance.context = context;
+        mSessionManager = sessionManager ;
+        mActivity = activity ;
+        mshow_progress = showprogress ;
+        mprogress_view = view ;
+        return instance;
+    }
     public DrawRouteMaps draw(LatLng origin, LatLng destination, GoogleMap googleMap , SessionManager sessionManager){
         String url_route = FetchUrl.getUrl(origin, destination , context);
         DrawRoute drawRoute = new DrawRoute(googleMap , sessionManager , route_width , color);

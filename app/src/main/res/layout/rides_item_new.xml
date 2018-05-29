@@ -4,19 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:background="@color/pure_black">
 
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-3dp"
-        android:layout_marginRight="-3dp">
+        android:layout_marginRight="-3dp"
+        android:background="@color/pure_black">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/pure_black">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +41,7 @@
                         android:gravity="center"
                         android:singleLine="true"
                         android:text="---------"
-                        android:textColor="@color/icons_8_muted_greydark"
+                        android:textColor="@color/pure_white"
                         android:textSize="15dp"
                         geekui:customTypeface="OpenSans_Regular.ttf" />
                 </LinearLayout>
@@ -47,7 +50,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center|left"
                 android:orientation="horizontal">
 
@@ -66,7 +69,7 @@
                     android:gravity="center|left"
                     android:maxLines="2"
                     android:text="...................."
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/pure_white"
                     android:textSize="11dp"
                     geekui:customTypeface="OpenSans_Regular.ttf" />
 
@@ -96,7 +99,7 @@
                     android:gravity="center|left"
                     android:maxLines="2"
                     android:text="........................"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/mdtp_white"
                     android:textSize="11dp"
                     geekui:customTypeface="OpenSans_Regular.ttf" />
             </LinearLayout>
@@ -108,7 +111,8 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp">
+                android:paddingRight="20dp"
+                android:layout_marginTop="30dp">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -119,7 +123,8 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_profile_small" />
+                        android:src="@drawable/ic_user"
+                        android:tint="@color/pure_white"/>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -133,6 +138,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
+                            android:textColor="@color/pure_white"
+                            android:textStyle="bold"
                             android:text="..........................." />
 
                         <TextView
@@ -140,7 +147,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="................"
-                            android:textColor="@color/icons_8_muted_blue_dark" />
+                            android:textColor="@color/pure_white"
+                            android:textStyle="normal" />
 
 
                     </LinearLayout>
@@ -157,7 +165,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="............"
-                        android:textColor="@color/icons_8_muted_blue_dark"
+                        android:textColor="@color/pure_white"
+                        android:textStyle="bold"
                         android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
@@ -166,8 +175,13 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/icons_8_muted_grey"/>
+        android:layout_height="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/dotted_white"
+        android:layerType="software"/>
 
 
 
