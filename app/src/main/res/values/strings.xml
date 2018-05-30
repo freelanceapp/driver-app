@@ -208,7 +208,7 @@
     <string name="PRICE_FARE__net_fare">Net Fare :</string>
     <string name="PRICE_FARE__submit">SUBMIT</string>
     <string name="PRICE_FARE_coupon">Coupon (</string>
-    <string name="PRICE_FARE_receipt">Receipt</string>
+    <string name="PRICE_FARE_receipt">See Receipt</string>
     <string name="PRICE_FARE_rate_btn_text">Complete Ride and Rate User</string>
     <string name="PRICE_FARE_rate_us">Rate us</string>
     <string name="PRICE_FARE_comment">Comment</string>
@@ -295,7 +295,7 @@
     /////////////////// ActivityTrialReceivePassenger
     <string name="ACTIVITY_TRIAL_RECEIVE_PASSENGER_ok">OK</string>
     <string name="WEEKLY_STATEMENT_ACTIVITY__accept_ride">ACCEPT RIDE</string>
-    <string name="WEEKLY_STATEMENT_ACTIVITY__cancel">Pass</string>
+    <string name="WEEKLY_STATEMENT_ACTIVITY__cancel">Reject</string>
     <string name="WEEKLY_STATEMENT_ACTIVITY__loading">loading...</string>
     <string name="WEEKLY_STATEMENT_ACTIVITY__payment_mode">PAYMENT MODE :</string>
     <string name="WEEKLY_STATEMENT_ACTIVITY__cash">CASH</string>

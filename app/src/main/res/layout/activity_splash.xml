@@ -3,27 +3,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".SplashActivity"
-    android:background="@drawable/driver_app_logo">
+    android:layout_marginRight="-2dp"
+    android:layout_marginEnd="-2dp"
+    android:layout_marginTop="-2dp"
+    android:layout_marginBottom="-2dp"
+    android:background="@color/pure_black">
 
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--android:orientation="vertical">-->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/driver_app_logo">
+
         <TextView
+            android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:id="@+id/loading_text"
-            android:text="@string/loading"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="50dp"
+            android:text="@string/loading"
+            android:textColor="#ffffff" />
 
-        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/LoginBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/pure_black"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorFooter">
+
+                <LinearLayout
+                    android:id="@+id/register_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center">
+
+                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register"
+                        android:textColor="@color/pure_white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorView">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/login_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/login"
+                        android:textColor="@color/colorTextFooter"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/demo_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <com.apporio.taasdriver.typeface.TypefaceTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#d6a90f"
+                    android:gravity="center"
+                    android:text="DEMO DRIVER"
+                    android:textColor="#333333"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
         <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
@@ -80,83 +171,6 @@
             <!--</FrameLayout>-->
         <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:id="@+id/LoginBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">  /// need to hide
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorView" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/colorFooter">
-
-                <LinearLayout
-                    android:id="@+id/register_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center">
-
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/register"
-                        android:textColor="@color/pure_white"
-                        android:textSize="15dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0.5dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorView">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/login_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/login"
-                        android:textColor="@color/colorTextFooter"
-                        android:textSize="15dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:id="@+id/demo_login">
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="DEMO DRIVER"
-                        android:textStyle="bold"
-                        android:background="#d6a90f"
-                        android:textColor="#333333"
-                        android:gravity="center"/>
-                </android.support.v7.widget.CardView>
-
-
-
-        </LinearLayout>
     <!--</LinearLayout>-->
 </android.support.design.widget.CoordinatorLayout>

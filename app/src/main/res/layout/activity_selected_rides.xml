@@ -85,17 +85,7 @@
                     android:paddingLeft="15dp"
                     android:background="@color/pure_white">
 
-                    <RelativeLayout
-                        android:layout_width="80dp"
-                        android:layout_height="80dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/black_circle_border"
-                            android:src="@drawable/ic_user"/>
-
-                    </RelativeLayout>
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/iv_image_driver"
                         android:layout_width="70dp"
@@ -103,7 +93,8 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_user"
                         app:civ_border_color="@color/pure_black"
-                        app:civ_border_width="2dp" />
+                        app:civ_border_width="2dp"
+                        android:padding="5dp"/>
 
                     <LinearLayout
                         android:layout_width="fill_parent"

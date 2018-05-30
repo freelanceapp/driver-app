@@ -53,7 +53,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     @Bind(R.id.container)
     ViewPager container;
     @Bind(R.id.activity_name)
-    TypefaceTextView activityName;
+    TextView activityName;
     @Bind(R.id.refresh)
     ImageView refresh;
     @Bind(R.id.root)

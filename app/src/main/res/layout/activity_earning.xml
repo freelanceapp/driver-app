@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pure_white"
     android:orientation="vertical"
     tools:context="com.apporio.taasdriver.earnings.EarningActivity">
@@ -11,35 +12,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="-2dp"
-        android:layout_marginLeft="-2dp">
+        android:layout_marginLeft="-2dp"
+        app:cardBackgroundColor="@color/pure_white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#2b2b2b"
+            android:background="@color/pure_white"
             android:gravity="center|left"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+       >
 
             <LinearLayout
                 android:id="@+id/backBtn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/pure_white">
 
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_left_sort_white"
-                    android:tint="@color/pure_white" />
+                    android:src="@drawable/ic_back_arrow"
+                    android:tint="@color/pure_black"
+                    android:padding="5dp"/>
             </LinearLayout>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="center|left"
+                android:gravity="center|right"
+                android:layout_marginRight="5dp"
                 android:text="@string/EARNINF_ACTIVITY__your_earning"
-                android:textColor="@color/pure_white" />
+                android:textColor="@color/pure_black"
+                />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -51,17 +58,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/icon_8_muted_black">
+            android:background="@color/pure_white"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#333333"
+                android:layout_marginTop="10dp"
+                android:background="@color/pure_white"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:paddingRight="20dp">
 
                 <LinearLayout
@@ -71,14 +78,14 @@
                     android:orientation="horizontal">
 
 
-
                     <LinearLayout
+                        android:id="@+id/another_week_btn"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:id="@+id/another_week_btn"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/dateTV"
                             android:layout_width="fill_parent"
@@ -86,14 +93,14 @@
                             android:gravity="center"
                             android:text="---- to  -----"
                             android:textColor="@color/icons_8_muted_grey" />
+
                         <TextView
+                            android:id="@+id/week_view_change_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/icons_8_muted_yellow"
                             android:text="Click To View another week"
-                            android:id="@+id/week_view_change_btn"/>
+                            android:textColor="@color/pure_black" />
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -102,7 +109,7 @@
                 <FrameLayout
                     android:id="@+id/container"
                     android:layout_width="match_parent"
-                    android:layout_height="255dp"></FrameLayout>
+                    android:layout_height="255dp"/>
 
             </LinearLayout>
 
@@ -127,7 +134,6 @@
                         android:layout_height="100dp"
                         android:background="@color/pure_white"
                         android:orientation="horizontal">
-
 
 
                         <View
@@ -157,7 +163,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/icons_8_muted_red"
+                                android:textColor="@color/pure_black"
                                 android:textSize="45dp" />
 
 
@@ -171,16 +177,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="0.5dp"
-                        android:background="@color/pure_white"
+                        android:background="@drawable/round_bg_color_black"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_margin="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/EARNING_ACTIVITY__view_full_summary"
                             android:textAllCaps="true"
-                            android:textColor="@color/icons_8_muted_blue"
+                            android:textColor="@color/pure_white"
                             android:textStyle="bold" />
                     </LinearLayout>
 

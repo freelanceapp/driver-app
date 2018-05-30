@@ -384,7 +384,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/REGISTER_ACTIVITY__continuee"
-            android:textColor="@color/pure_black"
+            android:textColor="@color/pure_white"
             android:textSize="16dp"
             geekui:customTypeface="OpenSans_Regular.ttf" />
     </LinearLayout>
@@ -392,6 +392,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorView" />
+        android:background="@color/pure_black" />
 
 </LinearLayout>

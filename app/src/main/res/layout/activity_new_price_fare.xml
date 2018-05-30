@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/icons_8_muted_red"
     android:orientation="vertical"
     tools:context=".PriceFareActivity">
@@ -23,6 +24,8 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:src="@drawable/ic_back_arrow"
+                android:padding="5dp"
                 android:tint="@color/colorPrimary" />
         </LinearLayout>
 
@@ -31,7 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_centerInParent="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:paddingRight="20dp"
             android:text="@string/PRICE_FARE_ride_fare"
             android:textColor="@color/colorPrimary"
@@ -43,7 +48,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_alignParentRight="true"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="25dp"
@@ -86,14 +91,16 @@
 
                 <Button
                     android:id="@+id/btn_view_receipt"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:text="@string/PRICE_FARE_receipt"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@drawable/round_bg_color_black"/>
 
             </RelativeLayout>
 
@@ -101,9 +108,8 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/pure_black"
                 android:visibility="visible">
 
                 <LinearLayout
@@ -119,13 +125,15 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="@string/PRICE_FARE__tirp_details"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/pure_white"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
 
                         <LinearLayout
                             android:layout_width="fill_parent"
@@ -133,7 +141,9 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
 
                             <ImageView
                                 android:layout_width="15dp"
@@ -146,7 +156,9 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="- - - - - - - - - - "
-                                android:textSize="10dp" />
+                                android:textSize="10dp"
+                                android:layout_marginTop="10dp"
+                                android:textColor="@color/pure_white"/>
                         </LinearLayout>
 
 
@@ -156,7 +168,9 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
 
                             <ImageView
                                 android:layout_width="15dp"
@@ -170,7 +184,8 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="- - - - - - - - - - "
-                                android:textSize="10dp" />
+                                android:textSize="10dp"
+                                android:textColor="@color/pure_white"/>
                         </LinearLayout>
 
 
@@ -193,7 +208,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
+                    <TextView
 
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/PRICE_FARE_payment_mode"
+                        android:textSize="14sp" />
                     <TextView
                         android:id="@+id/pay_mode"
                         android:layout_width="fill_parent"
@@ -204,7 +228,18 @@
                         android:gravity="center"
                         android:text=""
                         android:textColor="@color/colorPrimary"
-                        android:textSize="15dp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Payment Status"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tv_payment_status"
@@ -214,16 +249,17 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="Payment Status : Cash to be collected"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14dp" />
+                        android:text=""
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        />
 
                     <TextView
                         android:id="@+id/tv_payment_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="@string/PRICE_FARE__total_payable_amount"
+                        android:text="@string/PRICE_FARE_payment_cash_to_be_collected"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
@@ -265,8 +301,8 @@
             <Button
                 android:id="@+id/btn_rate_user"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@color/colorPrimary"
+                android:layout_height="40dp"
+                android:background="@drawable/round_bg_color_black"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:textAllCaps="false"
