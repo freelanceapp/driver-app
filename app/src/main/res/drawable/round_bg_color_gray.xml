@@ -9,7 +9,7 @@
         android:right="1dp"
         android:bottom="1dp" />
 
-    <solid android:color="@color/mdtp_done_disabled_dark"/>
+    <solid android:color="@color/dark_gray"/>
     <corners android:bottomRightRadius="40dp"
         android:bottomLeftRadius="40dp"
         android:topLeftRadius="40dp"

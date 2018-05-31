@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.apporio.taasdriver.manager.SessionManager;
+import com.apporio.taasdriver.others.Maputils;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -46,6 +47,13 @@ public class DrawRouteMaps {
     public DrawRouteMaps draw(LatLng origin, LatLng destination, GoogleMap googleMap , SessionManager sessionManager){
         String url_route = FetchUrl.getUrl(origin, destination , context);
         DrawRoute drawRoute = new DrawRoute(googleMap , sessionManager , route_width , color);
+        drawRoute.execute(url_route);
+        return instance;
+    }
+
+    public DrawRouteMaps draw(LatLng origin, LatLng destination, GoogleMap googleMap ){
+        String url_route = Maputils.getDirectionsUrl(origin , destination , context);
+        DrawRoute drawRoute = new DrawRoute(googleMap , context , mActivity , mSessionManager , mprogress_view , mshow_progress);
         drawRoute.execute(url_route);
         return instance;
     }

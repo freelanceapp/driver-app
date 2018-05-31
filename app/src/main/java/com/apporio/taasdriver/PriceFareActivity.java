@@ -24,9 +24,13 @@ import com.apporio.taasdriver.manager.SessionManager;
 import com.apporio.taasdriver.models.DoneRideInfo;
 import com.apporio.taasdriver.models.deviceid.DeviceId;
 import com.apporio.taasdriver.samwork.ApiManager;
+import com.apporio.taasdriver.typeface.TypefaceTextView;
 import com.apporio.taasdriver.urls.Apis;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class PriceFareActivity extends AppCompatActivity implements ApiManager.APIFETCHER {
 
@@ -38,11 +42,43 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
     String driver_token;
     LanguageManager languageManager;
     String language_id;
-    TextView pay_mode, pick_location_txt, drop_location_txt, total_payble_fare_txt_large,tv_payment_status,tv_payment_text;
-    com.apporio.taasdriver.samwork.ApiManager apiManager;
+    TextView pay_mode, pick_location_txt, drop_location_txt, total_payble_fare_txt_large, tv_payment_status, tv_payment_text;
+    ApiManager apiManager;
     DoneRideInfo doneRideInfo;
     EditText comments;
     Button btn_rate_user;
+    @Bind(R.id.ll_back_ride_fare)
+    LinearLayout llBackRideFare;
+    @Bind(R.id.title)
+    TypefaceTextView title;
+    @Bind(R.id.ll_reload_ride_fare)
+    LinearLayout llReloadRideFare;
+    @Bind(R.id.pay_try)
+    TextView payTry;
+    @Bind(R.id.btn_view_receipt)
+    Button btnViewReceipt;
+    @Bind(R.id.textView3)
+    TextView textView3;
+    @Bind(R.id.pick_location_txt)
+    TextView pickLocationTxt;
+    @Bind(R.id.drop_location_txt)
+    TextView dropLocationTxt;
+    @Bind(R.id.pay_mode)
+    TextView payMode;
+    @Bind(R.id.tv_payment_status)
+    TextView tvPaymentStatus;
+    @Bind(R.id.tv_payment_text)
+    TextView tvPaymentText;
+    @Bind(R.id.total_payble_fare_txt_large)
+    TextView totalPaybleFareTxtLarge;
+    @Bind(R.id.btn_rate_user)
+    Button btnRateUser;
+    @Bind(R.id.rating_bar)
+    RatingBar ratingBar;
+    @Bind(R.id.ll_submit_rating)
+    TextView llSubmitRating;
+    @Bind(R.id.ll_make_payment)
+    LinearLayout llMakePayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +86,7 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
         apiManager = new ApiManager(this);
         languageManager = new LanguageManager(this);
         setContentView(R.layout.activity_new_price_fare);
+        ButterKnife.bind(this);
         getSupportActionBar().hide();
         pricefare = this;
         pd = new ProgressDialog(this);
@@ -102,6 +139,13 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                 showDialofForRating();
             }
         });
+
+        llBackRideFare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -133,19 +177,18 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                 if (doneRideInfo.getResult() == 1) {
 
                     if (doneRideInfo.getMsg().getPayment_option_id().equals("1")) {
-                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_cash));
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_cash));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("2")) {
-                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_paypal));
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_paypal));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("3")) {
-                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_card));
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_card));
                     } else if (doneRideInfo.getMsg().getPayment_option_id().equals("4")) {
-                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_mode)+" "+ getResources().getString(R.string.PRICE_FARE_payment_wallet));
+                        pay_mode.setText(getResources().getString(R.string.PRICE_FARE_payment_wallet));
                     }
 
-                    if(doneRideInfo.getMsg().getPayment_status().equals("0")){
+                    if (doneRideInfo.getMsg().getPayment_status().equals("0")) {
                         btn_rate_user.setVisibility(View.GONE);
-                    }
-                    else if(doneRideInfo.getMsg().getPayment_status().equals("1")){
+                    } else if (doneRideInfo.getMsg().getPayment_status().equals("1")) {
                         btn_rate_user.setVisibility(View.VISIBLE);
                     }
 
@@ -153,7 +196,7 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                     drop_location_txt.setText("" + doneRideInfo.getMsg().getEnd_location());
 
                     tv_payment_text.setText(doneRideInfo.getMsg().getPayment_status_message().toString());
-                    tv_payment_status.setText(getResources().getString(R.string.PRICE_FARE_payment_status)+ " "+doneRideInfo.getMsg().getPayment_status_show());
+                    tv_payment_status.setText(doneRideInfo.getMsg().getPayment_status_show());
                     total_payble_fare_txt_large.setText("" + sessionManager.getCurrencyCode() + doneRideInfo.getMsg().getAmount_show());
 
                 } else {

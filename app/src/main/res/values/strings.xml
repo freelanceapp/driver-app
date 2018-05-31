@@ -196,7 +196,7 @@
 
     ///// PRice Fare Activity
     <string name="PRICE_FARE_ride_fare">Ride fare</string>
-    <string name="please_confirm_this_receipt_with_customer">Please confirm this receipt with the customer.</string>
+    <string name="please_confirm_this_receipt_with_customer">Please confirm receipt with customer.</string>
     <string name="PRICE_FARE__tirp_details">Trip Detail</string>
     <string name="PRICE_FARE__total_payable_amount">Total Payable Amount</string>
     <string name="PRICE_FARE____total_distance">Total Distance :</string>
@@ -209,7 +209,7 @@
     <string name="PRICE_FARE__submit">SUBMIT</string>
     <string name="PRICE_FARE_coupon">Coupon (</string>
     <string name="PRICE_FARE_receipt">See Receipt</string>
-    <string name="PRICE_FARE_rate_btn_text">Complete Ride and Rate User</string>
+    <string name="PRICE_FARE_rate_btn_text">Complete this Ride</string>
     <string name="PRICE_FARE_rate_us">Rate us</string>
     <string name="PRICE_FARE_comment">Comment</string>
 
@@ -611,7 +611,7 @@
     <string name="user_has_cancel_the_ride">User has Cancel the ride</string>
     <string name="your_trips">Your Trips</string>
     <string name="trip_details">Trip Details</string>
-    <string name="on__going">On Going</string>
+    <string name="on__going">OnGoing Trips</string>
     <string name="new_request">New Request</string>
     <string name="history">History</string>
     <string name="accept_pass">Accept/Pass</string>

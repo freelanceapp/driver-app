@@ -10,7 +10,6 @@
     android:layout_gravity="center_horizontal"
     app:met_isMButton_type1="true"
     app:mrl_rippleAlpha="0.4"
-    app:mrl_rippleColor="@color/colorPrimaryDark"
     app:mrl_rippleDelayClick="true"
     app:mrl_rippleHover="true"
     android:background="@drawable/rounded_bg_red_color"

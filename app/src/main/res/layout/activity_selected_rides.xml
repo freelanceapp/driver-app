@@ -22,10 +22,10 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:padding="5dp"
-                android:background="@drawable/ic_back_arrow" />
+                android:src="@drawable/ic_back_arrow" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,16 +86,20 @@
                     android:background="@color/pure_white">
 
 
+                 <LinearLayout
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:orientation="vertical"
+                     android:gravity="center"
+                     android:background="@drawable/black_circle_border">
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/iv_image_driver"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_user"
-                        app:civ_border_color="@color/pure_black"
-                        app:civ_border_width="2dp"
                         android:padding="5dp"/>
-
+                 </LinearLayout>
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -208,7 +212,6 @@
                         android:id="@+id/tv_time1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="------"
@@ -235,8 +238,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingLeft="15sp"
-
                     android:background="@color/pure_black">
 
                     <TextView
@@ -255,7 +256,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:gravity="center|left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:paddingRight="15dp">
 
                         <TextView
                             android:id="@+id/start_time_txt"
@@ -263,7 +266,7 @@
                             android:layout_height="wrap_content"
                             android:text="--:--"
                             android:textColor="@color/light_white"
-                            android:textSize="13dp" />
+                            android:textSize="10sp" />
 
                         <ImageView
                             android:layout_width="13dp"
@@ -287,9 +290,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         android:gravity="center|left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="15dp"
+                        android:paddingRight="15dp">
 
                         <TextView
                             android:id="@+id/drop_time_txt"
@@ -297,7 +302,7 @@
                             android:layout_height="wrap_content"
                             android:text="--:--"
                             android:textColor="@color/light_white"
-                            android:textSize="13dp" />
+                            android:textSize="10sp" />
 
                         <ImageView
                             android:layout_width="13dp"
@@ -317,13 +322,18 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:src="@drawable/dotted_black"
-                    android:layerType="software" />
+                  <View
+                      android:layout_width="match_parent"
+                      android:layout_height="10dp"
+                      android:layout_marginLeft="60dp"
+                      android:layout_marginRight="60dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginBottom="10dp"
+                      android:background="@drawable/dotted_white"
+                      android:layerType="software"/>
 
-                <include layout="@layout/selected_ride_layout_element" />
+
+                  <include layout="@layout/selected_ride_layout_element" />
               </LinearLayout>
             </LinearLayout>
 

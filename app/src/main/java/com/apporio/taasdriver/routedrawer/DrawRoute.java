@@ -1,7 +1,10 @@
 package com.apporio.taasdriver.routedrawer;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
 import com.apporio.taasdriver.manager.SessionManager;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,11 +31,25 @@ public class DrawRoute extends AsyncTask<String, Void, String> {
     private SessionManager mSessionManager ;
     private int route_width , color ;
 
+    Context mContext ;
+    Activity mActivity ;
+
+    private static View mprogress_view ;
+    private static boolean mshow_progress ;
+
     public DrawRoute(GoogleMap mMap , SessionManager sessionManager , int route_width  ,  int color) {
         this.mMap = mMap;
         this.mSessionManager = sessionManager ;
         this.route_width = route_width ;
         this.color = color ;
+    }
+    public DrawRoute(GoogleMap mMap , Context context , Activity activity , SessionManager sessionManager  , View view  , boolean showprogress) {
+        this.mMap = mMap;
+        this.mContext = context ;
+        this.mActivity = activity ;
+        this.mSessionManager = sessionManager ;
+        mshow_progress = showprogress ;
+        mprogress_view = view ;
     }
 
     @Override

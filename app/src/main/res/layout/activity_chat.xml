@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,13 +15,20 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center">
-            <ImageView
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:src="@drawable/ic_left"
-                android:padding="9dp"
-                android:id="@+id/back"
-                android:tint="@color/colorPrimary"/>
+
+           <LinearLayout
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:gravity="center">
+               <ImageView
+                   android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/ic_back_arrow"
+                   android:padding="5dp"
+                   android:id="@+id/back"
+                   android:tint="@color/colorPrimary"/>
+           </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -32,28 +40,29 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/user_image"
-                    android:src="@drawable/ic_profile_small"/>
+                    android:src="@drawable/ic_profile_small"
+                    android:visibility="gone"/>
 
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="vertical"
-                    android:gravity="center|left"
-                    android:paddingLeft="5dp">
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Customer name"
                         android:id="@+id/user_name_txt"
-                        android:gravity="center|left"
+                        android:gravity=""
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/riding_status"
-                        android:text="Driver Current Riding status"/>
+                        android:text="Driver Current Riding status"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -64,18 +73,16 @@
 
 
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:layout_margin="5dp">
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:id="@+id/list"
+            android:layout_margin="5dp"
             android:stackFromBottom="true"
-            android:divider="@color/pure_white"></ListView>
-    </android.support.v7.widget.CardView>
+            android:divider="@color/pure_white"/>
+
 
 
 
@@ -89,41 +96,41 @@
         android:gravity="center"
         android:padding="2dp">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:background="@drawable/oval_black_border"
+            android:layout_margin="5dp"
+            android:elevation="0dp">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
-                android:textSize="14dp"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:hint="@string/new_message"
                 android:id="@+id/message_edt"
-                android:background="#a5cacaca"/>
-        </android.support.v7.widget.CardView>
+                android:background="@drawable/white_oval"/>
+        </LinearLayout>
 
 
 
-        <android.support.v7.widget.CardView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:orientation="vertical"
                 android:id="@+id/send_btn"
-                android:background="@color/icons_8_muted_green_1_dark">
+                android:background="@color/pure_white">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_send_mail"
+                    android:src="@drawable/ic_send"
                     android:padding="15dp"
-                    android:tint="@color/pure_white"/>
+                    android:tint="@color/dark_gray"/>
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+
 
     </LinearLayout>
 

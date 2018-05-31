@@ -30,8 +30,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
@@ -41,8 +39,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__total_distance_travel"
                 android:textColor="@color/pure_white"
-                android:gravity="center"
-                android:textSize="13dp" />
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp" />
 
 
             <LinearLayout
@@ -91,8 +91,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -102,8 +100,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__distance_fare"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center"/>
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
 
             <LinearLayout
@@ -132,8 +132,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -143,8 +141,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__ride_time_charges"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center"/>
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
             <LinearLayout
                 android:layout_width="70dp"
@@ -170,8 +170,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -181,8 +179,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__waiting_charge"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center" />
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
 
             <LinearLayout
@@ -210,8 +210,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -221,8 +219,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__night_time_charges"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center" />
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
 
             <LinearLayout
@@ -250,8 +250,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -261,8 +259,10 @@
                 android:layout_weight="1"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__peak_time_charges"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center" />
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
 
             <LinearLayout
@@ -290,8 +290,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -302,8 +300,10 @@
                 android:layout_weight=".9"
                 android:text="------------ (-------)"
                 android:textColor="@color/pure_white"
-                android:textSize="13dp"
-                android:gravity="center"/>
+                android:gravity="start"
+                android:textSize="13sp"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"/>
 
 
             <LinearLayout
@@ -338,9 +338,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="0dp"
             android:orientation="horizontal">
 
             <TextView
@@ -350,8 +348,7 @@
                 android:text="@string/SELECTED_RIDE_ACTIVITY__total_bill"
                 android:gravity="center"
                 android:textColor="@color/pure_white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
 
             <LinearLayout
                 android:layout_width="70dp"

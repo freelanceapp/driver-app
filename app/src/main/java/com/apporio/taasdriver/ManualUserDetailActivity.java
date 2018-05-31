@@ -76,6 +76,9 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
     @Bind(R.id.edt_cus_name)
     EditText edt_cus_name;
 
+    @Bind(R.id.btnStartRide)
+    Button btnStartRide;
+
     MButton button_startRide;
 
     CountryCodePicker countryCodePicker;
@@ -140,7 +143,8 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
 
         ll_dropLocation.setOnClickListener(new setOnClickList());
         ll_back_rides.setOnClickListener(new setOnClickList());
-        button_startRide.setOnClickListener(new setOnClickList());
+       // button_startRide.setOnClickListener(new setOnClickList());
+        btnStartRide.setOnClickListener(new setOnClickList());
     }
 
     //StartRideMethod
@@ -302,7 +306,7 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
         @Override
         public void onClick(View view) {
             int i = view.getId();
-            if (i == button_startRide.getId()) {
+            if (i == btnStartRide.getId()) {
                 if (textView_pickUp.getText().toString().equals("")) {
                     Toast.makeText(ManualUserDetailActivity.this, getResources().getString(R.string.Manual_Activity_select_pick_location), Toast.LENGTH_SHORT).show();
                     ManualUserDetailActivity.this.finish();

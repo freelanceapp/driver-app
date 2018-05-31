@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="130dp"
     android:background="@color/pure_black"
     android:orientation="horizontal"
     android:padding="10dp">
@@ -45,6 +45,7 @@
           <ImageView
               android:layout_width="40dp"
               android:layout_height="40dp"
+              android:padding="5dp"
               android:src="@drawable/ic_user"
               android:tint="@color/pure_white"/>
 
@@ -64,7 +65,7 @@
                   android:text="-------"
                   android:textAllCaps="true"
                   android:textStyle="bold"
-                  android:textSize="13sp"
+                  android:textSize="12sp"
                   android:textColor="@color/pure_white"/>
               <TextView
                   android:id="@+id/customer_phone_txt"
@@ -73,7 +74,7 @@
                   android:text="--------"
                   android:textAllCaps="true"
                   android:textStyle="normal"
-                  android:textSize="12sp"
+                  android:textSize="10sp"
                   android:textColor="@color/pure_white"/>
 
           </LinearLayout>
@@ -98,9 +99,12 @@
               android:layout_width="25dp"
               android:layout_height="25dp"
               android:src="@drawable/ic_message"
-              android:tint="@color/dark_gray"/>
+              android:tint="@color/pure_white"
+              android:padding="5dp"/>
 
       </LinearLayout>
+
+
 
       <LinearLayout
           android:id="@+id/location_changer"
@@ -108,10 +112,13 @@
           android:layout_height="wrap_content"
           android:orientation="horizontal"
           android:layout_alignParentBottom="true"
+          android:layout_marginBottom="10dp"
           android:layout_alignParentStart="true"
           android:layout_alignParentLeft="true"
-          android:layout_marginTop="80dp"
-          android:gravity="center_vertical">
+          android:layout_marginTop="60dp"
+          android:gravity="center_vertical"
+          android:paddingLeft="10dp"
+          android:layout_weight="1">
 
 
           <ImageView
@@ -125,36 +132,40 @@
           <TextView
               android:id="@+id/location_txt"
               android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="10dp"
+              android:layout_marginStart="10dp"
+              android:gravity="center_vertical"
               android:text="-----"
               android:textColor="@color/dark_gray"
-              android:textStyle="normal"
-              android:textSize="12sp"
-              android:layout_gravity="center_vertical"
-              android:gravity="center_vertical"
-              android:layout_marginStart="10dp"
-              android:layout_marginLeft="10dp"/>
+              android:textSize="10sp"
+              android:textStyle="normal" />
 
       </LinearLayout>
 
 
       <LinearLayout
+          android:id="@+id/location_changer1"
           android:layout_width="40dp"
           android:layout_height="40dp"
           android:layout_alignParentBottom="true"
           android:layout_alignParentEnd="true"
           android:layout_alignParentRight="true"
+          android:layout_marginBottom="5dp"
           android:layout_marginTop="80dp"
           android:gravity="center"
           android:layout_marginRight="5dp"
-          android:layout_marginEnd="5dp">
+          android:layout_marginEnd="5dp"
+          android:layout_weight="1">
 
           <ImageView
               android:id="@+id/pencil_icon"
               android:layout_width="25dp"
               android:layout_height="25dp"
+              android:padding="5dp"
               android:src="@drawable/ic_pencil"
-              android:tint="@color/dark_gray"
+              android:tint="@color/pure_white"
               />
 
       </LinearLayout>
@@ -175,7 +186,6 @@
            android:layout_height="50dp"
            android:layout_gravity="center"
            android:gravity="center"
-           android:padding="10dp"
            android:background="@drawable/circle_white">
 
            <ImageView

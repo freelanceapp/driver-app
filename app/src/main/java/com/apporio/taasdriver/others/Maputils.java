@@ -53,6 +53,16 @@ public class Maputils {
 
     }
 
+    public static String getDirectionsUrl(LatLng origin, LatLng dest, Context context) {
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+        String sensor = "sensor=false";
+        String key = "key=" + context.getResources().getString(R.string.google_map_key);
+        String parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + key;
+        String output = "json";
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+        return url;
+    }
 
     public  static void setanimatedicon(LatLng current_latlong ,GoogleMap mMap , int ico_image  ){    //// 28.446890, 77.033478
         Marker currLocationMarker;

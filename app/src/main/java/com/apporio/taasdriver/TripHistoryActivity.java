@@ -389,6 +389,12 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     public static class HolderRideHistoryNormal {
         @com.sam.placer.annotations.View(R.id.tv_date_time)
         private TextView tv_date_time;
+
+        @com.sam.placer.annotations.View(R.id.tv_amount)
+        private TextView tv_amount;
+
+        @com.sam.placer.annotations.View(R.id.tv_time)
+            TextView tv_time;
         @com.sam.placer.annotations.View(R.id.tv_pickup_addresss)
         private TextView tv_pickup_addresss;
         @com.sam.placer.annotations.View(R.id.tv_drop_addresss)
@@ -402,18 +408,24 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
 
         NewRidehistoryModel.DetailsBean.NormalRideBean mNormalRideResponse;
 
+        SessionManager sessionManager;
+
         public HolderRideHistoryNormal(Context context, NewRidehistoryModel.DetailsBean.NormalRideBean normalRideResponse) {
             mNormalRideResponse = normalRideResponse;
+
+            sessionManager = new SessionManager(context);
         }
 
         @Resolve
         private void onResolved() {
-            tv_date_time.setText("#"+mNormalRideResponse.getRide_id()+"  " + mNormalRideResponse.getRide_date());
+            tv_date_time.setText(mNormalRideResponse.getRide_date());
+            tv_time.setText(mNormalRideResponse.getRide_time());
             tv_pickup_addresss.setText("" + mNormalRideResponse.getPickup_location());
             tv_drop_addresss.setText("" + mNormalRideResponse.getDrop_location());
             customer_name_txt.setText("" + mNormalRideResponse.getUser_name());
             customer_phone_txt.setText("" + mNormalRideResponse.getUser_phone());
-            tv_status.setText("" + Config.getStatustext("" + mNormalRideResponse.getRide_status()));
+           // tv_status.setText("" + Config.getStatustext("" + mNormalRideResponse.getRide_status()));
+            tv_amount.setText(""+sessionManager.getCurrencyCode()+mNormalRideResponse.getTotal_amount());
         }
 
         @Click(R.id.root)

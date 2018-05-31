@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:text="@string/please_confirm_this_receipt_with_customer"
                 android:textColor="@color/colorPrimary"
-                android:textSize="17dp" />
+                android:textSize="15sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="- - - - - - - - - - "
-                                android:textSize="10dp"
+                                android:textSize="10sp"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/pure_white"/>
                         </LinearLayout>
@@ -184,7 +184,8 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="- - - - - - - - - - "
-                                android:textSize="10dp"
+                                android:textSize="10sp"
+                                android:layout_marginTop="10dp"
                                 android:textColor="@color/pure_white"/>
                         </LinearLayout>
 
@@ -217,7 +218,8 @@
                         android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:text="@string/PRICE_FARE_payment_mode"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textAllCaps="true"/>
                     <TextView
                         android:id="@+id/pay_mode"
                         android:layout_width="fill_parent"
@@ -227,9 +229,9 @@
                         android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:text=""
-                        android:textColor="@color/colorPrimary"
                         android:textSize="15sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textColor="@color/pure_black"/>
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -251,7 +253,9 @@
                         android:gravity="center"
                         android:text=""
                         android:textSize="15sp"
+                        android:textAllCaps="true"
                         android:textStyle="bold"
+                        android:textColor="@color/pure_black"
                         />
 
                     <TextView
@@ -261,7 +265,7 @@
                         android:layout_marginTop="15dp"
                         android:text="@string/PRICE_FARE_payment_cash_to_be_collected"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textAllCaps="true"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -274,7 +278,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="---"
-                            android:textSize="50dp" />
+                            android:textSize="50sp"
+                            android:textColor="@color/pure_black" />
 
                     </LinearLayout>
 

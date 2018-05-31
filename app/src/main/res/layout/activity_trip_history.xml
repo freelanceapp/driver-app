@@ -46,7 +46,8 @@
                     android:paddingLeft="10dp"
                     android:layout_weight="1"
                     android:id="@+id/activity_name"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textColor="@color/colorPrimary"
                     android:gravity="right|end|center_vertical"/>
 

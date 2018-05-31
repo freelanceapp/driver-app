@@ -27,7 +27,8 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@drawable/back_arrow"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_back_arrow"
                     android:tint="@color/colorPrimary" />
             </LinearLayout>
 
@@ -37,12 +38,12 @@
                 android:layout_weight="1"
                 android:gravity="center">
 
-                <customviews.typefacesviews.TypeFaceTextMonixRegular
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/UserDetails_Activity_tittle"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -205,17 +206,23 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="45dp" />
+                android:layout_height="45dp"
+                android:visibility="gone"/>
 
             <Button
+                android:id="@+id/btnStartRide"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@drawable/round_bg_color_black"
                 android:text="@string/Manual_Activity_button_start_ride"
                 android:textAllCaps="false"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:textSize="16dp"
-                android:textColor="@color/pure_white" />
+                android:textColor="@color/pure_white"
+                android:layout_below="@+id/ll_cus_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"/>
 
 
         </RelativeLayout>
