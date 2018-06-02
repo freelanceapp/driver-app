@@ -82,9 +82,9 @@ public class FragmentGraph extends Fragment implements OnChartValueSelectedListe
 
         mChart.getAxisRight().setEnabled(false);
 
-        mChart.getAxisLeft().setAxisLineColor(getActivity().getResources().getColor(R.color.icon_8_muted_black));
+        mChart.getAxisLeft().setAxisLineColor(getActivity().getResources().getColor(R.color.pure_black));
         mChart.getAxisLeft().setLabelCount(2);
-        mChart.getAxisLeft().setTextColor(getActivity().getResources().getColor(R.color.icons_8_muted_grey));
+        mChart.getAxisLeft().setTextColor(getActivity().getResources().getColor(R.color.pure_black));
         mChart.getAxisLeft().setTextSize(12f);
 //        mChart.getAxisLeft().setTypeface(Typeface.createFromAsset(this.getAssets(), "Monix-Regular.otf"));
         mChart.getAxisLeft().setGridColor(getActivity().getResources().getColor(R.color.icon_8_muted_black));

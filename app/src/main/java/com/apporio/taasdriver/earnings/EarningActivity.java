@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
 
 public class EarningActivity extends FragmentActivity implements ApiManager.APIFETCHER, DatePickerDialog.OnDateSetListener {
@@ -31,6 +33,8 @@ public class EarningActivity extends FragmentActivity implements ApiManager.APIF
     String driver_id;
     FrameLayout container ;
     String date = "NA";
+
+    TextView total_payout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class EarningActivity extends FragmentActivity implements ApiManager.APIF
         dateTV = (TextView) findViewById(R.id.dateTV);
         totalSummaryTV = (TextView) findViewById(R.id.totalSummaryTV);
         container = (FrameLayout) findViewById(R.id.container);
+        total_payout = (TextView)findViewById(R.id.total_payout);
 
         findViewById(R.id.viewFullSummLL).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,14 +116,14 @@ public class EarningActivity extends FragmentActivity implements ApiManager.APIF
                     if (weeklyEarningModel.getResult() == 1) {
                         // Toast.makeText(this, "" + weeklyEarningModel.getMsg(), Toast.LENGTH_SHORT).show();
 
-
+                        total_payout.setText(""+ sessinManager.getCurrencyCode() + String.valueOf(weeklyEarningModel.getWeekly_amount()));
                         totalSummaryTV.setText(sessinManager.getCurrencyCode() + weeklyEarningModel.getCompany_payment().toString());
                         for (int i = 0; i < weeklyEarningModel.getDetails().size(); i++) {
 
                             String current_date = weeklyEarningModel.getDetails().get(0).getDate().toString().replace("2017-" , "");
                             String next_date = weeklyEarningModel.getDetails().get(weeklyEarningModel.getDetails().size() - 1).getDetail().getDate().toString().replace("2017-" , "");
                             dateTV.setText(current_date + "     to     " + next_date);
-                            dateTV.setTextColor(this.getResources().getColor(R.color.icons_8_muted_yellow));
+                            dateTV.setTextColor(this.getResources().getColor(R.color.pure_black));
                         }
 
                         getSupportFragmentManager()

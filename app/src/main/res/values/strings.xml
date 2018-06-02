@@ -493,7 +493,7 @@
 
     ////////////////////////// EarningActivity
     <string name="EARNINF_ACTIVITY__your_earning">Your Earnings</string>
-    <string name="EARNING_ACTIVITY__total_outstanding_if_any">Total Outstanding(If Any)</string>
+    <string name="EARNING_ACTIVITY__total_outstanding_if_any">Total Outstanding</string>
     <string name="EARNING_ACTIVITY__view_full_summary">View Full Summary</string>
 
     //////////////////// DocumentActivity
