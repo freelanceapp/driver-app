@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/driver_app_logo">
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                     android:background="@color/colorPrimary"
                     android:gravity="center">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
@@ -81,7 +81,7 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/login"
@@ -100,7 +100,7 @@
                 android:layout_margin="5dp"
                 android:visibility="gone">
 
-                <com.apporio.taasdriver.typeface.TypefaceTextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="#d6a90f"
@@ -148,7 +148,7 @@
                     <!--android:visibility="gone"/>-->
 
 
-                <!--<TextView-->
+                <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_gravity="center"-->
@@ -159,7 +159,7 @@
                     <!--android:visibility="gone"/>-->
 
 
-              <!--<TextView-->
+              <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                   <!--android:layout_width="wrap_content"-->
                   <!--android:layout_height="wrap_content"-->
                   <!--android:textColor="#ffffff"-->

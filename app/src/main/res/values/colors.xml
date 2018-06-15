@@ -118,5 +118,7 @@
     <color name="green">#17cc1d</color>
     <color name="pure_red">#e61010</color>
 
+    <color name="green_dot">#00E444</color>
+
 
 </resources>

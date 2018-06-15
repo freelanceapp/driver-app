@@ -24,7 +24,7 @@
                     android:src="@drawable/back_arrow"/>
 
             </RelativeLayout>
-            <customviews.typefacesviews.TypefaceDosisRegular
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text=""/>
@@ -42,7 +42,7 @@
             android:id="@+id/image"
             android:src="@drawable/app_logo_100"/>
 
-        <customviews.typefacesviews.TypefaceDosisRegular
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/message"

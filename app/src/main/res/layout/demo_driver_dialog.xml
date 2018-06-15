@@ -38,23 +38,24 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_cross_close"
-                        android:tint="@color/icons_8_muted_grey" />
+                        android:tint="@color/colorPrimary" />
                 </LinearLayout>
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Please enter you name and details for the identification of your demo driver "
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"/>
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:text="Please Enter these details to create a Demo Driver "
-                    android:textColor="@color/pure_white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/demo_name"
@@ -90,21 +91,21 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="20dp">
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:id="@+id/demo_ok_btn"
                         android:layout_width="fill_parent"
                         android:layout_height="49dp"
-                        android:background="@color/icons_8_muted_orange"
+                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:text="Login as demo"
-                        android:textColor="@color/pure_white">
-                    </TextView>
+                        android:textColor="@color/pure_white"/>
+
                 </android.support.v7.widget.CardView>
 
 
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/skip"
                     android:layout_width="fill_parent"
                     android:layout_height="30dp"
@@ -113,7 +114,7 @@
                     android:paddingRight="5dp"
                     android:layout_marginTop="20dp"
                     android:text="Or Skip Entering Details"
-                    android:textColor="@color/icons_8_muted_blue" />
+                    android:textColor="@color/colorPrimary" />
 
 
 

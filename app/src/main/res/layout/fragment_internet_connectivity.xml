@@ -12,9 +12,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_sad_cloud"
-        android:tint="@color/icons_8_muted_grey"/>
+        android:tint="@color/colorPrimary"/>
 
-    <TextView
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -22,7 +22,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:text="@string/NO_INTERNET_DIALOG_FRAGMENT__no_connection" />
-    <TextView
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/NO_INTERNET_DIALOG_FRAGMENT__please_check_your_internet_connectivity_and_try_again"
@@ -41,23 +41,22 @@
             android:id="@+id/try_again_btn"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/icons_8_muted_grey">
-            <TextView
+            android:background="@color/colorPrimary">
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/NO_INTERNET_DIALOG_FRAGMENT__try_again"
                 android:textColor="@color/pure_white"
-                android:background="@color/icons_8_muted_grey"
                 android:padding="5dp"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
-    <TextView
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/NO_INTERNET_DIALOG_FRAGMENT__click_here_to_check_your_internet_setting"
-        android:textColor="@color/icons_8_muted_blue"
+        android:textColor="@color/colorPrimary"
         android:textStyle=""
         android:id="@+id/internet_settings"
         android:layout_marginTop="25dp"/>

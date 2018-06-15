@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,13 +46,12 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/PROFILE_ACTIVITY__done"
                 android:textColor="@color/colorBlack"
-                android:textSize="15dp"
-                geekui:customTypeface="OpenSans_Regular.ttf" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -122,7 +121,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -130,7 +129,7 @@
                         android:text="@string/PROFILE_ACTIVITY__email_id_big"
                         android:textSize="13dp" />
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -181,7 +180,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -244,7 +243,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -253,7 +252,7 @@
                         android:textSize="13dp"
                         geekui:customTypeface="OpenSans_Regular.ttf" />
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:id="@+id/passwrd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -302,7 +301,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -364,7 +363,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -428,7 +427,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -488,7 +487,7 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <com.apporio.taasdriver.typeface.TypefaceTextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -538,7 +537,7 @@
                 android:background="@drawable/layout_dark"
                 android:gravity="center">
 
-                <com.apporio.taasdriver.typeface.TypefaceTextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/PROFILE_ACTIVITY__logout"
@@ -550,7 +549,7 @@
 
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="Development Purpose only"
@@ -572,7 +571,7 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="fill_parent"
                         android:layout_height="49dp"
                         android:layout_weight="1"
@@ -586,7 +585,7 @@
                         android:layout_height="fill_parent"
                         android:hint="33" />
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:text="Save"
@@ -613,7 +612,7 @@
                     android:gravity="center"
                     android:padding="10dp">
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:id="@+id/textView8"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -644,7 +643,7 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:paddingLeft="10dp">
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -660,7 +659,7 @@
                         android:gravity="center"/>
 
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="50dp"
                         android:layout_height="fill_parent"
                         android:gravity="center"

@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:419385713964:android:c8795b3f8ac059c1",
         "android_client_info": {
-          "package_name": "com.apporio.taasdriver"
+          "package_name": "com.taas.driver"
         }
       },
       "oauth_client": [
@@ -43,9 +43,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:419385713964:android:be81f698a71ac90d",
+        "mobilesdk_app_id": "1:419385713964:android:7fad1eb5c0540351",
         "android_client_info": {
-          "package_name": "com.apporio.taasuser"
+          "package_name": "com.taas.driver"
         }
       },
       "oauth_client": [

@@ -15,7 +15,7 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:id="@+id/image"/>
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="--------"
@@ -24,7 +24,7 @@
             android:paddingTop="10dp"
             android:id="@+id/heading_txt"/>
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"

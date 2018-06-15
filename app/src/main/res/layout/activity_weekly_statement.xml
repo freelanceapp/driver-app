@@ -3,22 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center|top"
-    tools:context="com.apporio.taasdriver.earnings.WeeklyStatementActivity">
+    tools:context="com.taas.driver.earnings.WeeklyStatementActivity">
 
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-2dp"
-        android:layout_marginRight="-2dp">
+        android:layout_marginRight="-2dp"
+        app:cardElevation="0dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center|left"
-            android:background="#2b2b2b">
+            android:background="@color/pure_white">
             <LinearLayout
                 android:id="@+id/backBtnLL"
                 android:layout_width="50dp"
@@ -29,44 +31,89 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_left_sort_white"
-                    android:tint="@color/pure_white"/>
+                    android:src="@drawable/ic_back_arrow"
+                    android:tint="@color/pure_black"
+                    android:padding="5dp"/>
             </LinearLayout>
-            <TextView
+            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text="@string/WEEKLY_STATEMENT_ACTIVITY__weekly_statement"
-                android:textColor="@color/pure_white"
-                android:gravity="center|left"/>
+                android:textSize="14sp"
+                android:textAllCaps="true"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right|center_vertical"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="@color/pure_white">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/pure_white">
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                app:cardElevation="0dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
-                    <TextView
-                        android:id="@+id/weekDatesTV"
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginRight="10dp"
+                      >
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:id="@+id/startDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="12/08 - 19/08"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@color/icons_8_muted_greydark"
+                        android:textStyle="bold"/>
+                      <com.taas.driver.typeface.TypeFaceMuseoRegular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="TO"
+                          android:layout_weight="1"
+                          android:gravity="center"
+                          android:textColor="@color/icons_8_muted_greydark"
+                          android:textStyle="bold"/>
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:id="@+id/endDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="12/08 - 19/08"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
                         android:textColor="@color/icons_8_muted_greydark"
-                        android:textStyle="bold"
-                        android:layout_marginTop="10dp"/>
+                        android:textStyle="bold"/>
+                  </LinearLayout>
+                     <View
+                         android:layout_width="match_parent"
+                         android:layout_height="20dp"
+                         android:background="@drawable/dotted_black"
+                         android:layerType="software"
+                         android:layout_marginTop="40dp"
+                         android:layout_marginLeft="50dp"
+                         android:layout_marginRight="50dp"
+                         />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
@@ -84,27 +131,28 @@
                                 android:layout_weight="1"
                                 android:orientation="horizontal"
                                 android:gravity="center">
-                            <TextView
+                            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                                 android:id="@+id/totalearningcurrency"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=""
-                                android:textColor="@color/icons_8_muted_green_1"
-                                android:textSize="17dp"/>
-                            <TextView
+                                android:textColor="@color/green"
+                                android:textSize="18sp"/>
+                            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                                 android:id="@+id/totalEarningTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/icons_8_muted_green_1"
-                                android:textSize="17dp"/>
+                                android:textColor="@color/green"
+                                android:textSize="18sp"/>
                             </LinearLayout>
 
-                            <TextView
+                            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/WEEKLY_STATEMENT_ACTIVITY__total_earning"
-                                android:textColor="@color/icons_8_muted_grey"/>
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorPrimary"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -113,19 +161,20 @@
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:gravity="center">
-                            <TextView
+                            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                                 android:id="@+id/completedTripsTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:textSize="17dp"/>
-                            <TextView
+                                android:textSize="18sp"/>
+                            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/WEEKLY_STATEMENT_ACTIVITY__completed_trips"
-                                android:textColor="@color/icons_8_muted_grey"/>
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorPrimary"/>
                         </LinearLayout>
 
 
@@ -136,6 +185,17 @@
 
 
                     </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@drawable/dotted_black"
+                        android:layerType="software"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        />
 
                 </LinearLayout>
 
@@ -148,6 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-2dp"
                 android:layout_marginRight="-2dp"
+                app:cardElevation="0dp"
                 android:layout_marginTop="10dp">
 
                 <LinearLayout
@@ -156,29 +217,35 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/WEEKLY_STATEMENT_ACTIVITY__trips_earnings"
                         android:textColor="@color/icons_8_muted_grey"
                         android:layout_marginBottom="10dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textAllCaps="true"
+                        android:gravity="center"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:orientation="horizontal"
                         android:paddingRight="20dp">
 
-                        <TextView
-                            android:layout_width="fill_parent"
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textAllCaps="true"
                             android:text="@string/WEEKLY_STATEMENT_ACTIVITY__fare_earned" />
 
-                        <TextView
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:id="@+id/fareEarnedTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -190,16 +257,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:orientation="horizontal"
                         android:paddingRight="20dp">
 
-                        <TextView
-                            android:layout_width="fill_parent"
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textAllCaps="true"
                             android:text="@string/WEEKLY_STATEMENT_ACTIVITY__taxi_fee" />
 
-                        <TextView
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:id="@+id/taxiFeeTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -215,7 +285,7 @@
                         android:orientation="horizontal"
                         android:paddingRight="20dp">
 
-                        <TextView
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -227,13 +297,13 @@
                             android:gravity="center|right"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.taas.driver.typeface.TypeFaceMuseoRegular
                                 android:id="@+id/bonusTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="" />
 
-                            <TextView
+                            <com.taas.driver.typeface.TypeFaceMuseoRegular
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Details"
@@ -248,23 +318,26 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
                         android:orientation="horizontal"
                         android:paddingRight="20dp">
 
-                        <TextView
-                            android:layout_width="fill_parent"
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/WEEKLY_STATEMENT_ACTIVITY__total_amount"
-                            android:textColor="@color/icon_8_muted_black"
+                            android:textColor="@color/colorPrimary"
+                            android:textAllCaps="true"
                             android:textSize="17dp" />
 
-                        <TextView
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textColor="@color/icon_8_muted_black"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="17dp" />
                     </LinearLayout>
 
@@ -273,16 +346,29 @@
             </android.support.v7.widget.CardView>
 
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/dotted_black"
+                android:layerType="software"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="10dp">
-                <TextView
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                app:cardElevation="0dp"
+                android:layout_marginLeft="10dp">
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/WEEKLY_STATEMENT_ACTIVITY__detail_earning"
+                    android:textAllCaps="true"
                     android:textColor="@color/icons_8_muted_grey"
                     android:padding="10dp"
                     android:textStyle="bold" />

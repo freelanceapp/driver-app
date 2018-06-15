@@ -8,11 +8,11 @@
     android:gravity="center|top"
     android:background="@color/icon_8_muted_black"
     android:padding="20dp"
-    tools:context="com.apporio.taasdriver.account.DriverPhotoUploadActivity">
+    tools:context="com.taas.driver.account.DriverPhotoUploadActivity">
 
 
 
-    <customviews.typefacesviews.TypefaceDosisRegular
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/METER_IMAGE_ACTIVITY__please_upload_a_photo_of_your_meter_of_your_car_or_motorcycle"
@@ -58,7 +58,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <customviews.typefacesviews.TypefaceDosisRegular
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/METER_IMAGE_ACTIVITY__ok"

@@ -74,7 +74,7 @@
                                     <!--android:layout_height="20dp"-->
                                     <!--android:src="@drawable/ic_profile_small" />-->
 
-                                <!--<TextView-->
+                                <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                                     <!--android:id="@+id/customer_info_txt"-->
                                     <!--android:layout_width="match_parent"-->
                                     <!--android:layout_height="match_parent"-->
@@ -87,7 +87,7 @@
                             <!--<android.support.v7.widget.CardView-->
                                 <!--android:layout_width="wrap_content"-->
                                 <!--android:layout_height="wrap_content">-->
-                                <!--<TextView-->
+                                <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                                     <!--android:layout_width="fill_parent"-->
                                     <!--android:layout_height="wrap_content"-->
                                     <!--android:id="@+id/chat"-->
@@ -118,7 +118,7 @@
                                 <!--android:src="@drawable/phone"-->
                                 <!--android:tint="@color/icons_8_muted_blueblack" />-->
 
-                            <!--<TextView-->
+                            <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                                 <!--android:id="@+id/customer_phone_txt"-->
                                 <!--android:layout_width="match_parent"-->
                                 <!--android:layout_height="match_parent"-->
@@ -161,7 +161,7 @@
                             <!--android:tint="@color/icons_8_muted_green_1" />-->
 
 
-                        <!--<TextView-->
+                        <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                             <!--android:id="@+id/location_txt"-->
                             <!--android:layout_width="fill_parent"-->
                             <!--android:layout_height="fill_parent"-->
@@ -249,7 +249,7 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginLeft="10dp"
                     android:visibility="gone">
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ac = 9909899"
@@ -262,7 +262,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:context=".MapsActivity" />
+                <LinearLayout
+                    android:id="@+id/bottomLocationLayout"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="start|center_vertical"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_color_black"
+                    android:visibility="gone"
+                    >
 
+                   <ImageView
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:src="@drawable/track_user"
+                       android:tint="@color/pure_white"
+                       android:layout_marginLeft="10dp"
+                       />
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                        android:id="@+id/location_text_copy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAllCaps="true"
+                        android:lines="2"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -271,11 +302,14 @@
                     android:layout_gravity="right|center"
                     android:layout_marginRight="10dp"
                     android:id="@+id/sos"
+                    android:background="@drawable/black_circle"
                     android:visibility="visible">
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/ic_sos"/>
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SOS"
+                        android:textAllCaps="true"
+                        android:textColor="@color/pure_white"/>
                 </LinearLayout>
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/btn"
@@ -286,7 +320,7 @@
                     android:tint="@color/pure_black"
                     app:elevation="10dp"
                     app:backgroundTint="@color/pure_white"
-                    android:layout_gravity="bottom|end"
+                    android:layout_gravity="top|end"
                     android:layout_margin="10dp"/>
 
                 <LinearLayout
@@ -299,14 +333,14 @@
                     android:padding="5dp"
                     android:id="@+id/message_layout"
                     android:background="@color/icon_8_muted_black">
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/icons_8_muted_green_1"
                         android:textSize="15dp"
                         android:layout_marginBottom="5dp"
                         android:text="@string/new_message"/>
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:animateLayoutChanges="true"
@@ -317,7 +351,7 @@
                         android:maxLines="2"/>
 
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/click_to_view"
@@ -342,7 +376,7 @@
         android:layout_height="0dp"
         android:background="@color/pure_white"
         android:gravity="center">
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/connectivity_status_development_purpose"
@@ -376,7 +410,7 @@
                 android:tint="@color/pure_white"/>
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text="------------------------------- "
@@ -409,6 +443,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
             android:layout_gravity="center|bottom">
 
 
@@ -425,20 +462,22 @@
                 android:layout_marginBottom="5dp"
                 android:layout_height="fill_parent" />
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                 android:id="@+id/cancel_btn"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/TRACK_RIDE_ACTIVITY__cancel"
+                android:text="@string/TRACK_RIDE_ACTIVITY__cancel_trip"
                 android:visibility="visible"
                 android:textStyle="bold"
                 android:textColor="@color/pure_white"
                 android:layout_margin="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/round_bg_color_gray"/>
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                 android:id="@+id/trip_status_txt"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -447,7 +486,7 @@
                 android:text="@string/TRACK_RIDE_ACTIVITY__trip_status"
                 android:visibility="visible"
                 android:textStyle="bold"
-
+                android:textAllCaps="true"
                 android:textColor="@color/pure_black"
                 android:layout_margin="5dp"
                 android:background="@drawable/round_bg_color_green"/>

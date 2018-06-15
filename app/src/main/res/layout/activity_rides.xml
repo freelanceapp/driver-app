@@ -7,7 +7,7 @@
     android:background="#efefef"
     android:gravity="center|top"
     android:orientation="vertical"
-    tools:context="com.apporio.taasdriver.RidesActivity">
+    tools:context="com.taas.driver.RidesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:gravity="end|center_vertical">
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/upcomings"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="@string/no_rides"

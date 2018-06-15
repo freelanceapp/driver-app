@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/icon_8_muted_black"
-    tools:context="com.apporio.taasdriver.TrialReceivePassengerActivity">
+    tools:context="com.taas.driver.TrialReceivePassengerActivity">
 
     cancel button
     <LinearLayout
@@ -68,7 +68,7 @@
             android:paddingLeft="15dp">
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -76,7 +76,7 @@
                 android:textColor="@color/pure_white"
                 android:text="@string/booking_date"/>
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
@@ -93,7 +93,7 @@
             android:paddingLeft="15dp">
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -101,7 +101,7 @@
                 android:textStyle="bold"
                 android:text="@string/requested_date"/>
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -144,7 +144,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"/>
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/time_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
 
 
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:id="@+id/main_layout_pickup_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
             android:text="@string/WEEKLY_STATEMENT_ACTIVITY__loading"
             android:textColor="@color/green_text" />
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -197,7 +197,7 @@
         android:visibility="visible"
         android:id="@+id/accept_ride_btn"
         android:background="@color/icons_8_muted_green_1">
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/WEEKLY_STATEMENT_ACTIVITY__accept_ride"

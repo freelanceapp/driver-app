@@ -20,7 +20,7 @@
         android:background="@drawable/layout_light"
         android:orientation="vertical">
 
-        <customviews.typefacesviews.TypeFaceTextMonixRegular
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
         android:tint="#666666"
         android:src="@drawable/marker2"/>
 
-    <TextView
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:id="@+id/tvContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

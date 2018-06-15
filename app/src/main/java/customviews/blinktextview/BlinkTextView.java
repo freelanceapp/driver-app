@@ -24,8 +24,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.apporio.taasdriver.BuildConfig;
-import com.apporio.taasdriver.R;
+import com.taas.driver.BuildConfig;
+import com.taas.driver.R;
 import com.google.gag.annotation.disclaimer.SafeForSpeedsNotExceeding;
 import com.google.gag.annotation.enforceable.CantTouchThis;
 import com.google.gag.annotation.remark.PleaseDontShowUpOn;

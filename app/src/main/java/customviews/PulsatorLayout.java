@@ -18,7 +18,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 
 
-import com.apporio.taasdriver.R;
+import com.taas.driver.R;
 
 import java.util.ArrayList;
 import java.util.List;

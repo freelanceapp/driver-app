@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="180dp"
     android:background="@color/pure_black"
     android:orientation="horizontal"
     android:padding="10dp">
@@ -44,12 +44,22 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true">
 
-          <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:padding="5dp"
-              android:src="@drawable/ic_user"
-              android:tint="@color/pure_white"/>
+         <LinearLayout
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:background="@drawable/white_circle_border">
+
+
+             <ImageView
+                 android:layout_width="40dp"
+                 android:layout_height="40dp"
+                 android:padding="8dp"
+                 android:src="@drawable/ic_user"
+                 android:tint="@color/pure_white"
+                 />
+
+         </LinearLayout>
+
 
           <LinearLayout
               android:layout_width="wrap_content"
@@ -60,16 +70,15 @@
               android:layout_marginStart="5dp"
               android:layout_gravity="center_vertical">
 
-              <TextView
+              <com.taas.driver.typeface.TypeFaceTextMeseoBold
                   android:id="@+id/customer_info_txt"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="-------"
                   android:textAllCaps="true"
-                  android:textStyle="bold"
                   android:textSize="12sp"
                   android:textColor="@color/pure_white"/>
-              <TextView
+              <com.taas.driver.typeface.TypeFaceMuseoRegular
                   android:id="@+id/customer_phone_txt"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -98,8 +107,8 @@
           android:gravity="center">
 
           <ImageView
-              android:layout_width="25dp"
-              android:layout_height="25dp"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
               android:src="@drawable/ic_message"
               android:tint="@color/pure_white"
               android:padding="5dp"/>
@@ -110,16 +119,17 @@
 
       <LinearLayout
           android:id="@+id/location_changer"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
           android:orientation="horizontal"
           android:layout_alignParentBottom="true"
-          android:layout_marginBottom="10dp"
+          android:layout_marginBottom="5dp"
           android:layout_alignParentStart="true"
           android:layout_alignParentLeft="true"
           android:layout_marginTop="60dp"
           android:gravity="center_vertical"
-          android:padding="10dp"
+          android:padding="1dp"
+
           android:layout_weight="1">
 
 
@@ -129,9 +139,10 @@
               android:layout_height="10dp"
               android:src="@drawable/circle_white"
               android:tint="@color/pure_red"
+              android:layout_weight="0.5"
               android:layout_gravity="center_vertical"/>
 
-          <TextView
+          <com.taas.driver.typeface.TypeFaceMuseoRegular
               android:id="@+id/location_txt"
               android:layout_width="wrap_content"
               android:layout_height="match_parent"
@@ -140,40 +151,43 @@
               android:layout_marginStart="10dp"
               android:gravity="center_vertical"
               android:text="-----"
+              android:layout_weight="3.5"
               android:textColor="@color/dark_gray"
               android:textSize="10sp"
               android:inputType="textMultiLine"
-              android:textAlignment="textStart"
-              android:textStyle="normal"
-              tools:ignore="RtlCompat" />
+              android:textStyle="normal"/>
+
+
+          <!--<LinearLayout-->
+              <!--android:id="@+id/location_changer1"-->
+              <!--android:layout_width="40dp"-->
+              <!--android:layout_height="40dp"-->
+              <!--android:layout_alignParentBottom="true"-->
+              <!--android:layout_alignParentEnd="true"-->
+              <!--android:layout_alignParentRight="true"-->
+              <!--android:layout_marginBottom="5dp"-->
+              <!--android:layout_marginTop="80dp"-->
+              <!--android:gravity="center"-->
+              <!--android:layout_marginRight="5dp"-->
+              <!--android:layout_marginEnd="5dp"-->
+              <!--android:layout_weight="1">-->
+
+              <ImageView
+                  android:id="@+id/pencil_icon"
+                  android:layout_width="25dp"
+                  android:layout_height="25dp"
+                  android:padding="5dp"
+                  android:layout_weight="0.5"
+                  android:src="@drawable/ic_pencil"
+                  android:tint="@color/pure_white"
+                  />
+
+          <!--</LinearLayout>-->
 
       </LinearLayout>
 
 
-      <LinearLayout
-          android:id="@+id/location_changer1"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-          android:layout_alignParentBottom="true"
-          android:layout_alignParentEnd="true"
-          android:layout_alignParentRight="true"
-          android:layout_marginBottom="5dp"
-          android:layout_marginTop="80dp"
-          android:gravity="center"
-          android:layout_marginRight="5dp"
-          android:layout_marginEnd="5dp"
-          android:layout_weight="1">
 
-          <ImageView
-              android:id="@+id/pencil_icon"
-              android:layout_width="25dp"
-              android:layout_height="25dp"
-              android:padding="5dp"
-              android:src="@drawable/ic_pencil"
-              android:tint="@color/pure_white"
-              />
-
-      </LinearLayout>
 
 
     </RelativeLayout>

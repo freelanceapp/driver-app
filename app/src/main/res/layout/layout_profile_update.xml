@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/pure_white">
+
+
+    <com.taas.driver.typeface.TypeFaceTextMeseoBold
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pure_black"
+        android:textSize="16sp"
+        android:text="@string/profle_updated_successfully_"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:layout_marginTop="40dp"
+        />
+
+   <Button
+       android:id="@+id/close_btn"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:background="@drawable/round_bg_color_black"
+       android:text="close"
+       android:textSize="15sp"
+       android:layout_marginLeft="60dp"
+       android:layout_marginRight="60dp"
+       android:layout_marginTop="40dp"
+       android:textColor="@color/pure_white"/>
+
+</LinearLayout>

@@ -126,7 +126,7 @@
     <string name="new_ride">New Ride</string>
     <string name="cancel_by_driver">Cancel by Driver</string>
     <string name="retry">Retry</string>
-    <string name="enable_app_location">Please Enable your location to use the app services</string>
+    <string name="enable_app_location">Please Enable your location\n to use the app services</string>
     <string name="open_location_settings">Open Location Settings</string>
     <string name="permission_String">This Application requires some permissions to run.</string>
 
@@ -454,7 +454,7 @@
 
 
     ////////////////// OnlineOfflineActivity
-    <string name="ONLINE_OFFLINE_ACTIVITY__currently_you_are_off_duty_please_turn_on_your_duty_on_in_order_to_get_rides_in_you_area">Currently you are Off Duty, Please turn on your duty on in order to get Rides in you area.</string>
+    <string name="ONLINE_OFFLINE_ACTIVITY__currently_you_are_off_duty_please_turn_on_your_duty_on_in_order_to_get_rides_in_you_area">You are currently Off Duty, Please go online to get new ride demands at your location.</string>
     <string name="ONLINE_OFFLINE_ACTIVITY__current_status">Current Status</string>
     <string name="ONLINE_OFFLINE_ACTIVITY__on_duty">On duty</string>
     <string name="ONLINE_OFFLINE_ACTIVITY__go_on_duty">Go On Duty</string>
@@ -590,7 +590,7 @@
     <string name="online_time">Online Time</string>
     <string name="overall_rating">Overall Rating</string>
     <string name="documents">Documents</string>
-    <string name="use_in_case_of_emergency">Use in Case of Emergency</string>
+    <string name="use_in_case_of_emergency">Use in Case of\n Emergency</string>
     <string name="login">Login</string>
     <string name="login_as_demo_driver">Login as Demo Driver</string>
     <string name="some_information_about_status_will_be_fetched_according_to_the_status_and_image_as_well">Some information about status will be fetched according to the status and image as well</string>
@@ -655,6 +655,18 @@
     <string name="change_language">Change Language</string>
     <string name="report_a_problem">Report A Problem</string>
     <string name="setting">Settings</string>
+    <string name="profle_updated_successfully_">Profle Updated\n  Successfully</string>
+    <string name="call_emergency_number">Call Emergency Number</string>
+    <string name="close">Close</string>
+    <string name="turn_on_location">In order to user this app properly, please turn on\n your device location from settings</string>
+    <string name="TRACK_RIDE_ACTIVITY__arrived">Arrived</string>
+    <string name="TRACK_RIDE_ACTIVITY__cancel_trip">Cancel Trip</string>
+    <string name="send">Send</string>
+    <string name="customer_support">Customer Support</string>
+    <string name="CUSTOMER_SUPPORT_ACTIVITY__got_a_query">Got a query?</string>
+    <string name="CUSTOMER_SUPPORT_ACTIVITY_query_msg">Kindly drop us a message, a support team member would get back to you ASAP!</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
 
 
 </resources>

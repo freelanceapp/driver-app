@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -31,7 +31,7 @@
         android:text="Meter Range is actually the distance factor value by which the value of meter while change during ride. You can test it by placing an request to this driver and afterward when ride is started , the meter will get start updating itself automatically  by the enter factor (by default the factor is 99 ) \n\n Example if value is set by 50 then meter will update each time when you car travel 50 meter or above ."/>
 
 
-        <customviews.typefacesviews.TypefaceDosisRegular
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/icon_8_muted_black"
@@ -53,7 +53,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center">
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/TRACK_RIDE_RENTAL_ACTIVITY__ok"

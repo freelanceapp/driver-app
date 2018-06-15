@@ -50,14 +50,14 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Customer name"
                         android:id="@+id/user_name_txt"
                         android:gravity=""
                         android:textStyle="bold"/>
-                    <TextView
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/riding_status"

@@ -12,7 +12,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.apporio.taasdriver.R;
+import com.taas.driver.R;
 
 public class ProgressWheel extends View {
 

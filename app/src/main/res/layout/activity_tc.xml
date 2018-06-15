@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.apporio.taasdriver.TermsAndCondition">
+    tools:context="com.taas.driver.TermsAndCondition">
 
     <include
         android:id="@+id/toolbar_include"
@@ -37,7 +37,7 @@
             <!--android:layout_weight="1"-->
             <!--android:gravity="center">-->
 
-            <!--<customviews.typefacesviews.TypeFaceTextMonixRegular-->
+            <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                 <!--android:textColor="@color/colorPrimary"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.apporio.taasdriver.typeface.TypefaceTextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/tc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

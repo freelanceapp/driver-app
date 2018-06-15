@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:gravity="center|left">
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Service name"
@@ -25,7 +25,7 @@
             android:id="@+id/service_name_txt"
             android:textColor="@color/icon_8_muted_black"/>
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Examle number"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.apporio.taasdriver">
+    package="com.taas.driver">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="com.apporio.taasdriver.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.taas.driver.permission.MAPS_RECEIVE" />
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -38,10 +38,10 @@
         android:xlargeScreens="true" />
 
     <permission
-        android:name="com.apporio.taasdriver.permission.MAPS_RECEIVE"
+        android:name="com.taas.driver.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
     <permission
-        android:name="com.apporio.taasdriver.permission.C2D_MESSAGE"
+        android:name="com.taas.driver.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-feature
@@ -234,8 +234,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SosActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+            android:screenOrientation="portrait"/>
+            <!--android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />-->
         <activity
             android:name=".PhotoUploaderActivity"
             android:screenOrientation="portrait"

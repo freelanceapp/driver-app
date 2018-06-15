@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.apporio.taasdriver.DocumentActivity">
+    tools:context="com.taas.driver.DocumentActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:src="@drawable/back_arrow"/>
         </RelativeLayout>
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:gravity="center"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="-2dp"
         android:layout_marginLeft="-2dp">
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:id="@+id/submit"

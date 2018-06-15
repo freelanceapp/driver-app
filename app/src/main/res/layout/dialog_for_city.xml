@@ -21,7 +21,7 @@
         android:background="@drawable/layout_light"
         android:orientation="vertical">
 
-        <customviews.typefacesviews.TypeFaceTextMonixRegular
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

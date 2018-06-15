@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center|right">
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -120,7 +120,7 @@
                 <!--android:layout_height="wrap_content"-->
                 <!--android:orientation="vertical"-->
                 <!--android:background="@color/icons_8_muted_green_1">-->
-                <!--<TextView-->
+                <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:padding="5dp"-->
@@ -160,7 +160,7 @@
                 <!--android:layout_height="wrap_content"-->
                 <!--android:orientation="vertical"-->
                 <!--android:gravity="center|right">-->
-                <!--<TextView-->
+                <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:padding="5dp"-->

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.apporio.taasdriver.ManualUserDetailActivity">
+    tools:context="com.taas.driver.ManualUserDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:layout_weight="1"
                 android:gravity="center">
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/UserDetails_Activity_tittle"
@@ -73,7 +73,7 @@
                 android:background="@drawable/layout_light"
                 android:orientation="vertical">
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -82,7 +82,7 @@
                     android:textColor="@color/icons_8_muted_green_2_dark"
                     android:textSize="12dp" />
 
-                <com.apporio.taasdriver.typeface.TypefaceTextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/textView_pickUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -119,7 +119,7 @@
                     android:textSize="12dp" />
 
 
-                <com.apporio.taasdriver.typeface.TypefaceTextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/textView_dropPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

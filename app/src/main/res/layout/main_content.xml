@@ -13,25 +13,27 @@
         <LinearLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:background="@color/pure_black">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:padding="10dp"
+                android:padding="5dp"
+                android:layout_marginLeft="2dp"
                 android:id="@+id/menu"
                 android:tint="@color/pure_white"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_menu"/>
+                android:src="@drawable/menu1"/>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center">
-                <customviews.typefacesviews.TypefaceDosisRegular
+                android:gravity="center"
+                >
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,10 +72,11 @@
                     android:background="@drawable/rounded_bg_color_white"
                     android:padding="20dp"
                     android:gravity="center"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:id="@+id/status_btn"
                     app:cardBackgroundColor="@color/pure_white"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    >
 
                    <LinearLayout
                        android:layout_width="match_parent"
@@ -88,7 +91,7 @@
                            android:src="@drawable/circle_white"
                            android:tint="@color/dark_gray"
                            android:layout_margin="5dp"/>
-                       <TextView
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="@string/MAIN_ACTIVITY__off_duty"
@@ -121,14 +124,14 @@
                 android:visibility="gone"
                 android:orientation="horizontal"
                 android:gravity="center|right">
-                <customviews.typefacesviews.TypefaceDosisRegular
+                <com.taas.driver.typeface.TypeFaceTextMeseoBold
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Acc ="
                     android:layout_marginLeft="5dp"
                     android:id="@+id/accuracy"/>
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/driver_id"
@@ -139,7 +142,7 @@
                     android:layout_marginRight="10dp"/>
 
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
@@ -147,7 +150,7 @@
                     android:id="@+id/lat_txt"
                     android:layout_marginRight="10dp"/>
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
@@ -156,7 +159,7 @@
                     android:text=""/>
             </LinearLayout>
 
-            <customviews.typefacesviews.TypefaceDosisRegular
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -200,7 +203,7 @@
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
                    android:layout_gravity="bottom"
-                   android:background="@color/pure_black"
+                   android:background="@android:color/transparent"
                    android:paddingLeft="10dp"
                    android:paddingRight="10dp"
                    android:paddingTop="5dp"
@@ -212,7 +215,7 @@
                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:orientation="horizontal"
-                    android:background="@color/pure_black"
+                    android:background="@android:color/transparent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true">
 
@@ -222,8 +225,10 @@
                        android:layout_gravity="bottom|left"
                        android:layout_marginLeft="5dp"
                        android:layout_marginBottom="5dp"
-                       app:cardBackgroundColor="@color/pure_black"
-                       android:id="@+id/today_schedule_btn">
+                       android:visibility="gone"
+                       app:cardBackgroundColor="@android:color/transparent"
+                       android:id="@+id/today_schedule_btn"
+                       app:cardElevation="0dp">
 
 
                        <ImageView
@@ -232,7 +237,7 @@
                            android:src="@drawable/ic_alarm"
                            android:tint="@color/pure_white"
                            android:layout_gravity="center"/>
-                       <TextView
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                            android:layout_width="20dp"
                            android:layout_height="20dp"
                            android:text=""
@@ -251,8 +256,10 @@
                        android:layout_height="45dp"
                        android:layout_gravity="bottom|left"
                        android:layout_marginBottom="5dp"
+                       app:cardElevation="0dp"
+                       android:visibility="gone"
                        android:id="@+id/unaccepted_rides_btn"
-                       app:cardBackgroundColor="@color/pure_black">
+                       app:cardBackgroundColor="@android:color/transparent">
 
 
                        <ImageView
@@ -261,7 +268,7 @@
                            android:src="@drawable/ic_notification_bell"
                            android:tint="@color/pure_white"
                            android:layout_gravity="center"/>
-                       <TextView
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                            android:layout_width="20dp"
                            android:layout_height="20dp"
                            android:text=""
@@ -308,55 +315,69 @@
                                android:tint="@color/pure_white"
                                android:layout_gravity="center"/>
 
-                           <TextView
+                           <com.taas.driver.typeface.TypeFaceMuseoRegular
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:orientation="vertical"
                                android:gravity="center"
                                android:textSize="8sp"
                                android:text="@string/MAIN_ACTIVITY_manual_dispatch"
-                               android:textColor="@color/pure_white">
+                               android:textColor="@color/pure_white"/>
 
-                           </TextView>
+
                        </LinearLayout>
 
                    </android.support.v7.widget.CardView>
 
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:gravity="center"
+                   android:padding="2dp">
+                   <LinearLayout
+                       android:layout_width="30dp"
+                       android:layout_height="30dp"
+                       android:orientation="vertical"
+                       android:gravity="center"
+                       android:background="@drawable/black_circle"
+                       android:id="@+id/demand_spot"
+                       >
+
+                       <ImageView
+                           android:id="@+id/imageView5"
+                           android:layout_width="25dp"
+                           android:layout_height="25dp"
+                           android:src="@drawable/ic_demand_spot"
+                           android:tint="@color/pure_white"
+                           android:padding="3dp"
+                           android:layout_gravity="center"/>
 
 
-                   <android.support.v7.widget.CardView
+
+
+                   </LinearLayout>
+                   <com.taas.driver.typeface.TypeFaceMuseoRegular
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:id="@+id/demand_spot"
-                       app:cardBackgroundColor="@color/pure_black">
-                       <LinearLayout
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:orientation="vertical"
-                           android:gravity="center|center_vertical"
-                           >
+                       android:orientation="vertical"
+                       android:gravity="center"
+                       android:text="Demand Spot"
+                       android:textSize="8sp"
+                       android:textColor="@color/colorPrimary"/>
 
-                           <ImageView
-                               android:id="@+id/imageView5"
-                               android:layout_width="25dp"
-                               android:layout_height="25dp"
-                               android:src="@drawable/ic_pin"
-                               android:tint="@color/pure_red"
-                               android:layout_gravity="center"/>
+               </LinearLayout>
 
-                           <TextView
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:orientation="vertical"
-                               android:gravity="center"
-                               android:text="Demand Spot"
-                               android:textSize="8sp"
-                               android:textColor="@color/pure_white">
 
-                           </TextView>
-                       </LinearLayout>
 
-                   </android.support.v7.widget.CardView>
+                   <!--<android.support.v7.widget.CardView-->
+                       <!--android:layout_width="wrap_content"-->
+                       <!--android:layout_height="wrap_content"-->
+                       <!--android:id="@+id/demand_spot"-->
+                       <!--app:cardBackgroundColor="">-->
+                       <!---->
+
+                   <!--</android.support.v7.widget.CardView>-->
 
 
                </LinearLayout>
@@ -382,11 +403,13 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"></RelativeLayout>
-                    <android.support.v7.widget.CardView
+                    <LinearLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:id="@+id/curent_location">
+                        android:background="@drawable/white_filled_circle"
+                        android:id="@+id/curent_location"
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="30dp"
@@ -394,7 +417,7 @@
                             android:layout_gravity="center"
                             android:tint="@color/colorPrimary"
                             android:src="@drawable/ic_gps"/>
-                    </android.support.v7.widget.CardView>
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -419,7 +442,7 @@
                             <!--android:layout_height="25dp"-->
                             <!--android:src="@drawable/ic_demand_spot" />-->
 
-                        <!--<TextView-->
+                        <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
                             <!--android:orientation="vertical"-->
@@ -451,7 +474,7 @@
                         <!--android:src="@drawable/timer"-->
                         <!--android:tint="@color/colorPrimary"-->
                         <!--android:layout_gravity="center"/>-->
-                    <!--<TextView-->
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                         <!--android:layout_width="20dp"-->
                         <!--android:layout_height="20dp"-->
                         <!--android:text=""-->
@@ -481,7 +504,7 @@
                         <!--android:src="@drawable/ic_notifications"-->
                         <!--android:tint="@color/colorPrimary"-->
                         <!--android:layout_gravity="center"/>-->
-                    <!--<TextView-->
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
                         <!--android:layout_width="20dp"-->
                         <!--android:layout_height="20dp"-->
                         <!--android:text=""-->

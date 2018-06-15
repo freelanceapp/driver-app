@@ -13,18 +13,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:paddingLeft="20dp"
         android:background="@color/pure_black">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="100dp">
+
         <LinearLayout
             android:id="@+id/ll_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="35dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_centerInParent="true">
 
             <FrameLayout
                 android:layout_width="75dp"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                >
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_profile_pic"
                     android:layout_width="50dp"
@@ -37,6 +45,8 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_camera"
                     android:layout_gravity="bottom|right"/>
+
+
             </FrameLayout>
 
 
@@ -46,7 +56,7 @@
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                     android:id="@+id/tv_profile_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,7 +67,7 @@
                     android:textColor="@color/pure_white"
                     android:textSize="14dp" />
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_profile_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,14 +80,55 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
 
-        <include layout="@layout/driver_main_bottom_view"/>
+          <ImageView
+              android:id="@+id/closeDrawer"
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:src="@drawable/menu_back"
+              android:layout_marginRight="10dp"
+              android:padding="5dp"
+              android:layout_marginEnd="10dp"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:tint="@color/pure_white"
+              android:visibility="visible"/>
+
+          <ImageView
+              android:id="@+id/editProfile"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:padding="5dp"
+              android:src="@drawable/profile_edit"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentRight="true"
+              android:layout_centerVertical="true"
+              android:layout_marginEnd="10dp"
+              android:layout_marginRight="10dp"
+              />
+      </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/dotted_white"
+            android:layerType="software"/>
+        <include layout="@layout/driver_main_bottom_view"
+            />
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@drawable/dotted_white"
-            android:layerType="software"/>
+            android:layerType="software"
+            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"/>
 
 
         <ScrollView
@@ -107,7 +158,7 @@
                             android:layout_marginRight="10dp"
                             android:tint="@color/pure_white"
                             android:src="@drawable/ic_profile_circular"/>
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:text="@string/MAIN_ACTIVITY__profile"
@@ -132,7 +183,7 @@
                             android:src="@drawable/ic_trips"
                             android:tint="@color/pure_white" />
 
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:layout_width="fill_parent"
                             android:textSize="@dimen/menu_text_size"
                             android:layout_height="fill_parent"
@@ -160,7 +211,7 @@
                             android:src="@drawable/ic_trips"
                             android:tint="@color/pure_white" />
 
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:layout_width="fill_parent"
                             android:textSize="@dimen/menu_text_size"
                             android:layout_height="fill_parent"
@@ -184,7 +235,7 @@
                             android:tint="@color/pure_white"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_earning"/>
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:id="@+id/typeFaceTextMonixRegular2"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
@@ -211,7 +262,7 @@
                             android:tint="@color/pure_white"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_notifications"/>
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:gravity="center|left"
@@ -238,7 +289,7 @@
                             android:tint="@color/pure_white"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/report"/>
-                        <customviews.typefacesviews.TypeFaceTextMonixRegular
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:gravity="center|left"
@@ -256,8 +307,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     android:visibility="gone"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginEnd="100dp"
                     android:background="@drawable/dotted_white"
                     android:layerType="software"
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_margin="20dp"/>
 
 
@@ -280,7 +336,7 @@
                         android:tint="@color/pure_white"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_language"/>
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:textSize="@dimen/menu_text_size"
@@ -295,7 +351,10 @@
                     android:layout_height="10dp"
                     android:visibility="gone"
                     android:background="@drawable/dotted_white"
-                    android:layout_margin="20dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layerType="software"/>
 
 
@@ -323,7 +382,7 @@
                         android:layout_marginRight="10dp"
                         android:src="@drawable/call"/>
 
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:id="@+id/typeFaceTextMonixRegular"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -350,7 +409,7 @@
                         android:tint="@color/pure_white"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_terms_condition"/>
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:textSize="@dimen/menu_text_size"
@@ -377,7 +436,7 @@
                         android:tint="@color/pure_white"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_about_us"/>
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:textSize="@dimen/menu_text_size"
@@ -402,7 +461,7 @@
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_settings_black_24dp"/>
 
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
@@ -417,7 +476,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     android:background="@drawable/dotted_white"
-                    android:layerType="software"/>
+                    android:layerType="software"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginEnd="100dp"/>
 
 
 
@@ -443,7 +506,7 @@
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_logout"/>
 
-                    <customviews.typefacesviews.TypeFaceTextMonixRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center|left"

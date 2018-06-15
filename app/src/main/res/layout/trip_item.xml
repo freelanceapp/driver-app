@@ -14,14 +14,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center|left">
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="----"
             android:textColor="@color/icon_8_muted_black"
             android:id="@+id/trip_no_txt"/>
 
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="----"
@@ -34,7 +34,7 @@
 
 
 
-    <TextView
+    <com.taas.driver.typeface.TypeFaceMuseoRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="---"

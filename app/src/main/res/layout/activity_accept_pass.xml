@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.apporio.taasdriver.TrialReceivePassengerActivity">
+    tools:context="com.taas.driver.TrialReceivePassengerActivity">
 
     <include layout="@layout/action_bar_one"/>
 
@@ -44,14 +44,14 @@
                 android:orientation="vertical"
                 android:paddingLeft="20dp">
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/customer_name_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-------"
                     android:textStyle="bold" />
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/customer_phone_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,14 +87,14 @@
             android:orientation="vertical"
             android:paddingLeft="15dp">
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/SELECTED_RIDE_ACTIVITY__trip_detail"
                 android:textSize="12dp" />
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|right"
@@ -118,7 +118,7 @@
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/dot_green" />
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_start_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/dot_red" />
 
-                <TextView
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_end_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -172,14 +172,14 @@
             android:paddingLeft="15dp">
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:textStyle="bold"
                 android:text="@string/booking_date"/>
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -196,14 +196,14 @@
             android:paddingLeft="15dp">
 
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:textStyle="bold"
                 android:text="@string/requested_date"/>
 
-            <TextView
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -233,7 +233,7 @@
         android:id="@+id/accept_ride_btn"
         android:background="@drawable/round_bg_color_black"
         android:layout_margin="20dp">
-        <TextView
+        <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:text="@string/loading"
