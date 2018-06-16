@@ -32,44 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RouteDrawerTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/routedrawer/RouteDrawerTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="422" column="94" lean-forward="false" selection-start-line="422" selection-start-column="94" selection-end-line="422" selection-end-column="94" />
+            <state relative-caret-position="170">
+              <caret line="243" column="0" lean-forward="true" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,72 +44,176 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/BaseActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-              <folding>
-                <element signature="e#7203#7420#0" expanded="true" />
-                <element signature="e#7419#7420#0" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="main_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_content.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NoInterNetDialogFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/others/NoInterNetDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="30" column="64" lean-forward="false" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
+            <state relative-caret-position="289">
+              <caret line="350" column="50" lean-forward="false" selection-start-line="350" selection-start-column="50" selection-end-line="350" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_internet_connectivity.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_internet_connectivity.xml">
+      <file leaf-file-name="activity_main_drawer.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GcmServiceClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/GcmServiceClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TSnackbar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/customviews/topsnackbar/TSnackbar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+            <state relative-caret-position="119">
+              <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlinkTextView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/customviews/blinktextview/BlinkTextView.java">
+      <file leaf-file-name="activity_settings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4879">
+              <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rides_item_new.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="133" column="60" lean-forward="false" selection-start-line="133" selection-start-column="60" selection-end-line="133" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_track_ride.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-85">
+              <caret line="144" column="10" lean-forward="false" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrackRideActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="211" column="0" lean-forward="true" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#6113#6160#0" expanded="true" />
+                <element signature="e#8698#9011#0" expanded="true" />
+                <element signature="e#9010#9011#0" expanded="true" />
+                <element signature="e#9074#9438#0" expanded="true" />
+                <element signature="e#9437#9438#0" expanded="true" />
+                <element signature="e#9505#9869#0" expanded="true" />
+                <element signature="e#9868#9869#0" expanded="true" />
+                <element signature="e#9928#10162#0" expanded="true" />
+                <element signature="e#10161#10162#0" expanded="true" />
+                <element signature="e#10210#17134#0" expanded="true" />
+                <element signature="e#11190#11286#0" expanded="true" />
+                <element signature="e#11438#11486#0" expanded="true" />
+                <element signature="e#11747#11801#0" expanded="true" />
+                <element signature="e#13410#13456#0" expanded="true" />
+                <element signature="e#17133#17134#0" expanded="true" />
+                <element signature="e#17200#18716#0" expanded="true" />
+                <element signature="e#18513#18620#0" expanded="true" />
+                <element signature="e#18715#18716#0" expanded="true" />
+                <element signature="e#18758#18911#0" expanded="true" />
+                <element signature="e#18910#18911#0" expanded="true" />
+                <element signature="e#18953#19264#0" expanded="true" />
+                <element signature="e#19263#19264#0" expanded="true" />
+                <element signature="e#19318#19520#0" expanded="true" />
+                <element signature="e#19519#19520#0" expanded="true" />
+                <element signature="e#19576#20229#0" expanded="true" />
+                <element signature="e#20228#20229#0" expanded="true" />
+                <element signature="e#20276#20929#0" expanded="true" />
+                <element signature="e#20928#20929#0" expanded="true" />
+                <element signature="e#21731#21785#0" expanded="true" />
+                <element signature="e#22744#23290#0" expanded="true" />
+                <element signature="e#23289#23290#0" expanded="true" />
+                <element signature="e#25613#25764#0" expanded="true" />
+                <element signature="e#25763#25764#0" expanded="true" />
+                <element signature="e#27907#28095#0" expanded="true" />
+                <element signature="e#28094#28095#0" expanded="true" />
+                <element signature="e#28149#28817#0" expanded="true" />
+                <element signature="e#28331#28791#0" expanded="true" />
+                <element signature="e#28790#28791#0" expanded="true" />
+                <element signature="e#28816#28817#0" expanded="true" />
+                <element signature="e#32280#32488#0" expanded="true" />
+                <element signature="e#32487#32488#0" expanded="true" />
+                <element signature="e#33057#33265#0" expanded="true" />
+                <element signature="e#33264#33265#0" expanded="true" />
+                <element signature="e#34107#34175#0" expanded="true" />
+                <element signature="e#35177#35243#0" expanded="true" />
+                <element signature="e#38957#39021#0" expanded="true" />
+                <element signature="e#50581#51046#0" expanded="true" />
+                <element signature="e#51045#51046#0" expanded="true" />
+                <element signature="e#53885#55119#0" expanded="true" />
+                <element signature="e#55118#55119#0" expanded="true" />
+                <element signature="e#55148#56358#0" expanded="true" />
+                <element signature="e#55317#56264#0" expanded="true" />
+                <element signature="e#56263#56264#0" expanded="true" />
+                <element signature="e#56357#56358#0" expanded="true" />
+                <element signature="e#57432#58806#0" expanded="true" />
+                <element signature="e#58591#58698#0" expanded="true" />
+                <element signature="e#58805#58806#0" expanded="true" />
+                <element signature="e#58872#59761#0" expanded="true" />
+                <element signature="e#59760#59761#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_header_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="99" column="42" lean-forward="false" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,9 +230,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>curent_location</find>
-      <find>com.apporio.taasdriver.typeface.TypeFaceTextMeseoRegular</find>
-      <find>&lt;com.apporio.taasdriver.typeface.TypeFaceTextMeseoRegular</find>
       <find>onMapRe</find>
       <find>list</find>
       <find>weekDatesTV</find>
@@ -189,6 +257,9 @@
       <find>google_</find>
       <find>dialo</find>
       <find>internetDialog</find>
+      <find>location_text</find>
+      <find>pencil_icon</find>
+      <find>editProfile</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;com.apporio.taasdriver.typeface.TypeFaceTextMeseoRegular</replace>
@@ -2093,7 +2164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/demo_main_dialog.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_demand_spot.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/black_circle.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride_rental.xml" />
@@ -2103,7 +2173,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/apporio/taasdriver/typeface/TypeFaceTextMeseoSemiBold.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/apporio/taasdriver/typeface/TypeFaceTextMeseoBold.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_online_offline.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_photo_uploader.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/driver_main_bottom_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/white_circle_border.xml" />
@@ -2123,7 +2192,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/apporio/taasdriver/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/apporio/taasdriver/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_weekly_statement.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/main_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_open_location.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/round_bg_color_light_gray.xml" />
@@ -2136,7 +2204,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_profile_update.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/apporio/driver/trackride/TrackRideActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/test.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/taas/driver/LocationSession.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/google-services.json" />
@@ -2144,6 +2211,10 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_internet_connectivity.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/test.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/main_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -2169,10 +2240,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2255,10 +2325,28 @@
               <item name="customviews" type="462c0819:PsiDirectoryNode" />
               <item name="blinktextview" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Taas-Driver-Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Taas-Driver-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Taas-Driver-Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Taas-Driver-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2266,7 +2354,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1528104828837" />
-    <property name="SearchEverywhereHistoryKey" value="Base&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/BaseActivity.java&#10;Service&#9;PSI&#9;JAVA://com.taas.GcmServiceClass&#10;man&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;manif&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;str&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/strings.xml&#10;Tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/driver/trackride/TrackRideActivity.java&#10;Pro&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;Login&#9;PSI&#9;JAVA://com.apporio.taasdriver.LoginActivity&#10;Sett&#9;PSI&#9;JAVA://com.apporio.taasdriver.settings.SettingsActivity&#10;Custo&#9;PSI&#9;JAVA://com.apporio.taasdriver.CustomerSupportActivity&#10;Main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;nav&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/nav_header_main.xml&#10;mani&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;Tr&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/trackride/TrackRideActivity.java&#10;tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;MainA&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;activity_sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_settings.xml&#10;Wee&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_weekly_statement.xml&#10;Spl&#9;PSI&#9;JAVA://com.apporio.taasdriver.SplashActivity&#10;Dail&#9;PSI&#9;JAVA://com.apporio.taasdriver.earnings.DailyStatementActivity&#10;Sos&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/SosActivity.java&#10;Ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/SelectedRidesActivity.java&#10;TripH&#9;PSI&#9;JAVA://com.apporio.taasdriver.TripHistoryActivity&#10;Profi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;Reg&#9;PSI&#9;JAVA://com.apporio.taasdriver.RegisterActivity&#10;Trac&#9;PSI&#9;JAVA://com.apporio.taasdriver.trackride.TrackRideActivity&#10;ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/rides_item_new.xml&#10;Onli&#9;PSI&#9;JAVA://com.apporio.taasdriver.OnlineOfflineActivity&#10;MainAc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;Terms&#9;PSI&#9;JAVA://com.apporio.taasdriver.TermsAndCondition&#10;main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/main_content.xml&#10;Prof&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;colo&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/colors.xml&#10;Trip&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/TripHistoryActivity.java&#10;TripHis&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_trip_history.xml&#10;Online&#9;PSI&#9;JAVA://com.apporio.taasdriver.OnlineOfflineActivity&#10;Ear&#9;PSI&#9;JAVA://com.apporio.taasdriver.earnings.EarningActivity&#10;Rece&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ReceivePassengerActivity.java&#10;Mai n&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;activ&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Sele&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_selected_rides.xml&#10;TripHi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/TripHistoryActivity.java&#10;Hist&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_trip_history.xml&#10;Price&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/PriceFareActivity.java&#10;Track&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Chat&#9;PSI&#9;JAVA://com.apporio.taasdriver.ChatActivity&#10;Fare&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_new_price_fare.xml&#10;spl&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_splash.xml&#10;Rec&#9;PSI&#9;JAVA://com.apporio.taasdriver.ReceivePassengerActivity&#10;sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/settings/SettingsActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_main.xml&#10;main_&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/menu/activity_main_drawer.xml&#10;nav&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/nav_header_main.xml&#10;Main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;Tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java&#10;Ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/rides_item_new.xml&#10;Sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_settings.xml&#10;Base&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/BaseActivity.java&#10;Service&#9;PSI&#9;JAVA://com.taas.GcmServiceClass&#10;man&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;manif&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;str&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/strings.xml&#10;Pro&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;Login&#9;PSI&#9;JAVA://com.apporio.taasdriver.LoginActivity&#10;Custo&#9;PSI&#9;JAVA://com.apporio.taasdriver.CustomerSupportActivity&#10;mani&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/AndroidManifest.xml&#10;Tr&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/trackride/TrackRideActivity.java&#10;tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;MainA&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;activity_sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_settings.xml&#10;Wee&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_weekly_statement.xml&#10;Spl&#9;PSI&#9;JAVA://com.apporio.taasdriver.SplashActivity&#10;Dail&#9;PSI&#9;JAVA://com.apporio.taasdriver.earnings.DailyStatementActivity&#10;Sos&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/SosActivity.java&#10;TripH&#9;PSI&#9;JAVA://com.apporio.taasdriver.TripHistoryActivity&#10;Profi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;Reg&#9;PSI&#9;JAVA://com.apporio.taasdriver.RegisterActivity&#10;Trac&#9;PSI&#9;JAVA://com.apporio.taasdriver.trackride.TrackRideActivity&#10;ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/rides_item_new.xml&#10;Onli&#9;PSI&#9;JAVA://com.apporio.taasdriver.OnlineOfflineActivity&#10;MainAc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;Terms&#9;PSI&#9;JAVA://com.apporio.taasdriver.TermsAndCondition&#10;Prof&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ProfileActivity.java&#10;colo&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/colors.xml&#10;Trip&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/TripHistoryActivity.java&#10;TripHis&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_trip_history.xml&#10;Online&#9;PSI&#9;JAVA://com.apporio.taasdriver.OnlineOfflineActivity&#10;Ear&#9;PSI&#9;JAVA://com.apporio.taasdriver.earnings.EarningActivity&#10;Rece&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/ReceivePassengerActivity.java&#10;Mai n&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/MainActivity.java&#10;activ&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Sele&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_selected_rides.xml&#10;TripHi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/TripHistoryActivity.java&#10;Hist&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_trip_history.xml&#10;Price&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/apporio/taasdriver/PriceFareActivity.java&#10;Track&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Chat&#9;PSI&#9;JAVA://com.apporio.taasdriver.ChatActivity&#10;Fare&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_new_price_fare.xml&#10;spl&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_splash.xml&#10;Rec&#9;PSI&#9;JAVA://com.apporio.taasdriver.ReceivePassengerActivity" />
     <property name="device.picker.selection" value="62212910HY2174E0NGG" />
     <property name="ExportApk.ApkPath" value="E:\Android Projects\Apporio Projects\TAAS\Taas-Driver-Android\app" />
     <property name="ExportApk.Flavors" value="" />
@@ -2493,13 +2581,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/SelectedRidesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="67" column="24" lean-forward="false" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_trip_history.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2517,16 +2598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -2618,16 +2689,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2639,26 +2700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
           <caret line="317" column="67" lean-forward="false" selection-start-line="317" selection-start-column="67" selection-end-line="317" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_content.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="47" lean-forward="false" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="98" column="58" lean-forward="false" selection-start-line="98" selection-start-column="58" selection-end-line="98" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -2710,17 +2751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
           <caret line="126" column="49" lean-forward="false" selection-start-line="126" selection-start-column="49" selection-end-line="126" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="35" lean-forward="false" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2795,24 +2825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5729">
-          <caret line="440" column="112" lean-forward="false" selection-start-line="440" selection-start-column="112" selection-end-line="440" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/LocationSession.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -2821,22 +2833,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="122" column="20" lean-forward="false" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="73" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2844,7 +2844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="80" column="1" lean-forward="false" selection-start-line="80" selection-start-column="1" selection-end-line="80" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2860,7 +2859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2877,20 +2875,20 @@
         <state relative-caret-position="153">
           <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/GcmServiceClass.java">
@@ -2898,29 +2896,16 @@
         <state relative-caret-position="34">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="422" column="94" lean-forward="false" selection-start-line="422" selection-start-column="94" selection-end-line="422" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="272">
           <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-          <folding>
-            <element signature="e#7203#7420#0" expanded="true" />
-            <element signature="e#7419#7420#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2937,8 +2922,174 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4879">
+          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="133" column="60" lean-forward="false" selection-start-line="133" selection-start-column="60" selection-end-line="133" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="144" column="10" lean-forward="false" selection-start-line="144" selection-start-column="10" selection-end-line="144" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="211" column="0" lean-forward="true" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <folding>
+            <element signature="e#6113#6160#0" expanded="true" />
+            <element signature="e#8698#9011#0" expanded="true" />
+            <element signature="e#9010#9011#0" expanded="true" />
+            <element signature="e#9074#9438#0" expanded="true" />
+            <element signature="e#9437#9438#0" expanded="true" />
+            <element signature="e#9505#9869#0" expanded="true" />
+            <element signature="e#9868#9869#0" expanded="true" />
+            <element signature="e#9928#10162#0" expanded="true" />
+            <element signature="e#10161#10162#0" expanded="true" />
+            <element signature="e#10210#17134#0" expanded="true" />
+            <element signature="e#11190#11286#0" expanded="true" />
+            <element signature="e#11438#11486#0" expanded="true" />
+            <element signature="e#11747#11801#0" expanded="true" />
+            <element signature="e#13410#13456#0" expanded="true" />
+            <element signature="e#17133#17134#0" expanded="true" />
+            <element signature="e#17200#18716#0" expanded="true" />
+            <element signature="e#18513#18620#0" expanded="true" />
+            <element signature="e#18715#18716#0" expanded="true" />
+            <element signature="e#18758#18911#0" expanded="true" />
+            <element signature="e#18910#18911#0" expanded="true" />
+            <element signature="e#18953#19264#0" expanded="true" />
+            <element signature="e#19263#19264#0" expanded="true" />
+            <element signature="e#19318#19520#0" expanded="true" />
+            <element signature="e#19519#19520#0" expanded="true" />
+            <element signature="e#19576#20229#0" expanded="true" />
+            <element signature="e#20228#20229#0" expanded="true" />
+            <element signature="e#20276#20929#0" expanded="true" />
+            <element signature="e#20928#20929#0" expanded="true" />
+            <element signature="e#21731#21785#0" expanded="true" />
+            <element signature="e#22744#23290#0" expanded="true" />
+            <element signature="e#23289#23290#0" expanded="true" />
+            <element signature="e#25613#25764#0" expanded="true" />
+            <element signature="e#25763#25764#0" expanded="true" />
+            <element signature="e#27907#28095#0" expanded="true" />
+            <element signature="e#28094#28095#0" expanded="true" />
+            <element signature="e#28149#28817#0" expanded="true" />
+            <element signature="e#28331#28791#0" expanded="true" />
+            <element signature="e#28790#28791#0" expanded="true" />
+            <element signature="e#28816#28817#0" expanded="true" />
+            <element signature="e#32280#32488#0" expanded="true" />
+            <element signature="e#32487#32488#0" expanded="true" />
+            <element signature="e#33057#33265#0" expanded="true" />
+            <element signature="e#33264#33265#0" expanded="true" />
+            <element signature="e#34107#34175#0" expanded="true" />
+            <element signature="e#35177#35243#0" expanded="true" />
+            <element signature="e#38957#39021#0" expanded="true" />
+            <element signature="e#50581#51046#0" expanded="true" />
+            <element signature="e#51045#51046#0" expanded="true" />
+            <element signature="e#53885#55119#0" expanded="true" />
+            <element signature="e#55118#55119#0" expanded="true" />
+            <element signature="e#55148#56358#0" expanded="true" />
+            <element signature="e#55317#56264#0" expanded="true" />
+            <element signature="e#56263#56264#0" expanded="true" />
+            <element signature="e#56357#56358#0" expanded="true" />
+            <element signature="e#57432#58806#0" expanded="true" />
+            <element signature="e#58591#58698#0" expanded="true" />
+            <element signature="e#58805#58806#0" expanded="true" />
+            <element signature="e#58872#59761#0" expanded="true" />
+            <element signature="e#59760#59761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="243" column="0" lean-forward="true" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <caret line="99" column="42" lean-forward="false" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="350" column="50" lean-forward="false" selection-start-line="350" selection-start-column="50" selection-end-line="350" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>

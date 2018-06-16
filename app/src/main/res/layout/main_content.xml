@@ -336,8 +336,8 @@
                    android:gravity="center"
                    android:padding="2dp">
                    <LinearLayout
-                       android:layout_width="30dp"
-                       android:layout_height="30dp"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
                        android:orientation="vertical"
                        android:gravity="center"
                        android:background="@drawable/black_circle"
@@ -346,8 +346,8 @@
 
                        <ImageView
                            android:id="@+id/imageView5"
-                           android:layout_width="25dp"
-                           android:layout_height="25dp"
+                           android:layout_width="30dp"
+                           android:layout_height="30dp"
                            android:src="@drawable/ic_demand_spot"
                            android:tint="@color/pure_white"
                            android:padding="3dp"
@@ -363,7 +363,7 @@
                        android:orientation="vertical"
                        android:gravity="center"
                        android:text="Demand Spot"
-                       android:textSize="8sp"
+                       android:textSize="12sp"
                        android:textColor="@color/colorPrimary"/>
 
                </LinearLayout>
