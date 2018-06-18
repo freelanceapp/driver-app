@@ -97,7 +97,7 @@
                         android:orientation="horizontal"
                         android:visibility="gone">
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -112,7 +112,7 @@
                             android:src="@drawable/ic_profile_circular"
                             android:tint="@color/icons_8_muted_grey" />
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="*"
@@ -161,7 +161,7 @@
                             android:src="@drawable/ic_send_mail"
                             android:tint="@color/icons_8_muted_grey" />
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/CUSTOMER_SUPPORT_ACTIVITY__email"
@@ -169,7 +169,7 @@
                             android:textColor="@color/icons_8_muted_grey"
                             android:textSize="10dp" />
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="*"
@@ -185,7 +185,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textSize="16dp"
-                        android:text="@string/email"/>
+                        android:hint="@string/email"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                             android:src="@drawable/ic_phone"
                             android:tint="@color/icons_8_muted_grey" />
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/CUSTOMER_SUPPORT_ACTIVITY__phone"
@@ -237,7 +237,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:inputType="number"
-                        android:text="@string/CUSTOMER_SUPPORT_ACTIVITY__phone"
+                        android:hint="@string/CUSTOMER_SUPPORT_ACTIVITY__phone"
                         android:textSize="16dp" />
 
                     <View
@@ -252,7 +252,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:background="@drawable/layout_light"
                     android:gravity="center|left"
                     android:orientation="vertical"
                     android:padding="5dp"
@@ -272,7 +271,7 @@
                             android:src="@drawable/ic_pencil"
                             android:tint="@color/icons_8_muted_grey" />
 
-                        <com.apporio.taasuser.samir.customviews.TypeFaceMuseoRegular
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/CUSTOMER_SUPPORT_ACTIVITY__your_query"

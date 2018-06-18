@@ -26,7 +26,7 @@
     <string name="accept">ACCEPT</string>
     <string name="reject">REJECT</string>
 
-    <string name="register">REGISTER</string>
+    <string name="register">Register</string>
 
     <string name="login_as_testing">LOGIN AS TESTING</string>
 
@@ -473,13 +473,13 @@
 
 
     //////////////////// LoginActivity
-    <string name="VERIFY_OTP">VERIFY PHONE NUMBER </string>
+    <string name="VERIFY_OTP">Verify Phone Number </string>
     <string name="VERIFY_OTP_text">Enter OTP</string>
     <string name="LOGIN_TEXT_verify">Please enter the One Time Password (OTP) received on your number!</string>
 
     <string name="LOGIN_ACTIVITY__login">LOGIN</string>
     <string name="LOGIn_ACTIVITY__email">Email</string>
-    <string name="LOGIn_ACTIVITY__phone">Phone</string>
+    <string name="LOGIn_ACTIVITY__phone">Phone Number</string>
     <string name="LOGIN_ACTIVITY__password">Password</string>
     <string name="LOGIN_ACTIVITY__forgot_password_1">Forgot Password?</string>
     <string name="LOGIN_ACTIVITY__or">OR</string>
@@ -569,7 +569,7 @@
     <string name="LOGIN_TEXTs">Please enter the One Time Password (OTP) received on your number !</string>
     <string name="new_pass">New Password</string>
     <string name="confirm_pass">Confirm Password</string>
-    <string name="getOTP">GET OTP</string>
+    <string name="getOTP">Get OTP</string>
     <string name="submitPassword">Please enter the same password as above in order to create a new one!</string>
     <string name="changed_password">Password Successfully Changed!</string>
 
@@ -647,7 +647,7 @@
     <string name="waze_map">Waze map</string>
     <string name="booking_date">Booking Date</string>
     <string name="requested_date">Requested Date</string>
-    <string name="profile_updated_successfully">Profile updated Successfully</string>
+    <string name="profile_updated_successfully">Profile update Successfully</string>
     <string name="new_message">New Message</string>
     <string name="your_ride_is_expired">Your Ride is Expired</string>
     <string name="time_is_unexpectedlyshort">Time is Unexpectedly short to accept</string>
@@ -667,6 +667,8 @@
     <string name="CUSTOMER_SUPPORT_ACTIVITY_query_msg">Kindly drop us a message, a support team member would get back to you ASAP!</string>
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
+    <string name="LOGIN_ACTIVITY__or_use">Or Use</string>
+    <string name="LOGIn_ACTIVITY__email_address">Email Address</string>
 
 
 </resources>

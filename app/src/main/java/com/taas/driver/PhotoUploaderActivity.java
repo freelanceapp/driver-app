@@ -26,6 +26,7 @@ import com.taas.driver.logger.Logger;
 import com.taas.driver.models.ResultCheck;
 import com.taas.driver.others.ImageCompressMode;
 import com.taas.driver.samwork.ApiManager;
+import com.taas.driver.typeface.TypeFaceMuseoRegular;
 import com.taas.driver.urls.Apis;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,8 +63,9 @@ public class PhotoUploaderActivity extends Activity implements EasyPermissions.P
     String imagePath = "" ;
     Bitmap bitmap1;
     @Bind(com.taas.driver.R.id.image) ImageView image;
-    @Bind(com.taas.driver.R.id.camera) TypefaceDosisRegular camera;
-    @Bind(com.taas.driver.R.id.gallery) TypefaceDosisRegular gallery;
+    @Bind(com.taas.driver.R.id.camera)
+    TypeFaceMuseoRegular camera;
+    @Bind(com.taas.driver.R.id.gallery) TextView gallery;
     @Bind(com.taas.driver.R.id.date) TextView date;
     @Bind(com.taas.driver.R.id.submit) CardView submit;
     private Uri imageUri;

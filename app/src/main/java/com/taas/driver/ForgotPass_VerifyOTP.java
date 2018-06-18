@@ -43,7 +43,7 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
     String input_OTP, otp, input_number, code;
     String phoneNumber;
     CountryCodePicker countryCodePicker;
-    Button generate_otp;
+    LinearLayout generate_otp;
 
 
     @Override
@@ -55,7 +55,7 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
         sessionManager = new SessionManager(ForgotPass_VerifyOTP.this);
         otp_details = new RegistrationModel.ForgotPass_OTP_Details();
         setContentView(com.taas.driver.R.layout.activity_forgotpass_verify_otp);
-
+         getSupportActionBar().hide();
         //progress bar
         pd = new ProgressDialog(this);
         pd.setMessage(ForgotPass_VerifyOTP.this.getResources().getString(com.taas.driver.R.string.loading));
@@ -67,7 +67,7 @@ public class ForgotPass_VerifyOTP extends AppCompatActivity implements ApiManage
         back = (LinearLayout)findViewById(com.taas.driver.R.id.otp_back_signup);
         phone_number = (EditText)findViewById(com.taas.driver.R.id.edt_enter_phone);
         countryCodePicker = (CountryCodePicker) findViewById(com.taas.driver.R.id.otp_ccp);
-        generate_otp = (Button) findViewById(com.taas.driver.R.id.generate_otp);
+        generate_otp = (LinearLayout) findViewById(com.taas.driver.R.id.generate_otp);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

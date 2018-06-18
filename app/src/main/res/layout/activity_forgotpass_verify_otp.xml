@@ -16,33 +16,33 @@ tools:context=".ForgotPass_Verify_OTP">
     <LinearLayout
         android:id="@+id/otp_back_signup"
         android:layout_width="50dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_height="match_parent"
         android:gravity="center">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/back_arrow"
+            android:padding="5dp"
+            android:src="@drawable/ic_back_arrow"
             android:tint="@color/colorPrimary"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center_vertical|right">
 
         <com.taas.driver.typeface.TypeFaceMuseoRegular
             android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/VERIFY_OTP"
-            android:textSize="16dp" />
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="40dp"
-        android:layout_height="match_parent" />
+
 </LinearLayout>
 
 <View
@@ -66,7 +66,7 @@ tools:context=".ForgotPass_Verify_OTP">
         app:hideNameCode="true"
         app:keyboardAutoPopOnSearch="false"
         app:showFlag="false"
-        app:defaultCode="91"
+        app:defaultCode="234"
         app:textSize="15dp"
         android:layout_marginLeft="10dp"/>
 
@@ -96,21 +96,31 @@ tools:context=".ForgotPass_Verify_OTP">
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginTop="6dp"
-    android:background="@color/icons_8_muted_violet_dark" />
+    android:background="@color/colorPrimary" />
 
-<Button
-    android:layout_gravity="center"
-    android:id="@+id/generate_otp"
-    android:layout_marginTop="20dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/getOTP" />
+    <LinearLayout
+        android:id="@+id/generate_otp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_bg_color_black"
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getOTP"
+            android:textAllCaps="false"
+            android:textColor="@color/pure_white"/>
+    </LinearLayout>
 
 <com.taas.driver.typeface.TypeFaceMuseoRegular
     android:id="@+id/forgot_password"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textSize="15dp"
+    android:textAlignment="center"
     android:text="@string/LOGIN_TEXTs"
     android:layout_marginTop="30dp"
     android:layout_marginLeft="15dp"
@@ -126,7 +136,7 @@ tools:context=".ForgotPass_Verify_OTP">
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginTop="25dp"
-    android:background="@drawable/layout_light"
+    android:background="@drawable/rounded_black_border"
     android:orientation="vertical">
 
     <EditText
@@ -147,31 +157,30 @@ tools:context=".ForgotPass_Verify_OTP">
 
 </LinearLayout>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:id="@+id/otp_register"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+        <LinearLayout
+            android:id="@+id/otp_register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/round_bg_color_black"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
 
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/REGISTER_ACTIVITY__continue"
-            android:textColor="@color/pure_white"
-            android:textSize="16dp"
-            app:customTypeface="OpenSans_Regular.ttf" />
-    </LinearLayout>
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/REGISTER_ACTIVITY__continuee"
+                android:textColor="@color/pure_white"
+                android:textSize="16dp" />
+        </LinearLayout>
 
-    <View
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
 
-</RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>

@@ -179,7 +179,7 @@
 
         <service android:name=".TimeService" />
         <service
-            android:name="com.apporio.GcmServiceClass"
+            android:name="com.taas.GcmServiceClass"
             android:exported="true"
             android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
             <intent-filter>
@@ -231,7 +231,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Verify_OTP"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SosActivity"
             android:screenOrientation="portrait"/>

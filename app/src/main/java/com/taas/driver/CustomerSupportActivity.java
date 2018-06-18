@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.taas.driver.manager.SessionManager;
@@ -17,9 +18,6 @@ import com.taas.driver.samwork.ApiManager;
 import com.taas.driver.urls.Apis;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.taas.driver.manager.SessionManager;
-import com.taas.driver.samwork.ApiManager;
-import com.taas.driver.urls.Apis;
 
 import java.util.HashMap;
 
@@ -29,11 +27,12 @@ import butterknife.ButterKnife;
 public class CustomerSupportActivity extends AppCompatActivity implements ApiManager.APIFETCHER {
 
 
-    @Bind(com.taas.driver.R.id.user_name_edt)EditText user_name_edt;
-    @Bind(com.taas.driver.R.id.email_edt) EditText email_edt;
-    @Bind(com.taas.driver.R.id.pone_edt) EditText pone_edt;
-    @Bind(com.taas.driver.R.id.query_edt) EditText query_edt;
-    @Bind(com.taas.driver.R.id.root) LinearLayout root;
+    @Bind(R.id.user_name_edt)EditText user_name_edt;
+    @Bind(R.id.email_edt) EditText email_edt;
+    @Bind(R.id.pone_edt) EditText pone_edt;
+    @Bind(R.id.query_edt) EditText query_edt;
+    @Bind(R.id.root)
+    RelativeLayout root;
 
     SessionManager sessionManager ;
     ProgressDialog progress_dialoge ;

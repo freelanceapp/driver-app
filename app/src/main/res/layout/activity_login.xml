@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,11 +6,16 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorHeader"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/ll_back_login"
@@ -43,25 +48,24 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:src="@drawable/taas_driver_logo_white"
+        android:tint="@color/pure_black"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
+        />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,8 +78,6 @@
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/layout_light"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -85,14 +87,13 @@
                         android:id="@+id/phone_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
 
                         <com.hbb20.CountryCodePicker
                             android:id="@+id/phone_ccp"
-                            app:defaultCode="91"
+                            app:defaultCode="234"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:hideNameCode="true"
@@ -100,6 +101,13 @@
                             app:showFlag="false"
                             app:textSize="15dp"
                             android:layout_marginLeft="10dp"/>
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="@color/colorPrimary"/>
 
                         <EditText
                             android:id="@+id/edt_phone_login"
@@ -111,6 +119,7 @@
                             android:inputType="phone"
                             android:background="@android:color/transparent"
                             android:ems="10"
+                            android:textAllCaps="false"
                             android:hint="@string/LOGIn_ACTIVITY__phone"
                             android:textSize="15dp" />
                     </LinearLayout>
@@ -120,53 +129,106 @@
                         android:layout_height="0.5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="@color/colorView" />
+                        android:background="@color/colorPrimary" />
 
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@string/LOGIN_ACTIVITY__or"
-                        android:layout_marginTop="20dp"
+                        android:text="@string/LOGIN_ACTIVITY__or_use"
+                        android:layout_marginTop="30dp"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="15dp" />
+                    <LinearLayout
+                        android:id="@+id/emailLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
 
 
+                      <LinearLayout
+                          android:layout_width="30dp"
+                          android:layout_height="30dp"
+                          android:layout_marginLeft="20dp"
+                          android:background="@drawable/black_circle_border"
+                          android:gravity="center"
+                          >
+                       <ImageView
+                           android:layout_width="20dp"
+                           android:layout_height="20dp"
+                           android:src="@drawable/ic_mail"
+                           android:padding="2dp"
 
+                           />
+
+                      </LinearLayout>
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="@color/colorPrimary"/>
                     <EditText
                         android:id="@+id/edt_email_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:singleLine="true"
-                        android:layout_marginTop="20dp"
                         android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="@string/LOGIn_ACTIVITY__email"
+                        android:textAllCaps="false"
+                        android:hint="@string/LOGIn_ACTIVITY__email_address"
                         android:textSize="15dp" />
-
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
+                        android:background="@color/colorPrimary" />
+                    <LinearLayout
+                        android:id="@+id/passswordLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_password"
+                            android:padding="2dp"
+                            android:layout_marginLeft="20dp"
 
+                            />
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginLeft="30dp"
+                            android:background="@color/colorPrimary"/>
                     <EditText
                         android:id="@+id/edt_pass_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="30dp"
                         android:background="@android:color/transparent"
                         android:ems="10"
                         android:hint="@string/LOGIN_ACTIVITY__password"
                         android:inputType="textPassword"
+                        android:textAllCaps="false"
                         android:textSize="15dp" />
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -196,16 +258,18 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
 
     <LinearLayout
         android:id="@+id/ll_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/round_bg_color_black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:gravity="center">
 
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
+        <com.taas.driver.typeface.TextTypeSemiBold
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/LOGIN_ACTIVITY__login"
@@ -213,5 +277,5 @@
             android:textSize="16dp"
             app:customTypeface="OpenSans_Regular.ttf" />
     </LinearLayout>
-
-</LinearLayout>
+  </LinearLayout>
+</ScrollView>

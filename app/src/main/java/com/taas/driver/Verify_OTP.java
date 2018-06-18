@@ -47,7 +47,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
     private static int KEY_REGISTER = 110;
     String phoneNumber;
     CountryCodePicker countryCodePicker;
-    Button generate_otp;
+    LinearLayout generate_otp;
 
 
     @Override
@@ -59,7 +59,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
         sessionManager = new SessionManager(Verify_OTP.this);
         otp_details = new RegistrationModel.OTP_Details();
         setContentView(com.taas.driver.R.layout.activity_verify__otp);
-
+        getSupportActionBar().hide();
         //progress bar
         pd = new ProgressDialog(this);
         pd.setMessage(Verify_OTP.this.getResources().getString(com.taas.driver.R.string.loading));
@@ -71,7 +71,7 @@ public class Verify_OTP extends AppCompatActivity implements ApiManager.APIFETCH
         back = (LinearLayout)findViewById(com.taas.driver.R.id.otp_back_signup);
         phone_number = (EditText)findViewById(com.taas.driver.R.id.edt_enter_phone);
         countryCodePicker = (CountryCodePicker) findViewById(com.taas.driver.R.id.otp_ccp);
-        generate_otp = (Button) findViewById(com.taas.driver.R.id.generate_otp);
+        generate_otp = (LinearLayout) findViewById(com.taas.driver.R.id.generate_otp);
 
         submit_otp_layout.setEnabled(false);
         back.setOnClickListener(new View.OnClickListener() {

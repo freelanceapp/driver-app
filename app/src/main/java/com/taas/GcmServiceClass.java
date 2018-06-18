@@ -27,21 +27,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.taas.driver.AccuracyEvent;
-import com.taas.driver.Config;
-import com.taas.driver.LocationSession;
-import com.taas.driver.database.DBHelper;
-import com.taas.driver.location.SamLocationRequestService;
-import com.taas.driver.manager.LanguageManager;
-import com.taas.driver.manager.RideSession;
-import com.taas.driver.manager.SessionManager;
-import com.taas.driver.models.restmodels.NewUpdateLatLongModel;
-import com.taas.driver.others.AerialDistance;
-import com.taas.driver.others.FirebaseUtils;
-import com.taas.driver.samwork.ApiManager;
-import com.taas.driver.trackride.EventytrackAccuracy;
-import com.taas.driver.urls.Apis;
-
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.Timer;
