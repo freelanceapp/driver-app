@@ -444,7 +444,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             pencil_icon.setVisibility(View.GONE);
         } else {
             location_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
-            location_txt.setTextColor(Color.parseColor("#e74c3c"));
+            //location_txt.setTextColor(Color.parseColor("#e74c3c"));
+            location_txt.setTextColor(Color.parseColor("#FFFFFF"));
             dot.setColorFilter(Color.parseColor("#e74c3c"));
             location_text_copy.setText("" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
             pencil_icon.setVisibility(View.VISIBLE);
@@ -698,7 +699,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     //////////////////////////////////////////////////
 
                     Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
-                    Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
+                    //Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
                     try {
                         DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin, destination, mGooglemap);
                     } catch (Exception e) {
@@ -851,65 +852,65 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     private void updateFirebaseEvent(final String status_value, final String Ride_Id) throws Exception {
 
-        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + Ride_Id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
-                };
-                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
-                try {
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + Ride_Id).setValue(new RideSessionEvent("" + Ride_Id, "" + status_value, "Not yet generated", "0"));
-                } catch (Exception e) {
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + Ride_Id).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
+//                };
+//                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+//                try {
+//                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + Ride_Id).setValue(new RideSessionEvent("" + Ride_Id, "" + status_value, "Not yet generated", "0"));
+//                } catch (Exception e) {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
+//            }
+//        });
     }
 
     private void updateFirebaseEventWithDestinationChange() throws Exception {
 
-        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
-                };
-                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
-                try {
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID), "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS), "Not yet generated", "1"));
-                } catch (Exception e) {
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
+//                };
+//                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+//                try {
+//                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID)).setValue(new RideSessionEvent("" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID), "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS), "Not yet generated", "1"));
+//                } catch (Exception e) {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
+//            }
+//        });
     }
 
     private void updateFirebaseEventWithDoneRide(final String status_value, final String done_ride_id, final String ride_id) throws Exception {
 
-        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
-                };
-                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
-                try {
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + ride_id).setValue(new RideSessionEvent("" + ride_id, "" + status_value, "" + done_ride_id, "0"));
-                } catch (Exception e) {
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
+//                };
+//                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+//                try {
+//                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + ride_id).setValue(new RideSessionEvent("" + ride_id, "" + status_value, "" + done_ride_id, "0"));
+//                } catch (Exception e) {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.i("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
+//            }
+//        });
     }
 
 

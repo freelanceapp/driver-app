@@ -172,10 +172,10 @@ public class MainActivity extends BaseActivity implements Apis,
         setContentView(com.taas.driver.R.layout.activity_main);
         builder = new GsonBuilder();
         gson = builder.create();
-        database = FirebaseDatabase.getInstance();
+       // database = FirebaseDatabase.getInstance();
 
         mGcmNetworkManager = GcmNetworkManager.getInstance(this);
-        mDatabaseReference = database.getReference("Drivers_A");
+       // mDatabaseReference = database.getReference("Drivers_A");
         rideSession = new RideSession(this);
         firebaseutil = new FirebaseUtils(this);
         apiManager_new = new ApiManager(this);

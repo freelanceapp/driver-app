@@ -475,6 +475,7 @@
                 android:layout_margin="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
+                android:textAllCaps="true"
                 android:background="@drawable/round_bg_color_gray"/>
 
             <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold

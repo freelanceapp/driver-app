@@ -304,6 +304,7 @@ public class SessionManager {
     public String getSymbol(){
         String currency = "NA";
         switch (pref.getString(Currency_symbol, "")){
+
             case "0024":
                 currency = "\u0024";
                 break;

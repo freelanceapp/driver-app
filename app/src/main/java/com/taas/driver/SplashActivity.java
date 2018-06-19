@@ -91,7 +91,7 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
         super.onCreate(savedInstanceState);
         setContentView(com.taas.driver.R.layout.activity_splash);
         ButterKnife.bind(this);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         gson = new GsonBuilder().create();
         splash = this;
         languageManager = new LanguageManager(this);
@@ -515,8 +515,8 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
                     register.getDetails().getDriver_bank_name(), register.getDetails().getDriver_account_number(),
                     register.getDetails().getDriver_account_name());
 
-            firebaseUtils.setUpDriver();
-            firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES , FirebaseUtils.NO_RIDE_STATUS);
+           // firebaseUtils.setUpDriver();
+           // firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES , FirebaseUtils.NO_RIDE_STATUS);
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }else if (register.getDetails().getDetail_status().equals("3")){

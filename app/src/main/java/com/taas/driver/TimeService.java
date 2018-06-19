@@ -74,7 +74,7 @@ public class TimeService extends Service implements ApiManager.APIFETCHER {
         app_location_mamanger = new LocationSession(this);
         sam_location = new SamLocationRequestService(this);
         apiManager = new ApiManager(this);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         rideSession = new RideSession(this);
         sessionManager = new SessionManager(this);
         languageManager = new LanguageManager(this);
@@ -163,7 +163,7 @@ public class TimeService extends Service implements ApiManager.APIFETCHER {
                             }
                         }
                         if(sessionManager.getUserDetails().get(SessionManager.KEY_service_switcher).equals("1")){
-                            firebaseUtils.updateLocation_with_text();
+                           // firebaseUtils.updateLocation_with_text();
                         }
 
                     }catch (Exception e){

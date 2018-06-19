@@ -228,7 +228,7 @@
     <string name="MAIN_ACTIVITY__earnings">Earnings</string>
     <string name="MAIN_ACTIVITY__customer_support">Customer Support</string>
     <string name="MAIN_ACTIVITY__terms_and_condition">Terms and Conditions</string>
-    <string name="MAIN_ACTIVITY__about_us">ABOUT US</string>
+    <string name="MAIN_ACTIVITY__about_us">About us</string>
     <string name="MAIN_ACTIVITY__versions">Version</string>
     <string name="MAIN_ACTIVITY__off_duty">Offline</string>
     <string name="MAIN_ACTIVITY__move_your_vehicle">Please move your Vehicle to et you exact location...</string>
@@ -667,7 +667,7 @@
     <string name="CUSTOMER_SUPPORT_ACTIVITY_query_msg">Kindly drop us a message, a support team member would get back to you ASAP!</string>
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
-    <string name="LOGIN_ACTIVITY__or_use">Or Use</string>
+    <string name="LOGIN_ACTIVITY__or_use">or use</string>
     <string name="LOGIn_ACTIVITY__email_address">Email Address</string>
 
 

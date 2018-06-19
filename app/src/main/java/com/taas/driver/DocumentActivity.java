@@ -55,7 +55,7 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
         super.onCreate(savedInstanceState);
         setContentView(com.taas.driver.R.layout.activity_document);
         ButterKnife.bind(this);
-        firebaseUtils = new FirebaseUtils(this);
+      //  firebaseUtils = new FirebaseUtils(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(this.getResources().getString(com.taas.driver.R.string.loading));
         progressDialog.setCancelable(false);
@@ -173,8 +173,8 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
 
                     Log.d("**driver_account_name==document=", register.getDetails().getDriver_account_name());
 
-                    firebaseUtils.setUpDriver();
-                    firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES, FirebaseUtils.NO_RIDE_STATUS);
+                   // firebaseUtils.setUpDriver();
+                   // firebaseUtils.createRidePool(FirebaseUtils.NO_RIDES, FirebaseUtils.NO_RIDE_STATUS);
                     startActivity(new Intent(DocumentActivity.this, MainActivity.class));
                     try {
                         overridePendingTransition(com.taas.driver.R.anim.abc_fade_in, com.taas.driver.R.anim.abc_fade_out);
