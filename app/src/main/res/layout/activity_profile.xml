@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorHeader"
+        android:background="@color/pure_white"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -30,58 +30,89 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="end|center_vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp">
 
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/your_account"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_done_profile"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_done_profile"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center">-->
 
-            <com.taas.driver.typeface.TypeFaceMuseoRegular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/PROFILE_ACTIVITY__done"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp" />
-        </LinearLayout>
+            <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/PROFILE_ACTIVITY__done"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="15dp" />-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:background="@color/pure_white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/pure_white"
+            android:layout_marginTop="10dp">
+
+
+             <LinearLayout
+                 android:id="@+id/iv_profile_pic_upload"
+                 android:layout_width="80dp"
+                 android:layout_height="80dp"
+                 android:background="@drawable/black_circle"
+                 android:gravity="center"
+                 android:orientation="vertical"
+                 >
+
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:background="@drawable/white_circle_border">
+
+                 <de.hdodenhof.circleimageview.CircleImageView
+                     android:id="@+id/profileImageView"
+                     android:layout_width="60dp"
+                     android:layout_height="60dp"
+                     geekui:civ_border_color="@android:color/transparent"
+                     geekui:civ_border_width="0dp"
+                     android:src="@drawable/ic_profile"/>
+                </LinearLayout>
+             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                >
 
                 <FrameLayout
                     android:layout_width="70dp"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:visibility="gone">
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/iv_profile_pic_upload"
+
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
@@ -96,38 +127,14 @@
                 </FrameLayout>
 
 
-                <!--<de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
-                <!--android:id="@+id/iv_profile_pic_upload1"-->
-                <!--android:layout_width="50dp"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:src="@drawable/dummy_pic"-->
-                <!--app:civ_border_color="#000"-->
-                <!--app:civ_border_width="1dp" />-->
-
-                <!--<ImageView-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_marginBottom="15dp"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:src="@drawable/message" />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="@string/PROFILE_ACTIVITY__email_id_big"
-                        android:textSize="13dp" />
+                        android:text="@string/email_address"
+                        android:textSize="13sp" />
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:id="@+id/email"
@@ -136,42 +143,28 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
-                        android:text=""
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                        android:text="abc"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"/>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-                </LinearLayout>
+                        android:background="@color/colorPrimary" />
 
-
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="10dp" />
             </LinearLayout>
 
-
             <LinearLayout
-                android:id="@+id/ll_bank_name"
+                android:id="@+id/ll_change_password"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="20dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/lock" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,9 +178,56 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:text="@string/password"
+                        android:textSize="13sp" />
+
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:id="@+id/passwrd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="********"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/profile_edit"
+                    android:tint="@color/colorPrimary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_bank_name"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:orientation="vertical">
+
+
+
+
+
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:text="@string/PROFILE_ACTIVITY__bank_name"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                        android:textSize="13sp" />
 
 
                     <EditText
@@ -200,153 +240,33 @@
                         android:background="@android:color/transparent"
                         android:inputType="text"
                         android:text=""
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-                </LinearLayout>
+                        android:background="@color/colorPrimary" />
 
-                <ImageView
-                    android:id="@+id/iv_edit_bank_name"
-                    android:visibility="gone"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/edit" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_edit_bank_name"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:layout_width="22dp"-->
+                    <!--android:layout_height="22dp"-->
+                    <!--android:layout_marginRight="25dp"-->
+                    <!--android:src="@drawable/edit" />-->
             </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/ll_change_password"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/lock" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/PROFILE_ACTIVITY__password_big"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
-                        android:id="@+id/passwrd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="********"
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/next_48" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_account_name"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/lock" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@string/PROFILE_ACTIVITY__account_name"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
-
-                    <EditText
-                        android:id="@+id/account_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@android:color/transparent"
-                        android:inputType="text"
-                        android:text=""
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/iv_edit_account_name"
-                    android:layout_width="22dp"
-                    android:visibility="gone"
-                    android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/edit" />
-            </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/ll_account_number"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -354,7 +274,8 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/lock" />
+                    android:src="@drawable/lock"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -369,8 +290,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:text="@string/PROFILE_ACTIVITY__account_number"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                        android:textSize="13sp" />
 
 
                     <EditText
@@ -383,15 +303,15 @@
                         android:background="@android:color/transparent"
                         android:inputType="number"
                         android:text=""
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <ImageView
@@ -403,12 +323,13 @@
                     android:src="@drawable/edit" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="20dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -416,7 +337,8 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/user"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:id="@+id/ll22444"
@@ -433,8 +355,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:text="@string/PROFILE_ACTIVITY__name_big"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                        android:textSize="13sp"/>
 
                     <EditText
                         android:id="@+id/name"
@@ -445,31 +366,32 @@
                         android:layout_marginTop="5dp"
                         android:background="@android:color/transparent"
                         android:text=""
-                        android:textColor="@color/colorText"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="15dp" />
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_edit_name"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/edit" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/profile_edit" />
             </LinearLayout>
-
             <LinearLayout
+                android:id="@+id/ll_account_name"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:id="@+id/phone_edit_btn"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="20dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -477,7 +399,77 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/phone" />
+                    android:src="@drawable/lock"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/PROFILE_ACTIVITY__account_name"
+                        android:textSize="13sp"
+                         />
+
+                    <EditText
+                        android:id="@+id/account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/transparent"
+                        android:inputType="text"
+                        android:text=""
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_edit_account_name"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/profile_edit" />
+            </LinearLayout>
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:id="@+id/phone_edit_btn"
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/phone"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -493,8 +485,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:text="@string/PROFILE_ACTIVITY__mobile_big"
-                        android:textSize="13dp"
-                        geekui:customTypeface="OpenSans_Regular.ttf" />
+                        android:textSize="13sp"
+                        />
 
                     <EditText
                         android:id="@+id/mob"
@@ -506,44 +498,44 @@
                         android:background="@android:color/transparent"
                         android:inputType="number"
                         android:text=""
-                        android:textColor="@color/colorText"
-                        android:textSize="15dp" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
+                        android:background="@color/colorPrimary" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_edit_phone"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/edit" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/profile_edit" />
             </LinearLayout>
 
 
 
             <LinearLayout
-                android:id="@+id/ll_logout"
+                android:id="@+id/ll_done_profile"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/layout_dark"
+                android:background="@drawable/round_bg_color_black"
                 android:gravity="center">
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/PROFILE_ACTIVITY__logout"
-                    android:textColor="@color/colorTextFooter"
-                    android:textSize="15dp"
-                    geekui:customTypeface="OpenSans_Regular.ttf" />
+                    android:text="@string/PROFILE_ACTIVITY__done"
+                    android:textColor="@color/pure_white"
+                    android:textSize="15sp"
+                    android:textAllCaps="true"/>
             </LinearLayout>
 
 

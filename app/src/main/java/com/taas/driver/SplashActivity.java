@@ -297,7 +297,10 @@ public class SplashActivity extends BaseInternetCheckActivity implements ApiMana
             finish();
         } else {
             ApporioLog.logI(TAG, "Driver is not logged in and now launching Login Screen");
-            LoginBox.setVisibility(View.VISIBLE);
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            overridePendingTransition(com.taas.driver.R.anim.abc_fade_in, com.taas.driver.R.anim.abc_fade_out);
+            finish();
+           // LoginBox.setVisibility(View.VISIBLE);
         }
 
     }

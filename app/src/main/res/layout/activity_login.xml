@@ -49,11 +49,11 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="120dp"
         android:src="@drawable/taas_driver_logo_white"
         android:tint="@color/pure_black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
 
         />
@@ -67,10 +67,7 @@
             android:orientation="vertical"
             android:layout_marginTop="20dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,7 +123,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
+                        android:layout_height="1.5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:background="@color/colorPrimary" />
@@ -151,8 +148,9 @@
 
 
                       <LinearLayout
-                          android:layout_width="30dp"
-                          android:layout_height="30dp"
+                          android:layout_width="25dp"
+                          android:layout_height="25dp"
+
                           android:layout_marginLeft="20dp"
                           android:background="@drawable/black_circle_border"
                           android:gravity="center"
@@ -161,7 +159,7 @@
                            android:layout_width="20dp"
                            android:layout_height="20dp"
                            android:src="@drawable/ic_mail"
-                           android:padding="2dp"
+                           android:padding="3dp"
 
                            />
 
@@ -188,7 +186,7 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
+                        android:layout_height="1.5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="5dp"
@@ -204,7 +202,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/ic_password"
-                            android:padding="2dp"
+                            android:padding="4dp"
                             android:layout_marginLeft="20dp"
 
                             />
@@ -214,14 +212,14 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="2dp"
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="25dp"
                             android:background="@color/colorPrimary"/>
                     <EditText
                         android:id="@+id/edt_pass_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:ems="10"
                         android:hint="@string/LOGIN_ACTIVITY__password"
@@ -232,16 +230,16 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
+                        android:layout_height="1.5dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/colorView" />
-
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorPrimary" />
                     <LinearLayout
                         android:layout_gravity="right"
                         android:layout_width="wrap_content"
                         android:id="@+id/tv_forgot"
+                        android:visibility="gone"
                         android:layout_height="wrap_content">
 
                         <com.taas.driver.typeface.TypeFaceMuseoRegular
@@ -256,7 +254,7 @@
                             android:textSize="15dp" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+
         </LinearLayout>
 
 
@@ -267,6 +265,7 @@
         android:background="@drawable/round_bg_color_black"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="center">
 
         <com.taas.driver.typeface.TextTypeSemiBold
@@ -274,8 +273,36 @@
             android:layout_height="wrap_content"
             android:text="@string/LOGIN_ACTIVITY__login"
             android:textColor="@color/pure_white"
-            android:textSize="16dp"
-            app:customTypeface="OpenSans_Regular.ttf" />
+            android:textSize="14sp" />
     </LinearLayout>
+
+
+      <LinearLayout
+          android:id="@+id/ll_signUp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@drawable/round_bg_color_gray"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:layout_marginTop="10dp"
+          android:gravity="center"
+          android:orientation="horizontal">
+
+          <com.taas.driver.typeface.TextTypeSemiBold
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/sign_up"
+              android:textColor="@color/pure_white"
+              android:textSize="14sp"
+              android:textAllCaps="true"
+              />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="8dp"
+            android:tint="@color/pure_white"
+            android:src="@drawable/right_arrow_icon"/>
+      </LinearLayout>
   </LinearLayout>
 </ScrollView>

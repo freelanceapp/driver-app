@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/pure_white"
     tools:context="com.taas.driver.DocumentActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-2dp"
+         geekui:cardBackgroundColor="@color/pure_white"
+        geekui:cardElevation="0dp"
         android:layout_marginRight="-2dp">
         <RelativeLayout
             android:layout_width="49dp"
@@ -20,13 +23,18 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/back_arrow"/>
+                android:src="@drawable/ic_back_arrow"
+                android:padding="5dp"/>
         </RelativeLayout>
 
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
+        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:textSize="16sp"
             android:text="@string/documents"/>
     </android.support.v7.widget.CardView>
 
@@ -34,6 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
+        geekui:cardElevation="0dp"
+        geekui:cardBackgroundColor="@color/pure_white"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="-2dp"
         android:layout_marginRight="-2dp"
@@ -42,23 +52,27 @@
         <com.sam.placer.PlaceHolderView
             android:id="@+id/placeholder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.sam.placer.PlaceHolderView>
+            android:layout_height="match_parent"/>
 
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="-2dp"
-        android:layout_marginLeft="-2dp">
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
+        android:layout_height="50dp"
+        android:background="@drawable/round_bg_color_black"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+        <com.taas.driver.typeface.TypeFaceTextMeseoBold
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="match_parent"
             android:id="@+id/submit"
-            android:background="@color/icon_8_muted_black"
-            android:textColor="@color/icons_8_muted_yellow"
             android:text="@string/submit"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:textColor="@color/pure_white"
             android:gravity="center"/>
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>

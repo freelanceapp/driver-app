@@ -157,8 +157,8 @@ public class ChatActivity extends Activity {
             if (convertView == null) {
                 convertView = mInflater.inflate(com.taas.driver.R.layout.layout_left_message, null);
                 holder = new ViewHolder();
-                holder.left_side_msg_layout = (CardView) convertView.findViewById(com.taas.driver.R.id.left_side_msg_layout);
-                holder.right_side_msg_layout = (CardView) convertView.findViewById(com.taas.driver.R.id.right_side_msg_layout);
+                holder.left_side_msg_layout = (LinearLayout) convertView.findViewById(com.taas.driver.R.id.left_side_msg_layout);
+                holder.right_side_msg_layout = (LinearLayout) convertView.findViewById(com.taas.driver.R.id.right_side_msg_layout);
                 holder.left_txt = (TextView) convertView.findViewById(com.taas.driver.R.id.left_txt);
                 holder.left_date = (ZamanTextView) convertView.findViewById(com.taas.driver.R.id.left_date);
                 holder.right_text = (TextView) convertView.findViewById(com.taas.driver.R.id.right_text);
@@ -171,6 +171,7 @@ public class ChatActivity extends Activity {
 
             try{holder.left_txt.setText("" + localMesagees.get(i).message);
                 holder.right_text.setText("" + localMesagees.get(i).message);
+
                 holder.left_date.setTimeStamp(Long.parseLong("" + localMesagees.get(i).timestamp));
                 holder.right_date.setTimeStamp(Long.parseLong("" + localMesagees.get(i).timestamp));}catch (Exception e){
                 ApporioLog.logD(""+TAG , ""+e.getMessage());
@@ -185,17 +186,22 @@ public class ChatActivity extends Activity {
             if (localMesagees.get(i).send_via.equals("User")) {
                 holder.left_side_msg_layout.setVisibility(View.GONE);
                 holder.right_side_msg_layout.setVisibility(View.VISIBLE);
+                holder.right_date.setVisibility(View.VISIBLE);
+                holder.left_date.setVisibility(View.GONE);
             } else if (localMesagees.get(i).send_via.equals("Driver")) {
                 holder.left_side_msg_layout.setVisibility(View.VISIBLE);
+                holder.left_date.setVisibility(View.VISIBLE);
                 holder.right_side_msg_layout.setVisibility(View.GONE);
+                holder.right_date.setVisibility(View.GONE);
             } else {
                 holder.left_side_msg_layout.setVisibility(View.GONE);
                 holder.right_side_msg_layout.setVisibility(View.GONE);
+                holder.right_date.setVisibility(View.GONE); holder.left_date.setVisibility(View.GONE);
             }
         }
 
         private class ViewHolder {
-            CardView left_side_msg_layout, right_side_msg_layout;
+            LinearLayout left_side_msg_layout, right_side_msg_layout;
             TextView left_txt, right_text;
             ZamanTextView left_date, right_date;
         }

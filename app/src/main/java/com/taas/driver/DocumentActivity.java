@@ -235,8 +235,17 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
         }
 
 
-        @Click(com.taas.driver.R.id.root_element)
-        private void OnRootElementClick(){
+//        @Click(com.taas.driver.R.id.root_element)
+//        private void OnRootElementClick(){
+//            if(mMsgBean.getDocumnet_varification_status().equals("0") || mMsgBean.getDocumnet_varification_status().equals("3") ){
+//                DocumentActivity.this.startActivity(new Intent(DocumentActivity.this , PhotoUploaderActivity.class)
+//                        .putExtra("driver_id" , ""+getIntent().getExtras().get("driver_id"))
+//                        .putExtra("document_id" , ""+mMsgBean.getDocument_id()));
+//            }
+//        }
+
+        @Click(R.id.attachment)
+        private void OnAttachmentElementClick(){
             if(mMsgBean.getDocumnet_varification_status().equals("0") || mMsgBean.getDocumnet_varification_status().equals("3") ){
                 DocumentActivity.this.startActivity(new Intent(DocumentActivity.this , PhotoUploaderActivity.class)
                         .putExtra("driver_id" , ""+getIntent().getExtras().get("driver_id"))

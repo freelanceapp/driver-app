@@ -71,7 +71,8 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
     String driverid, drivername, drivermobile, drivermail, driverimage, driver_bank_name, driver_account_number, driver_account_name;
     public static Activity profileActivity;
 
-    CircleImageView iv_profile_pic_upload;
+    LinearLayout iv_profile_pic_upload;
+    CircleImageView profileImageView;
     FirebaseUtils firebaseutil;
 
     Uri selectedImage;
@@ -119,9 +120,9 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         ll_back_profile = (LinearLayout) findViewById(com.taas.driver.R.id.ll_back_profile);
         ll_done_profile = (LinearLayout) findViewById(com.taas.driver.R.id.ll_done_profile);
         ll_change_password = (LinearLayout) findViewById(com.taas.driver.R.id.ll_change_password);
-        ll_logout = (LinearLayout) findViewById(com.taas.driver.R.id.ll_logout);
-        iv_profile_pic_upload = (CircleImageView) findViewById(com.taas.driver.R.id.iv_profile_pic_upload);
-
+        //ll_logout = (LinearLayout) findViewById(com.taas.driver.R.id.ll_logout);
+        iv_profile_pic_upload = (LinearLayout) findViewById(com.taas.driver.R.id.iv_profile_pic_upload);
+        profileImageView = findViewById(R.id.profileImageView);
         meter_ranger = (EditText) findViewById(com.taas.driver.R.id.meter_ranger);
         service_switcher = (CheckBox) findViewById(com.taas.driver.R.id.service_switcher);
         location_accuracy = (EditText) findViewById(com.taas.driver.R.id.location_accuracy);
@@ -140,7 +141,7 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         iv_edit_phone = (ImageView) findViewById(com.taas.driver.R.id.iv_edit_phone);
         iv_edit_account_number = (ImageView) findViewById(com.taas.driver.R.id.iv_edit_account_number);
         iv_edit_account_name = (ImageView) findViewById(com.taas.driver.R.id.iv_edit_account_name);
-        iv_edit_bank_name = (ImageView) findViewById(com.taas.driver.R.id.iv_edit_bank_name);
+        //iv_edit_bank_name = (ImageView) findViewById(com.taas.driver.R.id.iv_edit_bank_name);
 
         account_number.setEnabled(false);
         account_name.setEnabled(false);
@@ -168,15 +169,15 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         account_name.setText(driver_account_name);
 
         String inmage = Apis.imageDomain + driverimage ;
-        Log.d("**driver_account_name===", driver_account_name);
+        Log.d("**driver_account_name", driver_account_name);
 
         Log.d("***driver_bank_name" , ""+driver_bank_name);
-        Log.d("***driver_account_number" , ""+driver_account_number);
+        Log.d("***driver_acc_number" , ""+driver_account_number);
 
 
         Log.d("***driver_image" , ""+inmage.replace(" " , ""));
         if(!inmage.equals("")){
-            Glide.with(this).load(""+inmage.replace(" " , "")).into(iv_profile_pic_upload);
+            Glide.with(this).load(""+inmage.replace(" " , "")).into(profileImageView);
         }
 
 
@@ -250,13 +251,13 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
             }
         });
 
-        ll_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showlogoutdialog();
-
-            }
-        });
+//        ll_logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showlogoutdialog();
+//
+//            }
+//        });
 
         iv_edit_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -323,20 +324,20 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
             }
         });
 
-        iv_edit_bank_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bank_name.setFocusableInTouchMode(true);
-
-                bank_name.setEnabled(true);
-                bank_name.setSelection(bank_name.getText().length());
-                bank_name.requestFocus();
-
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(mobile, InputMethodManager.SHOW_FORCED);
-
-            }
-        });
+//        iv_edit_bank_name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                bank_name.setFocusableInTouchMode(true);
+//
+//                bank_name.setEnabled(true);
+//                bank_name.setSelection(bank_name.getText().length());
+//                bank_name.requestFocus();
+//
+//                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                inputMethodManager.showSoftInput(mobile, InputMethodManager.SHOW_FORCED);
+//
+//            }
+//        });
         ll_done_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -491,11 +492,11 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                     options.inSampleSize = scale;
                     options.inJustDecodeBounds = false;
                     bitmap1 = BitmapFactory.decodeFile(filePath, options);
-                    iv_profile_pic_upload.setImageBitmap(bitmap1);
+                    profileImageView.setImageBitmap(bitmap1);
                 }
                 if(req == CAMERS_PICKER){
                     thumbnail = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                    iv_profile_pic_upload.setImageBitmap(thumbnail);
+                    profileImageView.setImageBitmap(thumbnail);
                     imagePath = getRealPathFromURI(imageUri);
                     ImageCompressMode imageCompressMode = new ImageCompressMode(this);
                     imagePathCompressed = imageCompressMode.compressImage(imagePath);

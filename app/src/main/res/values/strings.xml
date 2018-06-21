@@ -20,7 +20,7 @@
     <string name="getting_location">Getting location...</string>
 
 
-    <string name="your_account">YOUR ACCOUNT</string>
+    <string name="your_account">Your Account</string>
 
     <string name="trip_conformation">TRIP CONFIRMATION</string>
     <string name="accept">ACCEPT</string>
@@ -445,11 +445,11 @@
     <string name="PROFILE_ACTIVITY__done">DONE</string>
     <string name="PROFILE_ACTIVITY__email_id_big">EMAIL ID</string>
     <string name="PROFILE_ACTIVITY__password_big">PASSWORD</string>
-    <string name="PROFILE_ACTIVITY__bank_name">BANK NAME</string>
-    <string name="PROFILE_ACTIVITY__account_name">ACCOUNT NAME</string>
-    <string name="PROFILE_ACTIVITY__account_number">ACCOUNT NUMBER</string>
-    <string name="PROFILE_ACTIVITY__name_big">NAME</string>
-    <string name="PROFILE_ACTIVITY__mobile_big">MOBILE NUMBER</string>
+    <string name="PROFILE_ACTIVITY__bank_name">Bank Name</string>
+    <string name="PROFILE_ACTIVITY__account_name">Account Name</string>
+    <string name="PROFILE_ACTIVITY__account_number">Account Number</string>
+    <string name="PROFILE_ACTIVITY__name_big">Name</string>
+    <string name="PROFILE_ACTIVITY__mobile_big">Phone Number</string>
     <string name="PROFILE_ACTIVITY__logout">LOGOUT</string>
 
 
@@ -479,8 +479,8 @@
 
     <string name="LOGIN_ACTIVITY__login">LOGIN</string>
     <string name="LOGIn_ACTIVITY__email">Email</string>
-    <string name="LOGIn_ACTIVITY__phone">Phone Number</string>
-    <string name="LOGIN_ACTIVITY__password">Password</string>
+    <string name="LOGIn_ACTIVITY__phone">phone number</string>
+    <string name="LOGIN_ACTIVITY__password">password</string>
     <string name="LOGIN_ACTIVITY__forgot_password_1">Forgot Password?</string>
     <string name="LOGIN_ACTIVITY__or">OR</string>
 
@@ -527,7 +527,7 @@
 
 
     /////////////// ChangePasswordActivity
-    <string name="CHANGE_PASSWORD_ACTIVITY_change_password">CHANGE PASSWORD</string>
+    <string name="CHANGE_PASSWORD_ACTIVITY_change_password">Change Password</string>
     <string name="CHANGE_PASSWORD_ACTIVITY_old_password">Old Password</string>
     <string name="CHANGE_PASSWORD_ACTIVITY_new_password">New Password</string>
     <string name="CHANGE_PASSWORD_ACTIVITY_confirm_password">Confirm Password</string>
@@ -589,7 +589,7 @@
     <string name="submit">Submit</string>
     <string name="online_time">Online Time</string>
     <string name="overall_rating">Overall Rating</string>
-    <string name="documents">Documents</string>
+    <string name="documents">Document</string>
     <string name="use_in_case_of_emergency">Use in Case of\n Emergency</string>
     <string name="login">Login</string>
     <string name="login_as_demo_driver">Login as Demo Driver</string>
@@ -668,7 +668,11 @@
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
     <string name="LOGIN_ACTIVITY__or_use">or use</string>
-    <string name="LOGIn_ACTIVITY__email_address">Email Address</string>
+    <string name="LOGIn_ACTIVITY__email_address">email address</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="upload_licence">Upload Licence</string>
+    <string name="email_address">E-mail Address</string>
+    <string name="password">Password</string>
 
 
 </resources>

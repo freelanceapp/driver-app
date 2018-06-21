@@ -50,13 +50,13 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Customer name"
                         android:id="@+id/user_name_txt"
-                        android:gravity=""
-                        android:textStyle="bold"/>
+
+                        android:textColor="@color/colorPrimary"/>
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

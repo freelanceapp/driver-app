@@ -329,14 +329,16 @@
                     android:orientation="vertical"
                     android:gravity="center|left"
                     android:visibility="gone"
-                    android:layout_gravity="center|bottom"
-                    android:padding="5dp"
+                    android:layout_gravity="center|top"
+                    android:padding="15dp"
                     android:id="@+id/message_layout"
-                    android:background="@color/icon_8_muted_black">
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+
+                    android:background="@color/pure_black"
+                    android:alpha="0.7">
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/icons_8_muted_green_1"
+                        android:textColor="@color/green"
                         android:textSize="15dp"
                         android:layout_marginBottom="5dp"
                         android:text="@string/new_message"/>
@@ -352,11 +354,16 @@
 
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
-                        android:layout_width="match_parent"
+                        android:id="@+id/msgViewBtn"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/click_to_view"
-                        android:textColor="@color/icons_8_muted_blue"
+                        android:layout_gravity="end"
+                        android:background="@drawable/white_oval_border"
+                        android:textColor="@color/pure_white"
                         android:layout_marginTop="5dp"
+                        android:padding="10dp"
+
                         android:gravity="center|right"/>
 
                 </LinearLayout>

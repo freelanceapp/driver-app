@@ -102,6 +102,14 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
             }
         });
 
+        findViewById(R.id.ll_signUp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                overridePendingTransition(com.taas.driver.R.anim.abc_fade_in, com.taas.driver.R.anim.abc_fade_out);
+            }
+        });
+
         tv_forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

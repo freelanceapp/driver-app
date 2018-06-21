@@ -361,7 +361,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
 
-        message_layout.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.msgViewBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TrackRideActivity.this, ChatActivity.class)
@@ -371,6 +371,16 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                         .putExtra("user_image", "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"));
             }
         });
+//        message_layout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(TrackRideActivity.this, ChatActivity.class)
+//                        .putExtra("ride_id", "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID))
+//                        .putExtra("ride_status", "" + trip_status_txt.getText().toString())
+//                        .putExtra("user_name", "" + rideSession.getCurrentRideDetails().get(RideSession.USER_NAME))
+//                        .putExtra("user_image", "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"));
+//            }
+//        });
 
 
     }
