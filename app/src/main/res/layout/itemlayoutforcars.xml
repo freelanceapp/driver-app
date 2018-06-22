@@ -16,7 +16,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="-------"
-            android:textColor="@color/colorText"
-            geekui:customTypeface="OpenSans_Regular.ttf" />
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 </LinearLayout>

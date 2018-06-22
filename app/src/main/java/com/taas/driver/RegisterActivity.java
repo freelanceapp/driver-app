@@ -130,6 +130,8 @@ public class RegisterActivity extends AppCompatActivity implements ApiManager.AP
         edt_bank_name = (EditText) findViewById(com.taas.driver.R.id.bank_name);
         edt_account_number = (EditText) findViewById(com.taas.driver.R.id.account_number);
         edt_account_name = (EditText) findViewById(com.taas.driver.R.id.account_holder_name);
+
+
         edt_username_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_email_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         txt_phone_signup.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
@@ -138,7 +140,11 @@ public class RegisterActivity extends AppCompatActivity implements ApiManager.AP
         edt_bank_name.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_account_number.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         edt_account_name.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
+        edt_car_number.setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans_Regular.ttf"));
         apimanager.execution_method_get( Config.ApiKeys.KEY_View_cities , Apis.viewCities);
+
+
+
 
         tv_city.setOnClickListener(new View.OnClickListener() {
             @Override

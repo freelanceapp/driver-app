@@ -51,12 +51,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/pure_white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/pure_white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,12 +70,32 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/driver_image"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/dummy_pic"/>
+
+                <LinearLayout
+                    android:id="@+id/iv_profile_pic_upload"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/black_circle"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:background="@drawable/white_circle_border">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/driver_image"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            geekui:civ_border_color="@android:color/transparent"
+                            geekui:civ_border_width="0dp"
+                            android:src="@drawable/ic_profile"/>
+                    </LinearLayout>
+                </LinearLayout>
+
 
                 <EditText
                     android:id="@+id/edt_username_signup"
@@ -89,11 +111,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/edt_email_signup"
@@ -111,11 +133,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
                 <!--
                 <EditText
                     android:id="@+id/edt_phone_signup"
@@ -141,15 +163,15 @@
                     android:layout_marginTop="30dp"
                     android:background="@android:color/transparent"
                     android:text="@string/REGISTER_ACTIVITY__enter_mobile"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/edt_pass_signup"
@@ -163,15 +185,15 @@
                     android:hint="@string/REGISTER_ACTIVITY__enter_password"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_city"
@@ -181,8 +203,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/REGISTER_ACTIVITY__select_city"
-                    android:textSize="15dp"
-                    geekui:customTypeface="OpenSans_Regular.ttf" />
+                    android:textSize="15dp" />
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_city_two"
@@ -196,11 +217,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_car_type"
@@ -210,16 +231,15 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/REGISTER_ACTIVITY__select_car_type"
-                    android:textSize="15dp"
-                    geekui:customTypeface="OpenSans_Regular.ttf" />
+                    android:textSize="15dp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_car_model"
@@ -229,16 +249,15 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/REGISTER_ACTIVITY__select_car_model"
-                    android:textSize="15dp"
-                    geekui:customTypeface="OpenSans_Regular.ttf" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
                 <com.taas.driver.typeface.TypeFaceMuseoRegular
                     android:id="@+id/tv_ride_category"
@@ -248,17 +267,17 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/REGISTER_ACTIVITY__select_ride_category"
-                    android:textSize="15dp"
-                    android:visibility="gone"
-                    geekui:customTypeface="OpenSans_Regular.ttf" />
+                    android:textSize="15sp"
+                    android:visibility="gone"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:visibility="gone"
+                    android:background="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/edt_car_number"
@@ -271,15 +290,15 @@
                     android:ems="10"
                     android:hint="@string/REGISTER_ACTIVITY__enter_car_number"
                     android:singleLine="true"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
 
                 <EditText
@@ -292,15 +311,15 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/REGISTER_ACTIVITY__bank_name"
                     android:singleLine="true"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
 
                 <EditText
@@ -314,15 +333,15 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/REGISTER_ACTIVITY__account_number"
                     android:singleLine="true"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
 
 
                 <EditText
@@ -339,12 +358,31 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1.5dp"
                     android:layout_marginBottom="30dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/colorView" />
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/ll_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_bg_color_black"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/REGISTER_ACTIVITY__continuee"
+                        android:textColor="@color/pure_white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!--<LinearLayout-->
@@ -373,21 +411,7 @@
         android:layout_height="1dp"
         android:background="@color/colorView" />
 
-    <LinearLayout
-        android:id="@+id/ll_register"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center">
 
-        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/REGISTER_ACTIVITY__continuee"
-            android:textColor="@color/pure_white"
-            android:textSize="16dp"
-            geekui:customTypeface="OpenSans_Regular.ttf" />
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
