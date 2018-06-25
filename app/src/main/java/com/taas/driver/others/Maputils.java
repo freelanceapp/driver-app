@@ -4,17 +4,20 @@ import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.location.Location;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.taas.driver.Config;
 import com.taas.driver.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,6 +36,29 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Maputils {
 
+
+    public static void setMapTheme(Context context, GoogleMap googlemap) {
+
+        try {
+            googlemap.setBuildingsEnabled(false);
+            googlemap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.style_uber));
+        } catch (Resources.NotFoundException e) {
+            Log.e("Main Activity", "Can't find style. Error: ", e);
+        }
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googlemap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            context, R.raw.style_uber));
+
+            if (!success) {
+                Log.e("MapsActivityRaw", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("MapsActivityRaw", "Can't find style.", e);
+        }
+    }
 
     public static float getbearing(double in_lat , double in_long , double e_lat , double elong){
         Location startingLocation = new Location("starting point");
@@ -153,6 +179,19 @@ public class Maputils {
 
     public static Marker setDestinationMarkerForDropPoint(Context context, GoogleMap mMap, LatLng markerLatLng, String location_text) {
         View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.red_destination_marker, null);
+
+        Marker customMarker = mMap.addMarker(new MarkerOptions()
+                .position(markerLatLng)
+                .anchor(0.5f, 0.5f).flat(true)
+                .title("Title")
+                .snippet("Description")
+                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker))));
+        return customMarker;
+
+    }
+
+    public static Marker setDestinationMarkerForPickPoint2(Context context, GoogleMap mMap, LatLng markerLatLng, String location_text) {
+        View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.black_destination_marker, null);
 
         Marker customMarker = mMap.addMarker(new MarkerOptions()
                 .position(markerLatLng)

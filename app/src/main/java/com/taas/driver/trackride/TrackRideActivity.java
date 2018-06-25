@@ -117,6 +117,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     ApiManager apiManager;
 
     TextView trip_status_txt;
+    private int chatCount = 0;
 
 
 
@@ -139,6 +140,9 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     private TextView location_text_copy;
     private LinearLayout bottomLocationLayout;
 
+    private LinearLayout llChatCount;
+    private TextView tvChatCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         apiManager = new ApiManager(this);
@@ -155,6 +159,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         progressDialog.setCancelable(false);
         setContentView(R.layout.activity_track_ride);
         customer_info_txt = (TextView) findViewById(R.id.customer_info_txt);
+        llChatCount = findViewById(R.id.llChatCount);
+        tvChatCount = findViewById(R.id.tvChatCount);
 
 //        trip_status_txt = ((MaterialRippleLayout) findViewById(R.id.trip_status_txt)).getChildView();
 //        trip_status_txt.setTextSize(15);
@@ -475,6 +481,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         try {
             String text = new ZamanUtil(Long.parseLong("" + event.timestamp)).getTime();
             if (text.equals("Just Now") || text.equals("In a few seconds")) {
+                chatCount++;
                 showUserMesageWithTimer(event.message);
             }
         } catch (Exception e) {
@@ -484,10 +491,14 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     private void showUserMesageWithTimer(String message) {
         message_layout.setVisibility(View.VISIBLE);
         chat_message.setText("" + message);
+        llChatCount.setVisibility(View.VISIBLE);
+        tvChatCount.setText(""+chatCount);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 message_layout.setVisibility(View.GONE);
+                llChatCount.setVisibility(View.GONE);
+                tvChatCount.setText("");
             }
         }, 5000);
 
@@ -539,6 +550,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         mGooglemap = googleMap;
+        Maputils.setMapTheme(this, googleMap);
         mGooglemap.setBuildingsEnabled(false);
         mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
 
@@ -679,7 +691,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 trip_status_txt.setBackground(getResources().getDrawable(R.drawable.round_bg_color_light_gray));
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_black));
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__arrived));
-                drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))), mGooglemap, R.drawable.ic_green_marker_small, R.drawable.ic_very_small);
+
+                drawRoute( new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))),new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), mGooglemap, R.drawable.ic_green_marker_small, R.drawable.ic_very_small);
                 cancel_btn.setVisibility(View.VISIBLE);
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
@@ -698,7 +711,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 } else {
 
                     LatLng origin = new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
-                    LatLng destination = new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE)));
+                    LatLng destination = new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE)));
                     // drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green , R.drawable.dot_red);
                     //Maputils.setDestinationMarkerForPickPoint(this,mGooglemap,new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))),"");
                     //  Maputils.setDestinationMarkerForDropPoint(this,mGooglemap,new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))),"");
@@ -708,12 +721,16 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
                     //////////////////////////////////////////////////
 
+
+
                     Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
-                    //Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
+                    Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
+                    drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green , R.drawable.dot_red);
                     try {
-                        DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin, destination, mGooglemap);
+                    //    DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin, destination, mGooglemap);
                     } catch (Exception e) {
                     }
+
 
                 }
             }
@@ -735,9 +752,16 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     public void drawRoute(LatLng origin, LatLng destination, GoogleMap mMap, int origin_icon, int destination_icon) {
         mGooglemap.clear();
         try {
-            DrawRouteMaps.getInstance(this, 6, R.color.icons_8_muted_green_1).draw(origin, destination, mMap, sessionManager);
-            DrawMarker.getInstance(this).draw(mMap, origin, origin_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
-            DrawMarker.getInstance(this).draw(mMap, destination, destination_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
+            DrawRouteMaps.getInstance(this, 6, R.color.pure_black).draw(origin, destination, mMap, sessionManager);
+            //DrawMarker.getInstance(this).draw(mMap, origin, origin_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
+           // DrawMarker.getInstance(this).draw(mMap, destination, destination_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
+
+            Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
+            if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
+                Maputils.setDestinationMarkerForPickPoint2(this, mGooglemap, destination, "Customer Location ");
+            }else{
+                Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
+            }
 
             LatLngBounds bounds = new LatLngBounds.Builder()
                     .include(origin)
@@ -750,7 +774,26 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         }
     }
 
+    public void drawRouteFromDriverToPassenger(LatLng origin, LatLng destination, GoogleMap mMap, int origin_icon, int destination_icon) {
+        mGooglemap.clear();
+        try {
+            DrawRouteMaps.getInstance(this, 6, R.color.pure_black).draw(origin, destination, mMap, sessionManager);
+            //DrawMarker.getInstance(this).draw(mMap, origin, origin_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
+            // DrawMarker.getInstance(this).draw(mMap, destination, destination_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
+            Maputils.setDestinationMarkerForPickPoint2(this, mGooglemap, origin, "Customer Location ");
 
+
+            Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, destination, "Customer Location ");
+            LatLngBounds bounds = new LatLngBounds.Builder()
+                    .include(origin)
+                    .include(destination).build();
+            Point displaySize = new Point();
+            getWindowManager().getDefaultDisplay().getSize(displaySize);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, displaySize.x, 500, 60));
+        } catch (Exception e) {
+
+        }
+    }
     public String getArrivalTime() {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -1020,7 +1063,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
             mGooglemap.setMyLocationEnabled(true);
 
-            Maputils.setDestinationmarker(TrackRideActivity.this, mGooglemap, POINT_A, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
+            Maputils.setDestinationMarkerForDropPoint(TrackRideActivity.this, mGooglemap, POINT_A, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
 
             new SamLocationRequestService(TrackRideActivity.this).executeService(new SamLocationRequestService.SamLocationListener() {
                 @Override
@@ -1031,7 +1074,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     try {
                         end_lat = location.getLatitude();
                         end_lng = location.getLongitude();
-                        DrawRouteMaps.getInstance(TrackRideActivity.this, 9, R.color.icons_8_muted_green_1).draw(new LatLng(end_lat, end_lng), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, sessionManager);
+                        DrawRouteMaps.getInstance(TrackRideActivity.this, 9, R.color.pure_black).draw(new LatLng(end_lat, end_lng), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, sessionManager);
                         //  DrawRouteMaps.getInstance(TrackRideActivity.this , 9 ,R.color.icons_8_muted_green_1).draw(new LatLng(location.getLatitude() , location.getLongitude()), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap , sessionManager);
 
                     } catch (Exception e) {

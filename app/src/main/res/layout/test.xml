@@ -97,8 +97,8 @@
 
       <LinearLayout
           android:id="@+id/chat"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
           android:layout_alignParentTop="true"
           android:layout_alignParentEnd="true"
           android:layout_alignParentRight="true"
@@ -106,12 +106,43 @@
           android:layout_marginEnd="5dp"
           android:gravity="center">
 
-          <ImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:src="@drawable/ic_message"
-              android:tint="@color/pure_white"
-              android:padding="5dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_message"
+                android:tint="@color/pure_white"
+                android:padding="5dp"
+                android:layout_gravity="center"/>
+            <LinearLayout
+                android:id="@+id/llChatCount"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="top|right"
+                android:background="@drawable/green_filled_circle"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:id="@+id/tvChatCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textColor="@color/pure_black"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
 
       </LinearLayout>
 

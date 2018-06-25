@@ -95,7 +95,7 @@ public class RouteDrawerTask extends AsyncTask<String, Integer, List<List<HashMa
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
                 lineOptions.width(route_width);
-                routeColor = ContextCompat.getColor(DrawRouteMaps.getContext(), R.color.icons_8_muted_green_1);
+                routeColor = ContextCompat.getColor(DrawRouteMaps.getContext(), R.color.pure_black);
                 if (routeColor == 0)
                     lineOptions.color(0xFF0A8F08);
                 else
