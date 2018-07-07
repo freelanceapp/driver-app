@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@color/pure_black"
+    android:background="@color/pure_white"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:paddingRight="5dp">
+    android:paddingRight="0dp">
 
 
     <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Main_ACTIVITY_rentals"
-                android:textColor="@color/pure_white"/>
+                android:textColor="@color/pure_black"/>
 
             <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:text="- - - - - - - - - - - - - - - - -"
-                android:textColor="@color/pure_white"
+                android:textColor="@color/pure_black"
                 android:textSize="10sp" />
         </LinearLayout>
         <com.taas.driver.typeface.TypeFaceTextMeseoBold
@@ -59,7 +59,7 @@
             android:text="-------------"
             android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/pure_white"
+            android:textColor="@color/pure_black"
             android:textSize="16sp" />
         <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
             android:id="@+id/tv_name"
@@ -68,7 +68,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:text="- - - - - - - - "
-            android:textColor="@color/pure_white"
+            android:textColor="@color/pure_black"
             android:textSize="12sp"
             android:visibility="gone"/>
 

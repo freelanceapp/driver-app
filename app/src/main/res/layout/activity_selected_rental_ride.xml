@@ -24,30 +24,28 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@drawable/back_arrow" />
+                android:src="@drawable/ic_back_arrow"
+                android:padding="5dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:layout_marginRight="5dp"
+            android:gravity="end|center_vertical">
 
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/tv_date_time1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="@string/SELECTED_RENTAL_RIDE_ACTIVITY__ride_details"
-                android:textColor="@color/colorText"
-                android:textSize="16dp"
-                android:singleLine="true"
-                geekui:customTypeface="OpenSans_Bold.ttf" />
+                android:textColor="@color/pure_black"
+                android:textSize="16sp"
+                android:singleLine="true"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <LinearLayout

@@ -191,7 +191,7 @@
 
 
     /////////////Rides Activity
-    <string name="rental_type">Rental Type</string>
+    <string name="rental_type">HoD Hire Trip</string>
 
 
     ///// PRice Fare Activity
@@ -210,7 +210,7 @@
     <string name="PRICE_FARE_coupon">Coupon (</string>
     <string name="PRICE_FARE_receipt">See Receipt</string>
     <string name="PRICE_FARE_rate_btn_text">Complete this Ride</string>
-    <string name="PRICE_FARE_rate_us">Rate us</string>
+    <string name="PRICE_FARE_rate_us">Rate Passenger</string>
     <string name="PRICE_FARE_comment">Comment</string>
 
     <string name="PRICE_FARE_payment_mode">Payment Mode : </string>
@@ -223,7 +223,7 @@
     <string name="PRICE_FARE_payment_wallet">WALLET</string>
     ////////////////// Main Activity
     <string name="MAIN_ACTIVITY__profile">Profile</string>
-    <string name="MAIN_ACTIVITY__my_rides">Your trips</string>
+    <string name="MAIN_ACTIVITY__my_rides">Your Trips</string>
     <string name="MAIN_ACTIVITY__upcoming_rides">Upcoming trips</string>
     <string name="MAIN_ACTIVITY__earnings">Earnings</string>
     <string name="MAIN_ACTIVITY__customer_support">Customer Support</string>
@@ -437,7 +437,7 @@
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__package_price">Package Price</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__pick_up_point">Pick up Point</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__note_this_request_will_be_automatically_rejected_in_30_seconds">NOTE : This request will be automatically rejected in 30 seconds</string>
-    <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__ignore">Pass</string>
+    <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__ignore">Reject</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__accept">Accept</string>
 
 
@@ -450,7 +450,7 @@
     <string name="PROFILE_ACTIVITY__account_number">Account Number</string>
     <string name="PROFILE_ACTIVITY__name_big">Name</string>
     <string name="PROFILE_ACTIVITY__mobile_big">Phone Number</string>
-    <string name="PROFILE_ACTIVITY__logout">LOGOUT</string>
+    <string name="PROFILE_ACTIVITY__logout">Logout</string>
 
 
     ////////////////// OnlineOfflineActivity
@@ -611,7 +611,7 @@
     <string name="user_has_cancel_the_ride">User has Cancel the ride</string>
     <string name="your_trips">Your Trips</string>
     <string name="trip_details">Trip Details</string>
-    <string name="on__going">OnGoing Trips</string>
+    <string name="on__going">Ongoing Trips</string>
     <string name="new_request">New Request</string>
     <string name="history">History</string>
     <string name="accept_pass">Accept/Pass</string>
@@ -670,9 +670,10 @@
     <string name="LOGIN_ACTIVITY__or_use">or use</string>
     <string name="LOGIn_ACTIVITY__email_address">email address</string>
     <string name="sign_up">Sign Up</string>
-    <string name="upload_licence">Upload Licence</string>
+    <string name="upload_licence">Upload Driving Licence</string>
     <string name="email_address">E-mail Address</string>
     <string name="password">Password</string>
+    <string name="upload">Upload</string>
 
 
 </resources>

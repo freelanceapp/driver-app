@@ -49,6 +49,7 @@ import java.util.HashMap;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import customviews.PulsatorLayout;
+import customviews.progresswheel.ProgressWheel;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -69,12 +70,20 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     long MAXTIME = 30000;
     long STARTTIME = 30000;
 
+
+
+    int maxProgress = 360;
+    int progress_quadrant;
+
     @Bind(com.taas.driver.R.id.map_image)
     CircleImageView mapImage;
     @Bind(com.taas.driver.R.id.car_type_image)
     ImageView carTypeImage;
     @Bind(com.taas.driver.R.id.car_type_name_txt)
     TextView carTypeNameTxt;
+
+    @Bind(R.id.car_type_sub_name_txt)
+    TextView car_type_sub_name_txt;
     @Bind(com.taas.driver.R.id.package_txt)
     TextView packageTxt;
     @Bind(com.taas.driver.R.id._time_of_booking_txt)
@@ -91,6 +100,12 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     PulsatorLayout pulsator;
     @Bind(com.taas.driver.R.id.time_txt)
     TextView timeTxt;
+
+
+
+    @Bind(com.taas.driver.R.id.activity_countdown_timer_days)
+    ProgressWheel progressWheel;
+
 
 
     @Override
@@ -130,8 +145,10 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SoundTimer.cancel();
-                ProgressTimer.cancel();
+                if(SoundTimer != null)
+                    SoundTimer.cancel();
+                if(ProgressTimer != null)
+                    ProgressTimer.cancel();
 
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
@@ -145,8 +162,10 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SoundTimer.cancel();
-                ProgressTimer.cancel();
+                if(SoundTimer!=null)
+                  SoundTimer.cancel();
+               if(ProgressTimer!=null)
+                  ProgressTimer.cancel();
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("rental_booking_id", "" + getIntent().getExtras().getString("" + Config.IntentKeys.RIDE_ID));
                 data.put("driver_id", "" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
@@ -167,8 +186,12 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                 finish();
             } else {
                 timeTxt.setText("" + (STARTTIME / 1000));
-                startTimer();
+               // startTimer();
+                setprogressQuadAndMaxProgress(MAXTIME, STARTTIME);
             }
+
+
+
 
         } catch (Exception e) {
             ApporioLog.logE("" + TAG, "Exception Caught while taking time for progress timer -->" + e.getMessage());
@@ -218,8 +241,16 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                         pickupAddressTxt.setText("" + response.getDetails().getPickup_location());
                         TimeOfBookingTxt.setText("" + response.getDetails().getBooking_time());
                         carTypeNameTxt.setText("" + response.getDetails().getCar_type_name());
+                        if(response.getDetails().getCar_type_sub_name()!=null || !response.getDetails().getCar_type_sub_name().isEmpty()){
+                            car_type_sub_name_txt.setText(""+response.getDetails().getCar_type_sub_name());
+                            car_type_sub_name_txt.setVisibility(View.VISIBLE);
+                        }else{
+                            car_type_sub_name_txt.setVisibility(View.GONE);
+                        }
+
                         packageTxt.setText("" + response.getDetails().getPackage_name());
                         etaPriceTxt.setText(sessionManager.getCurrencyCode() + "" + response.getDetails().getPackage_price());
+                        Glide.with(this).load("" + Apis.imageDomain + "" +response.getDetails().getCar_type_image()).into(carTypeImage);
 
                         String value = "" + response.getDetails().getPayment_option_id();
 
@@ -301,6 +332,10 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                     timeTxt.setText("" + (vaaal - 1));
                 } catch (Exception e) {
                 }
+
+
+                maxProgress = maxProgress - progress_quadrant;
+                progressWheel.setProgress(maxProgress);
             }
 
             @Override
@@ -329,6 +364,15 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
         mediaPlayer.prepare();
 
+    }
+
+
+    private void setprogressQuadAndMaxProgress(long maxtime, long startTime) {
+        progress_quadrant = (int) (6 * (60000 / maxtime));
+        int val = (int) (maxtime / startTime);
+        maxProgress = 360 / val;
+        progressWheel.setProgress(maxProgress);
+        startTimer();
     }
 
 

@@ -648,7 +648,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -657,7 +657,8 @@
                         android:id="@+id/rating_bar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        style="@style/RatingBar"/>
 
                     <EditText
                         android:id="@+id/comments"
@@ -666,8 +667,12 @@
                         android:layout_margin="10dp"
                         android:gravity="center|left"
                         android:hint="Comments"
+                        android:textColorHint="@color/dark_gray"
+                        android:background="@drawable/rounded_black_border"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/pure_white" />
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:textColor="@color/pure_black" />
 
 
                     <View
@@ -677,17 +682,33 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="5dp"
+                        android:visibility="gone"
                         android:background="@color/pure_white" />
 
-                    <com.taas.driver.typeface.TypeFaceMuseoRegular
-                        android:id="@+id/ll_submit_rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/RENTAL_PRICE_FARE_ACTIVITY__submit"
-                        android:textColor="@color/pure_white"
-                        android:textSize="30dp"
-                        android:textStyle="bold" />
+
+                   <LinearLayout
+                       android:id="@+id/ll_submit_rating"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="end"
+                       android:paddingRight="10dp"
+                       android:paddingLeft="10dp"
+                       android:background="@drawable/rounded_black_border"
+                       android:gravity="center">
+                       <com.taas.driver.typeface.TypeFaceMuseoRegular
+
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:text="@string/RENTAL_PRICE_FARE_ACTIVITY__submit"
+                           android:textColor="@color/pure_black"
+                           android:textSize="16sp"
+                           android:textStyle="bold" />
+
+
+
+                   </LinearLayout>
+
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>

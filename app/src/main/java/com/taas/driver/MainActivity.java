@@ -34,6 +34,8 @@ import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.taas.GcmServiceClass;
 import com.taas.driver.location.SamLocationRequestService;
 import com.taas.driver.logger.Logger;
@@ -166,6 +168,12 @@ public class MainActivity extends BaseActivity implements Apis,
 
     private ImageView editProfile;
 
+    Object object ;
+
+    private TextView tv_profile_rating;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +197,10 @@ public class MainActivity extends BaseActivity implements Apis,
 
 
         //button_manualDispatch = (Button) findViewById(R.id.button_manualDispatch);
+
+
+        tv_profile_rating  = findViewById(R.id.tv_profile_rating);
+
         driver_id = (TextView) findViewById(com.taas.driver.R.id.driver_id);
         tv_address = (TextView) findViewById(com.taas.driver.R.id.tv_address);
         tv_car_name = (TextView) findViewById(com.taas.driver.R.id.tv_car_name);
@@ -284,11 +296,20 @@ public class MainActivity extends BaseActivity implements Apis,
 
         startService(new Intent(this, TimeService.class));
 
+
+
+
+        findViewById(R.id.ll_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            }
+        });
         findViewById(com.taas.driver.R.id.menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ApporioLog.logD("*********", "" + Locale.getDefault().getDisplayName());
-                if (Locale.getDefault().getLanguage().equals("ar")) {
+                if (languageManager.getLanguage().equals("ar")) {
                     drawer.openDrawer(Gravity.RIGHT);
                 } else {
                     drawer.openDrawer(Gravity.LEFT);
@@ -445,6 +466,7 @@ public class MainActivity extends BaseActivity implements Apis,
         driverName = sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME);
         driverEmail = sessionManager.getUserDetails().get(SessionManager.KEY_DriverEmail);
         driverImage = sessionManager.getUserDetails().get(SessionManager.KEY_DriverImage);
+        tv_profile_rating.setText(""+sessionManager.getUserDetails().get(SessionManager.KEY_Driver_rating)+"");
         driver_id.setText("ID " + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
         tv_profile_name.setText(driverName);
         tv_profile_email.setText(driverEmail);
@@ -669,10 +691,11 @@ public class MainActivity extends BaseActivity implements Apis,
     public void onMapReady(final GoogleMap googleMap) {
         mGooglemap = googleMap;
         mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
-
+        mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
+       // mGooglemap.setMyLocationEnabled(true);
         MapsInitializer.initialize(this);
         try {
-            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, com.taas.driver.R.raw.uber_theme));
+            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_uber));
         } catch (Resources.NotFoundException e) {
         }
 
@@ -684,6 +707,15 @@ public class MainActivity extends BaseActivity implements Apis,
                 @Override
                 public void onLocationUpdate(Location location) {
                     Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
+                    mGooglemap.addMarker(new MarkerOptions()
+                            .flat(true)
+                            .icon(BitmapDescriptorFactory
+                                    .fromResource(R.mipmap.ic_current_location))
+                            .anchor(0.5f, 0.5f)
+                            .position(
+                                    new LatLng(location.getLatitude(), location
+                                            .getLongitude())));
+
                 }
             });
         }

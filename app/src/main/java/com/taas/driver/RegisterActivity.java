@@ -179,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity implements ApiManager.AP
             }
         });
 
-        driver_image.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.iv_profile_pic_upload).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CFAlertDialog.Builder builder = new CFAlertDialog.Builder(RegisterActivity.this);

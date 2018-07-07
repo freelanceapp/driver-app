@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.taas.driver.adapter.ReasonAdapter;
 import com.taas.driver.manager.LanguageManager;
 import com.taas.driver.manager.RideSession;
@@ -85,7 +86,8 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
     LocationSession locationSession;
     LanguageManager languageManager;
     SessionManager sessionManager;
-    TextView customer_info_txt, pick_location_txt, trip_status_txt, your_location_txt, customer_phone_txt, cancel_btn;
+    TextView customer_info_txt, pick_location_txt, trip_status_txt, your_location_txt, customer_phone_txt;
+    LinearLayout cancel_btn,ll_trip_status;
     LinearLayout root;
     ApiManager apiManager;
     ProgressDialog progressDialog;
@@ -113,9 +115,11 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         customer_info_txt = (TextView) findViewById(com.taas.driver.R.id.customer_info_txt);
         pick_location_txt = (TextView) findViewById(com.taas.driver.R.id.pick_location_txt);
         trip_status_txt = (TextView) findViewById(com.taas.driver.R.id.trip_status_txt);
+
         your_location_txt = (TextView) findViewById(com.taas.driver.R.id.your_location_txt);
         customer_phone_txt = (TextView) findViewById(com.taas.driver.R.id.customer_phone_txt);
-        cancel_btn = (TextView) findViewById(com.taas.driver.R.id.cancel_btn);
+        ll_trip_status = findViewById(R.id.ll_trip_status);
+        cancel_btn = (LinearLayout) findViewById(com.taas.driver.R.id.cancel_btn);
         root = (LinearLayout) findViewById(com.taas.driver.R.id.root);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -158,7 +162,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
             }
         });
 
-        trip_status_txt.setOnClickListener(new View.OnClickListener() {
+        ll_trip_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("11")) {  // run arrived API
@@ -216,7 +220,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         mGooglemap = googleMap;
         mGooglemap.setMaxZoomPreference(18);
         try {
-//            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.midnight_commander_theme));
+            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.uber_theme));
         } catch (Resources.NotFoundException e) {
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

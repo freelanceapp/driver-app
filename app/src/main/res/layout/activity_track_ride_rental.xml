@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/root"
     android:orientation="vertical"
-    android:background="@color/tracking_theme"
+    android:background="@color/pure_white"
     tools:context=".trackride.TrackRideActivity">
 
 
@@ -27,28 +27,28 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/back"
                         android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:gravity="center">
 
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:src="@drawable/ic_left_sort_white"
-                            android:tint="@color/icon_8_muted_black" />
+                            android:src="@drawable/ic_back_arrow"
+                            android:tint="@color/pure_black"
+                            android:padding="5dp"/>
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:id="@+id/call_btn"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="5dp">
 
@@ -58,10 +58,20 @@
                             android:gravity="center"
                             android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@drawable/ic_profile_small" />
+                           <FrameLayout
+                               android:layout_width="40dp"
+                               android:layout_height="40dp"
+                               android:background="@drawable/black_circle_border"
+                               >
+                               <ImageView
+                                   android:layout_width="30dp"
+                                   android:layout_height="30dp"
+                                   android:layout_gravity="center"
+                                   android:src="@drawable/ic_profile"
+                                   android:tint="@color/pure_black"/>
+
+                           </FrameLayout>
+
 
                             <com.taas.driver.typeface.TypeFaceMuseoRegular
                                 android:id="@+id/customer_info_txt"
@@ -77,14 +87,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:gravity="center"
+                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:src="@drawable/phone"
+
+                                android:src="@drawable/ic_phone"
                                 android:tint="@color/colorPrimary" />
 
                             <com.taas.driver.typeface.TypeFaceMuseoRegular
@@ -132,7 +143,7 @@
                             android:maxLines="2"
                             android:padding="4dp"
                             android:text=""
-                            android:textColor="@color/icons_8_muted_green_1"
+                            android:textColor="@color/green"
                             android:textSize="13dp"
                             android:textStyle="bold" />
 
@@ -179,9 +190,9 @@
     </android.support.v7.widget.CardView>
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -192,79 +203,101 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".MapsActivity" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:visibility="gone"
-        android:layout_marginLeft="5dp">
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_steering_wheel"
-            android:tint="@color/track_ride_color_theme_text"/>
-
-
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="......................................."
-            android:gravity="center|left"
-            android:layout_weight="1"
-            android:maxLines="2"
-            android:padding="5dp"
-            android:textSize="10dp"
-            android:textColor="@color/track_ride_color_theme_text"
-            android:textStyle=""
-            android:id="@+id/your_location_txt"/>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center|bottom">
-
-
-
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="2"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:text="@string/TRACK_RIDE_ACTIVITY__cancel"
-            android:textStyle="bold"
-            android:textColor="@color/pure_white"
-            android:layout_margin="5dp"
-            android:id="@+id/cancel_btn"
             android:visibility="gone"
-            android:background="@color/icons_8_muted_red"/>
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_steering_wheel"
+                android:tint="@color/track_ride_color_theme_text"/>
 
 
-        <customviews.typefacesviews.TypeFaceTextMonixBold
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="@color/colorPrimary"
-            android:text="@string/TRACK_RIDE_RENTAL_ACTIVITY__status"
-            android:id="@+id/trip_status_txt"
-            android:textSize="15dp"
-            android:layout_margin="5dp"
-            android:textColor="@color/pure_white"
-            android:textStyle="bold"/>
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="......................................."
+                android:gravity="center|left"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:textSize="10dp"
+                android:textColor="@color/pure_black"
+                android:textStyle=""
+                android:id="@+id/your_location_txt"/>
 
-    </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center|bottom">
+
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="visible"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/cancel_btn"
+                android:background="@drawable/round_bg_color_black"
+                android:layout_height="match_parent">
+
+                <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+
+                    android:text="@string/TRACK_RIDE_ACTIVITY__cancel"
+                    android:textStyle="bold"
+                    android:textColor="@color/pure_white"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/ll_trip_status"
+                android:visibility="visible"
+                android:background="@drawable/round_bg_color_black"
+                android:layout_height="match_parent">
+
+                <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                    android:id="@+id/trip_status_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/TRACK_RIDE_RENTAL_ACTIVITY__status"
+                    android:textSize="15sp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
 
 
 

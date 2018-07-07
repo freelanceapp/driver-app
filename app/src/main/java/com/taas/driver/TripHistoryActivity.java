@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
+import com.bumptech.glide.Glide;
 import com.taas.driver.manager.SessionManager;
 import com.taas.driver.models.restmodels.NewRidehistoryModel;
 import com.taas.driver.models.restmodels.ResultStatusChecker;
@@ -72,6 +74,9 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
     ProgressDialog progressDialog;
     private int OPEN_TAB = 0 ;
 
+
+    private static Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,7 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         });
         activityName.setText(this.getResources().getString(com.taas.driver.R.string.your_trips));
 
+        context = this;
         try{OPEN_TAB = Integer.parseInt(""+getIntent().getExtras().getString("tab_number"));}catch (Exception E){}
 
 
@@ -412,6 +418,9 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         @com.sam.placer.annotations.View(com.taas.driver.R.id.tv_status)
         private TextView tv_status;
 
+        @com.sam.placer.annotations.View(com.taas.driver.R.id.ivUserImage)
+        private ImageView ivUserImage;
+
         NewRidehistoryModel.DetailsBean.NormalRideBean mNormalRideResponse;
 
         SessionManager sessionManager;
@@ -430,6 +439,8 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
             tv_drop_addresss.setText("" + mNormalRideResponse.getDrop_location());
             customer_name_txt.setText("" + mNormalRideResponse.getUser_name());
             customer_phone_txt.setText("" + mNormalRideResponse.getUser_phone());
+            Log.d("*****Image--->",mNormalRideResponse.getUser_image());
+            Glide.with(context).load(mNormalRideResponse.getUser_image()).into(ivUserImage);
            // tv_status.setText("" + Config.getStatustext("" + mNormalRideResponse.getRide_status()));
             tv_amount.setText(""+sessionManager.getCurrencyCode()+mNormalRideResponse.getTotal_amount());
         }
@@ -482,6 +493,11 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
         @com.sam.placer.annotations.View(com.taas.driver.R.id.drop_locatipon_layout)
         private LinearLayout drop_locatipon_layout;
 
+        @com.sam.placer.annotations.View(com.taas.driver.R.id.ivUserImage)
+        private ImageView ivUserImage;
+
+
+
 
         NewRidehistoryModel.DetailsBean.RentalRideBean mRentalRideResponse;
 
@@ -501,7 +517,8 @@ public class TripHistoryActivity extends BaseActivity implements ApiManager.APIF
             customer_name_txt.setText("" + mRentalRideResponse.getUser_name());
             customer_phone_txt.setText("" + mRentalRideResponse.getUser_phone());
             tv_status.setText("" + Config.getStatustext("" + mRentalRideResponse.getBooking_status()));
-
+            Log.d("*****Image2--->",mRentalRideResponse.getUser_image());
+            Glide.with(context).load(mRentalRideResponse.getUser_image()).into(ivUserImage);
             if (mRentalRideResponse.getEnd_location().equals("")) {
                 drop_locatipon_layout.setVisibility(View.GONE);
             }

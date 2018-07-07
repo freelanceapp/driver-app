@@ -49,7 +49,7 @@ public class SelectedRentalRideActivity extends Activity implements ApiManager.A
     @Bind(com.taas.driver.R.id.ll_back_ride_select)
     LinearLayout llBackRideSelect;
     @Bind(com.taas.driver.R.id.tv_date_time1)
-    TypefaceTextView tvDateTime1;
+    TextView tvDateTime1;
     @Bind(com.taas.driver.R.id.iv_image_driver)
     CircleImageView ivImageDriver;
     @Bind(com.taas.driver.R.id.customer_name_txt)

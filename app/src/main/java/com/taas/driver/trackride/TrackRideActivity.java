@@ -370,6 +370,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         findViewById(R.id.msgViewBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                chatCount = 0;
                 startActivity(new Intent(TrackRideActivity.this, ChatActivity.class)
                         .putExtra("ride_id", "" + rideSession.getCurrentRideDetails().get(RideSession.RIDE_ID))
                         .putExtra("ride_status", "" + trip_status_txt.getText().toString())
@@ -452,17 +453,18 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         customer_info_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.USER_NAME));
         customer_phone_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.USER_PHONE));
 
+
         if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3") || rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("4")) {
             location_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
             location_text_copy.setText("" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
-            location_txt.setTextColor(Color.parseColor("#2ecc71"));
-            dot.setColorFilter(Color.parseColor("#2ecc71"));
+            location_txt.setTextColor(Color.parseColor("#FFFFFF"));
+            dot.setColorFilter(Color.parseColor("#17cc1d"));
             pencil_icon.setVisibility(View.GONE);
         } else {
             location_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
             //location_txt.setTextColor(Color.parseColor("#e74c3c"));
             location_txt.setTextColor(Color.parseColor("#FFFFFF"));
-            dot.setColorFilter(Color.parseColor("#e74c3c"));
+            dot.setColorFilter(Color.parseColor("#e61010"));
             location_text_copy.setText("" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
             pencil_icon.setVisibility(View.VISIBLE);
         }
@@ -479,6 +481,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(FirebaseChatEvent event) {
         try {
+
             String text = new ZamanUtil(Long.parseLong("" + event.timestamp)).getTime();
             if (text.equals("Just Now") || text.equals("In a few seconds")) {
                 chatCount++;
@@ -686,13 +689,13 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")) {
                 ////  set view when taasdriver needs to reach over pick up point
 
-                bottomLocationLayout.setVisibility(View.VISIBLE);
+                bottomLocationLayout.setVisibility(View.GONE);
 
                 trip_status_txt.setBackground(getResources().getDrawable(R.drawable.round_bg_color_light_gray));
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_black));
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__arrived));
 
-                drawRoute( new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))),new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), mGooglemap, R.drawable.ic_green_marker_small, R.drawable.ic_very_small);
+                drawRoute( new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))),new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), mGooglemap, R.mipmap.ic_current_location, R.drawable.ic_very_small);
                 cancel_btn.setVisibility(View.VISIBLE);
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
@@ -738,6 +741,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 startRunnableProcess();
 //            drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__end));
+                trip_status_txt.setTextColor(getResources().getColor(R.color.pure_white));
+                trip_status_txt.setBackground(getResources().getDrawable(R.drawable.round_bg_color_red));
                 cancel_btn.setVisibility(View.GONE);
                 meter_txt.setVisibility(View.VISIBLE);
                 sos.setVisibility(View.VISIBLE);

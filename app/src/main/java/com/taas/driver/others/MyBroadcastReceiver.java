@@ -48,7 +48,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             i.putExtra("" + Config.IntentKeys.RIDE_ID, ride_id);
             context.startActivity(i);
         } else if (ride_status.equals("10")) {  //  ride booked for rental type
-            i.setClassName("com.apporio.demotaxiappdriver", "com.apporio.demotaxiappdriver.ReceiveRentalPassengerActivity");
+            i.setClassName("com.taas.driver", "com.taas.driver.ReceiveRentalPassengerActivity");
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("" + Config.IntentKeys.RIDE_ID, ride_id);
             context.startActivity(i);

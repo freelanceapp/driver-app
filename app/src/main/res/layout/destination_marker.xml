@@ -4,14 +4,14 @@
     android:layout_height="wrap_content">
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        >
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_marker_green"
-            android:layout_gravity="center"
-            android:tint="@color/green"/>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_green_marker"
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="12dp"

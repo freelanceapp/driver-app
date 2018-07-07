@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,7 +73,7 @@ public class RentalPriceFareActiviy extends Activity implements ApiManager.APIFE
     @Bind(com.taas.driver.R.id.rating_bar)
     RatingBar ratingBar;
     @Bind(com.taas.driver.R.id.ll_submit_rating)
-    TextView llSubmitRating;
+    LinearLayout llSubmitRating;
     @Bind(com.taas.driver.R.id.comments)
     EditText comments;
     @Bind(com.taas.driver.R.id.night_time_txt)

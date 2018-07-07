@@ -335,6 +335,7 @@
                    android:orientation="vertical"
                    android:gravity="center"
                    android:padding="2dp"
+                   android:visibility="gone"
                    android:layout_marginBottom="5dp">
                    <LinearLayout
                        android:layout_width="40dp"
@@ -405,8 +406,8 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"></RelativeLayout>
                     <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/white_filled_circle"
                         android:id="@+id/curent_location"

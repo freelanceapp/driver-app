@@ -244,8 +244,8 @@ public class DocumentActivity extends Activity implements ApiManager.APIFETCHER 
 //            }
 //        }
 
-        @Click(R.id.attachment)
-        private void OnAttachmentElementClick(){
+        @Click(R.id.llUpload)
+        private void OnUplaodBtnClick(){
             if(mMsgBean.getDocumnet_varification_status().equals("0") || mMsgBean.getDocumnet_varification_status().equals("3") ){
                 DocumentActivity.this.startActivity(new Intent(DocumentActivity.this , PhotoUploaderActivity.class)
                         .putExtra("driver_id" , ""+getIntent().getExtras().get("driver_id"))

@@ -11,7 +11,7 @@
 
     <dimen name="icon_width">20dp</dimen>
     <dimen name="icon_height">20dp</dimen>
-    <dimen name="menu_text_size">11dp</dimen>
+    <dimen name="menu_text_size">14dp</dimen>
     <dimen name="main_screen_bottom_layout">140dp</dimen>
 
     <dimen name="tedbottompicker_grid_layout_margin">1dp</dimen>

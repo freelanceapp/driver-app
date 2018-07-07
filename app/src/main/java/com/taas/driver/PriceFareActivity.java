@@ -154,6 +154,25 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                 finish();
             }
         });
+
+
+
+//        findViewById(R.id.ll_submit_rating).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String rating = String.valueOf(ratingBar.getRating());
+//                if (rating.equals("0.0")) {
+//                    Toast.makeText(PriceFareActivity.this, PriceFareActivity.this.getResources().getString(com.taas.driver.R.string.please_select_stars), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    String user_id = doneRideInfo.getMsg().getUser_id().toString();
+//                    Log.d("user_id===", doneRideInfo.getMsg().getUser_id().toString());
+//                    apiManager.execution_method_get(Config.ApiKeys.KEY_RATING_DRIVER, Apis.ratingDriver + "?ride_id=" + doneRideInfo.getMsg().getRide_id().toString() + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&user_id=" + user_id + "&rating_star=" + rating + "&comment=" + comments.getText().toString() + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+//                    //  dialog.dismiss();
+//                }
+//            }
+//        });
+
+
     }
 
     @Override
@@ -195,9 +214,11 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                     }
 
                     if (doneRideInfo.getMsg().getPayment_status().equals("0")) {
-                        btn_rate_user.setVisibility(View.GONE);
+                        findViewById(R.id.ll_submit_rating).setVisibility(View.GONE);
+                       // btn_rate_user.setVisibility(View.GONE);
                     } else if (doneRideInfo.getMsg().getPayment_status().equals("1")) {
-                        btn_rate_user.setVisibility(View.VISIBLE);
+                        findViewById(R.id.ll_submit_rating).setVisibility(View.VISIBLE);
+                        //btn_rate_user.setVisibility(View.VISIBLE);
                     }
 
                     pick_location_txt.setText("" + doneRideInfo.getMsg().getBegin_location());
@@ -316,6 +337,10 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
         });
 
         dialog.show();
+
+
+
+
     }
 
 
@@ -339,6 +364,8 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
 //        window.setGravity(Gravity.CENTER_VERTICAL);
 
         final RatingBar rating_bar = (RatingBar) dialog.findViewById(com.taas.driver.R.id.rating_bar);
+        final  EditText edtComments = dialog.findViewById(R.id.comments);
+
 
         dialog.findViewById(com.taas.driver.R.id.ll_submit_rating).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,7 +376,7 @@ public class PriceFareActivity extends AppCompatActivity implements ApiManager.A
                 } else {
                     String user_id = doneRideInfo.getMsg().getUser_id().toString();
                     Log.d("user_id===", doneRideInfo.getMsg().getUser_id().toString());
-                    apiManager.execution_method_get(Config.ApiKeys.KEY_RATING_DRIVER, Apis.ratingDriver + "?ride_id=" + doneRideInfo.getMsg().getRide_id().toString() + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&user_id=" + user_id + "&rating_star=" + rating + "&comment=" + comments.getText().toString() + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
+                    apiManager.execution_method_get(Config.ApiKeys.KEY_RATING_DRIVER, Apis.ratingDriver + "?ride_id=" + doneRideInfo.getMsg().getRide_id().toString() + "&driver_id=" + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID) + "&user_id=" + user_id + "&rating_star=" + rating + "&comment=" + edtComments.getText().toString() + "&driver_token=" + sessionManager.getUserDetails().get(SessionManager.KEY_DriverToken) + "&language_id=" + languageManager.getLanguageDetail().get(LanguageManager.LANGUAGE_ID));
                     dialog.dismiss();
                 }
             }

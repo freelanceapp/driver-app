@@ -114,6 +114,7 @@ public class RentalRideInfoModel {
          * driver_image :
          * car_number :
          * car_type_name : Luxury
+         * car_type_sub_name:""
          * car_type_image : uploads/car/car_2.png
          * car_model_name :
          * car_model_image :
@@ -193,12 +194,21 @@ public class RentalRideInfoModel {
         private String driver_image;
         private String car_number;
         private String car_type_name;
+        private String car_type_sub_name;
         private String car_type_image;
         private String car_model_name;
         private String car_model_image;
         private String package_name;
         private String package_price;
         private String payment_option_name;
+
+        public String getCar_type_sub_name() {
+            return car_type_sub_name;
+        }
+
+        public void setCar_type_sub_name(String car_type_sub_name) {
+            this.car_type_sub_name = car_type_sub_name;
+        }
 
         public String getRental_booking_id() {
             return rental_booking_id;
