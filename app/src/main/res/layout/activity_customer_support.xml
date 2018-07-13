@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/customer_support"
-                android:textSize="17sp"
+                android:textSize="14sp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"/>
@@ -128,12 +128,14 @@
                         android:paddingRight="10dp"
                         android:hint="@string/full_name"
                         android:text=""
+                        android:visibility="gone"
                         android:textSize="16dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="4dp"
+                        android:visibility="gone"
                         android:background="@color/pure_black"/>
                 </LinearLayout>
 
@@ -145,6 +147,7 @@
                     android:gravity="center|left"
                     android:orientation="vertical"
                     android:padding="5dp"
+                    android:visibility="gone"
                     android:layout_marginTop="10dp">
 
                     <LinearLayout
@@ -185,6 +188,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textSize="16dp"
+                        android:visibility="gone"
                         android:hint="@string/email"/>
 
                     <View
@@ -203,6 +207,7 @@
                     android:gravity="center|left"
                     android:orientation="vertical"
                     android:padding="5dp"
+                    android:visibility="gone"
                     android:layout_marginTop="10dp">
 
                     <LinearLayout

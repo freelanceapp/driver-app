@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
+import com.squareup.picasso.Picasso;
 import com.taas.driver.ChatActivity;
 import com.taas.driver.Config;
 import com.taas.driver.LocationEvent;
@@ -120,7 +121,6 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
     private int chatCount = 0;
 
 
-
     ProgressDialog progressDialog;
     DBHelper dbHelper;
     boolean is_location_updation_running = false;
@@ -142,6 +142,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
 
     private LinearLayout llChatCount;
     private TextView tvChatCount;
+
+    private ImageView userImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,8 +189,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         chat_message = (TextView) findViewById(R.id.chat_message);
 
         bottomLocationLayout = findViewById(R.id.bottomLocationLayout);
-        location_text_copy  = findViewById(R.id.location_text_copy);
-
+        location_text_copy = findViewById(R.id.location_text_copy);
+        userImage =  findViewById(R.id.userImage);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getSupportActionBar().hide();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -495,7 +497,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         message_layout.setVisibility(View.VISIBLE);
         chat_message.setText("" + message);
         llChatCount.setVisibility(View.VISIBLE);
-        tvChatCount.setText(""+chatCount);
+        tvChatCount.setText("" + chatCount);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -695,7 +697,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_black));
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__arrived));
 
-                drawRoute( new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))),new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), mGooglemap, R.mipmap.ic_current_location, R.drawable.ic_very_small);
+                drawRoute(new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), mGooglemap, R.mipmap.ic_current_location, R.drawable.ic_very_small);
                 cancel_btn.setVisibility(View.VISIBLE);
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
@@ -705,7 +707,7 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_black));
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__begin));
                 cancel_btn.setVisibility(View.VISIBLE);
-                bottomLocationLayout.setVisibility(View.VISIBLE);
+
                 meter_txt.setVisibility(View.GONE);
                 sos.setVisibility(View.GONE);
                 if (rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE).equals("") || rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE) == null || rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE).equals("0.0")) {  // no drop off location
@@ -725,12 +727,11 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                     //////////////////////////////////////////////////
 
 
-
                     Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
                     Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
-                    drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green , R.drawable.dot_red);
+                    drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)), Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))), mGooglemap, R.drawable.dot_green, R.drawable.dot_red);
                     try {
-                    //    DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin, destination, mGooglemap);
+                        //    DrawRouteMaps.getInstance(this, this, sessionManager, map_progress, true).draw(origin, destination, mGooglemap);
                     } catch (Exception e) {
                     }
 
@@ -741,6 +742,8 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 startRunnableProcess();
 //            drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__end));
+                bottomLocationLayout.setVisibility(View.VISIBLE);
+                findViewById(R.id.location_changer).setVisibility(View.VISIBLE);
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_white));
                 trip_status_txt.setBackground(getResources().getDrawable(R.drawable.round_bg_color_red));
                 cancel_btn.setVisibility(View.GONE);
@@ -759,12 +762,25 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
         try {
             DrawRouteMaps.getInstance(this, 6, R.color.pure_black).draw(origin, destination, mMap, sessionManager);
             //DrawMarker.getInstance(this).draw(mMap, origin, origin_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
-           // DrawMarker.getInstance(this).draw(mMap, destination, destination_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
+            // DrawMarker.getInstance(this).draw(mMap, destination, destination_icon, "" + rideSession.getCurrentRideDetails().get(RideSession.DROP_LOCATION));
 
-            Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
-            if(rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")){
+
+            if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("3")) {
                 Maputils.setDestinationMarkerForPickPoint2(this, mGooglemap, destination, "Customer Location ");
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                mGooglemap.setMyLocationEnabled(true);
+
             }else{
+                Maputils.setDestinationMarkerForPickPoint(this, mGooglemap, origin, "Customer Location ");
                 Maputils.setDestinationMarkerForDropPoint(this, mGooglemap, destination, "Customer Location ");
             }
 
@@ -887,7 +903,9 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
                 if (APINAME.equals("" + Config.ApiKeys.KEY_VIEW_RIDE_INFO_DRIVER)) {
                     ViewRideInfoDriver viewRideInfoDriver = gson.fromJson("" + script, ViewRideInfoDriver.class);
                     rideSession.setDropLocation(viewRideInfoDriver.getDetails().getDrop_location(), "" + viewRideInfoDriver.getDetails().getDrop_lat(), "" + viewRideInfoDriver.getDetails().getDrop_long());
-                }
+
+                    Picasso.with(this).load(viewRideInfoDriver.getDetails().getUser_image()).into(userImage);
+                 }
 
                 setView();
 

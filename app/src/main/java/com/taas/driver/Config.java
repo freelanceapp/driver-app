@@ -121,6 +121,12 @@ public class Config {
 
         String LOGOUT = "LOGOUT";
         String KEY_DEMO_USER = "KEY_DEMO_USER";
+
+
+
+        String Key_privacy_policy = "privacy_policy";
+        String Key_software_licence = "software_licence";
+        String Key_copyrights = "copyrights";
     }
 
 

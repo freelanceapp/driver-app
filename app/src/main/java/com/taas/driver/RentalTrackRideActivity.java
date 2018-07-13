@@ -19,12 +19,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apporio.apporiologs.ApporioLog;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.taas.driver.adapter.ReasonAdapter;
 import com.taas.driver.manager.LanguageManager;
@@ -78,6 +80,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.Bind;
+
 public class RentalTrackRideActivity extends AppCompatActivity implements OnMapReadyCallback, ApiManager.APIFETCHER {
 
 
@@ -96,6 +100,9 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     final Handler mHandeler = new Handler();
     Runnable mRunnable;
+
+
+    private ImageView userImage;
 
 
     @Override
@@ -121,6 +128,8 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         ll_trip_status = findViewById(R.id.ll_trip_status);
         cancel_btn = (LinearLayout) findViewById(com.taas.driver.R.id.cancel_btn);
         root = (LinearLayout) findViewById(com.taas.driver.R.id.root);
+
+        userImage = findViewById(R.id.userImage);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getSupportActionBar().hide();
@@ -187,6 +196,7 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
         customer_info_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.USER_NAME));
         customer_phone_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.USER_PHONE));
         pick_location_txt.setText("" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LOCATION));
+        Glide.with(this).load(rideSession.getCurrentRideDetails().get(RideSession.USER_IMAGE)).into(userImage);
         setviewAccordingToStatus();
     }
 
@@ -309,9 +319,11 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     public void setviewAccordingToStatus() {
         ////  set view when taasdriver needs to reach over pick up point
+       // Glide.with(this).load(rideSession.getCurrentRideDetails().get(RideSession))
         if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("11")) {
             cancel_btn.setVisibility(View.VISIBLE);
             trip_status_txt.setText("" + this.getResources().getString(com.taas.driver.R.string.TRACK_RIDE_RENTAL_ACTIVITY__located));
+
             drawRoute(new LatLng(Double.parseDouble("" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)), Double.parseDouble("" + rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))), new LatLng(Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(locationSession.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))), mGooglemap, com.taas.driver.R.drawable.ic_contact_green, com.taas.driver.R.drawable.ic_very_small);
         }
         if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("12")) {

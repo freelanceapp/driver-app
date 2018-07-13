@@ -88,4 +88,14 @@ public interface Apis {
     String AppVersions = baseDomain + "app_version.php"; // application_version  application  (1 for user and 2 for driver)   flag (1 for ios and 2 for android)
 
     String BackGroundAppUpdate = baseDomain + "driver_backgroud_location.php"; // driver_id  current_lat  current_long  current_location  driver_token
+
+
+
+
+    String privacy_policy = baseDomain + "privacy_policy.php?";
+    String software_licence = baseDomain + "software_licence.php?";
+    String copyrights = baseDomain + "copyrights.php?";
+
+
+
 }

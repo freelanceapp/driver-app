@@ -33,7 +33,7 @@ public class TermsAndCondition extends AppCompatActivity implements ApiManager.A
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.taas.driver.R.layout.activity_tc);
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
         tca = this;
         apiManager = new ApiManager(this);
 

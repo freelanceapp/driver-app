@@ -112,6 +112,8 @@ public class SelectedRidesActivity extends AppCompatActivity implements ApiManag
         if(ride_status.equals(Config.Status.NORMAL_CANCEL_BY_USER) || ride_status.equals(Config.Status.VAL_4) || ride_status.equals(Config.Status.NORMAL_RIDE_END) || ride_status.equals(Config.Status.NORMAL_CANCEL_BY_DRIVER) || ride_status.equals(Config.Status.NORMAL_RIDE_CANCEl_BY_ADMIN)){
 
             llTrackRide.setVisibility(View.GONE);
+        }else{
+            llTrackRide.setVisibility(View.VISIBLE);
         }
 
 

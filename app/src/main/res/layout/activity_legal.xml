@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/pure_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/pure_white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/root_action_bar"
+            android:background="@color/pure_white">
+
+            <LinearLayout
+                android:id="@+id/llBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_back_arrow"
+                    android:tint="@color/pure_black"
+                    android:id="@+id/back"
+                    android:padding="5dp"/>
+            </LinearLayout>
+            <com.taas.driver.typeface.TypeFaceMuseoRegular
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/MAIN_ACTIVITY__legal_menu"
+                android:paddingRight="15dp"
+
+                android:layout_weight="1"
+
+                android:id="@+id/tv_toolbar_text"
+                android:textColor="@color/pure_black"
+                android:gravity="end|center_vertical"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                 <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:alpha="0.8"
+                android:orientation="vertical"
+                android:background="@color/pure_white"
+                android:gravity="start|center_vertical">
+
+                <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/MAIN_ACTIVITY__legal_menu"
+                    android:textColor="@color/pure_black"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/pure_black"/>
+            </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_about_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/pure_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/about_us"
+                    android:tint="@color/pure_black"
+                    android:visibility="gone" />
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="@string/MAIN_ACTIVITY__about_us"
+                    android:textColor="@color/pure_black"
+                    android:textSize="@dimen/menu_settings_text_size" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_terms_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/pure_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/terms"
+                    android:tint="@color/pure_black"
+                    android:visibility="gone" />
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="@string/MAIN_ACTIVITY__terms_and_condition"
+                    android:textColor="@color/pure_black"
+                    android:textSize="@dimen/menu_settings_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_privacy_policy"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/pure_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/terms"
+                    android:tint="@color/pure_black"
+                    android:visibility="gone" />
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/pure_black"
+                    android:textSize="@dimen/menu_settings_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_software_licences"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/pure_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/terms"
+                    android:tint="@color/pure_black"
+                    android:visibility="gone" />
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="@string/software_licences"
+                    android:textColor="@color/pure_black"
+                    android:textSize="@dimen/menu_settings_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_copyrights"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/pure_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingStart="25dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/terms"
+                    android:tint="@color/pure_black"
+                    android:visibility="gone" />
+
+                <com.taas.driver.typeface.TypeFaceMuseoRegular
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center|left"
+                    android:text="@string/copyrights"
+                    android:textColor="@color/pure_black"
+                    android:textSize="@dimen/menu_settings_text_size" />
+            </LinearLayout>
+
+
+          </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+</LinearLayout>
+
+
+

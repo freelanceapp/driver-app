@@ -285,21 +285,22 @@
                 android:layout_marginBottom="20dp"
 
                 />
+
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/time_txt"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
                 android:text="00"
                 android:textColor="@color/pure_white"
-                android:textStyle="bold"
                 android:textSize="30sp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:visibility="visible"
-                android:gravity="center"
-                android:layout_below="@+id/logo"
-                android:layout_marginTop="30dp"/>
+                android:textStyle="bold"
+                android:visibility="visible" />
 
             <!--</RelativeLayout>-->
         </FrameLayout>

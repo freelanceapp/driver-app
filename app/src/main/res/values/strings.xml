@@ -437,7 +437,7 @@
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__package_price">Package Price</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__pick_up_point">Pick up Point</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__note_this_request_will_be_automatically_rejected_in_30_seconds">NOTE : This request will be automatically rejected in 30 seconds</string>
-    <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__ignore">Reject</string>
+    <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__ignore">Pass</string>
     <string name="RECEIVE_RENTAL_PASSENGER_ACTIVITY__accept">Accept</string>
 
 
@@ -675,6 +675,11 @@
     <string name="password">Password</string>
     <string name="upload">Upload</string>
 
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="software_licences">Software Licences</string>
+    <string name="copyrights">Copyrights</string>
+    <string name="MAIN_ACTIVITY__legal_menu">Legal</string>
+    <string name="SETTINGS_ACTIVITY_profile_settings">Profile Settings</string>
 
 </resources>
 

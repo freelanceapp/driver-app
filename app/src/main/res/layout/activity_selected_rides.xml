@@ -228,7 +228,8 @@
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:background="@color/pure_black"
-                  android:paddingTop="20dp">
+                  android:paddingTop="20dp"
+                  android:visibility="visible">
                 <LinearLayout
                     android:id="@+id/ll_location_module"
                     android:layout_width="match_parent"
@@ -331,7 +332,35 @@
 
 
                   <include layout="@layout/selected_ride_layout_element" />
+
               </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_track_ride"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_bg_color_black"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone">
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:src="@drawable/ic_trips"
+                       android:tint="@color/pure_white"/>
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/SELECTED_RIDE_ACTIVITY__go_to_your_current_ride"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/pure_white"/>
+                </LinearLayout>
             </LinearLayout>
 
         </ScrollView>
@@ -344,21 +373,7 @@
         android:visibility="gone"/>
 
 
-    <LinearLayout
-        android:id="@+id/ll_track_ride"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:visibility="gone">
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/SELECTED_RIDE_ACTIVITY__go_to_your_current_ride"
-            android:textSize="20dp"
-            android:textColor="@color/pure_white"/>
-    </LinearLayout>
+
 
 
 

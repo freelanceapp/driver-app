@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -241,8 +242,8 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                         pickupAddressTxt.setText("" + response.getDetails().getPickup_location());
                         TimeOfBookingTxt.setText("" + response.getDetails().getBooking_time());
                         carTypeNameTxt.setText("" + response.getDetails().getCar_type_name());
-                        if(response.getDetails().getCar_type_sub_name()!=null || !response.getDetails().getCar_type_sub_name().isEmpty()){
-                            car_type_sub_name_txt.setText(""+response.getDetails().getCar_type_sub_name());
+                        if(response.getDetails().getCar_type_subname()!=null || !response.getDetails().getCar_type_subname().isEmpty()){
+                            car_type_sub_name_txt.setText(""+response.getDetails().getCar_type_subname());
                             car_type_sub_name_txt.setVisibility(View.VISIBLE);
                         }else{
                             car_type_sub_name_txt.setVisibility(View.GONE);
@@ -273,10 +274,10 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                     if (ac_check.getStatus() == 1) {
                         mediaPlayer.stop();
                         NewRideAcceptmodel accept_response = gson.fromJson("" + script, NewRideAcceptmodel.class);
-                        new RideSession(this).setRentalRideSession(accept_response.getDetails().getRental_booking_id(), accept_response.getDetails().getUser_id(), accept_response.getDetails().getUser_name(), accept_response.getDetails().getUser_phone(), accept_response.getDetails().getReferral_code(), accept_response.getDetails().getPickup_lat(), accept_response.getDetails().getPickup_long(), accept_response.getDetails().getPickup_location(), "", "", "", accept_response.getDetails().getBooking_date(), "ride_time", accept_response.getDetails().getBooking_date(), accept_response.getDetails().getBooking_time(), accept_response.getDetails().getDriver_id(), accept_response.getDetails().getBooking_type(), "" + Config.Status.RENTAL_ACCEPTED, accept_response.getDetails().getStatus());
+                        new RideSession(this).setRentalRideSession(accept_response.getDetails().getRental_booking_id(), accept_response.getDetails().getUser_id(), accept_response.getDetails().getUser_name(),accept_response.getDetails().getUser_image(), accept_response.getDetails().getUser_phone(), accept_response.getDetails().getReferral_code(), accept_response.getDetails().getPickup_lat(), accept_response.getDetails().getPickup_long(), accept_response.getDetails().getPickup_location(), "", "", "", accept_response.getDetails().getBooking_date(), "ride_time", accept_response.getDetails().getBooking_date(), accept_response.getDetails().getBooking_time(), accept_response.getDetails().getDriver_id(), accept_response.getDetails().getBooking_type(), "" + Config.Status.RENTAL_ACCEPTED, accept_response.getDetails().getStatus());
                         finish();
                         startActivity(new Intent(ReceiveRentalPassengerActivity.this, RentalTrackRideActivity.class));
-                        Toast.makeText(this, "" + accept_response.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "" + accept_response.getMessage(), Toast.LENGTH_SHORT).show();
                         FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
 
                     } else {
@@ -299,6 +300,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                     break;
             }
         } catch (Exception e) {
+            Log.d("***",e.toString());
         }
     }
 

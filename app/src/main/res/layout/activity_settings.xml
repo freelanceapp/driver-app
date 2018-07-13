@@ -3,34 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pure_white"
-    tools:context=".settings.SettingsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".settings.SettingsActivity"
+    android:background="@color/pure_white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/pure_white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/pure_white"
-            android:id="@+id/root_action_bar">
+            android:id="@+id/root_action_bar"
+            android:background="@color/pure_white">
 
-           <LinearLayout
-               android:layout_width="50dp"
-               android:layout_height="50dp"
-               android:gravity="center">
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_back_arrow"
-                android:tint="@color/pure_black"
-                android:id="@+id/back"
-                android:padding="5dp"/>
-           </LinearLayout>
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_back_arrow"
+                    android:tint="@color/pure_black"
+                    android:id="@+id/back"
+                    android:padding="5dp"/>
+            </LinearLayout>
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -67,11 +69,112 @@
                     android:background="@color/pure_white"
                     android:gravity="start|center_vertical">
 
-                    <com.taas.driver.typeface.TypeFaceTextMeseoBold
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                        android:text="@string/SETTINGS_ACTIVITY_profile_settings"
+                        android:textColor="@color/pure_black"
+                        android:textStyle="bold" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/pure_black"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30dp"
+                    android:paddingBottom="30dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_profile_pic"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        app:civ_border_width="4dp"
+                        app:civ_border_color="@color/pure_black"
+                        android:src="@drawable/profile_user" />
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/llName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
+
+
+                        <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/CUSTOMER_SUPPORT_ACTIVITY__your_name"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
+                            android:id="@+id/tv_phone_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp" />
+
+
+                        <com.taas.driver.typeface.TypeFaceMuseoRegular
+                            android:id="@+id/tv_profile_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/email"
+                            android:textColor="@color/color_menu_text"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_edit"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/pencil"
+                        app:civ_border_width="1.5dp"
+                        app:civ_border_color="@color/pure_black"
+
+                        />
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:alpha="0.8"
+                    android:orientation="vertical"
+                    android:background="@color/pure_white"
+                    android:gravity="start|center_vertical">
+
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="20dp"
                         android:text="@string/SETTINGS_ACTIVITY_app_settings"
                         android:textColor="@color/pure_black"
                         android:textStyle="bold" />
@@ -81,6 +184,7 @@
                         android:layout_marginLeft="15dp"
                         android:background="@color/pure_black"/>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/ll_language_btn"
@@ -109,14 +213,43 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_logout_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/pure_white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_height"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_logout"
+                        android:tint="@color/pure_black" />
+
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center|left"
+                        android:text="@string/PROFILE_ACTIVITY__logout"
+                        android:textColor="@color/pure_black"
+                        android:textSize="@dimen/menu_settings_text_size" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:alpha="0.8"
                     android:background="@color/pure_white"
                     android:gravity="start|center_vertical"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <com.taas.driver.typeface.TypeFaceTextMeseoBold
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -138,7 +271,7 @@
                     android:background="@color/pure_white"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:paddingLeft="15dp">
 
                     <ImageView
@@ -168,7 +301,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="15dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
@@ -191,17 +324,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:alpha="0.8"
+                    android:visibility="gone"
                     android:background="@color/pure_white"
                     android:gravity="start|center_vertical"
                     android:orientation="vertical">
 
-                    <com.taas.driver.typeface.TypeFaceTextMeseoBold
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:text="@string/SETTINGS_ACTIVITY_information_settings"
-                        android:textColor="@color/settings_strip_text_color"
+                        android:textColor="@color/pure_black"
                         android:textStyle="bold" />
                     <View
                         android:layout_width="match_parent"
@@ -218,14 +352,14 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="15dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/terms"
-                        android:tint="@color/colorPrimary"
+                        android:tint="@color/pure_black"
                         android:visibility="visible" />
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
@@ -233,7 +367,7 @@
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
                         android:text="@string/MAIN_ACTIVITY__terms_and_condition"
-                        android:textColor="@color/color_menu_text"
+                        android:textColor="@color/pure_black"
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
@@ -247,14 +381,14 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="15dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/about_us"
-                        android:tint="@color/colorPrimary"
+                        android:tint="@color/pure_black"
                         android:visibility="visible" />
 
                     <com.taas.driver.typeface.TypeFaceMuseoRegular
@@ -262,7 +396,7 @@
                         android:layout_height="fill_parent"
                         android:gravity="center|left"
                         android:text="@string/MAIN_ACTIVITY__about_us"
-                        android:textColor="@color/color_menu_text"
+                        android:textColor="@color/pure_black"
                         android:textSize="@dimen/menu_settings_text_size" />
                 </LinearLayout>
 
@@ -276,14 +410,14 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingLeft="15dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width"
                         android:layout_height="@dimen/icon_height"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/version"
-                        android:tint="@color/colorPrimary"
+                        android:tint="@color/pure_black"
                         android:visibility="visible" />
 
                     <LinearLayout
@@ -297,11 +431,11 @@
                             android:layout_height="fill_parent"
                             android:gravity="center_vertical"
                             android:text="@string/MAIN_ACTIVITY__versions"
-                            android:textColor="@color/color_menu_text"
+                            android:textColor="@color/pure_black"
                             android:textSize="@dimen/menu_settings_text_size" />
 
                         <com.taas.driver.typeface.TypeFaceMuseoRegular
-                           android:id="@+id/textView_version_name"
+                            android:id="@+id/textView_version_name"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:gravity="center_vertical"
@@ -324,3 +458,636 @@
 
     </LinearLayout>
 </LinearLayout>
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.taas.user.settings.SettingsActivity">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar_text"-->
+    <!--style="@style/ToolBarWithNavigationBack"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="@color/colorWhite">-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceMuseoRegular-->
+    <!--android:id="@+id/tv_toolbar_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Settings"-->
+    <!--android:textColor="@color/colorPrimary"-->
+    <!--android:textSize="16dp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorWhite">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorWhite"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:alpha="0.8"-->
+    <!--android:background="@color/settings_strip_color"-->
+    <!--android:gravity="start|center_vertical">-->
+
+    <!--<com.taas.user.typeface.TypefaceTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:text="@string/SETTINGS_ACTIVITY_app_settings"-->
+    <!--android:textColor="@color/settings_strip_text_color"-->
+    <!--android:textStyle="bold" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_language_btn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/ic_language"-->
+    <!--android:tint="@color/pure_black" />-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceTextMonixRegular-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center|left"-->
+    <!--android:text="@string/language"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:alpha="0.8"-->
+    <!--android:background="@color/settings_strip_color"-->
+    <!--android:gravity="start|center_vertical">-->
+
+    <!--<com.taas.user.typeface.TypefaceTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:text="@string/SETTINGS_ACTIVITY_support_settings"-->
+    <!--android:textColor="@color/settings_strip_text_color"-->
+    <!--android:textStyle="bold" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_customer_btn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/ic_phone"-->
+    <!--android:tint="@color/pure_black" />-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceTextMonixRegular-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center|left"-->
+    <!--android:text="@string/TRIAL_ACTIVITY__customer_suppport"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/pure_black" />-->
+
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_report_issue_btn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/report"-->
+    <!--android:tint="@color/pure_black" />-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceTextMonixRegular-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center|left"-->
+    <!--android:text="@string/report_issue"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:alpha="0.8"-->
+    <!--android:background="@color/settings_strip_color"-->
+    <!--android:gravity="start|center_vertical">-->
+
+    <!--<com.taas.user.typeface.TypefaceTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:text="@string/SETTINGS_ACTIVITY_information_settings"-->
+    <!--android:textColor="@color/settings_strip_text_color"-->
+    <!--android:textStyle="bold" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_terms_btn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/ic_terms_condition"-->
+    <!--android:tint="@color/pure_black"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceTextMonixRegular-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center|left"-->
+    <!--android:text="@string/TRIAL_ACTIVITY__terms_and_condition"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/pure_black" />-->
+
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_about_btn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/ic_about_us"-->
+    <!--android:tint="@color/pure_black"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<com.taas.user.samir.customviews.TypeFaceTextMonixRegular-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center|left"-->
+    <!--android:text="@string/TRIAL_ACTIVITY__about_us"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+    <!--</LinearLayout>-->
+
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/pure_black" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/pure_white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="25dp"-->
+    <!--android:visibility="visible">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/icon_width"-->
+    <!--android:layout_height="@dimen/icon_height"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:src="@drawable/ic_about_us"-->
+    <!--android:tint="@color/pure_black"-->
+    <!--android:visibility="gone" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="start|center_vertical"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<com.taas.user.typeface.TypefaceTextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:text="@string/MAIN_ACTIVITY__versions"-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+
+    <!--<com.taas.user.typeface.TypefaceTextView-->
+    <!--android:id="@+id/textView_version_name"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:text=""-->
+    <!--android:textColor="@color/pure_black"-->
+    <!--android:textSize="@dimen/menu_settings_text_size" />-->
+
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_marginBottom="20dp"-->
+    <!--android:background="@color/icons_8_muted_grey" />-->
+
+
+    <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
+
+
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/pure_white"-->
+    <!--tools:context=".settings.SettingsActivity">-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center"-->
+            <!--android:background="@color/pure_white"-->
+            <!--android:id="@+id/root_action_bar">-->
+
+           <!--<LinearLayout-->
+               <!--android:layout_width="50dp"-->
+               <!--android:layout_height="50dp"-->
+               <!--android:gravity="center">-->
+            <!--<ImageView-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:src="@drawable/ic_back_arrow"-->
+                <!--android:tint="@color/pure_black"-->
+                <!--android:id="@+id/back"-->
+                <!--android:padding="5dp"/>-->
+           <!--</LinearLayout>-->
+            <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:text="@string/setting"-->
+                <!--android:paddingRight="15dp"-->
+
+                <!--android:layout_weight="1"-->
+
+                <!--android:id="@+id/tv_toolbar_text"-->
+                <!--android:textColor="@color/pure_black"-->
+                <!--android:gravity="end|center_vertical"-->
+                <!--android:textStyle="bold"/>-->
+
+
+        <!--</LinearLayout>-->
+
+
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorWhite">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/colorWhite"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:alpha="0.8"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="start|center_vertical">-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceTextMeseoBold-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:layout_marginRight="15dp"-->
+                        <!--android:text="@string/SETTINGS_ACTIVITY_app_settings"-->
+                        <!--android:textColor="@color/pure_black"-->
+                        <!--android:textStyle="bold" />-->
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:background="@color/pure_black"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_language_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/change_language"-->
+                        <!--android:tint="@color/pure_black" />-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="fill_parent"-->
+                        <!--android:gravity="center|left"-->
+                        <!--android:text="@string/change_language"-->
+                        <!--android:textColor="@color/pure_black"-->
+                        <!--android:textSize="@dimen/menu_settings_text_size" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:alpha="0.8"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="start|center_vertical"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceTextMeseoBold-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:layout_marginRight="15dp"-->
+                        <!--android:text="@string/SETTINGS_ACTIVITY_support_settings"-->
+                        <!--android:textColor="@color/pure_black"-->
+                        <!--android:textStyle="bold" />-->
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:background="@color/pure_black"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_customer_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:visibility="visible"-->
+                    <!--android:paddingLeft="15dp">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/customer_support"-->
+                        <!--android:tint="@color/pure_black" />-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="fill_parent"-->
+                        <!--android:gravity="center|left"-->
+                        <!--android:text="@string/MAIN_ACTIVITY__customer_support"-->
+                        <!--android:textColor="@color/pure_black"-->
+                        <!--android:textSize="@dimen/menu_settings_text_size" />-->
+                <!--</LinearLayout>-->
+
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_report_issue_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/report"-->
+                        <!--android:tint="@color/pure_black" />-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="fill_parent"-->
+                        <!--android:gravity="center|left"-->
+                        <!--android:text="@string/report_a_problem"-->
+                        <!--android:textColor="@color/pure_black"-->
+                        <!--android:textSize="@dimen/menu_settings_text_size" />-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:alpha="0.8"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="start|center_vertical"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceTextMeseoBold-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:layout_marginRight="15dp"-->
+                        <!--android:text="@string/SETTINGS_ACTIVITY_information_settings"-->
+                        <!--android:textColor="@color/settings_strip_text_color"-->
+                        <!--android:textStyle="bold" />-->
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:layout_marginLeft="15dp"-->
+                        <!--android:background="@color/pure_black"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_terms_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/terms"-->
+                        <!--android:tint="@color/colorPrimary"-->
+                        <!--android:visibility="visible" />-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="fill_parent"-->
+                        <!--android:gravity="center|left"-->
+                        <!--android:text="@string/MAIN_ACTIVITY__terms_and_condition"-->
+                        <!--android:textColor="@color/color_menu_text"-->
+                        <!--android:textSize="@dimen/menu_settings_text_size" />-->
+                <!--</LinearLayout>-->
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_about_btn"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/about_us"-->
+                        <!--android:tint="@color/colorPrimary"-->
+                        <!--android:visibility="visible" />-->
+
+                    <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="fill_parent"-->
+                        <!--android:gravity="center|left"-->
+                        <!--android:text="@string/MAIN_ACTIVITY__about_us"-->
+                        <!--android:textColor="@color/color_menu_text"-->
+                        <!--android:textSize="@dimen/menu_settings_text_size" />-->
+                <!--</LinearLayout>-->
+
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@color/pure_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/icon_width"-->
+                        <!--android:layout_height="@dimen/icon_height"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:src="@drawable/version"-->
+                        <!--android:tint="@color/colorPrimary"-->
+                        <!--android:visibility="visible" />-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:gravity="start|center_vertical">-->
+
+                        <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="@string/MAIN_ACTIVITY__versions"-->
+                            <!--android:textColor="@color/color_menu_text"-->
+                            <!--android:textSize="@dimen/menu_settings_text_size" />-->
+
+                        <!--<com.taas.driver.typeface.TypeFaceMuseoRegular-->
+                           <!--android:id="@+id/textView_version_name"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:text="(0.5)"-->
+                            <!--android:layout_marginLeft="5dp"-->
+                            <!--android:textColor="@color/color_menu_text"-->
+                            <!--android:textSize="@dimen/menu_settings_text_size" />-->
+
+
+                    <!--</LinearLayout>-->
+
+                <!--</LinearLayout>-->
+
+
+
+            <!--</LinearLayout>-->
+
+        <!--</ScrollView>-->
+
+
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->

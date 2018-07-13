@@ -21,6 +21,7 @@ public class RideSession {
     public static final String RIDE_ID = "ride_id";
     public static final String USER_ID = "user_id";
     public static final String USER_NAME = "user_name";
+    public static final String USER_IMAGE ="user_image" ;
     public static final String USER_PHONE = "user_phone";
     public static final String COUPON_CODE = "coupon_code";
     public static final String PICK_LATITUDE = "pick_lat";
@@ -71,11 +72,12 @@ public class RideSession {
         editor.commit();
     }
     
-    public void setRentalRideSession (String ride_id , String user_id , String user_name , String user_phone , String coupon_code , String pick_lat , String pick_long , String pick_location , String drop_lat , String drop_long , String drop_location , String ride_date , String ride_time , String later_date , String later_time  , String driver_id , String ride_type , String ride_status , String status ){
+    public void setRentalRideSession (String ride_id , String user_id , String user_name ,String user_image, String user_phone , String coupon_code , String pick_lat , String pick_long , String pick_location , String drop_lat , String drop_long , String drop_location , String ride_date , String ride_time , String later_date , String later_time  , String driver_id , String ride_type , String ride_status , String status ){
         editor.putBoolean(IS_RIDE_ONGOING, true);
         editor.putString(RIDE_ID, ride_id);
         editor.putString(USER_ID, user_id);
         editor.putString(USER_NAME, user_name);
+        editor.putString(USER_IMAGE,user_image);
         editor.putString(USER_PHONE, user_phone);
         editor.putString(COUPON_CODE, coupon_code);
         editor.putString(PICK_LATITUDE, pick_lat);
@@ -112,6 +114,7 @@ public class RideSession {
         user.put(USER_ID , pref.getString(USER_ID , ""));
         user.put(USER_PHONE , pref.getString(USER_PHONE , ""));
         user.put(USER_NAME , pref.getString(USER_NAME , ""));
+        user.put(USER_IMAGE,pref.getString(USER_IMAGE,""));
         user.put(COUPON_CODE , pref.getString(COUPON_CODE , ""));
         user.put(PICK_LATITUDE , pref.getString(PICK_LATITUDE , ""));
         user.put(PICK_LONGITUDE , pref.getString(PICK_LONGITUDE , ""));

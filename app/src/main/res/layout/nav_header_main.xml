@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:layout_margin="10dp">
+  >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,14 +79,24 @@
                    android:orientation="horizontal"
                    android:gravity="center">
 
-                   <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                   <RatingBar
                        android:id="@+id/tv_profile_rating"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       style="?android:attr/ratingBarStyleSmall"
+                       android:layout_marginTop="5dp"
+                       android:theme="@style/RatingBar2"
+                       android:layout_marginLeft="15dp"
+                       />
+                   <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_marginLeft="15dp"
                        android:text=""
                        android:singleLine="true"
                        android:alpha="0.8"
+                       android:visibility="gone"
                        android:textColor="@color/pure_white"
                        android:textSize="14sp"
                        />
@@ -96,6 +106,7 @@
                        android:layout_height="10dp"
                        android:src="@drawable/ic_star"
                        android:layout_marginLeft="4dp"
+                       android:visibility="gone"
                        android:tint="@color/pure_white"/>
                </LinearLayout>
 
@@ -171,13 +182,21 @@
             android:layout_marginStart="15dp"/>
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:paddingLeft="20dp">
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="60dp"
+            android:layout_alignParentTop="true">
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/pure_black">
                 <LinearLayout
@@ -548,6 +567,7 @@
                     android:gravity="center"
                     android:paddingLeft="25dp"
                     android:id="@+id/ll_logout"
+                    android:visibility="gone"
                     android:background="@color/pure_black">
 
                     <ImageView
@@ -572,6 +592,51 @@
             </LinearLayout>
 
         </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+
+
+
+                <RelativeLayout
+
+                    android:id="@+id/legal_menu_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="45dp">
+
+
+
+                    <com.taas.driver.typeface.TypeFaceTextMeseoSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:text="@string/MAIN_ACTIVITY__legal_menu"
+                        android:textColor="@color/pure_white"
+                        android:textSize="@dimen/menu_text_size"
+                        android:layout_alignParentLeft="true"/>
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:id="@+id/verionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:text=""
+                        android:textColor="@color/pure_white"
+                        android:layout_marginRight="10dp"
+                        android:textSize="@dimen/menu_text_size"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </LinearLayout>
 
 

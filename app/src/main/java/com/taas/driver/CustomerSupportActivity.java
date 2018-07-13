@@ -62,7 +62,8 @@ public class CustomerSupportActivity extends AppCompatActivity implements ApiMan
         findViewById(com.taas.driver.R.id.send_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(user_name_edt.getText().toString().equals("")  || email_edt.getText().toString().equals("") || query_edt.getText().toString().equals("") ){
+//                if(user_name_edt.getText().toString().equals("")  || email_edt.getText().toString().equals("") || query_edt.getText().toString().equals("") ){
+                if( query_edt.getText().toString().equals("") ){
                     Snackbar.make(root , com.taas.driver.R.string.please_enter_the_maindatory_details , Snackbar.LENGTH_SHORT).show();
                 }else {
                     HashMap<String , String > data = new HashMap<String, String>();

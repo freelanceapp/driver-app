@@ -523,6 +523,8 @@
                         android:background="@android:color/transparent"
                         android:inputType="number"
                         android:text=""
+                        android:clickable="false"
+
                         android:textColor="@color/colorPrimary"
                         android:textSize="15sp" />
 

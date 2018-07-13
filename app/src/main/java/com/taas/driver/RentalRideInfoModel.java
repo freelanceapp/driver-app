@@ -194,7 +194,7 @@ public class RentalRideInfoModel {
         private String driver_image;
         private String car_number;
         private String car_type_name;
-        private String car_type_sub_name;
+        private String car_type_subname;
         private String car_type_image;
         private String car_model_name;
         private String car_model_image;
@@ -202,12 +202,12 @@ public class RentalRideInfoModel {
         private String package_price;
         private String payment_option_name;
 
-        public String getCar_type_sub_name() {
-            return car_type_sub_name;
+        public String getCar_type_subname() {
+            return car_type_subname;
         }
 
         public void setCar_type_sub_name(String car_type_sub_name) {
-            this.car_type_sub_name = car_type_sub_name;
+            this.car_type_subname = car_type_sub_name;
         }
 
         public String getRental_booking_id() {

@@ -21,7 +21,8 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/back_arrow"
+                android:src="@drawable/ic_back_arrow"
+                android:padding="5dp"
                 android:tint="@color/colorPrimary"/>
         </LinearLayout>
 
@@ -29,37 +30,36 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="end">
 
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ABOUT_US_ACTIVITY__about_us"
-                android:textSize="16dp" />
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorView" />
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
+        android:background="@color/pure_white"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/pure_white">
 
             <com.taas.driver.typeface.TypeFaceMuseoRegular
                 android:id="@+id/tv_about"
@@ -70,9 +70,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:text=""
-                android:textColor="@color/colorText"
-                android:textSize="13dp"
-                geekui:customTypeface="OpenSans_Regular.ttf" />
+                android:textColor="@color/pure_black"
+                android:textSize="13dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -86,6 +85,7 @@
         android:layout_marginBottom="10dp"
         android:textColor="@color/colorText"
         android:textSize="15dp"
+        android:visibility="gone"
         android:textStyle="italic"
         geekui:customTypeface="OpenSans_Regular.ttf" />
 </LinearLayout>

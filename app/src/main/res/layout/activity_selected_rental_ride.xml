@@ -299,7 +299,39 @@
                     android:background="@color/colorView" />
 
                 <include layout="@layout/selected_rental_ride_layout_element" />
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_track_ride"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_bg_color_black"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_trips"
+                        android:tint="@color/pure_white"/>
+                    <com.taas.driver.typeface.TypeFaceMuseoRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/SELECTED_RIDE_ACTIVITY__go_to_your_current_ride"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/pure_white"/>
+                </LinearLayout>
+
+
             </LinearLayout>
+
+
 
         </ScrollView>
     </LinearLayout>
@@ -310,21 +342,7 @@
         android:background="@color/colorView" />
 
 
-    <LinearLayout
-        android:id="@+id/ll_track_ride"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:visibility="gone"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <com.taas.driver.typeface.TypeFaceMuseoRegular
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/SELECTED_RENTAL_RIDE_ACTIVITY__go_to_your_current_ride"
-            android:textSize="20dp"
-            android:textColor="@color/pure_white"/>
-    </LinearLayout>
+
 
 
 

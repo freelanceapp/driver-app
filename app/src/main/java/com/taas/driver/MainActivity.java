@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -170,7 +171,10 @@ public class MainActivity extends BaseActivity implements Apis,
 
     Object object ;
 
-    private TextView tv_profile_rating;
+    private RatingBar tv_profile_rating;
+
+    private String versionName;
+    private TextView verionTextView;
 
 
 
@@ -226,6 +230,8 @@ public class MainActivity extends BaseActivity implements Apis,
         status_btn = findViewById(com.taas.driver.R.id.status_btn);
         ivDot = findViewById(com.taas.driver.R.id.ivDot);
 
+        verionTextView = findViewById(R.id.verionTextView);
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         languageManager = new LanguageManager(this);
         sessionManager = new SessionManager(this);
@@ -254,7 +260,15 @@ public class MainActivity extends BaseActivity implements Apis,
             }
         }
 
+        try {
+            versionName = getPackageManager()
+                    .getPackageInfo(getPackageName(), 0).versionName;
 
+            Log.e("VersionNmae", "" + versionName);
+            verionTextView.setText("v" + versionName + "");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,13 +310,18 @@ public class MainActivity extends BaseActivity implements Apis,
 
         startService(new Intent(this, TimeService.class));
 
-
+        findViewById(R.id.legal_menu_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,LegalActivity.class));
+            }
+        });
 
 
         findViewById(R.id.ll_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                //startActivity(new Intent(MainActivity.this, ProfileActivity.class));
             }
         });
         findViewById(com.taas.driver.R.id.menu).setOnClickListener(new View.OnClickListener() {
@@ -315,6 +334,14 @@ public class MainActivity extends BaseActivity implements Apis,
                     drawer.openDrawer(Gravity.LEFT);
                 }
 
+            }
+        });
+
+        findViewById(R.id.iv_profile_pic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class).putExtra("image",driverImage));
+                drawer.closeDrawers();
             }
         });
 
@@ -466,7 +493,7 @@ public class MainActivity extends BaseActivity implements Apis,
         driverName = sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_NAME);
         driverEmail = sessionManager.getUserDetails().get(SessionManager.KEY_DriverEmail);
         driverImage = sessionManager.getUserDetails().get(SessionManager.KEY_DriverImage);
-        tv_profile_rating.setText(""+sessionManager.getUserDetails().get(SessionManager.KEY_Driver_rating)+"");
+        tv_profile_rating.setRating(Float.parseFloat(""+sessionManager.getUserDetails().get(SessionManager.KEY_Driver_rating)));
         driver_id.setText("ID " + sessionManager.getUserDetails().get(SessionManager.KEY_DRIVER_ID));
         tv_profile_name.setText(driverName);
         tv_profile_email.setText(driverEmail);
@@ -487,6 +514,7 @@ public class MainActivity extends BaseActivity implements Apis,
         String inmage = Apis.imageDomain + driverImage;
         if (!inmage.equals("")) {
             ApporioLog.logD("**driver_image", "" + inmage);
+
             Glide.with(this).load("" + inmage.replace(" ", "")).into(iv_profile_pic);
         }
 
@@ -623,7 +651,7 @@ public class MainActivity extends BaseActivity implements Apis,
         findViewById(com.taas.driver.R.id.settings_menu_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class).putExtra("image",driverImage));
             }
         });
 
@@ -691,7 +719,7 @@ public class MainActivity extends BaseActivity implements Apis,
     public void onMapReady(final GoogleMap googleMap) {
         mGooglemap = googleMap;
         mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
-        mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
+        //mGooglemap.getUiSettings().setMyLocationButtonEnabled(false);
        // mGooglemap.setMyLocationEnabled(true);
         MapsInitializer.initialize(this);
         try {
@@ -703,21 +731,21 @@ public class MainActivity extends BaseActivity implements Apis,
             Maputils.moverCamera(mGooglemap, new LatLng(Double.parseDouble(app_location_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LAT)), Double.parseDouble(app_location_manager.getLocationDetails().get(LocationSession.KEY_CURRENT_LONG))));
         } catch (Exception e) {
 
-            new SamLocationRequestService(this).executeService(new SamLocationRequestService.SamLocationListener() {
-                @Override
-                public void onLocationUpdate(Location location) {
-                    Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
-                    mGooglemap.addMarker(new MarkerOptions()
-                            .flat(true)
-                            .icon(BitmapDescriptorFactory
-                                    .fromResource(R.mipmap.ic_current_location))
-                            .anchor(0.5f, 0.5f)
-                            .position(
-                                    new LatLng(location.getLatitude(), location
-                                            .getLongitude())));
-
-                }
-            });
+//            new SamLocationRequestService(this).executeService(new SamLocationRequestService.SamLocationListener() {
+//                @Override
+//                public void onLocationUpdate(Location location) {
+//                    Maputils.moverCamera(mGooglemap, new LatLng(location.getLatitude(), location.getLongitude()));
+//                    mGooglemap.addMarker(new MarkerOptions()
+//                            .flat(true)
+//                            .icon(BitmapDescriptorFactory
+//                                    .fromResource(R.mipmap.ic_current_location))
+//                            .anchor(0.5f, 0.5f)
+//                            .position(
+//                                    new LatLng(location.getLatitude(), location
+//                                            .getLongitude())));
+//
+//                }
+//            });
         }
 
 

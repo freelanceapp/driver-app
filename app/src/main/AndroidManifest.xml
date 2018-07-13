@@ -109,7 +109,37 @@
         <activity
             android:name=".TermsAndCondition"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+
+
+        <activity
+            android:name=".LegalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+
+
+
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+
+
+
+        <activity
+            android:name=".SoftwareLicenceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+        <activity
+            android:name=".CopyrightsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
+
         <activity
             android:name=".ChangePasswordActivity"
             android:screenOrientation="portrait" />
