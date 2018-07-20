@@ -740,10 +740,11 @@ public class TrackRideActivity extends AppCompatActivity implements OnMapReadyCa
             }
             if (rideSession.getCurrentRideDetails().get(RideSession.RIDE_STATUS).equals("6")) {
                 startRunnableProcess();
-//            drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
+  //            drawRoute(new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.PICK_LONGITUDE))) , new LatLng(Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LATITUDE)) , Double.parseDouble(rideSession.getCurrentRideDetails().get(RideSession.DROP_LONGITUDE))),mGooglemap , R.drawable.dot_green , R.drawable.dot_red);
                 trip_status_txt.setText("" + this.getResources().getString(R.string.TRACK_RIDE_ACTIVITY__end));
                 bottomLocationLayout.setVisibility(View.VISIBLE);
                 findViewById(R.id.location_changer).setVisibility(View.VISIBLE);
+                findViewById(R.id.navigation_btn).setVisibility(View.VISIBLE);
                 trip_status_txt.setTextColor(getResources().getColor(R.color.pure_white));
                 trip_status_txt.setBackground(getResources().getDrawable(R.drawable.round_bg_color_red));
                 cancel_btn.setVisibility(View.GONE);

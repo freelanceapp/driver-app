@@ -41,7 +41,7 @@ public class GcmServiceClass extends GcmTaskService implements ApiManager.APIFET
     private static final String TAG = "TimeService";
     SamLocationRequestService sam_location;
     LocationSession app_location_mamanger;
-    FirebaseUtils firebaseUtils;
+   // FirebaseUtils firebaseUtils;
     SessionManager sessionManager;
     LanguageManager languageManager;
     RideSession rideSession;
@@ -68,7 +68,7 @@ public class GcmServiceClass extends GcmTaskService implements ApiManager.APIFET
         app_location_mamanger = new LocationSession(this);
         sam_location = new SamLocationRequestService(this);
         apiManager = new ApiManager(this);
-        firebaseUtils = new FirebaseUtils(this);
+       // firebaseUtils = new FirebaseUtils(this);
         rideSession = new RideSession(this);
         sessionManager = new SessionManager(this);
         languageManager = new LanguageManager(this);
@@ -84,7 +84,7 @@ public class GcmServiceClass extends GcmTaskService implements ApiManager.APIFET
         app_location_mamanger = new LocationSession(this);
         sam_location = new SamLocationRequestService(this);
         apiManager = new ApiManager(this);
-        firebaseUtils = new FirebaseUtils(this);
+       // firebaseUtils = new FirebaseUtils(this);
         rideSession = new RideSession(this);
         sessionManager = new SessionManager(this);
         languageManager = new LanguageManager(this);
@@ -165,7 +165,7 @@ public class GcmServiceClass extends GcmTaskService implements ApiManager.APIFET
                         }
                     }
                     if (sessionManager.getUserDetails().get(SessionManager.KEY_service_switcher).equals("1")) {
-                        firebaseUtils.updateLocation_with_text();
+                      //  firebaseUtils.updateLocation_with_text();
                     }
 
                 } catch (Exception e) {

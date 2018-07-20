@@ -95,7 +95,7 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
 
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     String manualDropLat = "", manualDropLng = "", manualPickLat = "", manualPickLng = "", manualPickLocation = "", manualDropLocation = "";
-    FirebaseUtils firebaseUtils;
+    //FirebaseUtils firebaseUtils;
     ApiManager apiManager;
     ProgressDialog pd;
     GsonBuilder builder;
@@ -119,7 +119,7 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
         sessionManager = new SessionManager(this);
         apiManager = new ApiManager(this);
         pd = new ProgressDialog(this);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         builder = new GsonBuilder();
         gson = builder.create();
         pd.setMessage(ManualUserDetailActivity.this.getResources().getString(com.taas.driver.R.string.loading));
@@ -278,11 +278,11 @@ public class ManualUserDetailActivity extends AppCompatActivity implements ApiMa
 
                     if (rideAccept.getResult() == 1) {
                         new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
-                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_STARTED, "Not yet generated", "0"));
+                        //FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_STARTED, "Not yet generated", "0"));
                         startActivity(new Intent(this, TrackRideActivity.class)
                                 .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
                                 .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
-                        firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                      //  firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                         finish();
                     }
                 } else {

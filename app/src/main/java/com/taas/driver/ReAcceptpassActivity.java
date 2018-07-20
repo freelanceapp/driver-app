@@ -63,7 +63,7 @@ public class ReAcceptpassActivity extends Activity implements ApiManager.APIFETC
     GsonBuilder builder;
     Gson gson;
     ProgressDialog progressDialog;
-    FirebaseUtils firebaseUtils;
+   // FirebaseUtils firebaseUtils;
     ViewRideInfoDriver viewRideInfoDriver;
 
     CountDownTimer SoundTimer, ProgressTimer;
@@ -110,7 +110,7 @@ public class ReAcceptpassActivity extends Activity implements ApiManager.APIFETC
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(com.taas.driver.R.string.loading));
         progressDialog.setCancelable(false);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         builder = new GsonBuilder();
         gson = builder.create();
         apiManager = new ApiManager(this);

@@ -519,45 +519,45 @@ public class RentalTrackRideActivity extends AppCompatActivity implements OnMapR
 
     private void updateFirebaseEvent(final String status_value, final String Ride_id) throws Exception {
 
-        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + Ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
-                };
-                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
-                try {
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + Ride_id).setValue(new RideSessionEvent("" + Ride_id, "" + status_value, "Not yet generated", "0"));
-                } catch (Exception e) {
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                ApporioLog.logI("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + Ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
+//                };
+//                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+//                try {
+//                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + Ride_id).setValue(new RideSessionEvent("" + Ride_id, "" + status_value, "Not yet generated", "0"));
+//                } catch (Exception e) {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                ApporioLog.logI("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
+//            }
+//        });
     }
 
 
     private void updateFirebaseEventAtRideEnd(final String status_value, final String RideEnd_val, final String ride_id) throws Exception {
 
-        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
-                };
-                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
-                try {
-                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + ride_id).setValue(new RideSessionEvent("" + ride_id, "" + status_value, "" + RideEnd_val, "0"));
-                } catch (Exception e) {
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                ApporioLog.logI("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference(Config.RideTableReference).child("" + ride_id).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                GenericTypeIndicator<List<ChatModel>> t = new GenericTypeIndicator<List<ChatModel>>() {
+//                };
+//                List<ChatModel> yourStringArray = dataSnapshot.child("Chat").getValue(t);
+//                try {
+//                    FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + ride_id).setValue(new RideSessionEvent("" + ride_id, "" + status_value, "" + RideEnd_val, "0"));
+//                } catch (Exception e) {
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                ApporioLog.logI("" + TAG, "Data Fetched from firebase cancelled " + databaseError.getMessage());
+//            }
+//        });
     }
 
 

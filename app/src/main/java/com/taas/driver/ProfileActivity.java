@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
 
     LinearLayout iv_profile_pic_upload;
     CircleImageView profileImageView;
-    FirebaseUtils firebaseutil;
+   // FirebaseUtils firebaseutil;
 
     Uri selectedImage;
     Bitmap bitmap1;
@@ -90,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
 
     String driver_token;
 
-    FirebaseUtils firebasutil ;
+   // FirebaseUtils firebasutil ;
     SessionManager sessionManager ;
     CheckBox service_switcher ;
     ApiManager apiManager;
@@ -105,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebasutil = new FirebaseUtils(this);
+       // firebasutil = new FirebaseUtils(this);
         setContentView(com.taas.driver.R.layout.activity_profile);
         getSupportActionBar().hide();
         profileActivity = this;
@@ -113,7 +113,7 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
         apiManager = new ApiManager(this);
         pd = new ProgressDialog(this);
         pd.setMessage(ProfileActivity.this.getResources().getString(com.taas.driver.R.string.loading));
-        firebaseutil = new FirebaseUtils(this);
+        //firebaseutil = new FirebaseUtils(this);
 
         accountModule = new AccountModule(ProfileActivity.this , ProfileActivity.this);
 
@@ -650,8 +650,8 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
 
 
 //                firebasutil.logOutDriver();
-                firebasutil.setDriverOnlineStatus(false);
-                firebasutil.setDriverLoginLogoutStatus(false);
+              //  firebasutil.setDriverOnlineStatus(false);
+               // firebasutil.setDriverLoginLogoutStatus(false);
                 sessionManager.logoutUser();
                 dialog.dismiss();
             } else if (deviceId.getResult().toString().equals("419")) {
@@ -674,10 +674,10 @@ public class ProfileActivity extends AppCompatActivity implements ApiManager.API
                             DeviceId deviceToken = gson.fromJson(""+script, DeviceId.class);
                             if(deviceToken.getMsg().equals("Online")){
                                 sessionManager.setonline_offline(true);
-                                firebaseutil.setDriverOnlineStatus(true);
+                              //  firebaseutil.setDriverOnlineStatus(true);
                             }else {
                                 sessionManager.setonline_offline(false);
-                                firebaseutil.setDriverOnlineStatus(false);
+                               // firebaseutil.setDriverOnlineStatus(false);
                             }
                             break;
                     }

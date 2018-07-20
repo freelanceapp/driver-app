@@ -72,7 +72,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
     GsonBuilder builder;
     Gson gson;
     ProgressDialog progressDialog;
-    FirebaseUtils firebaseUtils;
+   // FirebaseUtils firebaseUtils;
     ViewRideInfoDriver viewRideInfoDriver;
 
     CountDownTimer SoundTimer, ProgressTimer;
@@ -130,7 +130,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("" + this.getResources().getString(com.taas.driver.R.string.loading));
         progressDialog.setCancelable(false);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         builder = new GsonBuilder();
         gson = builder.create();
         apiManager = new ApiManager(this);
@@ -150,7 +150,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
             @Override
             public void onClick(View v) {
                 try {
-                    firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                  //  firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                 } catch (Exception e) {
                 }
                 finish();
@@ -358,7 +358,7 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
                 if (deviceId.getResult().toString().equals("1")) {
                     Toast.makeText(this, "" + deviceId.getMsg(), Toast.LENGTH_SHORT).show();
                     finish();
-                    firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                   // firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                 } else {
                     setViewAccordingToRideStatus("0", "" + deviceId.getMsg());
                 }
@@ -373,11 +373,11 @@ public class ReceivePassengerActivity extends Activity implements ApiManager.API
 
                     if (rideAccept.getResult() == 1) {
                         new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
-                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_ACCEPTED, "Not yet generated", "0"));
+                       // FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_ACCEPTED, "Not yet generated", "0"));
                         startActivity(new Intent(this, TrackRideActivity.class)
                                 .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
                                 .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
-                        firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                       // firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                         finish();
                     }
                 } else {

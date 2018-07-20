@@ -49,7 +49,7 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
     LanguageManager languageManager ;
     SessionManager sessionManager ;
     ApiManager apiManager ;
-    FirebaseUtils firebaseutil;
+   // FirebaseUtils firebaseutil;
     FirebaseDatabase database;
     GsonBuilder builder ;
     Gson gson ;
@@ -65,7 +65,7 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
         progressDialog.setCancelable(false);
         database = FirebaseDatabase.getInstance();
         mDatabaseReference = database.getReference("Drivers_A");
-        firebaseutil = new FirebaseUtils(this);
+       // firebaseutil = new FirebaseUtils(this);
         progressDialog = new ProgressDialog(this);
 
         apiManager = new ApiManager(this);
@@ -136,10 +136,10 @@ public class OnlineOfflineActivity extends Activity implements ApiManager.APIFET
                         ModelDeviceOnlineIffline modelDeviceOnlineIffline = gson.fromJson(""+script, ModelDeviceOnlineIffline.class);
                         if(modelDeviceOnlineIffline.getOffline() == 1){
                             sessionManager.setonline_offline(true);
-                            firebaseutil.setDriverOnlineStatus(true);
+                          //  firebaseutil.setDriverOnlineStatus(true);
                         }else {
                             sessionManager.setonline_offline(false);
-                            firebaseutil.setDriverOnlineStatus(false);
+                          //  firebaseutil.setDriverOnlineStatus(false);
                         }
                         break;
                 }

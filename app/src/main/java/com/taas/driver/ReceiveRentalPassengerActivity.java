@@ -63,7 +63,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
     Gson gson;
     ProgressDialog progressDialog;
     CountDownTimer SoundTimer, ProgressTimer;
-    FirebaseUtils firebaseUtils;
+   // FirebaseUtils firebaseUtils;
 
     LinearLayout cash_layout, card_layout;
     public static MediaPlayer mediaPlayer;
@@ -122,7 +122,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
         progressDialog.setMessage("" + this.getResources().getString(com.taas.driver.R.string.loading));
         progressDialog.setCancelable(false);
         gson = new GsonBuilder().create();
-        firebaseUtils = new FirebaseUtils(this);
+       // firebaseUtils = new FirebaseUtils(this);
         setContentView(com.taas.driver.R.layout.activity_receive_rental_passenger);
         ButterKnife.bind(this);
         pulsator.start();
@@ -183,7 +183,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
             long difference_time = (Long.parseLong(TimeDifference) * 1000);
             STARTTIME = MAXTIME - difference_time;
             if (STARTTIME <= 1) {
-                firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+              //  firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                 finish();
             } else {
                 timeTxt.setText("" + (STARTTIME / 1000));
@@ -278,7 +278,7 @@ public class ReceiveRentalPassengerActivity extends Activity implements ApiManag
                         finish();
                         startActivity(new Intent(ReceiveRentalPassengerActivity.this, RentalTrackRideActivity.class));
                         //Toast.makeText(this, "" + accept_response.getMessage(), Toast.LENGTH_SHORT).show();
-                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
+                        //FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
 
                     } else {
                         finish();

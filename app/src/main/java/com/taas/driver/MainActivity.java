@@ -151,7 +151,7 @@ public class MainActivity extends BaseActivity implements Apis,
     Address addressFromLocation;
 
     RideSession rideSession;
-    FirebaseUtils firebaseutil;
+   // FirebaseUtils firebaseutil;
     FirebaseDatabase database;
     ModelReportIssue modelReportIssue;
     GsonBuilder builder;
@@ -189,7 +189,7 @@ public class MainActivity extends BaseActivity implements Apis,
         mGcmNetworkManager = GcmNetworkManager.getInstance(this);
        // mDatabaseReference = database.getReference("Drivers_A");
         rideSession = new RideSession(this);
-        firebaseutil = new FirebaseUtils(this);
+      //  firebaseutil = new FirebaseUtils(this);
         apiManager_new = new ApiManager(this);
         locationSession = new LocationSession(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(com.taas.driver.R.id.map);
@@ -770,7 +770,7 @@ public class MainActivity extends BaseActivity implements Apis,
                 l.setSpeed(0);
                 l.setTime(System.currentTimeMillis() / 1000);
                 app_location_manager.setLocationLatLong(l);
-                firebaseutil.updateLocation_with_text();
+               // firebaseutil.updateLocation_with_text();
             }
         });
 
@@ -779,7 +779,7 @@ public class MainActivity extends BaseActivity implements Apis,
             @Override
             public void onCameraIdle() {
                 if (sessionManager.getUserDetails().get(SessionManager.KEY_service_switcher).equals("0")) {
-                    firebaseutil.updateLocationOnCameramove("" + mGooglemap.getCameraPosition().target.latitude, "" + mGooglemap.getCameraPosition().target.longitude);
+                   // firebaseutil.updateLocationOnCameramove("" + mGooglemap.getCameraPosition().target.latitude, "" + mGooglemap.getCameraPosition().target.longitude);
                 }
             }
         });
@@ -997,10 +997,10 @@ public class MainActivity extends BaseActivity implements Apis,
                         DeviceId deviceToken = gson.fromJson("" + script, DeviceId.class);
                         if (deviceToken.getMsg().equals("Online")) {
                             sessionManager.setonline_offline(true);
-                            firebaseutil.setDriverOnlineStatus(true);
+                           // firebaseutil.setDriverOnlineStatus(true);
                         } else {
                             sessionManager.setonline_offline(false);
-                            firebaseutil.setDriverOnlineStatus(false);
+                          //  firebaseutil.setDriverOnlineStatus(false);
                         }
                         break;
                     case Config.ApiKeys.KEY_CALL_SUPPORT:
@@ -1093,8 +1093,8 @@ public class MainActivity extends BaseActivity implements Apis,
                         scheduled_rides.setText("" + modelScheduleAndunacceptedRide.getDetails().getScheduled_ride());
                         break;
                     case Config.ApiKeys.LOGOUT:
-                        firebaseutil.setDriverOnlineStatus(false);
-                        firebaseutil.setDriverLoginLogoutStatus(false);
+                       // firebaseutil.setDriverOnlineStatus(false);
+                       // firebaseutil.setDriverLoginLogoutStatus(false);
                         sessionManager.logoutUser();
                         startActivity(new Intent(MainActivity.this, SplashActivity.class));
                         finish();

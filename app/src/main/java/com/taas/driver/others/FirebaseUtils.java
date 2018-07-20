@@ -41,11 +41,11 @@ public class FirebaseUtils {
 
     public FirebaseUtils(Context context){
         this.context = context ;
-        database = FirebaseDatabase.getInstance();
-        mDatabaseReference = database.getReference(Config.DriverReference);
-        mDatabaseReference_geofire = database.getReference(Config.GeoFireReference);
-        mDatabaserefrenceActivePool = database.getReference(Config.ActiveRidesRefrence);
-        geoFire = new GeoFire(mDatabaseReference_geofire);
+       // database = FirebaseDatabase.getInstance();
+      ///  mDatabaseReference = database.getReference(Config.DriverReference);
+       // mDatabaseReference_geofire = database.getReference(Config.GeoFireReference);
+       // mDatabaserefrenceActivePool = database.getReference(Config.ActiveRidesRefrence);
+       // geoFire = new GeoFire(mDatabaseReference_geofire);
         applocation_manager  = new LocationSession(context);
         sessionmanager = new SessionManager(context);
     }

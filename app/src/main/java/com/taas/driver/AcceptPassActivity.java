@@ -59,7 +59,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
     String RIDE_ID, RIDE_STATUS, RIDE_TYPE;
     ApiManager apiManager;
     SessionManager sessionManager;
-    FirebaseUtils firebaseUtils;
+   // FirebaseUtils firebaseUtils;
     Gson gson;
     @Bind(com.taas.driver.R.id.back)
     RelativeLayout back;
@@ -118,7 +118,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
         });
         activityNameTxt.setText(com.taas.driver.R.string.trip_details);
         apiManager = new ApiManager(this);
-        firebaseUtils = new FirebaseUtils(this);
+        //firebaseUtils = new FirebaseUtils(this);
         sessionManager = new SessionManager(this);
         gson = new GsonBuilder().create();
 
@@ -229,11 +229,11 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
                         RideAccept rideAccept = gson.fromJson("" + script, RideAccept.class);
                         if (rideAccept.getResult() == 1) {
                             new RideSession(this).setRideSesion(rideAccept.getDetails().getRide_id(), rideAccept.getDetails().getUser_id(), rideAccept.getDetails().getUser_name(), rideAccept.getDetails().getUser_phone(), rideAccept.getDetails().getCoupon_code(), rideAccept.getDetails().getPickup_lat(), rideAccept.getDetails().getPickup_long(), rideAccept.getDetails().getPickup_location(), rideAccept.getDetails().getDrop_lat(), rideAccept.getDetails().getDrop_long(), rideAccept.getDetails().getDrop_location(), rideAccept.getDetails().getRide_date(), rideAccept.getDetails().getRide_time(), rideAccept.getDetails().getLater_date(), rideAccept.getDetails().getLater_time(), rideAccept.getDetails().getDriver_id(), rideAccept.getDetails().getRide_type(), rideAccept.getDetails().getRide_status(), rideAccept.getDetails().getStatus());
-                            FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_ACCEPTED, "Not yet generated", "0"));
+                            //FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + rideAccept.getDetails().getRide_id()).setValue(new RideSessionEvent("" + rideAccept.getDetails().getRide_id(), "" + Config.Status.NORMAL_ACCEPTED, "Not yet generated", "0"));
                             startActivity(new Intent(this, TrackRideActivity.class)
                                     .putExtra("customer_name", "" + rideAccept.getDetails().getUser_name())
                                     .putExtra("customer_phone", "" + rideAccept.getDetails().getUser_phone()));
-                            firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
+                          //  firebaseUtils.createRidePool("" + FirebaseUtils.NO_RIDES, "" + FirebaseUtils.NO_RIDE_STATUS);
                             finish();
                         }
                     } else {
@@ -248,7 +248,7 @@ public class AcceptPassActivity extends Activity implements ApiManager.APIFETCHE
                         finish();
                         startActivity(new Intent(AcceptPassActivity.this, RentalTrackRideActivity.class));
                         Toast.makeText(this, "" + accept_response.getMessage(), Toast.LENGTH_SHORT).show();
-                        FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
+                       // FirebaseDatabase.getInstance().getReference("" + Config.RideTableReference).child("" + accept_response.getDetails().getRental_booking_id()).setValue(new RideSessionEvent("" + accept_response.getDetails().getRental_booking_id(), "" + Config.Status.RENTAL_ACCEPTED, "Not yet generated", "0"));
 
                     } else {
                         finish();
