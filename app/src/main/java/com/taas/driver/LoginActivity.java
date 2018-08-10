@@ -142,10 +142,10 @@ public class LoginActivity extends AppCompatActivity implements ApiManager.APIFE
                 Register register;
                 register = gson.fromJson("" + script, Register.class);
 
-                Log.e("Driver_phone_register11",""+ register.getDetails().getDriver_phone().toString());
+
 
                 if (register.getResult() == 1) {
-
+                    Log.e("Driver_phone_register11",""+ register.getDetails().getDriver_phone().toString());
                     String driver_id = register.getDetails().getDriver_id();
                     String detail_status = register.getDetails().getDetail_status();
 

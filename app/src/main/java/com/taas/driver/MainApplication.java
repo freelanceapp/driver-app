@@ -34,7 +34,6 @@ public class MainApplication extends MyApplication {
                 .init();
 
 
-        OneSignal.sendTag("driver_id" , ""+getSessionManager().getUserDetails().get(SessionManager.KEY_DRIVER_ID));
 
     }
 

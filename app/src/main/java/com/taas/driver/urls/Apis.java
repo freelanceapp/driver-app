@@ -2,7 +2,7 @@ package com.taas.driver.urls;
 
 public interface Apis {
 
-    String BASE = "http://34.203.170.131/";
+    String BASE = "http://taas.com.ng/";
     String baseDomain = BASE + "api/";
     String imageDomain = BASE + "";
     String restdomain = BASE + "Taas/";
