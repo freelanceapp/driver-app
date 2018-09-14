@@ -43,16 +43,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FragmentGraph.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/earnings/FragmentGraph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Apis.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/urls/Apis.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -113,11 +103,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="10" column="39" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+            <state relative-caret-position="255">
+              <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="489" column="22" lean-forward="false" selection-start-line="489" selection-start-column="20" selection-end-line="489" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -2286,30 +2286,6 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="taas" type="462c0819:PsiDirectoryNode" />
-              <item name="driver" type="462c0819:PsiDirectoryNode" />
-              <item name="earnings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Taas-Driver-Android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Taas-Driver-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="taas" type="462c0819:PsiDirectoryNode" />
-              <item name="driver" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Taas-Driver-Android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Taas-Driver-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2334,8 +2310,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2348,6 +2322,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2355,7 +2331,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Screens/Driver" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1528104828837" />
-    <property name="SearchEverywhereHistoryKey" value="Draw&#9;PSI&#9;JAVA://com.taas.driver.routedrawer.DrawRouteMaps&#10;Fire&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/others/FirebaseUtils.java&#10;Login&#9;PSI&#9;JAVA://com.taas.driver.LoginActivity&#10;Applica&#9;PSI&#9;JAVA://com.taas.driver.MainApplication&#10;Api&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/urls/Apis.java&#10;Frag&#9;PSI&#9;JAVA://com.taas.driver.earnings.FragmentGraph&#10;TrackRide&#9;PSI&#9;JAVA://com.taas.driver.trackride.TrackRideActivity&#10;Conf&#9;PSI&#9;JAVA://com.taas.driver.Config&#10;Forgot&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ForgotPass_VerifyOTP.java&#10;VerifyO&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/Verify_OTP.java&#10;Pro&#9;PSI&#9;JAVA://com.taas.driver.ProfileActivity&#10;Price&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/price_fare_new.xml&#10;RentalAc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ReceiveRentalPassengerActivity.java&#10;For&#9;PSI&#9;JAVA://com.taas.driver.ForgotPass_VerifyOTP&#10;Verify&#9;PSI&#9;JAVA://com.taas.driver.Verify_OTP&#10;Renta&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RentalTrackRideActivity.java&#10;RentalTra&#9;PSI&#9;JAVA://com.taas.driver.RentalTrackRideActivity&#10;Active&#9;PSI&#9;JAVA://com.taas.driver.TripHistoryActivity.ActiveRideFragment&#10;TripHis&#9;PSI&#9;JAVA://com.taas.driver.TripHistoryActivity&#10;Cust&#9;PSI&#9;JAVA://com.taas.driver.CustomerSupportActivity&#10;Sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/settings/SettingsActivity.java&#10;nav&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/nav_header_main.xml&#10;main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/main_content.xml&#10;MainA&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;cop&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_copyrights.xml&#10;MapU&#9;PSI&#9;JAVA://com.taas.driver.others.Maputils&#10;Main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;activity_tc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_tc.xml&#10;about&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_about.xml&#10;Setting&#9;PSI&#9;JAVA://com.taas.driver.settings.SettingsActivity&#10;strings&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/strings.xml&#10;Track&#9;PSI&#9;JAVA://com.taas.driver.trackride.TrackRideActivity&#10;Mai&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/main_content.xml&#10;Tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java&#10;Chat&#9;PSI&#9;JAVA://com.taas.driver.ChatActivity&#10;Profi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_profile.xml&#10;track&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Trac&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;NotificationData&#9;PSI&#9;JAVA://javax.management.timer.TimerMBean#getNotificationUserData&#10;Rec&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ReceiveRentalPassengerActivity.java&#10;RentalPr&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RentalPriceFareActiviy.java&#10;PriceFa&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/PriceFareActivity.java&#10;Tri&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;TripH&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;Ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/SelectedRidesActivity.java&#10;Trip&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;Regist&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RegisterActivity.java&#10;Prof&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_profile.xml&#10;Sele&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/SelectedRentalRideActivity.java&#10;Select&#9;PSI&#9;JAVA://com.taas.driver.SelectedRidesActivity" />
+    <property name="SearchEverywhereHistoryKey" value="mainA&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;Draw&#9;PSI&#9;JAVA://com.taas.driver.routedrawer.DrawRouteMaps&#10;Fire&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/others/FirebaseUtils.java&#10;Login&#9;PSI&#9;JAVA://com.taas.driver.LoginActivity&#10;Applica&#9;PSI&#9;JAVA://com.taas.driver.MainApplication&#10;Api&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/urls/Apis.java&#10;Frag&#9;PSI&#9;JAVA://com.taas.driver.earnings.FragmentGraph&#10;TrackRide&#9;PSI&#9;JAVA://com.taas.driver.trackride.TrackRideActivity&#10;Conf&#9;PSI&#9;JAVA://com.taas.driver.Config&#10;Forgot&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ForgotPass_VerifyOTP.java&#10;VerifyO&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/Verify_OTP.java&#10;Pro&#9;PSI&#9;JAVA://com.taas.driver.ProfileActivity&#10;Price&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/price_fare_new.xml&#10;RentalAc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ReceiveRentalPassengerActivity.java&#10;For&#9;PSI&#9;JAVA://com.taas.driver.ForgotPass_VerifyOTP&#10;Verify&#9;PSI&#9;JAVA://com.taas.driver.Verify_OTP&#10;Renta&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RentalTrackRideActivity.java&#10;RentalTra&#9;PSI&#9;JAVA://com.taas.driver.RentalTrackRideActivity&#10;Active&#9;PSI&#9;JAVA://com.taas.driver.TripHistoryActivity.ActiveRideFragment&#10;TripHis&#9;PSI&#9;JAVA://com.taas.driver.TripHistoryActivity&#10;Cust&#9;PSI&#9;JAVA://com.taas.driver.CustomerSupportActivity&#10;Sett&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/settings/SettingsActivity.java&#10;nav&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/nav_header_main.xml&#10;main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/main_content.xml&#10;MainA&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;cop&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_copyrights.xml&#10;MapU&#9;PSI&#9;JAVA://com.taas.driver.others.Maputils&#10;Main&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/MainActivity.java&#10;activity_tc&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_tc.xml&#10;about&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_about.xml&#10;Setting&#9;PSI&#9;JAVA://com.taas.driver.settings.SettingsActivity&#10;strings&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/values/strings.xml&#10;Track&#9;PSI&#9;JAVA://com.taas.driver.trackride.TrackRideActivity&#10;Mai&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/main_content.xml&#10;Tra&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/trackride/TrackRideActivity.java&#10;Chat&#9;PSI&#9;JAVA://com.taas.driver.ChatActivity&#10;Profi&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_profile.xml&#10;track&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;Trac&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_track_ride.xml&#10;NotificationData&#9;PSI&#9;JAVA://javax.management.timer.TimerMBean#getNotificationUserData&#10;Rec&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/ReceiveRentalPassengerActivity.java&#10;RentalPr&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RentalPriceFareActiviy.java&#10;PriceFa&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/PriceFareActivity.java&#10;Tri&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;TripH&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;Ride&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/SelectedRidesActivity.java&#10;Trip&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/TripHistoryActivity.java&#10;Regist&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/RegisterActivity.java&#10;Prof&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/res/layout/activity_profile.xml&#10;Sele&#9;FILE&#9;file://E:/Android Projects/Apporio Projects/TAAS/Taas-Driver-Android/app/src/main/java/com/taas/driver/SelectedRentalRideActivity.java" />
     <property name="device.picker.selection" value="a3ebe0c67cf5" />
     <property name="ExportApk.ApkPath" value="E:\Android Projects\Apporio Projects\TAAS\Taas-Driver-Android\app" />
     <property name="ExportApk.Flavors" value="" />
@@ -2830,13 +2806,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rides_item_new.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2278">
           <caret line="134" column="48" lean-forward="false" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/TripHistoryActivity.java">
@@ -2859,23 +2835,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verify__otp.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_verify_otp.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpass_verify_otp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/manager/SessionManager.java">
@@ -2887,13 +2863,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride_rental.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="80" column="47" lean-forward="false" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/manager/RideSession.java">
@@ -2904,13 +2880,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_price_fare_activiy.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/RentalPriceFareActiviy.java">
@@ -2921,23 +2897,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/price_fare_new.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8772">
           <caret line="516" column="44" lean-forward="false" selection-start-line="516" selection-start-column="41" selection-end-line="516" selection-end-column="44" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/Verify_OTP.java">
@@ -2958,14 +2934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="167" column="39" lean-forward="false" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="153" column="32" lean-forward="false" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3041,23 +3009,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_track_ride.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2635">
           <caret line="155" column="43" lean-forward="false" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="43" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/1.png" />
@@ -3073,21 +3041,19 @@
     <entry file="file://$PROJECT_DIR$/../Screens/Driver/11.png" />
     <entry file="file://$PROJECT_DIR$/../Screens/Driver/12.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_graph.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/earnings/FragmentGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="52" column="52" lean-forward="false" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3157,8 +3123,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="10" column="39" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        <state relative-caret-position="255">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/taas/driver/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="489" column="22" lean-forward="false" selection-start-line="489" selection-start-column="20" selection-end-line="489" selection-end-column="22" />
           <folding />
         </state>
       </provider>
